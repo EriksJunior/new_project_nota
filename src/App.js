@@ -1,14 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { NavBar } from "./components/NavBar";
+import { useContext } from 'react'
+import { GlobalContext } from './context/Global/global'
+
+import { Loading } from './components/Loading';
+import { PageNavegation } from './page/Navigation';
+import { AppRoutes } from './routes';
+
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const { loading } = useContext(GlobalContext)
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/home" element={<NavBar />} exact />
-      </Routes>
-    </BrowserRouter>
+    <>
+    {loading &&
+        <Loading />
+      }
+    <PageNavegation visible />
+    <AppRoutes />
+    <ToastContainer theme="dark"/>
+  </>
   );
 }
 
