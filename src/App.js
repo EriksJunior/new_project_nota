@@ -1,14 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { MenuPage } from "./pages/Menu/index";
-import { MotoboyPage } from "./pages/Motoboy";
+import { NavBar } from "./components/NavBar";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/home" element={<MenuPage />} exact />
-        <Route path="/motoboy" element={<MotoboyPage />} exact />
+        <Route path="/home" element={<NavBar />} exact />
       </Routes>
     </BrowserRouter>
   );

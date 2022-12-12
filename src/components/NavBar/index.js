@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // import { Footer } from "../Footer";
+import { Link } from "react-router-dom"
 
 export function NavBar({ children }) {
   return (
@@ -37,12 +38,12 @@ export function NavBar({ children }) {
             <div className="sb-sidenav-menu">
               <div className="nav">
                 <div className="sb-sidenav-menu-heading">Core</div>
-                <a className="nav-link" href="/home">
+                <Link className="nav-link" to="/home">
                   <div className="sb-nav-link-icon">
                     <i className="fas fa-tachometer-alt"></i>
                   </div>
                   Home
-                </a>
+                </Link>
                 <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                   <div className="sb-nav-link-icon">
                     <i className="fas fa-columns"></i>
@@ -54,8 +55,8 @@ export function NavBar({ children }) {
                 </a>
                 <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                   <nav className="sb-sidenav-menu-nested nav">
-                    <a className="nav-link" href="/motoboy">Motoboy</a>
-                    <a className="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                    <a className="nav-link" href="/cliente">Cliente</a>
+                    <a className="nav-link" href="layout-sidenav-light.html">Produtos</a>
                   </nav>
                 </div>
                 <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
