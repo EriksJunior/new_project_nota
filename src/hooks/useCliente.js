@@ -1,19 +1,17 @@
 import { useState, useCallback, useContext } from 'react';
 
 import { INITIAL_STATE_CLIENTE, INITIAL_STATE_SEARCH } from '../initialStates/client';
-import ClienteService from '../../services/ClienteService'
-import { ICliente, ISearch } from '../../interface/ICliente';
+import ClienteService from '../services/ClienteService'
 
 import { toast } from "react-toastify";
-import { GlobalContext } from '../context/global/global';
+import { GlobalContext } from '../context/Global/global';
 
 export function UseCliente() {
-  const { client, setClient, getClientesFromSelectBox } = useContext(GlobalContext) as { client: ICliente, setClient: (value: ICliente) => void, getClientesFromSelectBox: () => void }
-
+  const { client, setClient, getClientesFromSelectBox } = useContext(GlobalContext)
   const [show, setShow] = useState(false);
-  const [search, setSearch] = useState<ISearch>(INITIAL_STATE_SEARCH)
-  const [returnedClient, setReturnedClient] = useState<ICliente[]>()
-  const [alterTab, setAlterTab] = useState<string>("pesquisar")
+  const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
+  const [returnedClient, setReturnedClient] = useState([])
+  const [alterTab, setAlterTab] = useState("pesquisar")
 
   const handleClose = () => {
     clearAllInputs()
@@ -27,19 +25,19 @@ export function UseCliente() {
     setAlterTab("pesquisar")
   };
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement & HTMLSelectElement>) => {
+  const handleChange = useCallback((e) => {
     setClient({ ...client, [e.target.name]: e.target.value })
   }, [client]);
 
   const save = async () => {
     try {
-      const result = await ClienteService.save(client as ICliente)
+      const result = await ClienteService.save(client)
       setClient({ ...client, id: result.id })
 
       toast("Salvo com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
-    } catch (error: any) {
+    } catch (error) {
       toast.error(error?.response?.data?.erros, {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -48,19 +46,19 @@ export function UseCliente() {
 
   const update = async () => {
     try {
-      await ClienteService.update(client as ICliente)
+      await ClienteService.update(client)
 
       toast("Atualizado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
-    } catch (error: any) {
+    } catch (error) {
       toast.error(error?.response?.data?.erros, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
   }
 
-  const deleteClient = async (id: string | undefined) => {
+  const deleteClient = async (id) => {
     try {
       await ClienteService.delete(id)
       await searchClient()
@@ -68,19 +66,19 @@ export function UseCliente() {
       toast("Registro deletado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
-    } catch (error: any) {
+    } catch (error) {
       toast.error(error?.response?.data?.erros, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
   }
 
-  const findById = async (id: string | undefined) => {
+  const findById = async (id) => {
     try {
       const result = await ClienteService.findById(id)
       setClient(result)
       setAlterTab('cadastro')
-    } catch (error: any) {
+    } catch (error) {
       return toast.error(error?.response?.data?.erros, {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -91,7 +89,7 @@ export function UseCliente() {
     try {
       const result = await ClienteService.search(search.text, search.page)
       setReturnedClient(result.data)
-    } catch (error: any) {
+    } catch (error) {
       return toast.error(error?.response?.data?.erros, {
         position: toast.POSITION.TOP_RIGHT
       });

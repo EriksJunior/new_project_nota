@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 
 export function Masks() {
-  const maskCep = useCallback((e: React.KeyboardEvent<EventTarget & HTMLInputElement>) => {
+  const maskCep = useCallback((e) => {
     e.currentTarget.maxLength = 9;
     let value = e.currentTarget.value;
     value = value.replace(/\D/g, "")
@@ -10,7 +10,7 @@ export function Masks() {
     e.currentTarget.value = value
   }, [])
 
-  const maskCpfCnpj = useCallback((e: React.KeyboardEvent<EventTarget & HTMLInputElement>) => {
+  const maskCpfCnpj = useCallback((e) => {
     e.currentTarget.maxLength = 14;
     let value = e.currentTarget.value;
     if (value.length <= 11) {
@@ -28,7 +28,7 @@ export function Masks() {
     }
   }, [])
 
-  const maskCurrency = useCallback((e: React.KeyboardEvent<EventTarget & HTMLInputElement>) => {
+  const maskCurrency = useCallback((e) => {
     let value = e.currentTarget.value;
     value = value.replace(/\D/g, "");
     value = value.replace(/(\d)(\d{1})$/, "$1,$2");
