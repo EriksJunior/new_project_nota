@@ -18,7 +18,7 @@ export function Customer() {
 
   return (
     <>
-      <h1>meu zovo</h1>
+      <h1 className='mt-5 ml-5'>meu zovoooooooooooooooooooooooooooooooooooooooooo</h1>
     </>
   );
 }

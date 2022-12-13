@@ -117,7 +117,7 @@ export function NavBar({ children }) {
             </div>
           </nav>
         </div>
-        <div id="layoutSidenav_content" className="container-fluid">
+        <div id="layoutSidenav_content">
           {children}
         </div>
       </div>

@@ -1,12 +1,14 @@
-import { NavBar } from "../../components/NavBar"
 
-export function PageNavegation({ visible }) {
+import { NavBar } from "../../components/NavBar" 
+import { PageCustomer } from "../Customer"
+
+export function PageNavigation() {
+
   return (
-    <>
-    { !visible ? (
-    <NavBar />
-    ): <></>
-  }
-    </>
- ) 
+    <div>
+      <NavBar>
+        <PageCustomer />
+      </NavBar>
+    </div>
+  )
 }
