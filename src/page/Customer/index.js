@@ -1,12 +1,17 @@
 import { Customer } from "../../components/Customer"
-import { NavBar } from "../../components/NavBar/index"
 import { ClientProvider } from "../../context/Client/client"
+import { TabRecords } from "../../components/Tab"
+import { TabCreate } from "../../components/Tab/Create"
+import { TabSearch } from "../../components/Tab/Search"
 
 export function PageCustomer() {
   return (
-    <div>
+    <div className="m-3">
       <ClientProvider>
-        <Customer />
+        <TabRecords>
+          <TabCreate><Customer /></TabCreate>
+          <TabSearch>TESTEEEEEEEEEEEEEEEEEEE</TabSearch>
+        </TabRecords>
       </ClientProvider>
     </div>
   )

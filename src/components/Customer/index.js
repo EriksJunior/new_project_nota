@@ -18,7 +18,7 @@ export function Customer() {
 
   return (
     <>
-      <div className="card p-4">
+      <div className="card">
         <div className="card-header">
           Cadastre o cliente
         </div>
@@ -124,7 +124,7 @@ export function Customer() {
             </div>
           </div>
 
-          <div style={{width: "100%", display: "flex", gap: "20px"}}>
+          <div style={{ width: "100%", display: "flex", gap: "20px" }}>
             <button type="button" className="btn btn-dark" onClick={() => console.log(client)}>Salvar</button>
             <button type="button" className="btn btn-dark">Limpar</button>
           </div>
