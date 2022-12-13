@@ -8,6 +8,7 @@ import { GlobalContext } from '../context/Global/global';
 
 export function UseCliente() {
   const { client, setClient, getClientesFromSelectBox } = useContext(GlobalContext)
+
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedClient, setReturnedClient] = useState([])

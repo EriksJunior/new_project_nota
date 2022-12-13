@@ -1,9 +1,11 @@
 import { Customer } from "../../components/Customer"
-
-export function PageCustomer(){
-  return(
+import { NavBar } from "../../components/NavBar/index"
+export function PageCustomer() {
+  return (
     <div>
-      <Customer />
+      <NavBar>
+        <Customer />
+      </NavBar>
     </div>
   )
 }

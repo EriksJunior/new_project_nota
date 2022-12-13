@@ -3,7 +3,6 @@ import { useContext } from 'react'
 import { GlobalContext } from './context/Global/global'
 
 import { Loading } from './components/Loading';
-import { PageNavigation } from './page/Navigation/index';
 import { AppRoutes } from './routes';
 
 import { ToastContainer } from 'react-toastify'
@@ -14,13 +13,12 @@ function App() {
 
   return (
     <>
-    {loading &&
+      {loading &&
         <Loading />
       }
-    <PageNavigation />
-    <AppRoutes />
-    <ToastContainer theme="dark"/>
-  </>
+        <AppRoutes />
+        <ToastContainer theme="dark" />
+    </>
   );
 }
 

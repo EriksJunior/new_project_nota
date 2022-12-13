@@ -6,7 +6,7 @@ export function NavBar({ children }) {
   return (
     <>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a className="navbar-brand ps-3" href="/home">Estoque Fácil</a>
+        <Link className="navbar-brand ps-3" to="/">Nota fiscale</Link>
         <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
           <i className="fas fa-bars"></i>
         </button>
@@ -38,7 +38,7 @@ export function NavBar({ children }) {
             <div className="sb-sidenav-menu">
               <div className="nav">
                 <div className="sb-sidenav-menu-heading">Core</div>
-                <Link className="nav-link" to="/home">
+                <Link className="nav-link" to="/">
                   <div className="sb-nav-link-icon">
                     <i className="fas fa-tachometer-alt"></i>
                   </div>

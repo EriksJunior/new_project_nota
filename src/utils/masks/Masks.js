@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 
-
 export function Masks() {
   const maskCep = useCallback((e) => {
     e.currentTarget.maxLength = 9;
