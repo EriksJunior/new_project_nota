@@ -6,24 +6,25 @@ import ClienteService from "../services/ClienteService";
 import ProductService from "../services/ProductService";
 
 
-export function useGlobal(){
+export function useGlobal() {
   const [client, setClient] = useState(INITIAL_STATE_CLIENTE);
   const [clientSelectBox, setClientSelectBox] = useState([])
   const [produtos, setProdutos] = useState((INITIAL_STATE_PRODUCT));
   const [produtoSelectBox, setProdutoSelectBox] = useState([])
   const [loading, setLoading] = useState(false);
+  const [openNavigate, setOpenNavigate] = useState("sb-sidenav-toggled")
 
 
-  useEffect(() =>{
+  useEffect(() => {
     getClientesFromSelectBox()
     getProductsFromSelectBox()
   }, [])
 
-  useEffect(() =>{
+  useEffect(() => {
     getClientesFromSelectBox()
   }, [client])
 
-  useEffect(() =>{
+  useEffect(() => {
     getProductsFromSelectBox()
   }, [produtos])
 
@@ -45,5 +46,14 @@ export function useGlobal(){
     }
   }
 
-  return{client, setClient, getClientesFromSelectBox, clientSelectBox, produtos, setProdutos, getProductsFromSelectBox, produtoSelectBox, loading, setLoading}
+  const showAndHideNavigate = async () => {
+    if(openNavigate === "") {
+      setOpenNavigate("sb-sidenav-toggled")
+    } else {
+      setOpenNavigate("")
+    }
+  }
+
+
+  return { client, setClient, getClientesFromSelectBox, clientSelectBox, produtos, setProdutos, getProductsFromSelectBox, produtoSelectBox, loading, setLoading, showAndHideNavigate, openNavigate}
 }

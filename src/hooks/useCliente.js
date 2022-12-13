@@ -98,6 +98,7 @@ export function UseCliente() {
   }
 
   const handleSaveOrUpdate = async () => {
+    console.log('lkdjflksjdfklsjdflksj')
     client?.id === "" ? save() : update()
   }
 
@@ -105,5 +106,5 @@ export function UseCliente() {
     setClient(INITIAL_STATE_CLIENTE)
   }
 
-  return { search, setSearch, alterTab, setAlterTab, searchClient, findById, returnedClient, clearAllInputs, handleShow, handleClose, handleChange, handleSaveOrUpdate, show, deleteClient }
+  return { search, setSearch, alterTab, setAlterTab, searchClient, findById, returnedClient, clearAllInputs, handleShow, handleClose, handleChange, handleSaveOrUpdate, show, deleteClient, client }
 }
