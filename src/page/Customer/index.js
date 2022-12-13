@@ -6,9 +6,7 @@ export function PageCustomer() {
   return (
     <div>
       <ClientProvider>
-        <NavBar>
-          <Customer />
-        </NavBar>
+        <Customer />
       </ClientProvider>
     </div>
   )

@@ -1,8 +1,8 @@
 
-import { NavBar } from "../../components/NavBar" 
+// import { NavBar } from "../../components/NavBar" 
 
-export function PageNavigation() {
-  return (
-      <NavBar />
-  )
-}
+// export function PageNavigation() {
+//   return (
+//       <NavBar />
+//   )
+// }

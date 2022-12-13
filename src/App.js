@@ -4,6 +4,7 @@ import { GlobalContext } from './context/Global/global'
 
 import { Loading } from './components/Loading';
 import { AppRoutes } from './routes';
+import { NavBar } from './components/NavBar';
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,8 +17,10 @@ function App() {
       {loading &&
         <Loading />
       }
+      <NavBar>
         <AppRoutes />
-        <ToastContainer theme="dark" />
+      </NavBar>
+      <ToastContainer theme="dark" />
     </>
   );
 }
