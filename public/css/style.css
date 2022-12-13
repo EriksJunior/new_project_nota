@@ -4392,6 +4392,7 @@ fieldset:disabled .btn {
   background: none;
   border: 0;
   border-radius: 0.25rem;
+  background-color: rgb(244, 240, 240);
 }
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {

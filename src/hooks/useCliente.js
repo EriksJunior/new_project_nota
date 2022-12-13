@@ -1,30 +1,15 @@
-import { useState, useCallback, useContext } from 'react';
+import { useState, useCallback } from 'react';
 
 import { INITIAL_STATE_CLIENTE, INITIAL_STATE_SEARCH } from '../initialStates/client';
 import ClienteService from '../services/ClienteService'
 
 import { toast } from "react-toastify";
-import { GlobalContext } from '../context/Global/global';
 
 export function UseCliente() {
-  const { client, setClient, getClientesFromSelectBox } = useContext(GlobalContext)
-
-  const [show, setShow] = useState(false);
+  const [client, setClient] = useState(INITIAL_STATE_CLIENTE);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedClient, setReturnedClient] = useState([])
   const [alterTab, setAlterTab] = useState("pesquisar")
-
-  const handleClose = () => {
-    clearAllInputs()
-    setShow(false)
-    setAlterTab("pesquisar")
-  };
-
-  const handleShow = () => {
-    clearAllInputs()
-    setShow(true)
-    setAlterTab("pesquisar")
-  };
 
   const handleChange = useCallback((e) => {
     setClient({ ...client, [e.target.name]: e.target.value })
@@ -63,7 +48,6 @@ export function UseCliente() {
     try {
       await ClienteService.delete(id)
       await searchClient()
-      getClientesFromSelectBox()
       toast("Registro deletado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -98,7 +82,6 @@ export function UseCliente() {
   }
 
   const handleSaveOrUpdate = async () => {
-    console.log('lkdjflksjdfklsjdflksj')
     client?.id === "" ? save() : update()
   }
 
@@ -106,5 +89,5 @@ export function UseCliente() {
     setClient(INITIAL_STATE_CLIENTE)
   }
 
-  return { search, setSearch, alterTab, setAlterTab, searchClient, findById, returnedClient, clearAllInputs, handleShow, handleClose, handleChange, handleSaveOrUpdate, show, deleteClient, client }
+  return { search, setSearch, alterTab, setAlterTab, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleSaveOrUpdate,  deleteClient, client }
 }
