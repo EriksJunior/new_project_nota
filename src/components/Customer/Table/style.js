@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 export const IconEdit = styled(TbEdit)`
 &:hover{
-  color: greenyellow;
+  color: #3bd240;
 }
 `
 

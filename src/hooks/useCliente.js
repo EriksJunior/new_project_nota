@@ -10,7 +10,7 @@ export function UseCliente() {
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedClient, setReturnedClient] = useState([])
   const [enableTab, setEnableTab] = useState(true)
-  const [activeTab, setActiveTab] = useState(true)
+  const [activeButtonTab, setActiveButtonTab] = useState(true)
 
   const handleChange = useCallback((e) => {
     setClient({ ...client, [e.target.name]: e.target.value })
@@ -69,7 +69,7 @@ export function UseCliente() {
       setClient(result)
 
       setEnableTab(!enableTab)
-      setActiveTab(!activeTab)
+      setActiveButtonTab(false)
     } catch (error) {
       return toast.error(error?.response?.data?.erros, {
         position: toast.POSITION.TOP_RIGHT
@@ -98,7 +98,8 @@ export function UseCliente() {
 
   const alterValueTab = () => {
     setEnableTab(true)
+    setActiveButtonTab(true)
   }
 
-  return { search, setSearch, enableTab, activeTab, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client, alterValueTab }
+  return { search, setSearch, enableTab, activeButtonTab, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client, alterValueTab }
 }
