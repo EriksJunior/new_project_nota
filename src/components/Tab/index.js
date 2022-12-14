@@ -1,4 +1,4 @@
-export function TabRecords({children}) {
+export function TabRecords({ children }) {
   return (
     <div>
       <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -10,7 +10,7 @@ export function TabRecords({children}) {
         </li>
       </ul>
       <div className="tab-content" id="pills-tabContent">
-          {children}
+        {children}
       </div>
     </div>
   )
