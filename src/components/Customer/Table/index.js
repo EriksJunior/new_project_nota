@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { ClientContext } from "../../../context/Client/client"
 
 export function Table() {
-  const { returnedClient } = useContext(ClientContext)
+  const { returnedClient, findById } = useContext(ClientContext)
   return (
     <div className="p-3">
       <div className="table-responsive" style={{ border: "solid 2px #202529", borderRadius: "5px" }}>
