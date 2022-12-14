@@ -15,6 +15,10 @@ export function UseCliente() {
     setClient({ ...client, [e.target.name]: e.target.value })
   }, [client]);
 
+  const handleChangeSearchClient = useCallback((e) => {
+    setSearch({ ...search, [e.target.name]: e.target.value })
+  }, [search])
+
   const save = async () => {
     try {
       const result = await ClienteService.save(client)
@@ -89,5 +93,5 @@ export function UseCliente() {
     setClient(INITIAL_STATE_CLIENTE)
   }
 
-  return { search, setSearch, alterTab, setAlterTab, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleSaveOrUpdate,  deleteClient, client }
+  return { search, setSearch, alterTab, setAlterTab, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client }
 }

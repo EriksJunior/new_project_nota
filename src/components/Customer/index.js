@@ -10,7 +10,7 @@ export function Customer() {
   return (
       <div className="card">
         <div className="card-header">
-          Cadastre o cliente
+          Cadastre seu cliente
         </div>
         <div className="card-body">
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">

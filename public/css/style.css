@@ -4392,7 +4392,7 @@ fieldset:disabled .btn {
   background: none;
   border: 0;
   border-radius: 0.25rem;
-  background-color: rgb(244, 240, 240);
+  background-color: rgb(235, 233, 233);
 }
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
@@ -11856,6 +11856,7 @@ body {
   flex-grow: 1;
   min-height: calc(100vh - 56px);
   margin-left: -225px;
+  background-color: #e1dada;
 }
 
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
