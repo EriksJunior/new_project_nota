@@ -3,15 +3,25 @@ import { ClientContext } from "../../context/Client/client"
 
 import { Masks } from "../../utils/masks/Masks"
 
+import { CardHeader } from '../styles';
+
 export function Customer() {
   const { client, handleChange, clearAllInputs, handleSaveOrUpdate } = useContext(ClientContext)
   const { maskCep, maskCpfCnpj } = Masks()
 
   return (
-      <div className="card">
-        <div className="card-header">
-          Cadastre seu cliente
+    <div>
+      <CardHeader>
+        <div>
+          <p>Cadastre seu cliente</p>
         </div>
+
+        <div style={{display: "flex", gap: "20px" }}>
+            <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</button>
+            <button type="button" onClick={clearAllInputs} className="btn btn-primary btn-sm">Limpar</button>
+          </div>
+      </CardHeader>
+      <div className="card">
         <div className="card-body">
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <input onChange={handleChange} hidden value={client.id || ""} name="id" type="text" className="form-control form-control-sm" />
@@ -116,12 +126,10 @@ export function Customer() {
             </div>
           </div>
 
-          <div style={{ width: "100%", display: "flex", gap: "20px" }}>
-            <button type="button" className="btn btn-dark btn-sm" onClick={handleSaveOrUpdate}>Salvar</button>
-            <button type="button" onClick={clearAllInputs} className="btn btn-dark btn-sm">Limpar</button>
-          </div>
+         
         </div>
       </div>
+    </div>
   );
 }
 
