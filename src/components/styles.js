@@ -4,7 +4,7 @@ export const CardHeader = styled.div`
   width: 100%;
   background-color: #202529;
   margin-bottom: 10px;
-  color: #c1c1c1;
+  color: #ebebeb;
   padding: 10px;
   margin-top: 30px;
   display: flex;

@@ -125,8 +125,6 @@ export function Customer() {
               <textarea rows={4} onChange={handleChange} name="observacao" type="area" value={client.observacao || ""} className="form-control form-control-sm"></textarea>
             </div>
           </div>
-
-         
         </div>
       </div>
     </div>
