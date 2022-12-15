@@ -8,7 +8,7 @@ export const ContentSearch = styled.div`
 
   .icon{
     position: relative;
-    left: -45px;
+    left: -55px;
     background-color: #0070fc;
     width: 40px;
     display: flex;
