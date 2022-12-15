@@ -22,7 +22,7 @@ export function SearchCliente({ children }) {
           </div>
         </ContentSearch>
       </CardHeader>
-      
+
       <div className="card">
         <div className="card-body">
           {children}
