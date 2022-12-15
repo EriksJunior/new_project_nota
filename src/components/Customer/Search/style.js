@@ -14,7 +14,8 @@ export const ContentSearch = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
   
 @media screen and (max-width: 575px) {
