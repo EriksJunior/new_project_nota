@@ -15,11 +15,6 @@ export function Customer() {
         <div>
           <p>Cadastre seu cliente</p>
         </div>
-
-        <div style={{display: "flex", gap: "20px" }}>
-            <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</button>
-            <button type="button" onClick={clearAllInputs} className="btn btn-primary btn-sm">Limpar</button>
-          </div>
       </CardHeader>
       <div className="card">
         <div className="card-body">
@@ -124,6 +119,12 @@ export function Customer() {
               <label className="form-label">Observação</label>
               <textarea rows={4} onChange={handleChange} name="observacao" type="area" value={client.observacao || ""} className="form-control form-control-sm"></textarea>
             </div>
+          </div>
+
+
+          <div style={{ display: "flex", gap: "20px" }}>
+            <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</button>
+            <button type="button" onClick={clearAllInputs} className="btn btn-primary btn-sm">Limpar</button>
           </div>
         </div>
       </div>
