@@ -2,9 +2,6 @@ import { useContext } from "react"
 import { ClientContext } from "../../../context/Client/client"
 
 import { ContentSearch } from "./style"
-import { CardHeader } from "../../styles"
-
-import { AiOutlineSearch } from "react-icons/ai"
 
 export function SearchCliente({ children }) {
   const { searchClient, handleChangeSearchClient } = useContext(ClientContext)
@@ -12,13 +9,15 @@ export function SearchCliente({ children }) {
   return (
     <div>
       <ContentSearch className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div className="inputSearch col-sm-7 col-md-7 col-lg-7 col-xl-7">
-          <input className="form-control form-control-sm" name="text" onChange={handleChangeSearchClient} placeholder="Pesquisar" />
+        <div className="inputSearch col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <div className="input-group">
+            <input className="form-control form-control-sm" name="text" onChange={handleChangeSearchClient} placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="btnNavbarSearch" />
+            <button className="btn btn-primary btn-sm" id="btnNavbarSearch" type="button" onClick={searchClient}>
+              <i className="fas fa-search"></i>
+            </button>
+          </div>
         </div>
 
-        <div className="icon" onClick={searchClient}>
-          <AiOutlineSearch size={23} color="white"/>
-        </div>
       </ContentSearch>
 
       <div className="card">
