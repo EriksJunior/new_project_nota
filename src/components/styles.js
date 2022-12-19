@@ -4,7 +4,7 @@ import { BsTrash } from "react-icons/bs";
 import { TbEdit } from "react-icons/tb";
 
 export const CardHeader = styled.div`
-  width: 100%;
+  width: 99.8%;
   background-color: #202529;
   margin-bottom: 10px;
   color: #ebebeb;
@@ -16,6 +16,7 @@ export const CardHeader = styled.div`
   font-size: 19px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px black;
+  
   p{
     margin: 0;
   }

@@ -11,11 +11,6 @@ export function Customer() {
 
   return (
     <div>
-      <CardHeader>
-        <div>
-          <p>Cadastre seu cliente</p>
-        </div>
-      </CardHeader>
       <div className="card">
         <div className="card-body">
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">

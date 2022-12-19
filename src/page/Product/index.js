@@ -11,9 +11,9 @@ export function PageProduct() {
     <div className="m-3">
       <ProductProvider>
         <TabRecords>
-          <TabCreate>
-            <Product />
-          </TabCreate>
+            <TabCreate>
+              <Product />
+            </TabCreate>
 
           <TabSearch>
             <SearchCliente>

@@ -11,11 +11,7 @@ export function Product() {
 
   return (
     <div>
-      <CardHeader>
-        <div>
-          <p>Cadastre seu produto</p>
-        </div>
-      </CardHeader>
+
 
       <div className="card">
         <div className="card-body">
