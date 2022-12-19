@@ -3,8 +3,6 @@ import { ClientContext } from "../../context/Client/client"
 
 import { Masks } from "../../utils/masks/Masks"
 
-import { CardHeader } from '../styles';
-
 export function Customer() {
   const { client, handleChange, clearAllInputs, handleSaveOrUpdate } = useContext(ClientContext)
   const { maskCep, maskCpfCnpj } = Masks()
