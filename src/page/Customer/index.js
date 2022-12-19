@@ -10,7 +10,7 @@ export function PageCustomer() {
   return (
     <div className="m-3">
       <ClientProvider>
-        <TabRecords>
+        <TabRecords title={"Cliente"}>
           <TabCreate>
             <Customer />
           </TabCreate>

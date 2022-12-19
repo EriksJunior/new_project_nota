@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 import { INITIAL_STATE_CLIENTE, INITIAL_STATE_SEARCH } from '../initialStates/client';
-import ClienteService from '../services/ClienteService'
+import CustomerService from '../services/CustomerService'
 
 import { toast } from "react-toastify";
 
@@ -22,7 +22,7 @@ export function UseCliente() {
 
   const save = async () => {
     try {
-      const result = await ClienteService.save(client)
+      const result = await CustomerService.save(client)
       setClient({ ...client, id: result.id })
 
       toast("Salvo com sucesso! ✅", {
@@ -37,7 +37,7 @@ export function UseCliente() {
 
   const update = async () => {
     try {
-      await ClienteService.update(client)
+      await CustomerService.update(client)
 
       toast("Atualizado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -51,7 +51,7 @@ export function UseCliente() {
 
   const deleteClient = async (id) => {
     try {
-      await ClienteService.delete(id)
+      await CustomerService.delete(id)
       await searchClient()
       toast("Registro deletado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -65,7 +65,7 @@ export function UseCliente() {
 
   const findById = async (id) => {
     try {
-      const result = await ClienteService.findById(id)
+      const result = await CustomerService.findById(id)
       setClient(result)
 
       setEnableTab(!enableTab)
@@ -79,7 +79,7 @@ export function UseCliente() {
 
   const searchClient = async () => {
     try {
-      const result = await ClienteService.search(search.text, search.page)
+      const result = await CustomerService.search(search.text, search.page)
       setReturnedClient(result.data)
     } catch (error) {
       return toast.error(error?.response?.data?.erros, {

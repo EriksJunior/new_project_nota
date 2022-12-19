@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { ProductContext } from '../../context/Product/product';
 
 import { Masks } from "../../utils/masks/Masks"
-import { CardHeader } from '../styles';
 
 export function Product() {
   const { produtos, clearInputs, handleChange, handleSaveOrUpdate } = useContext(ProductContext)

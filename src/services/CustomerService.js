@@ -1,6 +1,6 @@
 import { api } from '../utils/configs/api';
 
-class ClienteService {
+class CustomerService {
   async save(dataCliente) {
     const { data } = await api.post('/customers', dataCliente)
     return data
@@ -30,4 +30,4 @@ class ClienteService {
   }
 }
 
-export default new ClienteService()
+export default new CustomerService()

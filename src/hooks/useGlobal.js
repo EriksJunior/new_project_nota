@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { INITIAL_STATE_CLIENTE } from "../initialStates/client";
 import { INITIAL_STATE_PRODUCT } from "../initialStates/product";
 
-import ClienteService from "../services/ClienteService";
+import CustomerService from "../services/CustomerService";
 import ProductService from "../services/ProductService";
 
 
@@ -30,7 +30,7 @@ export function useGlobal() {
 
   const getClientesFromSelectBox = async () => {
     try {
-      const { data } = await ClienteService.getFromSelectBox()
+      const { data } = await CustomerService.getFromSelectBox()
       setClientSelectBox(data)
     } catch (error) {
       console.log(error)
