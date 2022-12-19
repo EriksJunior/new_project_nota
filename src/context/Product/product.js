@@ -4,10 +4,10 @@ import { UseProducts } from "../../hooks/useProducts";
 const ProductContext = createContext({})
 
 function ProductProvider({ children }) {
-  const { deleteProduct, alterTab , setAlterTab , clearInputs , handleChange, findById, handleSaveOrUpdate, handleClose, handleShow, returnedProduct, search, searchProduct, setSearch, show } = UseProducts()
+  const { produtos, deleteProduct, alterTab , setAlterTab , clearInputs , handleChange, findById, handleSaveOrUpdate, returnedProduct, search, searchProduct, setSearch, handleChangeSearchProduct } = UseProducts()
 
   return (
-    <ProductContext.Provider value={{ deleteProduct, alterTab , setAlterTab , clearInputs , handleChange, findById, handleSaveOrUpdate, handleClose, handleShow, returnedProduct, search, searchProduct, setSearch, show }}>
+    <ProductContext.Provider value={{ produtos, deleteProduct, alterTab , setAlterTab , clearInputs , handleChange, findById, handleSaveOrUpdate, returnedProduct, search, searchProduct, setSearch, handleChangeSearchProduct }}>
       {children}
     </ProductContext.Provider>
   )

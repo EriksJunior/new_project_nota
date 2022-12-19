@@ -1,19 +1,22 @@
 import { useContext } from 'react';
 import { ProductContext } from '../../context/Product/product';
-import { GlobalContext } from '../../context/global/global';
 
-import { Masks } from "../../../utils/masks/Masks"
+import { Masks } from "../../utils/masks/Masks"
+import { CardHeader } from '../styles';
 
-export function ProductsModal() {
-  const { alterTab, setAlterTab, clearInputs, search, setSearch, searchProduct, returnedProduct, handleShow,
-    handleClose, handleChange, handleSaveOrUpdate, show } = useContext(ProductContext)
-
-  const { produtos } = useContext(GlobalContext)
+export function Product() {
+  const { produtos, clearInputs, handleChange, handleSaveOrUpdate } = useContext(ProductContext)
 
   const { maskCurrency } = Masks()
 
   return (
     <div>
+      <CardHeader>
+        <div>
+          <p>Cadastre seu produto</p>
+        </div>
+      </CardHeader>
+
       <div className="card">
         <div className="card-body">
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">

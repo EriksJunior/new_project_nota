@@ -1,11 +1,12 @@
-import { useContext } from "react"
-import { ClientContext } from "../../../context/Client/client"
+import { useContext } from 'react';
+import { ProductContext } from '../../../context/Product/product';
 
-import { IconEdit, IconDelete } from  "../../styles"
+import { IconEdit, IconDelete } from "../../styles"
 
 export function Table() {
-  const { returnedClient, findById, deleteClient } = useContext(ClientContext)
-  return (
+  const{ returnedProduct, findById, deleteProduct } = useContext(ProductContext)
+
+  return(
     <div className="p-3">
       <div className="table-responsive" style={{ border: "solid 2px #202529", borderRadius: "5px" }}>
         <table className="table table-hover">
@@ -19,7 +20,7 @@ export function Table() {
             </tr>
           </thead>
           <tbody>
-            {returnedClient.map((e) =>
+            {returnedProduct.map((e) =>
               <tr key={e.id} >
                 <td>{e.nome}</td>
                 <td>{e.cpfCnpj}</td>
@@ -30,7 +31,7 @@ export function Table() {
                     <div onClick={() => findById(e.id)}>
                       <IconEdit size={20} />
                     </div>
-                    <div onClick={() => deleteClient(e.id)}>
+                    <div onClick={() => deleteProduct(e.id)}>
                       <IconDelete size={20} />
                     </div>
                   </div>
@@ -41,5 +42,6 @@ export function Table() {
         </table>
       </div>
     </div>
+
   )
 }

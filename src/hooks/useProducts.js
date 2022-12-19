@@ -1,35 +1,23 @@
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { INITIAL_STATE_PRODUCT, INITIAL_STATE_SEARCH } from '../initialStates/product';
-import ProductServices from '../../services/ProductService';
+import ProductServices from '../services/ProductService';
 
 import { toast } from "react-toastify";
-import { GlobalContext } from '../context/global/global';
-
-
 
 export function UseProducts() {
-  const { produtos, setProdutos, getProductsFromSelectBox } = useContext(GlobalContext)
-  const [show, setShow] = useState(false);
+  const [produtos, setProdutos] = useState((INITIAL_STATE_PRODUCT));
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedProduct, setReturnedProduct] = useState([])
   const [alterTab, setAlterTab] = useState("Pesquisar")
 
-  const handleClose = () => {
-    setShow(false)
-    setAlterTab("Pesquisar")
-    clearInputs()
-  };
-  const handleShow = () => {
-    setShow(true)
-    setAlterTab("Pesquisar")
-    clearInputs()
-  };
-
-
   const handleChange = useCallback((e) => {
     setProdutos({ ...produtos, [e.target.name]: e.target.value })
   }, [produtos]);
+
+  const handleChangeSearchProduct = useCallback((e) => {
+    setSearch({ ...search, [e.target.name]: e.target.value })
+  }, [search])
 
   const saveProducts = async () => {
     try {
@@ -71,7 +59,6 @@ export function UseProducts() {
     try {
       await ProductServices.delete(id)
       await searchProduct()
-      getProductsFromSelectBox()
       toast("Produto deletado com sucesso!",
         { position: toast.POSITION.TOP_RIGHT })
     } catch (error) {
@@ -107,5 +94,5 @@ export function UseProducts() {
     setProdutos(INITIAL_STATE_PRODUCT)
   }
 
-  return { deleteProduct, alterTab, setAlterTab, clearInputs, search, setSearch, searchProduct, returnedProduct, handleShow, handleClose, handleChange, findById, handleSaveOrUpdate, show }
+  return { produtos, deleteProduct, alterTab, setAlterTab, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct }
 }
