@@ -9,7 +9,6 @@ export function UseProducts() {
   const [produtos, setProdutos] = useState((INITIAL_STATE_PRODUCT));
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedProduct, setReturnedProduct] = useState([])
-  const [alterTab, setAlterTab] = useState("Pesquisar")
 
   const handleChange = useCallback((e) => {
     setProdutos({ ...produtos, [e.target.name]: e.target.value })
@@ -80,7 +79,7 @@ export function UseProducts() {
     try {
       const result = await ProductServices.findById(id)
       setProdutos(result)
-      setAlterTab("Cadastro")
+      alterTab()
     } catch (error) {
       return (error)
     }
@@ -94,5 +93,9 @@ export function UseProducts() {
     setProdutos(INITIAL_STATE_PRODUCT)
   }
 
-  return { produtos, deleteProduct, alterTab, setAlterTab, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct }
+  const alterTab = () => {
+    document.getElementById("pills-home-tab").click()
+  }
+
+  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct }
 }

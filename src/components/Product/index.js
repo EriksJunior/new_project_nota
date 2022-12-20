@@ -59,7 +59,7 @@ export function Product() {
 
             <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <label className="form-label" >Descrição</label>
-              <textarea rows={4} style={{ background: "#f5f5f5", height: "70px" }} type="text" className="form-control form-control-sm" onChange={handleChange} name="descricao" value={produtos.descricao || ""} />
+              <textarea rows={4} style={{ height: "70px" }} type="text" className="form-control form-control-sm" onChange={handleChange} name="descricao" value={produtos.descricao || ""} />
             </div>
           </div>
 

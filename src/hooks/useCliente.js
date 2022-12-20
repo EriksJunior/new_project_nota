@@ -9,8 +9,6 @@ export function UseCliente() {
   const [client, setClient] = useState(INITIAL_STATE_CLIENTE);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedClient, setReturnedClient] = useState([])
-  const [enableTab, setEnableTab] = useState(true)
-  const [activeButtonTab, setActiveButtonTab] = useState(true)
 
   const handleChange = useCallback((e) => {
     setClient({ ...client, [e.target.name]: e.target.value })
@@ -67,9 +65,7 @@ export function UseCliente() {
     try {
       const result = await CustomerService.findById(id)
       setClient(result)
-
-      setEnableTab(!enableTab)
-      setActiveButtonTab(false)
+      alterTab()
     } catch (error) {
       return toast.error(error?.response?.data?.erros, {
         position: toast.POSITION.TOP_RIGHT
@@ -96,10 +92,9 @@ export function UseCliente() {
     setClient(INITIAL_STATE_CLIENTE)
   }
 
-  const alterValueTab = () => {
-    setEnableTab(true)
-    setActiveButtonTab(true)
+  const alterTab = () => {
+    document.getElementById("pills-home-tab").click()
   }
 
-  return { search, setSearch, enableTab, activeButtonTab, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client, alterValueTab }
+  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client }
 }
