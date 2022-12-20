@@ -13,9 +13,8 @@ export function Table() {
           <thead className="" style={{ backgroundColor: "#202529", color: "white" }}>
             <tr>
               <th>Nome</th>
-              <th>CPF/CNPJ</th>
-              <th>Telefone</th>
-              <th className="text-center">Data Nascimento</th>
+              <th>Valor</th>
+              <th>Estoque</th>
               <th className="text-center">Ações</th>
             </tr>
           </thead>
@@ -23,9 +22,8 @@ export function Table() {
             {returnedProduct.map((e) =>
               <tr key={e.id} >
                 <td>{e.nome}</td>
-                <td>{e.cpfCnpj}</td>
-                <td>{e.telefone}</td>
-                <td className="text-center">{e.dataNascimento?.split("-").reverse().join("/")}</td>
+                <td>{e.valor.toLocaleString("pr-BR", {minimumFractionDigits: 2})}</td>
+                <td>{e.estoque}</td>
                 <td>
                   <div className="d-flex justify-content-center gap-2">
                     <div onClick={() => findById(e.id)}>

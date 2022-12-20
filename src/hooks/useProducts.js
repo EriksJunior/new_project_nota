@@ -16,30 +16,41 @@ export function UseProducts() {
 
   const handleChangeSearchProduct = useCallback((e) => {
     setSearch({ ...search, [e.target.name]: e.target.value })
+    console.log(search)
   }, [search])
+
+  const handleChangeMonetaryValues = useCallback((e) => {
+    let value = e.currentTarget.value;
+    value = value.replace(/\D/g, "");
+    value = value.replace(/(\d)(\d{2})$/, "$1,$2");
+    value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
+    e.currentTarget.value = value
+
+    setProdutos({ ...produtos, [e.target.name]: e.currentTarget.value })
+  }, [produtos]);
 
   const saveProducts = async () => {
     try {
-      const result = await ProductServices.save(produtos)
-      setProdutos({
-        ...produtos,
-        id: result.id,
-        valor: produtos.valor.toString().replace(".", "").replace(".", "").replace(",", "."),
-        valorVenda: produtos.valorVenda.toString().replace(".", "").replace(".", "").replace(",", ".")
-      })
-      
-      toast("Produto salvo com sucesso! ✅",
-        { position: toast.POSITION.TOP_RIGHT });
+      const valor = produtos.valor.replace(".", "").replace(".", "").replace(",", ".")
+      const valorVenda = produtos.valorVenda.replace(".", "").replace(".", "").replace(",", ".")
+
+      const result = await ProductServices.save({...produtos, valor: valor, valorVenda: valorVenda})
+      setProdutos({ ...produtos, id: result.id })
+
+      toast("Produto salvo com sucesso! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
     } catch (error) {
-      toast.error(error,
-        { position: toast.POSITION.TOP_RIGHT })
+      toast.error(error.response.data.erros, {
+        position: toast.POSITION.TOP_RIGHT
+      });
     }
   }
 
   const update = async () => {
     try {
       const formatValueTotal = formatValue()
-      await ProductServices.update({...produtos , valor: formatValueTotal.valor, valorVenda: formatValueTotal.valorVenda});
+      await ProductServices.update({ ...produtos, valor: formatValueTotal.valor, valorVenda: formatValueTotal.valorVenda });
       toast("Produto atualizado com sucesso!✅",
         { position: toast.POSITION.TOP_RIGHT })
     } catch (error) {
@@ -50,8 +61,8 @@ export function UseProducts() {
 
   const formatValue = () => {
     let valor = produtos.valor.toString().replace(".", "").replace(",", ".")
-    let valorVenda = produtos.valorVenda.toString().replace(".","").replace(",",".")
-    return{valor , valorVenda}
+    let valorVenda = produtos.valorVenda.toString().replace(".", "").replace(",", ".")
+    return { valor, valorVenda }
   }
 
   const deleteProduct = async (id) => {
@@ -97,5 +108,5 @@ export function UseProducts() {
     document.getElementById("pills-home-tab").click()
   }
 
-  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct }
+  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues }
 }

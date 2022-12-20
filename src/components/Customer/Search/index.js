@@ -17,7 +17,6 @@ export function SearchCliente({ children }) {
             </button>
           </div>
         </div>
-
       </ContentSearch>
 
       <div className="card">
