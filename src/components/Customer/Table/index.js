@@ -6,10 +6,9 @@ import { IconEdit, IconDelete } from  "../../styles"
 export function Table() {
   const { returnedClient, findById, deleteClient } = useContext(ClientContext)
   return (
-    <div className="p-3">
-      <div className="table-responsive" style={{ border: "solid 2px #202529", borderRadius: "5px" }}>
+      <div className="table-responsive">
         <table className="table table-hover">
-          <thead className="" style={{ backgroundColor: "#202529", color: "white" }}>
+          <thead>
             <tr>
               <th>Nome</th>
               <th>CPF/CNPJ</th>
@@ -40,6 +39,5 @@ export function Table() {
           </tbody>
         </table>
       </div>
-    </div>
   )
 }
