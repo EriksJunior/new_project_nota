@@ -16,7 +16,6 @@ export function UseProducts() {
 
   const handleChangeSearchProduct = useCallback((e) => {
     setSearch({ ...search, [e.target.name]: e.target.value })
-    console.log(search)
   }, [search])
 
   const handleChangeMonetaryValues = useCallback((e) => {
@@ -50,11 +49,13 @@ export function UseProducts() {
     try {
       const formatValueTotal = formatValue()
       await ProductServices.update({ ...produtos, valor: formatValueTotal.valor, valorVenda: formatValueTotal.valorVenda });
-      toast("Produto atualizado com sucesso!✅",
-        { position: toast.POSITION.TOP_RIGHT })
+      toast("Produto atualizado com sucesso!✅", {
+        position: toast.POSITION.TOP_RIGHT
+      })
     } catch (error) {
-      toast.error(error,
-        { position: toast.POSITION.TOP_RIGHT })
+      toast.error(error, {
+        position: toast.POSITION.TOP_RIGHT
+      })
     }
   }
 
@@ -68,11 +69,13 @@ export function UseProducts() {
     try {
       await ProductServices.delete(id)
       await searchProduct()
-      toast("Produto deletado com sucesso!",
-        { position: toast.POSITION.TOP_RIGHT })
+      toast("Produto deletado com sucesso!", {
+        position: toast.POSITION.TOP_RIGHT
+      })
     } catch (error) {
-      toast.error(error,
-        { position: toast.POSITION.TOP_RIGHT })
+      toast.error(error, {
+        position: toast.POSITION.TOP_RIGHT
+      })
     }
   }
 
@@ -81,7 +84,9 @@ export function UseProducts() {
       const result = await ProductServices.search(search.text, search.page)
       setReturnedProduct(result.data)
     } catch (error) {
-      console.log(error)
+      toast.error("Ocorreu um problema 😮", {
+        position: toast.POSITION.TOP_RIGHT
+      });
     }
   }
 
@@ -94,7 +99,9 @@ export function UseProducts() {
       setProdutos({ ...result, valor: formatedValor, valorVenda: formatedValorVenda })
       alterTab()
     } catch (error) {
-      return (error)
+      toast.error("Ocorreu um problema 😮", {
+        position: toast.POSITION.TOP_RIGHT
+      });
     }
   }
 

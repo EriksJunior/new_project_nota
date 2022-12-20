@@ -20,9 +20,7 @@ export function SearchCliente({ children }) {
       </ContentSearch>
 
       <div className="card">
-        <div className="card-body">
           {children}
-        </div>
       </div>
     </div>
   )

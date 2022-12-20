@@ -7,7 +7,7 @@ export function Table() {
   const{ returnedProduct, findById, deleteProduct } = useContext(ProductContext)
 
   return(
-    <div className="p-3">
+    <div>
       <div className="table-responsive" style={{ border: "solid 2px #202529", borderRadius: "5px" }}>
         <table className="table table-hover">
           <thead className="" style={{ backgroundColor: "#202529", color: "white" }}>
