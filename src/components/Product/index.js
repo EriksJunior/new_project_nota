@@ -43,12 +43,12 @@ export function Product() {
 
             <div className="mb-3 col-sm-2 col-md-2 col-lg-3 col-xl-2">
               <label className="form-label">Estoque</label>
-              <input type="text" disabled className="form-control form-control-sm" onChange={handleChange} name="estoque" value={produtos.estoque || ""} />
+              <input type="text" disabled className="form-control form-control-sm" onChange={handleChange} name="estoque" value={produtos.estoque | ""} />
             </div>
 
             <div className="mb-3 col-sm-2 col-md-2 col-lg-3 col-xl-2">
               <label className="form-label">Est. Mín.</label>
-              <input type="text" className="form-control form-control-sm" onChange={handleChange} name="estoqueMin" value={produtos.estoqueMin || ""} />
+              <input type="text" className="form-control form-control-sm" onChange={handleChange} name="estoqueMin" value={produtos.estoqueMin | ""} />
             </div>
 
             <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-4">
