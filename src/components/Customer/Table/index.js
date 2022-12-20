@@ -28,10 +28,10 @@ export function Table() {
                 <td>
                   <div className="d-flex justify-content-center gap-2">
                     <div onClick={() => findById(e.id)}>
-                      <IconEdit size={20} />
+                      <IconEdit cursor={"pointer"} size={20} />
                     </div>
                     <div onClick={() => deleteClient(e.id)}>
-                      <IconDelete size={20} />
+                      <IconDelete cursor={"pointer"} size={20} />
                     </div>
                   </div>
                 </td>

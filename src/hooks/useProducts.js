@@ -6,7 +6,7 @@ import ProductServices from '../services/ProductService';
 import { toast } from "react-toastify";
 
 export function UseProducts() {
-  const [produtos, setProdutos] = useState((INITIAL_STATE_PRODUCT));
+  const [produtos, setProdutos] = useState(INITIAL_STATE_PRODUCT);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedProduct, setReturnedProduct] = useState([])
 
@@ -31,10 +31,9 @@ export function UseProducts() {
 
   const saveProducts = async () => {
     try {
-      const valor = produtos.valor.replace(".", "").replace(".", "").replace(",", ".")
-      const valorVenda = produtos.valorVenda.replace(".", "").replace(".", "").replace(",", ".")
+      const formatedValues = formatValue()
 
-      const result = await ProductServices.save({...produtos, valor: valor, valorVenda: valorVenda})
+      const result = await ProductServices.save({ ...produtos, valor: formatedValues.valor, valorVenda: formatedValues.valorVenda })
       setProdutos({ ...produtos, id: result.id })
 
       toast("Produto salvo com sucesso! ✅", {
@@ -60,8 +59,8 @@ export function UseProducts() {
   }
 
   const formatValue = () => {
-    let valor = produtos.valor.toString().replace(".", "").replace(",", ".")
-    let valorVenda = produtos.valorVenda.toString().replace(".", "").replace(",", ".")
+    const valor = produtos.valor.toString().replace(".", "").replace(",", ".").replace(",", ".")
+    const valorVenda = produtos.valorVenda.toString().replace(".", "").replace(",", ".").replace(",", ".")
     return { valor, valorVenda }
   }
 
@@ -89,7 +88,10 @@ export function UseProducts() {
   const findById = async (id) => {
     try {
       const result = await ProductServices.findById(id)
-      setProdutos(result)
+      const formatedValor = result.valor.toLocaleString("pr-BR", { minimumFractionDigits: 2 })
+      const formatedValorVenda = result.valorVenda.toLocaleString("pr-BR", { minimumFractionDigits: 2 })
+
+      setProdutos({ ...result, valor: formatedValor, valorVenda: formatedValorVenda })
       alterTab()
     } catch (error) {
       return (error)
