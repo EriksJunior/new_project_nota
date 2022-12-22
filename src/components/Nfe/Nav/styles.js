@@ -15,6 +15,7 @@ export const ContentNavItems = styled.div`
   position: relative;
   margin-top: 10px;
   gap: 3px;
+  left: 0px;
   }
 `
 
@@ -23,6 +24,7 @@ export const NavItems = styled.div`
   height: 70px;
   background-color: #1e2529;
   margin-bottom: 3px;
+  cursor: pointer;
   
   @media screen and (max-width: 794px) {
   width: 50px;
