@@ -10,7 +10,7 @@ export function PageProduct() {
   return (
     <div className="m-3">
       <ProductProvider>
-        <TabRecords title={"Produto"}>
+        <TabRecords title={"Novo Produto"} fistButtonName={"Cadastro"}>
             <TabCreate>
               <Product />
             </TabCreate>
