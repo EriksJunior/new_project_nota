@@ -2,7 +2,7 @@
 export function ProductNfe(){
   return(
     <>
-      <p>componente de produtos</p>
+      <p>componente de PRODUTO</p>
     </>
   )
 }

@@ -1,12 +1,6 @@
-import { ProdutosLeaf } from "../../interface/ILeaf"
-
-interface IHandleSendLeafErros {
-  message: string | undefined
-  erro: boolean | undefined
-}
 
 export function HandleErrorsLeaf() {
-  const handleErrorSendleaf = (products: ProdutosLeaf[]): IHandleSendLeafErros => {
+  const handleErrorSendleaf = (products) => {
     let message
     let erro
 
@@ -18,7 +12,7 @@ export function HandleErrorsLeaf() {
     return { message: message, erro: erro }
   }
 
-  const getErrorAndReturnFormattedError = (error: any) => {
+  const getErrorAndReturnFormattedError = (error) => {
     if (error.response.data.erros.length > 0) {
       return error.response.data.erros
     } else {
