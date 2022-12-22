@@ -56,21 +56,22 @@ export function UseLeaf() {
   }, [cancel])
 
   const handleRenderNavItem = (e) => {
+    console.log(e)
     if (e === "cliente") {
       setNavItems({ ...navItems, cliente: true, produto: false, pedido: false, transporte: false })
-      console.log(navItems, "cliente")
+      console.log(e, "cliente")
     }
     else if (e === "produto") {
       setNavItems({ ...navItems, produto: true, cliente: false, pedido: false, transporte: false })
-      console.log(navItems, "produto")
+      console.log(e, "produto")
     }
     else if (e === "pedido") {
       setNavItems({ ...navItems, pedido: true, produto: false, cliente: false, transporte: false })
-      console.log(navItems, "pedido")
+      console.log(e, "pedido")
     }
     else if (e === "transporte") {
       setNavItems({ ...navItems, transporte: true, pedido: false, produto: false, cliente: false })
-      console.log(navItems, "transporte")
+      console.log(e, "transporte")
     }
   }
 

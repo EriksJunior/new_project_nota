@@ -6,7 +6,7 @@ export const ContainerNav = styled.div`
 
 export const ContentNavItems = styled.div`
   position: absolute;
-  left: 20px;
+  left: 30px;
 
   @media screen and (max-width: 794px) {
     display: flex;
@@ -20,10 +20,23 @@ export const ContentNavItems = styled.div`
 `
 
 export const NavItems = styled.button`
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
+  padding: 0px;
   margin-bottom: 3px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e2529;
+  gap: 3px;
+
+  p{
+    padding: 0px;
+    margin: 0px;
+    color: white;
+    font-size: 11px;
+  }
   
   @media screen and (max-width: 794px) {
     width: 50px;
