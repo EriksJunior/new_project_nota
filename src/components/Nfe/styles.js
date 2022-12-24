@@ -8,8 +8,11 @@ export const ContentNfe = styled.div`
 `
 
 export const ContentNav = styled.div`
-  width: 100%;
-  border: solid 1px red;
-  padding: 10px;
+  width: 80%;
   margin-top: 10px;
+  border-radius: 5px;
+
+  @media screen and (max-width: 794px) {
+    width: 100%;
+  }
 `

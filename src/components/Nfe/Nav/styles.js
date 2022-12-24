@@ -1,21 +1,24 @@
 import styled from "styled-components"
 
 export const ContainerNav = styled.div`
-  width: 80%;
+  width: 100%; 
 `
 
 export const ContentNavItems = styled.div`
-  position: absolute;
-  left: 30px;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 10px;
+
 
   @media screen and (max-width: 794px) {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    flex-direction: row;
+    justify-content: space-around;
     margin-top: 10px;
     gap: 3px;
-    left: 0px;
   }
 `
 
@@ -24,12 +27,14 @@ export const NavItems = styled.button`
   height: 60px;
   padding: 0px;
   margin-bottom: 3px;
+  margin-right: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #1e2529;
   gap: 3px;
+  border-radius: 5px;
 
   p{
     padding: 0px;
@@ -39,7 +44,18 @@ export const NavItems = styled.button`
   }
   
   @media screen and (max-width: 794px) {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 60px;
+    border-radius: 5px;
+  }
+`
+
+export const Div = styled.div`
+  width: 100%;
+  display: flex;
+
+  @media screen and (max-width: 794px) {
+    display: flex;
+    flex-direction: column;
   }
 `

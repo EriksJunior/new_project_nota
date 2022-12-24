@@ -1,4 +1,4 @@
-import { ContentNavItems, NavItems } from "./styles"
+import { ContentNavItems, NavItems, Div } from "./styles"
 import { ContentNav } from "../styles"
 import { useContext } from "react"
 import { LeafContext } from "../../../context/Leaf/leaf"
@@ -13,7 +13,7 @@ export function Nav({ children }) {
   const { handleRenderNavItem } = useContext(LeafContext)
 
   return (
-    <div>
+    <Div>
       <ContentNavItems>
         <NavItems name="cliente" onClick={(e) => handleRenderNavItem(e.target.name)}>
           <IoPersonAdd size={25} color={"white"} /><p>Cliente</p>
@@ -32,6 +32,6 @@ export function Nav({ children }) {
       <ContentNav>
         {children}
       </ContentNav>
-    </div>
+    </Div>
   )
 }
