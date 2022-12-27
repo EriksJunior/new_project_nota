@@ -2283,7 +2283,7 @@ progress {
   background-color: #212529;
   border-color: #86b7fe;
   outline: 0;
-  box-shadow: 0 0 0 0.10rem #0d6efd;
+  box-shadow: 0 0 0 0.10rem deepskyblue;
 }
 .form-control::-webkit-date-and-time-value,
 .dataTable-input::-webkit-date-and-time-value {
@@ -2507,13 +2507,13 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  color: #b4b2b2;
+  background-color: #212529;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='deepskyblue' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 16px 12px;
-  border: 1px solid #ced4da;
+  border: 1px solid #6b6b6b9f;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
@@ -2530,7 +2530,7 @@ textarea.form-control-lg {
 .dataTable-selector:focus {
   border-color: #86b7fe;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 0.10rem deepskyblue;
 }
 .form-select[multiple],
 [multiple].dataTable-selector,
@@ -3252,20 +3252,19 @@ fieldset:disabled .btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #093579;
-  border-color: #093579;
+  background-color: deepskyblue;
+  border-color: deepskyblue;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #0b5ed7;
-  border-color: #0a58ca;
+  background-color: rgb(2, 118, 156);
 }
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
   color: #fff;
-  background-color: #0b5ed7;
-  border-color: #0a58ca;
-  box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
+  background-color: rgb(2, 118, 156);
+  border-color: white;
+  box-shadow: 0 0 0 0.10rem white;
 }
 .btn-check:checked + .btn-primary,
 .btn-check:active + .btn-primary,
@@ -4349,7 +4348,7 @@ fieldset:disabled .btn {
 }
 .nav-link:hover,
 .nav-link:focus {
-  color: #0a58ca;
+  color: deepskyblue;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -4393,12 +4392,12 @@ fieldset:disabled .btn {
   background: none;
   border: 0;
   border-radius: 0.25rem;
-  background-color: #093579;
+  background-color: rgb(2, 118, 156);
 }
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #0d6efd;
+  background-color: deepskyblue;
 }
 
 .nav-fill > .nav-link,
