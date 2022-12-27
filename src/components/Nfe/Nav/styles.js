@@ -11,7 +11,6 @@ export const ContentNavItems = styled.div`
   align-items: flex-end;
   margin-top: 10px;
 
-
   @media screen and (max-width: 794px) {
     width: 100%;
     display: flex;
