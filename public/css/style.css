@@ -3252,17 +3252,17 @@ fieldset:disabled .btn {
 
 .btn-primary {
   color: #fff;
-  background-color: deepskyblue;
-  border-color: deepskyblue;
+  background-color: rgb(2, 118, 156);
+  border-color: rgb(2, 118, 156);
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: rgb(2, 118, 156);
+  background-color: deepskyblue;
 }
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
   color: #fff;
-  background-color: rgb(2, 118, 156);
+  background-color: deepskyblue;
   border-color: white;
   box-shadow: 0 0 0 0.10rem white;
 }
@@ -11992,6 +11992,7 @@ body {
   .nav-link.collapsed
   .sb-sidenav-collapse-arrow {
   transform: rotate(-90deg);
+  color: rgb(2, 118, 156);
 }
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
   margin-left: 1.5rem;
@@ -12016,10 +12017,12 @@ body {
   color: rgba(255, 255, 255, 0.25);
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
-  color: rgba(255, 255, 255, 0.25);
+  color: deepskyblue;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
-  color: #fff;
+  color: white;
+  background-color: #00bfff1a;
+  border-left: solid 1px deepskyblue!important;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
   color: #fff;

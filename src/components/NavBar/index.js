@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import { AiOutlineHome } from "react-icons/ai"
+import { ContentNavIcons } from "./styles"
 
 export function NavBar({ children }) {
   return (
@@ -37,19 +39,23 @@ export function NavBar({ children }) {
               <div className="nav">
                 <div className="sb-sidenav-menu-heading">Core</div>
                 <Link className="nav-link" to="/">
-                  <div className="sb-nav-link-icon">
-                    <i className="fas fa-tachometer-alt"></i>
-                  </div>
-                  Home
+                  <ContentNavIcons>
+                    <div className="sb-nav-link-icon">
+                      <AiOutlineHome className="icon-nav" size={20} />
+                    </div>
+                    Home
+                  </ContentNavIcons>
                 </Link>
                 <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                  <div className="sb-nav-link-icon">
-                    <i className="fas fa-columns"></i>
-                  </div>
-                  Cadastros
-                  <div className="sb-sidenav-collapse-arrow">
-                    <i className="fas fa-angle-down"></i>
-                  </div>
+                  <ContentNavIcons style={{ width: "100%", display: 'flex' }}>
+                    <div className="sb-nav-link-icon">
+                      <AiOutlineHome className="icon-nav" size={20} />
+                    </div>
+                    Cadastros
+                    <div className="sb-sidenav-collapse-arrow">
+                      <i className="fas fa-angle-down icons-nav-color"></i>
+                    </div>
+                  </ContentNavIcons>
                 </a>
                 <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                   <nav className="sb-sidenav-menu-nested nav">
@@ -58,13 +64,15 @@ export function NavBar({ children }) {
                   </nav>
                 </div>
                 <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                  <div className="sb-nav-link-icon">
-                    <i className="fas fa-book-open"></i>
-                  </div>
-                  Docs Fiscais
-                  <div className="sb-sidenav-collapse-arrow">
-                    <i className="fas fa-angle-down"></i>
-                  </div>
+                  <ContentNavIcons>
+                    <div className="sb-nav-link-icon">
+                      <i className="fas fa-book-open"></i>
+                    </div>
+                    Docs Fiscais
+                    <div className="sb-sidenav-collapse-arrow">
+                      <i className="fas fa-angle-down"></i>
+                    </div>
+                  </ContentNavIcons>
                 </a>
                 <div className="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                   <nav className="sb-sidenav-menu-nested nav">
@@ -96,7 +104,7 @@ export function NavBar({ children }) {
         <div id="layoutSidenav_content">
           {children}
         </div>
-      </div>
+      </div >
     </>
   )
 }
