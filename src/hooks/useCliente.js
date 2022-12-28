@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 import { INITIAL_STATE_CLIENTE, INITIAL_STATE_SEARCH } from '../initialStates/client';
 import CustomerService from '../services/CustomerService'
@@ -9,6 +9,20 @@ export function UseCliente() {
   const [client, setClient] = useState(INITIAL_STATE_CLIENTE);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedClient, setReturnedClient] = useState([])
+
+  useEffect(() => {
+    const searchClient = async () => {
+      try {
+        const result = await CustomerService.search(search.text, search.page)
+        setReturnedClient(result.data)
+      } catch (error) {
+        return toast.error(error?.response?.data?.erros, {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      }
+    }
+    searchClient()
+  }, [search])
 
   const handleChange = useCallback((e) => {
     setClient({ ...client, [e.target.name]: e.target.value })
