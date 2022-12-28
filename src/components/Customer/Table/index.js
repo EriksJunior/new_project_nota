@@ -1,19 +1,20 @@
 import { useContext } from "react"
 import { ClientContext } from "../../../context/Client/client"
+import { ContentTable } from "./style"
 
 import { IconEdit, IconDelete } from  "../../styles"
 
 export function Table() {
   const { returnedClient, findById, deleteClient } = useContext(ClientContext)
   return (
-      <div className="table-responsive">
-        <table className="table table-hover">
+      <ContentTable className="table-responsive">
+        <table className="table">
           <thead>
             <tr>
-              <th>Nome</th>
+              <th >Nome</th>
               <th>CPF/CNPJ</th>
               <th>Telefone</th>
-              <th className="text-center">Data Nascimento</th>
+              <th >Data Nascimento</th>
               <th className="text-center">Ações</th>
             </tr>
           </thead>
@@ -23,7 +24,7 @@ export function Table() {
                 <td>{e.nome}</td>
                 <td>{e.cpfCnpj}</td>
                 <td>{e.telefone}</td>
-                <td className="text-center">{e.dataNascimento?.split("-").reverse().join("/")}</td>
+                <td >{e.dataNascimento?.split("-").reverse().join("/")}</td>
                 <td>
                   <div className="d-flex justify-content-center gap-2">
                     <div onClick={() => findById(e.id)}>
@@ -38,6 +39,6 @@ export function Table() {
             )}
           </tbody>
         </table>
-      </div>
+      </ContentTable>
   )
 }

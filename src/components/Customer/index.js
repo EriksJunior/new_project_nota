@@ -115,7 +115,7 @@ export function Customer() {
           </div>
 
 
-          <div style={{ display: "flex", gap: "20px" }}>
+          <div style={{ display: "flex", gap: "20px", marginTop: "10px" }}>
             <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</button>
             <button type="button" onClick={clearAllInputs} className="btn btn-primary btn-sm">Limpar</button>
           </div>
