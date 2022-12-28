@@ -338,7 +338,7 @@ svg {
 
 table {
   caption-side: bottom;
-  border-collapse: collapse;
+  border-collapse: separate;
 }
 
 caption {
@@ -360,7 +360,7 @@ tr,
 td,
 th {
   border-color: inherit;
-  /* border-style: solid; */
+  border-style: solid;
   border-width: 0;
   color: #b4b2b2;
 }
@@ -2040,7 +2040,7 @@ progress {
 }
 .table > :not(:first-child),
 .dataTable-table > :not(:first-child) {
-  /* border-top: 2px solid currentColor; */
+  border-top: 2px solid currentColor;
 }
 
 .caption-top {
