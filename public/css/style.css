@@ -2169,7 +2169,7 @@ progress {
 .table-dark {
   --bs-table-bg: #212529;
   --bs-table-striped-bg: #2c3034;
-  --bs-table-striped-color: #fff;
+  --bs-table-striped-color: #b4b2b2;
   --bs-table-active-bg: #373b3e;
   --bs-table-active-color: #fff;
   --bs-table-hover-bg: #323539;
@@ -2308,7 +2308,7 @@ progress {
 .dataTable-input:disabled,
 .form-control[readonly],
 [readonly].dataTable-input {
-  background-color: rgb(19, 18, 18);
+  background-color: black;
   opacity: 1;
 }
 .form-control::-webkit-file-upload-button,
@@ -3251,6 +3251,7 @@ fieldset:disabled .btn {
 }
 .btn-primary {
   color: #fff;
+
   background-color: rgb(2, 118, 156);
   border-color: rgb(2, 118, 156);
 }
@@ -3263,7 +3264,6 @@ fieldset:disabled .btn {
   color: #fff;
   background-color: deepskyblue;
   border-color: white;
-  box-shadow: 0 0 0 0.10rem white;
 }
 .btn-check:checked + .btn-primary,
 .btn-check:active + .btn-primary,
@@ -3271,15 +3271,15 @@ fieldset:disabled .btn {
 .btn-primary.active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #0a58ca;
-  border-color: #0a53be;
+  background-color: deepskyblue;
+  border-color: deepskyblue;
 }
 .btn-check:checked + .btn-primary:focus,
 .btn-check:active + .btn-primary:focus,
 .btn-primary:active:focus,
 .btn-primary.active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
+  box-shadow: 0 0 0 0.10rem rgba(49, 132, 253, 0.5);
 }
 .btn-primary:disabled,
 .btn-primary.disabled {

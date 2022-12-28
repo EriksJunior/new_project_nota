@@ -108,14 +108,14 @@ export function Customer() {
               <input onChange={handleChange} name="email" type="text" value={client.email || ""} className="form-control form-control-sm" />
             </div>
 
-            <div className="mb-3 col-sm-6 col-md-6 col-lg-3 col-xl-12">
+            <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-12"  style={{height: "130px"}}>
               <label className="form-label">Observação</label>
               <textarea rows={4} onChange={handleChange} name="observacao" type="area" value={client.observacao || ""} className="form-control form-control-sm"></textarea>
             </div>
           </div>
 
 
-          <div style={{ display: "flex", gap: "20px", marginTop: "10px" }}>
+          <div style={{ display: "flex", gap: "20px"}}>
             <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</button>
             <button type="button" onClick={clearAllInputs} className="btn btn-primary btn-sm">Limpar</button>
           </div>

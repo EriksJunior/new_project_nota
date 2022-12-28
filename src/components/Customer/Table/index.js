@@ -7,8 +7,8 @@ import { IconEdit, IconDelete } from  "../../styles"
 export function Table() {
   const { returnedClient, findById, deleteClient } = useContext(ClientContext)
   return (
-      <ContentTable className="table-responsive">
-        <table className="table">
+      <ContentTable className="table-responsive ">
+        <table className="table table-dark table-striped">
           <thead>
             <tr>
               <th >Nome</th>
@@ -21,7 +21,7 @@ export function Table() {
           <tbody>
             {returnedClient.map((e) =>
               <tr key={e.id} >
-                <td>{e.nome}</td>
+                <td style={{color: "deepskyblue!important"}}>{e.nome}</td>
                 <td>{e.cpfCnpj}</td>
                 <td>{e.telefone}</td>
                 <td >{e.dataNascimento?.split("-").reverse().join("/")}</td>
