@@ -7,7 +7,7 @@ import { IconEdit, IconDelete } from  "../../styles"
 export function Table() {
   const { returnedClient, findById, deleteClient } = useContext(ClientContext)
   return (
-      <ContentTable className="table-responsive ">
+      <ContentTable className="table-responsive">
         <table className="table table-dark table-striped">
           <thead>
             <tr>
