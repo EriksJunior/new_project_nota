@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { Link } from "react-router-dom"
 import { ClientContext } from "../../../context/Client/client"
 
 import { ContentSearch } from "./style"
@@ -10,7 +11,7 @@ export function SearchCliente({ children }) {
     <div className="card">
       <div className="card-body">
         <div style={{ height: "50px" }}>
-          <button className="btn btn-primary">Novo Cliente</button>
+        <Link to="/customer"><button className="btn btn-primary">Novo Cliente</button></Link>
         </div>
 
         <ContentSearch className="col-sm-12 col-md-12 col-lg-12 col-xl-12">

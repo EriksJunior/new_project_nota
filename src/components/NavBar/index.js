@@ -59,7 +59,7 @@ export function NavBar({ children }) {
                 </a>
                 <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                   <nav className="sb-sidenav-menu-nested nav">
-                    <Link className="nav-link" to="/customer">Cliente</Link>
+                    <Link className="nav-link" to="/searchcustomer">Cliente</Link>
                     <Link className="nav-link" to="/product">Produtos</Link>
                   </nav>
                 </div>
