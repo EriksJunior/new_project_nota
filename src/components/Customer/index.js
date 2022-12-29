@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ClientContext } from "../../context/Client/client"
 
 import { Masks } from "../../utils/masks/Masks"
@@ -108,16 +109,23 @@ export function Customer() {
               <input onChange={handleChange} name="email" type="text" value={client.email || ""} className="form-control form-control-sm" />
             </div>
 
-            <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-12"  style={{height: "130px"}}>
+            <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-12" style={{ height: "130px" }}>
               <label className="form-label">Observação</label>
               <textarea rows={4} onChange={handleChange} name="observacao" type="area" value={client.observacao || ""} className="form-control form-control-sm"></textarea>
             </div>
           </div>
 
 
-          <div style={{ display: "flex", gap: "20px"}}>
-            <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</button>
-            <button type="button" onClick={clearAllInputs} className="btn btn-primary btn-sm">Limpar</button>
+          <div className='row col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+            <div className='col-sm-8 col-md-8 col-lg-8 col-xl-8' style={{ display: "flex", gap: "20px" }}>
+              <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</button>
+              <button type="button" onClick={clearAllInputs} className="btn btn-primary btn-sm">Limpar</button>
+            </div>
+
+
+            <div className='col-sm-4 col-md-4 col-lg-4 col-xl-4' style={{ display: "flex", justifyContent: "flex-end" }}>
+              <Link to="/searchcustomer"><button type="button" onClick={clearAllInputs} className="btn btn-primary btn-sm">Voltar</button></Link>
+            </div>
           </div>
         </div>
       </div>
