@@ -1,15 +1,9 @@
 import { CardHeader } from "../styles"
 
-export function CardTitle({ text, children }) {
+export function CardTitle({ text }) {
   return (
-    <>
-      <CardHeader>
-        <div>
-          <p>{text}</p>
-        </div>
-
-        {children}
-      </CardHeader>
-    </>
+    <CardHeader>
+      <p>{text}</p>
+    </CardHeader>
   )
 }

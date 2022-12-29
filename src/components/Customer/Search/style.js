@@ -8,8 +8,8 @@ export const ContentSearch = styled.div`
   margin-top: 30px;
 
 @media screen and (max-width: 575px) {
-   .inputSearch{
+   .inputSearch {
     width: 100%;
    }
-  }
+}
 `

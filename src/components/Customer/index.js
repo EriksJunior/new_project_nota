@@ -9,8 +9,8 @@ export function Customer() {
 
   return (
     <div>
-      <div className="card">
-        <div className="card-body">
+      <div>
+        <div>
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <input onChange={handleChange} hidden value={client.id || ""} name="id" type="text" className="form-control form-control-sm" />
 

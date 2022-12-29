@@ -1,27 +1,21 @@
 import { ClientProvider } from "../../context/Client/client"
 import { Customer } from "../../components/Customer"
-import { Table } from "../../components/Customer/Table"
-import { SearchCliente } from "../../components/Customer/Search"
-import { TabRecords } from "../../components/Tab"
-import { TabCreate } from "../../components/Tab/Create"
-import { TabSearch } from "../../components/Tab/Search"
+import { Metrics } from "../../components/Customer/Metrics"
+import { ContentDesigner } from "../../components/Tab"
+import { ContentPageCustomer, ContentMetrics } from "./styles"
 
 export function PageCustomer() {
   return (
-    <div className="m-3">
+    <ContentPageCustomer className="m-3">
       <ClientProvider>
-        <TabRecords title={"Lista de Clientes"} fistButtonName={"Cadastro"}>
-          <TabCreate>
-            <Customer />
-          </TabCreate>
+        <ContentDesigner title={"Cadastre novos clientes"} fistButtonName={"Cadastro"}>
+          <Customer />
+        </ContentDesigner>
 
-          <TabSearch>
-            <SearchCliente>
-              <Table />
-            </SearchCliente>
-          </TabSearch>
-        </TabRecords>
+        <ContentMetrics>
+          <Metrics />
+        </ContentMetrics>
       </ClientProvider>
-    </div>
+    </ContentPageCustomer>
   )
 }
