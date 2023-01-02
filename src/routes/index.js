@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { PageHome } from "../page/Home";
-import { PageCustomer } from "../page/Customer";
+import { PageCustomer } from "../page/Customer/CreateCustomer";
+import { PageSearchCustomer } from "../page/Customer/SearchCustomer";
 import { PageProduct } from "../page/Product";
 import { PageNfe } from "../page/Nfe";
-import { PageSearchCustomer } from "../page/SearchCustomer";
 
 
 export function AppRoutes() {
