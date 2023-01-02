@@ -124,7 +124,7 @@ export function Customer() {
 
 
             <div className='col-sm-4 col-md-4 col-lg-4 col-xl-4' style={{ display: "flex", justifyContent: "flex-end" }}>
-              <Link to="/searchcustomer"><button type="button" onClick={clearAllInputs} className="btn btn-primary btn-sm">Voltar</button></Link>
+              <Link to="/searchcustomer"><button type="button"  className="btn btn-primary btn-sm">Voltar</button></Link>
             </div>
           </div>
         </div>
