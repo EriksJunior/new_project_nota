@@ -15,10 +15,11 @@ export const ContentTable = styled.div`
     transition: all 0.2s;
   }
 
-  .name:hover{
+  .name:hover > td{
     text-decoration: underline;
     color: deepskyblue!important;
   }
+
 
   box-shadow: black 0px 1px 3px 1px!important ;
 `
