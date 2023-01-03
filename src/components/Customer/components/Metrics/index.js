@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { CardHeaderTextCenter } from "../../../styles"
-import { Card, Birthdays, FavoritesCustomers, ContentBirthdays, ContentFavoritesCustomer, DivTest, Pname, Position } from "../../style"
+import { Card, Birthdays, FavoritesCustomers, ContentBirthdays, ContentFavoritesCustomer, DivTest, P, Position } from "../../style"
 
 export function Metrics() {
   const [nome, setNome] = useState({ nome: "eriks junikjojfdsgh odfhogu fod", data: "23/10/2900", position: "1°" })
@@ -15,33 +15,33 @@ export function Metrics() {
 
           <ContentBirthdays>
             <DivTest>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste
-              </Pname>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste
+              </P>
+              <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
             </DivTest>
 
             <DivTest>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</Pname>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
+              <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
             </DivTest>
 
             <DivTest>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</Pname>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
+              <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
             </DivTest>
 
             <DivTest>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</Pname>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
+              <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
             </DivTest>
 
             <DivTest>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</Pname>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
+              <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
             </DivTest>
             <DivTest>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</Pname>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
+              <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
             </DivTest>
 
           </ContentBirthdays>
@@ -57,23 +57,23 @@ export function Metrics() {
           <ContentFavoritesCustomer>
             <DivTest>
               <Position data-toggle="tooltip" data-placement="top" title={nome.position}>1°</Position>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
             </DivTest>
             <DivTest>
               <Position data-toggle="tooltip" data-placement="top" title={nome.position}>1°</Position>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
             </DivTest>
             <DivTest>
               <Position data-toggle="tooltip" data-placement="top" title={nome.position}>1°</Position>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
             </DivTest>
             <DivTest>
               <Position data-toggle="tooltip" data-placement="top" title={nome.position}>1°</Position>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
             </DivTest>
             <DivTest>
               <Position data-toggle="tooltip" data-placement="top" title={nome.position}>1°</Position>
-              <Pname data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</Pname>
+              <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
             </DivTest>
           </ContentFavoritesCustomer>
         </CardHeaderTextCenter>

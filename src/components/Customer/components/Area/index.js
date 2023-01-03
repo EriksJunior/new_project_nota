@@ -1,4 +1,7 @@
-import { ContentAreaCustomer, CardCustomer, HeaderCustomer } from "./styles"
+import {
+  ContentAreaCustomer, CardCustomer, HeaderCustomer, HeaderContent,
+  IndividualMetrics, ContentIndividualMetrics, P
+} from "./styles"
 
 export function CustomerArea() {
   return (
@@ -7,8 +10,18 @@ export function CustomerArea() {
         <ContentAreaCustomer>
           <CardCustomer>
             <HeaderCustomer>
-              <p>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs</p>
+              <HeaderContent>
+                <P>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs sdsdfsdfdsfs</P>
+              </HeaderContent>
             </HeaderCustomer>
+
+            <ContentIndividualMetrics>
+              <IndividualMetrics>
+                <div className="teste">
+                  <p>Total de Compras: </p>
+                </div>
+              </IndividualMetrics>
+            </ContentIndividualMetrics>
           </CardCustomer>
         </ContentAreaCustomer>
       </div>

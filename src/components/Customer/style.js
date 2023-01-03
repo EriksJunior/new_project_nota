@@ -88,7 +88,7 @@ export const DivTest = styled.div`
   white-space: normal;
 `
 
-export const Pname = styled.p`
+export const P = styled.p`
   width: 87%;
   padding: 5px;
   background-color: rgb(2, 118, 156);
