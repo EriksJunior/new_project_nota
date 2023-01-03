@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { CardHeaderTextCenter } from "../../../styles"
-import { Card, Birthdays, FavoritesCustomers, ContentBirthdays, ContentFavoritesCustomer, DivTest, P, Position } from "../../style"
+import { Card, Birthdays, FavoritesCustomers, ContentBirthdays, ContentFavoritesCustomer, ItemBirthdays, P, Position } from "../../style"
 
 export function Metrics() {
   const [nome, setNome] = useState({ nome: "eriks junikjojfdsgh odfhogu fod", data: "23/10/2900", position: "1°" })
@@ -14,35 +14,35 @@ export function Metrics() {
           </div>
 
           <ContentBirthdays>
-            <DivTest>
+            <ItemBirthdays>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste
               </P>
               <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
-            </DivTest>
+            </ItemBirthdays>
 
-            <DivTest>
+            <ItemBirthdays>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
               <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
-            </DivTest>
+            </ItemBirthdays>
 
-            <DivTest>
+            <ItemBirthdays>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
               <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
-            </DivTest>
+            </ItemBirthdays>
 
-            <DivTest>
+            <ItemBirthdays>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
               <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
-            </DivTest>
+            </ItemBirthdays>
 
-            <DivTest>
+            <ItemBirthdays>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
               <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
-            </DivTest>
-            <DivTest>
+            </ItemBirthdays>
+            <ItemBirthdays>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
               <P data-toggle="tooltip" data-placement="top" title={nome.data}>23/10/2900</P>
-            </DivTest>
+            </ItemBirthdays>
 
           </ContentBirthdays>
         </CardHeaderTextCenter>
@@ -55,26 +55,26 @@ export function Metrics() {
           </div>
 
           <ContentFavoritesCustomer>
-            <DivTest>
+            <ItemBirthdays>
               <Position data-toggle="tooltip" data-placement="top" title={nome.position}>1°</Position>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
-            </DivTest>
-            <DivTest>
+            </ItemBirthdays>
+            <ItemBirthdays>
               <Position data-toggle="tooltip" data-placement="top" title={nome.position}>1°</Position>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
-            </DivTest>
-            <DivTest>
+            </ItemBirthdays>
+            <ItemBirthdays>
               <Position data-toggle="tooltip" data-placement="top" title={nome.position}>1°</Position>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
-            </DivTest>
-            <DivTest>
+            </ItemBirthdays>
+            <ItemBirthdays>
               <Position data-toggle="tooltip" data-placement="top" title={nome.position}>1°</Position>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
-            </DivTest>
-            <DivTest>
+            </ItemBirthdays>
+            <ItemBirthdays>
               <Position data-toggle="tooltip" data-placement="top" title={nome.position}>1°</Position>
               <P data-toggle="tooltip" data-placement="top" title={nome.nome}>Clinte teste</P>
-            </DivTest>
+            </ItemBirthdays>
           </ContentFavoritesCustomer>
         </CardHeaderTextCenter>
       </FavoritesCustomers>

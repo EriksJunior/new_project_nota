@@ -79,7 +79,7 @@ export const ContentFavoritesCustomer = styled.div`
   }
 `
 
-export const DivTest = styled.div`
+export const ItemBirthdays = styled.div`
   width: 100%;
   display: flex;
   text-align: center;

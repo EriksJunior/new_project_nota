@@ -1,30 +1,51 @@
 import {
-  ContentAreaCustomer, CardCustomer, HeaderCustomer, HeaderContent,
-  IndividualMetrics, ContentIndividualMetrics, P
+  Card, HeaderCustomer, HeaderContent,
+  CardHeaderTextCenter, ContentIndividualMetrics, ItemMetrics, P, PType, PData
 } from "./styles"
 
 export function CustomerArea() {
   return (
-    <div className="card">
-      <div className="card-body">
-        <ContentAreaCustomer>
-          <CardCustomer>
-            <HeaderCustomer>
-              <HeaderContent>
-                <P>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs sdsdfsdfdsfs</P>
-              </HeaderContent>
-            </HeaderCustomer>
+    <Card className="card">
+      <HeaderCustomer>
+        <HeaderContent>
+          <P>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs sdsdfsdfdsfs</P>
+        </HeaderContent>
+        <P>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs sdsdfsdfdsfs</P>
+        <P>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs sdsdfsdfdsfs</P>
+      </HeaderCustomer>
 
-            <ContentIndividualMetrics>
-              <IndividualMetrics>
-                <div className="teste">
-                  <p>Total de Compras: </p>
-                </div>
-              </IndividualMetrics>
-            </ContentIndividualMetrics>
-          </CardCustomer>
-        </ContentAreaCustomer>
-      </div>
-    </div>
+      <CardHeaderTextCenter>
+        <div className="mb-3">
+          <p>Métricas do cliente</p>
+        </div>
+        
+        <ContentIndividualMetrics>
+          <ItemMetrics>
+            <PType>Total de Compras</PType>
+            <PData>55</PData>
+          </ItemMetrics>
+
+          <ItemMetrics>
+            <PType>Valor total de compras</PType>
+            <PData>R$ 2.500,75</PData>
+          </ItemMetrics>
+
+          <ItemMetrics>
+            <PType>Notas emitidas</PType>
+            <PData>22</PData>
+          </ItemMetrics>
+
+          <ItemMetrics>
+            <PType>Valores em aberto</PType>
+            <PData>R$ 75,00</PData>
+          </ItemMetrics>
+
+          <ItemMetrics>
+            <PType>Contas em aberto</PType>
+            <PData>8</PData>
+          </ItemMetrics>
+        </ContentIndividualMetrics>
+      </CardHeaderTextCenter>
+    </Card>
   )
 }
