@@ -1,6 +1,6 @@
 import { ClientProvider } from "../../../context/Client/client"
-import { SearchCliente } from "../../../components/Customer/Search"
-import { Table } from "../../../components/Customer/Table"
+import { SearchCliente } from "../../../components/Customer/components/Search"
+import { Table } from "../../../components/Customer/components/Table"
 
 export function PageSearchCustomer() {
   return (

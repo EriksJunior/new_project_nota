@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 
 import { Navigate } from "react-router-dom"
-import { ClientContext } from "../../../context/Client/client"
+import { ClientContext } from "../../../../context/Client/client"
 import { ContentTable } from "./style"
 
 export function Table() {
@@ -16,7 +16,7 @@ export function Table() {
     <ContentTable className="table-responsive">
 
       {openCustomerArea && (
-        <Navigate to="/customer" replace={true} />
+        <Navigate to="/customerarea" replace={true} />
       )}
 
       <table className="table table-dark">

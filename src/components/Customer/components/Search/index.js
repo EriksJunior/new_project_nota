@@ -1,8 +1,8 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { ClientContext } from "../../../context/Client/client"
+import { ClientContext } from "../../../../context/Client/client"
 
-import { ContentSearch } from "./style"
+import { ContentSearch } from "../Search/style"
 
 export function SearchCliente({ children }) {
   const { searchClient, handleChangeSearchClient } = useContext(ClientContext)
