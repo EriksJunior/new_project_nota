@@ -1,6 +1,6 @@
 import { ClientProvider } from "../../../context/Client/client"
 import { Customer } from "../../../components/Customer"
-import { Metrics } from "../../../components/Customer/Metrics"
+import { Metrics } from "../../../components/Customer/components/Metrics"
 import { ContentDesigner } from "../../../components/Tab"
 import { ContentPageCustomer, ContentMetrics } from "./styles"
 
