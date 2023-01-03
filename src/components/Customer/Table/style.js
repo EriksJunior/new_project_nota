@@ -9,7 +9,7 @@ export const ContentTable = styled.div`
     /* background-color: red; */
   }
 
-  .name{
+  td{
     color: rgb(2, 118, 156)!important;
     cursor: pointer;
     transition: all 0.2s;

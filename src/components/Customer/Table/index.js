@@ -32,10 +32,10 @@ export function Table() {
         <tbody>
           {returnedClient.map((e) =>
             <tr key={e.id} className="name testee"  onClick={handleCustomerArea}>
-              <td className="text-center name">{e.nome}</td>
-              <td className="text-center name">{e.cpfCnpj}</td>
-              <td className="text-center name">{e.telefone}</td>
-              <td className="text-center name">{e.dataNascimento?.split("-").reverse().join("/")}</td>
+              <td className="text-center ">{e.nome}</td>
+              <td className="text-center ">{e.cpfCnpj}</td>
+              <td className="text-center ">{e.telefone}</td>
+              <td className="text-center ">{e.dataNascimento?.split("-").reverse().join("/")}</td>
               {/* <td>
                 <div className="d-flex justify-content-center gap-2">
                   <div onClick={() => findById(e.id)}>
