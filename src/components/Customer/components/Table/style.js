@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const ContentTable = styled.div`
+  box-shadow: black 0px 1px 3px 1px!important ;
+
   th, td {
     font-size: 14px;
   }
@@ -20,6 +22,4 @@ export const ContentTable = styled.div`
     color: deepskyblue!important;
   }
 
-
-  box-shadow: black 0px 1px 3px 1px!important ;
 `
