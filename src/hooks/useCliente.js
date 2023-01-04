@@ -9,6 +9,7 @@ export function UseCliente() {
   const [client, setClient] = useState(INITIAL_STATE_CLIENTE);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedClient, setReturnedClient] = useState([])
+  const [openLayouts, setOpenLayouts] = useState(false)
   const [openAreaCustomer, setOpenAreaCustomer] = useState(false)
 
   useEffect(() => {
@@ -111,5 +112,9 @@ export function UseCliente() {
     await findById(id)
   }
 
-  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client, openAreaCustomer, handleOpenAreaCustomer }
+  const handleOpenLayouts = (value) => {
+    setOpenLayouts(value)
+  }
+
+  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, handleOpenLayouts }
 }

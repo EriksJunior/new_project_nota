@@ -1,11 +1,10 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { ClientContext } from "../../context/Client/client"
 
 import { Masks } from "../../utils/masks/Masks"
 
 export function Customer() {
-  const { client, handleChange, clearAllInputs, handleSaveOrUpdate } = useContext(ClientContext)
+  const { client, handleChange, clearAllInputs, handleSaveOrUpdate, handleOpenLayouts } = useContext(ClientContext)
   const { maskCep, maskCpfCnpj } = Masks()
 
   return (
@@ -124,7 +123,7 @@ export function Customer() {
 
 
             <div className='col-sm-4 col-md-4 col-lg-4 col-xl-4' style={{ display: "flex", justifyContent: "flex-end" }}>
-              <Link to="/areacustomer"><button type="button"  className="btn btn-primary btn-sm">Voltar</button></Link>
+              <button type="button" onClick={() => handleOpenLayouts(false)}  className="btn btn-primary btn-sm">Voltar</button>
             </div>
           </div>
         </div>
