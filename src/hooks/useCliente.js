@@ -116,5 +116,11 @@ export function UseCliente() {
     setOpenLayouts(value)
   }
 
-  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, handleOpenLayouts }
+  const handleNewCustomer = (value) => {
+    setOpenLayouts(value)
+    clearAllInputs()
+  }
+ 
+
+  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, handleOpenLayouts, handleNewCustomer }
 }
