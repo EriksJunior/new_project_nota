@@ -37,10 +37,10 @@ export const ContentChildren = styled.div`
   @keyframes alterOpacity {
     0% {
       opacity: 0;
-      transform: rotateX(0deg);
+      /* transform: rotateX(0deg); */
     }
     100% {
-      transform: rotateY(360deg);
+      /* transform: rotateY(360deg); */
       opacity: 1
     }
   }
