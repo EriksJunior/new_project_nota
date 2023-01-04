@@ -11,7 +11,7 @@ export function AppRoutes() {
     <Routes>
       <Route path="/" element={<PageHome />} />
       {/* <Route path="/customer" element={<PageCreateCustomer />} /> */}
-      <Route path="/areacustomer" element={<Customer />} />
+      <Route path="/customer" element={<Customer />} />
       <Route path="/product" element={<PageProduct />} />
       <Route path="/nfe" element={<PageNfe />} />
       <Route path="*" element={<PageHome />} />

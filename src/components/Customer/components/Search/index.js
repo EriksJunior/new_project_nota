@@ -1,17 +1,16 @@
 import { useContext } from "react"
-import { Link } from "react-router-dom"
 import { ClientContext } from "../../../../context/Client/client"
 
 import { ContentSearch } from "../Search/style"
 
 export function SearchCliente({ children }) {
-  const { searchClient, handleChangeSearchClient } = useContext(ClientContext)
+  const { searchClient, handleChangeSearchClient, handleOpenLayouts } = useContext(ClientContext)
 
   return (
     <div className="card">
       <div className="card-body">
         <div style={{ height: "50px" }}>
-          <Link to="/customer"><button className="btn btn-primary">Novo Cliente</button></Link>
+          <button className="btn btn-primary" onClick={() => handleOpenLayouts(true)}>Novo Cliente</button>
         </div>
 
         <ContentSearch className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
