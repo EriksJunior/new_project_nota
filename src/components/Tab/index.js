@@ -1,23 +1,16 @@
 import { CardTitle } from "../CardHeader"
+import { Card } from "./styles"
 
-export function TabRecords({ children, title, fistButtonName }) {
+export function ContentDesigner({ children, title }) {
   return (
-    <div>
-      <CardTitle text={`${title}`}>
-        <ul className="nav nav-pills gap-3" id="pills-tab" role="tablist">
-          <li className="nav-item" role="presentation">
-            <button style={{ padding: "0.25rem 0.5rem" }} className="nav-link btn-sm" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-create" type="button" role="tab" aria-controls="pills-home" aria-selected="true">{fistButtonName}</button>
-          </li>
+    <Card className="card">
+      <div className="card-body">
+        <CardTitle text={`${title}`} />
 
-          <li className="nav-item" role="presentation">
-            <button style={{ padding: "0.25rem 0.5rem" }} className="nav-link active btn-sm" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-search" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Pesquisar</button>
-          </li>
-        </ul>
-      </CardTitle>
-
-      <div className="tab-content" id="pills-tabContent">
-        {children}
+        <div>
+          {children}
+        </div>
       </div>
-    </div>
+    </Card>
   )
 }

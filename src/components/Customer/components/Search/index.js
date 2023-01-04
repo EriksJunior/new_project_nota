@@ -1,16 +1,16 @@
 import { useContext } from "react"
-import { ClientContext } from "../../../context/Client/client"
+import { ClientContext } from "../../../../context/Client/client"
 
-import { ContentSearch } from "./style"
+import { ContentSearch } from "../Search/style"
 
 export function SearchCliente({ children }) {
-  const { searchClient, handleChangeSearchClient } = useContext(ClientContext)
+  const { searchClient, handleChangeSearchClient, handleNewCustomer } = useContext(ClientContext)
 
   return (
     <div className="card">
       <div className="card-body">
         <div style={{ height: "50px" }}>
-          <button className="btn btn-primary">Novo Cliente</button>
+          <button className="btn btn-primary" onClick={() => handleNewCustomer(true)}>Novo Cliente</button>
         </div>
 
         <ContentSearch className="col-sm-12 col-md-12 col-lg-12 col-xl-12">

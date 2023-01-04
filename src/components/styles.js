@@ -5,7 +5,7 @@ import { TbEdit } from "react-icons/tb";
 
 export const CardHeader = styled.div`
   width: 99.8%;
-  background-color: #202529;
+  background-color: #02769c9c;
   margin-bottom: 10px;
   color: #ebebeb;
   padding: 10px;
@@ -13,6 +13,26 @@ export const CardHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 19px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px black;
+  
+  p{
+    margin: 0;
+  }
+`
+
+export const CardHeaderTextCenter = styled.div`
+  width: 100%;
+  background-color: #02769c9c;
+  margin-bottom: 10px;
+  color: #ebebeb;
+  padding: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 19px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px black;
