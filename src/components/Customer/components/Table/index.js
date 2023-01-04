@@ -3,7 +3,8 @@ import { ClientContext } from "../../../../context/Client/client"
 import { ContentTable } from "./style"
 
 export function Table({children}) {
-  const { returnedClient } = useContext(ClientContext)
+  const { returnedClient, handleOpenAreaCustomer } = useContext(ClientContext)
+
   return (
     <div>
       <ContentTable className="table-responsive">
@@ -19,7 +20,7 @@ export function Table({children}) {
           </thead>
           <tbody>
             {returnedClient.map((e) =>
-              <tr key={e.id} className="name testee">
+              <tr key={e.id} className="name testee" onClick={() => handleOpenAreaCustomer(e.id)}>
                 <td className="text-center ">{e.nome}</td>
                 <td className="text-center ">{e.cpfCnpj}</td>
                 <td className="text-center ">{e.telefone}</td>

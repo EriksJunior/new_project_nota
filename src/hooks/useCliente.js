@@ -9,6 +9,7 @@ export function UseCliente() {
   const [client, setClient] = useState(INITIAL_STATE_CLIENTE);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedClient, setReturnedClient] = useState([])
+  const [openAreaCustomer, setOpenAreaCustomer] = useState(false)
 
   useEffect(() => {
     const searchClient = async () => {
@@ -79,7 +80,6 @@ export function UseCliente() {
     try {
       const result = await CustomerService.findById(id)
       setClient(result)
-      alterTab()
     } catch (error) {
       return toast.error(error?.response?.data?.erros, {
         position: toast.POSITION.TOP_RIGHT
@@ -106,9 +106,10 @@ export function UseCliente() {
     setClient(INITIAL_STATE_CLIENTE)
   }
 
-  const alterTab = () => {
-    document.getElementById("pills-home-tab").click()
+  const handleOpenAreaCustomer = async (id) => {
+    setOpenAreaCustomer(true)
+    await findById(id)
   }
 
-  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client }
+  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client, openAreaCustomer, handleOpenAreaCustomer }
 }

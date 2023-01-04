@@ -1,3 +1,6 @@
+import { useContext } from "react"
+import { ClientContext } from "../../../../context/Client/client"
+
 import {
   Card, HeaderCustomer, HeaderContent,
   CardHeaderTextCenter, ContentIndividualMetrics, ItemMetrics, P, PType, PData
@@ -5,6 +8,7 @@ import {
 
 
 export function CustomerArea() {
+  const { client } = useContext(ClientContext)
 
   return (
     <Card className="card mt-3">

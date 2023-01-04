@@ -1,17 +1,12 @@
 import { ClientProvider } from "../../../context/Client/client"
-import { SearchCliente } from "../../../components/Customer/components/Search"
-import { Table } from "../../../components/Customer/components/Table"
-import { CustomerArea } from "../../../components/Customer/components/Area"
+import { PageAreaCustomer } from "../AreaCustomer"
 
-export function PageAreaCustomer() {
+export function Customer() {
+
   return (
     <div className="m-3">
       <ClientProvider>
-        <SearchCliente>
-          <Table>
-            <CustomerArea />
-          </Table>
-        </SearchCliente>
+        <PageAreaCustomer />
       </ClientProvider>
     </div>
   )
