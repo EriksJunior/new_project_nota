@@ -1,10 +1,10 @@
+import { ContentPageCustomer, ContentMetrics } from "./styles"
 import { ClientProvider } from "../../../context/Client/client"
 import { Customer } from "../../../components/Customer"
 import { Metrics } from "../../../components/Customer/components/Metrics"
 import { ContentDesigner } from "../../../components/Tab"
-import { ContentPageCustomer, ContentMetrics } from "./styles"
 
-export function PageCustomer() {
+export function PageCreateCustomer() {
   return (
     <ContentPageCustomer className="m-3">
       <ClientProvider>

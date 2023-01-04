@@ -52,7 +52,6 @@ export const CardHeaderTextCenter = styled.div`
   margin-bottom: 10px;
   color: #ebebeb;
   padding: 10px;
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

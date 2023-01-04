@@ -3,12 +3,14 @@ import {
   CardHeaderTextCenter, ContentIndividualMetrics, ItemMetrics, P, PType, PData
 } from "./styles"
 
+
 export function CustomerArea() {
+
   return (
-    <Card className="card">
+    <Card className="card mt-3">
       <HeaderCustomer>
         <HeaderContent>
-          <P>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs sdsdfsdfdsfs</P>
+          <P>Eriks junior pinheiro bailon</P>
         </HeaderContent>
         <P>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs sdsdfsdfdsfs</P>
         <P>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs sdsdfsdfdsfs</P>
@@ -18,7 +20,7 @@ export function CustomerArea() {
         <div className="mb-3">
           <p>Métricas do cliente</p>
         </div>
-        
+
         <ContentIndividualMetrics>
           <ItemMetrics>
             <PType>Total de Compras</PType>
