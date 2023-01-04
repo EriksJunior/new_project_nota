@@ -11,7 +11,7 @@ export function SearchCliente({ children }) {
     <div className="card">
       <div className="card-body">
         <div style={{ height: "50px" }}>
-        <Link to="/customer"><button className="btn btn-primary">Novo Cliente</button></Link>
+          <Link to="/customer"><button className="btn btn-primary">Novo Cliente</button></Link>
         </div>
 
         <ContentSearch className="col-sm-12 col-md-12 col-lg-12 col-xl-12">

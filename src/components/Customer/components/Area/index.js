@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { Link } from "react-router-dom"
 import { ClientContext } from "../../../../context/Client/client"
 
 import {
@@ -14,10 +15,25 @@ export function CustomerArea() {
     <Card className="card mt-3">
       <HeaderCustomer>
         <HeaderContent>
-          <P>Eriks junior pinheiro bailon</P>
+          <P>{client.nome}</P>
         </HeaderContent>
-        <P>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs sdsdfsdfdsfs</P>
-        <P>Eriks junior pinheiro bailon sdf dsf sdf sdf sdf sdsdfsdfdsfs sdsdfsdfdsfs</P>
+        <P>Endereço: {client.endereco}</P>
+        <P>Bairro: {client.bairro}</P>
+        <P>Celular: {client.celular}</P>
+        <P>E-mail: {client.email}</P>
+
+        <div style={{ height: "40px", }}>
+          <div className="dropdown" style={{display: "flex", justifyContent: "flex-end" }}>
+            <button className="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Ações
+            </button>
+            <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+              <li><Link to="/customer" className="dropdown-item">Editar</Link></li>
+              <li><Link className="dropdown-item">Excluir</Link></li>
+              <li><Link className="dropdown-item">Gerar Venda</Link></li>
+            </ul>
+          </div>
+        </div>
       </HeaderCustomer>
 
       <CardHeaderTextCenter>

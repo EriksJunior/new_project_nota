@@ -10,13 +10,15 @@ export function PageAreaCustomer() {
 
   return (
     <div className="m-3">
-        <SearchCliente>
-          <Table>
-            {openAreaCustomer &&
-              <CustomerArea />
-            }
-          </Table>
-        </SearchCliente>
+      <SearchCliente>
+        <Table>
+          {openAreaCustomer &&
+          <div className="animate">
+            <CustomerArea />
+          </div>
+          }
+        </Table>
+      </SearchCliente>
     </div>
   )
 }

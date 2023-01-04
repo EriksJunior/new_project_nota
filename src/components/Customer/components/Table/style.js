@@ -21,5 +21,27 @@ export const ContentTable = styled.div`
     text-decoration: underline;
     color: deepskyblue!important;
   }
+`
 
+
+export const Container = styled.div`
+`
+
+export const ContentChildren = styled.div`
+  .animate {
+    animation-name: alterOpacity;
+    animation-duration: 0.5s;
+
+  }
+
+  @keyframes alterOpacity {
+    0% {
+      opacity: 0;
+      transform: rotateX(0deg);
+    }
+    100% {
+      transform: rotateY(360deg);
+      opacity: 1
+    }
+  }
 `

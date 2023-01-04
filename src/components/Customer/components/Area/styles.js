@@ -22,6 +22,7 @@ export const HeaderCustomer = styled.div`
   border-radius: 5px;
   color: white;
   background-color: #0d566f;
+  box-shadow: black 0px 1px 3px 1px!important;
 `
 
 export const HeaderContent = styled.div`
@@ -58,7 +59,7 @@ export const CardHeaderTextCenter = styled.div`
   align-items: center;
   font-size: 19px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px black;
+  box-shadow: black 0px 1px 3px 1px!important;
   
   p{
     margin: 0;
