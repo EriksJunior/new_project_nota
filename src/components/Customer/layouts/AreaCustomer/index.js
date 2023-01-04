@@ -1,15 +1,16 @@
 import { useContext } from "react"
-import { ClientContext } from "../../../context/Client/client"
+import { ClientContext } from "../../../../context/Client/client"
 
-import { SearchCliente } from "../../../components/Customer/components/Search"
-import { Table } from "../../../components/Customer/components/Table"
-import { CustomerArea } from "../../../components/Customer/components/Area"
+import { SearchCliente } from "../../components/Search"
+import { Table } from "../../components/Table"
+import { CustomerArea } from "../../components/Area"
 
-export function PageAreaCustomer() {
+export function AreaCustomer() {
   const { openAreaCustomer } = useContext(ClientContext)
 
   return (
     <div className="m-3">
+      
       <SearchCliente>
         <Table>
           {openAreaCustomer &&

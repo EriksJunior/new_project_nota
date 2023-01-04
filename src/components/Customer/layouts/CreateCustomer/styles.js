@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContentPageCustomer = styled.div`
+export const ContentCustomer = styled.div`
   display: flex;
   gap: 1%;
 
