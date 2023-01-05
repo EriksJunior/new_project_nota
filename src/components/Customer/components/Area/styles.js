@@ -6,6 +6,13 @@ export const Card = styled.div`
   flex-direction: row;
   gap: 5%;
   padding: 10px;
+
+  @media (max-width: 1154px) {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
 `
 
 // export const ContentAreaCustomer = styled.div`
@@ -17,12 +24,17 @@ export const Card = styled.div`
 // `
 
 export const HeaderCustomer = styled.div`
-  width: 55%;
+  width: 40%;
+  min-width: 430px;
   padding: 10px;
   border-radius: 5px;
   color: white;
   background-color: #0d566f;
   box-shadow: black 0px 1px 3px 1px!important;
+
+  @media (max-width: 1154px) {
+    width: 100%;
+  }
 `
 
 export const HeaderContent = styled.div`
@@ -48,7 +60,7 @@ export const P = styled.p`
 
 
 export const CardHeaderTextCenter = styled.div`
-  width: 100%;
+  width: 55%;
   background-color: #02769c9c;
   margin-bottom: 10px;
   color: #ebebeb;
@@ -64,8 +76,12 @@ export const CardHeaderTextCenter = styled.div`
   p{
     margin: 0;
   }
+  
+  @media (max-width: 1154px) {
+    width: 100%;
+  }
   `
-  export const ContentIndividualMetrics = styled.div`
+export const ContentIndividualMetrics = styled.div`
     width: 100%;
     height: 100%;
     max-height: 190px;
@@ -90,7 +106,7 @@ export const CardHeaderTextCenter = styled.div`
     }
   `
 
-  export const ItemMetrics = styled.div`
+export const ItemMetrics = styled.div`
     width: 100%;
     display: flex;
     text-align: center;
@@ -99,7 +115,7 @@ export const CardHeaderTextCenter = styled.div`
     white-space: normal;
   `
 
-  export const PType = styled.p`
+export const PType = styled.p`
     width: 62%;
     padding: 5px;
     background-color: rgb(2, 118, 156);
@@ -109,7 +125,7 @@ export const CardHeaderTextCenter = styled.div`
     text-overflow: ellipsis;
   `
 
-  export const PData = styled.p`
+export const PData = styled.p`
     width: 35%;
     padding: 5px;
     background-color: rgb(2, 118, 156);
