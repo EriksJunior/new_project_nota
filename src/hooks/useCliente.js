@@ -22,6 +22,7 @@ export function UseCliente() {
           position: toast.POSITION.TOP_RIGHT
         });
       }
+
     }
     searchClient()
   }, [search])
@@ -63,10 +64,13 @@ export function UseCliente() {
     }
   }
 
-  const deleteClient = async (id) => {
+  const deleteCustomer = async (id) => {
     try {
       await CustomerService.delete(id)
       await searchClient()
+      clearAllInputs()
+      console.log(client)
+
       toast("Registro deletado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -120,7 +124,7 @@ export function UseCliente() {
     setOpenLayouts(value)
     clearAllInputs()
   }
- 
 
-  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteClient, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, handleOpenLayouts, handleNewCustomer }
+
+  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteCustomer, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, handleOpenLayouts, handleNewCustomer }
 }

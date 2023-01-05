@@ -7,6 +7,7 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   color: #02769c;
+  gap: 5px;
 `
 
 export const Birthdays = styled.div`

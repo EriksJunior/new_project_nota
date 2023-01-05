@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const ContentCustomer = styled.div`
   display: flex;
-  gap: 1%;
+  gap: 10px;
 
   @media screen and (max-width: 869px) {
     flex-direction: column;
+    gap: 10px;
   }
 
 `
