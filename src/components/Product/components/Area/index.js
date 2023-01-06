@@ -1,28 +1,32 @@
 import { useContext } from "react"
+import { ProductContext } from "../../../../context/Product/product"
 import { Link } from "react-router-dom"
-import { ClientContext } from "../../../../context/Client/client"
 
 import {
   Card, HeaderCustomer, HeaderContent,
   CardHeaderTextCenter, ContentIndividualMetrics, ItemMetrics, P, PType, PData
 } from "./styles"
 
+import { DetailedDataCard } from "../../../DetailedDataCard"
 
-export function CustomerArea() {
-  const { client, handleOpenLayouts, deleteCustomer } = useContext(ClientContext)
+export function ProductArea() {
+  const { produtos } = useContext(ProductContext)
+
+  const detailsProduct = [`Valor Venda: ${produtos.valorVenda}`, `Unidade: ${produtos.unidade}`, `Estoque: ${produtos.estoque}`, `descricao: ${produtos.descricao}`]
 
   return (
     <>
-      {client.nome &&
-        <Card className="card mt-3">
+      <DetailedDataCard details={detailsProduct} titleDetails={produtos.nome}/>
+      {/* {client.nome && */}
+      {/* <Card className="card mt-3">
           <HeaderCustomer>
             <HeaderContent>
-              <P>{client.nome}</P>
+              <P>nome</P>
             </HeaderContent>
-            <P>Endereço: {client.endereco}</P>
-            <P>Bairro: {client.bairro}</P>
-            <P>Celular: {client.celular}</P>
-            <P>E-mail: {client.email}</P>
+            <P>Endereço: enderec</P>
+            <P>Bairro: bairro</P>
+            <P>Celular: celular</P>
+            <P>E-mail: email</P>
 
             <div style={{ height: "40px", }}>
               <div className="dropdown" style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -30,8 +34,8 @@ export function CustomerArea() {
                   Ações
                 </button>
                 <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                  <li><Link className="dropdown-item" onClick={() => handleOpenLayouts(true)}>Editar</Link></li>
-                  <li><Link className="dropdown-item" onClick={() => deleteCustomer(client.id)}>Excluir</Link></li>
+                  <li><Link className="dropdown-item">Editar</Link></li>
+                  <li><Link className="dropdown-item">Excluir</Link></li>
                   <li><Link className="dropdown-item">Gerar Venda</Link></li>
                 </ul>
               </div>
@@ -40,7 +44,7 @@ export function CustomerArea() {
 
           <CardHeaderTextCenter>
             <div className="mb-3">
-              <p>Métricas do cliente</p>
+              <p>Métricas do Produto</p>
             </div>
 
             <ContentIndividualMetrics>
@@ -70,8 +74,8 @@ export function CustomerArea() {
               </ItemMetrics>
             </ContentIndividualMetrics>
           </CardHeaderTextCenter>
-        </Card>
-      }
+        </Card> */}
+      {/* } */}
     </>
   )
 }

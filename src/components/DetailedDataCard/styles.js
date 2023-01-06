@@ -23,7 +23,7 @@ export const Card = styled.div`
 //   margin-top: 20px;
 // `
 
-export const HeaderCustomer = styled.div`
+export const Header = styled.div`
   width: 40%;
   min-width: 430px;
   padding: 10px;

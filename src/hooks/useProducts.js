@@ -97,7 +97,6 @@ export function UseProducts() {
       const formatedValorVenda = result.valorVenda.toLocaleString("pr-BR", { minimumFractionDigits: 2 })
 
       setProdutos({ ...result, valor: formatedValor, valorVenda: formatedValorVenda })
-      alterTab()
     } catch (error) {
       toast.error("Ocorreu um problema 😮", {
         position: toast.POSITION.TOP_RIGHT
@@ -113,9 +112,9 @@ export function UseProducts() {
     setProdutos(INITIAL_STATE_PRODUCT)
   }
 
-  const alterTab = () => {
-    document.getElementById("pills-home-tab").click()
+  const handleOpenAreaProduct = async (id) => {
+    await findById(id)
   }
 
-  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues }
+  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues, handleOpenAreaProduct }
 }
