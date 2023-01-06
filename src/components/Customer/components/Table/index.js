@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { ClientContext } from "../../../../context/Client/client"
-import { ContentTable, ContentChildren } from "./style"
+import { ContentTable } from "./style"
+import { AnimateCard } from "../../../styles"
 
 export function Table({children}) {
   const { returnedClient, handleOpenAreaCustomer } = useContext(ClientContext)
@@ -30,9 +31,9 @@ export function Table({children}) {
         </table>
       </ContentTable>
       
-      <ContentChildren>
+      <AnimateCard>
         {children}
-      </ContentChildren>
+      </AnimateCard>
     </div>
   )
 }

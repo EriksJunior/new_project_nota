@@ -9,7 +9,7 @@ export function AreaCustomer() {
   const { openAreaCustomer } = useContext(ClientContext)
 
   return (
-    <div className="m-3">
+    <div className="m-3 animate">
       <SearchCliente>
         <Table>
           {openAreaCustomer &&
