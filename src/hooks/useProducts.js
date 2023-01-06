@@ -4,11 +4,26 @@ import { INITIAL_STATE_PRODUCT, INITIAL_STATE_SEARCH } from '../initialStates/pr
 import ProductServices from '../services/ProductService';
 
 import { toast } from "react-toastify";
+import { useEffect } from 'react';
 
 export function UseProducts() {
   const [produtos, setProdutos] = useState(INITIAL_STATE_PRODUCT);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedProduct, setReturnedProduct] = useState([])
+
+  useEffect(() => {
+    const searchProduct = async () => {
+      try {
+        const result = await ProductServices.search(search.text, search.page)
+        setReturnedProduct(result.data)
+      } catch (error) {
+        toast.error("Ocorreu um problema 😮", {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      }
+    }
+    searchProduct()
+  }, [search])
 
   const handleChange = useCallback((e) => {
     setProdutos({ ...produtos, [e.target.name]: e.target.value })
