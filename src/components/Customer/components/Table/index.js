@@ -34,6 +34,5 @@ export function Table({children}) {
         {children}
       </ContentChildren>
     </div>
-
   )
 }

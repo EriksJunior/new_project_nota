@@ -10,7 +10,6 @@ export function AreaCustomer() {
 
   return (
     <div className="m-3">
-      
       <SearchCliente>
         <Table>
           {openAreaCustomer &&
