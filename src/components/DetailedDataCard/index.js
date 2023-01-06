@@ -7,21 +7,21 @@ import {
 } from "./styles"
 
 
-export function DetailedDataCard({ details, metricsTitle, dataMetrics }) {
+export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetrics }) {
 
   return (
     <>
         <Card className="card mt-3">
           <Header>
             <HeaderContent>
-              <P>nome</P>
+              <P>{titleDetails}</P>
             </HeaderContent>
             
-            {/* {details.map((e) =>
-              <>
-                <P>{e.title}: {e.text}</P>
-              </>
-            )} */}
+            {details.map((e, i) =>
+              <div key={i}>
+                <P>{e}</P>
+              </div>
+            )}
 
 
             <div style={{ height: "40px", }}>

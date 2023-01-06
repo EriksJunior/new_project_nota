@@ -4,7 +4,8 @@ import { ProductContext } from '../../../../context/Product/product';
 import { ContentTable, ContentChildren } from './styles';
 
 export function Table({children}) {
-  const { returnedProduct } = useContext(ProductContext)
+  const { returnedProduct, handleOpenAreaProduct } = useContext(ProductContext)
+  
 
   return (
     <div>
@@ -20,7 +21,7 @@ export function Table({children}) {
           </thead>
           <tbody>
             {returnedProduct.map((e) =>
-              <tr key={e.id} >
+              <tr key={e.id} onClick={() => handleOpenAreaProduct(e.id)}>
                 <td className="text-center">{e.nome}</td>
                 <td className="text-center">{e.valor.toLocaleString("pr-BR", { minimumFractionDigits: 2 })}</td>
                 <td className="text-center">{e.estoque}</td>
