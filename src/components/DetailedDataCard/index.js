@@ -2,27 +2,27 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 
 import {
-  Card, HeaderCustomer, HeaderContent,
+  Card, Header, HeaderContent,
   CardHeaderTextCenter, ContentIndividualMetrics, ItemMetrics, P, PType, PData
 } from "./styles"
 
-import { DetailedDataCard } from "../../../DetailedDataCard"
 
+export function DetailedDataCard({ details, metricsTitle, dataMetrics }) {
 
-export function ProductArea() {
   return (
     <>
-    <DetailedDataCard />
-      {/* {client.nome && */}
-        {/* <Card className="card mt-3">
-          <HeaderCustomer>
+        <Card className="card mt-3">
+          <Header>
             <HeaderContent>
               <P>nome</P>
             </HeaderContent>
-            <P>Endereço: enderec</P>
-            <P>Bairro: bairro</P>
-            <P>Celular: celular</P>
-            <P>E-mail: email</P>
+            
+            {/* {details.map((e) =>
+              <>
+                <P>{e.title}: {e.text}</P>
+              </>
+            )} */}
+
 
             <div style={{ height: "40px", }}>
               <div className="dropdown" style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -36,42 +36,23 @@ export function ProductArea() {
                 </ul>
               </div>
             </div>
-          </HeaderCustomer>
+          </Header>
 
           <CardHeaderTextCenter>
             <div className="mb-3">
-              <p>Métricas do Produto</p>
+              {/* <p>{metricsTitle}</p> */}
             </div>
 
             <ContentIndividualMetrics>
-              <ItemMetrics>
-                <PType>Total de Compras</PType>
-                <PData>55</PData>
-              </ItemMetrics>
-
-              <ItemMetrics>
-                <PType>Valor total de compras</PType>
-                <PData>R$ 2.500,75</PData>
-              </ItemMetrics>
-
-              <ItemMetrics>
-                <PType>Notas emitidas</PType>
-                <PData>22</PData>
-              </ItemMetrics>
-
-              <ItemMetrics>
-                <PType>Valores em aberto</PType>
-                <PData>R$ 75,00</PData>
-              </ItemMetrics>
-
-              <ItemMetrics>
-                <PType>Contas em aberto</PType>
-                <PData>8</PData>
-              </ItemMetrics>
+              {/* {dataMetrics.map((e) =>
+                <ItemMetrics>
+                  <PType>{e.subTitleMetrics}</PType>
+                  <PData>{e.subDataMetrics}</PData>
+                </ItemMetrics>
+              )} */}
             </ContentIndividualMetrics>
           </CardHeaderTextCenter>
-        </Card> */}
-      {/* } */}
+        </Card>
     </>
   )
 }
