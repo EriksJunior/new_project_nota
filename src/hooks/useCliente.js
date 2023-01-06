@@ -117,6 +117,7 @@ export function UseCliente() {
 
   const handleOpenLayouts = (value) => {
     setOpenLayouts(value)
+    clearAllInputs()
   }
 
   const handleNewCustomer = (value) => {
