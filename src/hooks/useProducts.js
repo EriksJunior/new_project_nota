@@ -10,6 +10,7 @@ export function UseProducts() {
   const [produtos, setProdutos] = useState(INITIAL_STATE_PRODUCT);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedProduct, setReturnedProduct] = useState([])
+  const [openAreaProduct, setOpenAreaProduct] = useState(false)
 
   useEffect(() => {
     const searchProduct = async () => {
@@ -128,8 +129,9 @@ export function UseProducts() {
   }
 
   const handleOpenAreaProduct = async (id) => {
+    setOpenAreaProduct(true)
     await findById(id)
   }
 
-  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues, handleOpenAreaProduct }
+  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues, handleOpenAreaProduct, openAreaProduct }
 }
