@@ -10,6 +10,7 @@ export function UseProducts() {
   const [produtos, setProdutos] = useState(INITIAL_STATE_PRODUCT);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [returnedProduct, setReturnedProduct] = useState([])
+  const [openLayouts, setOpenLayouts] = useState(false)
   const [openAreaProduct, setOpenAreaProduct] = useState(false)
 
   useEffect(() => {
@@ -128,10 +129,26 @@ export function UseProducts() {
     setProdutos(INITIAL_STATE_PRODUCT)
   }
 
+  const handleEditProduct = async (value) => {
+    handleOpenLayouts(value)
+    await findById(produtos.id)
+  }
+
+
   const handleOpenAreaProduct = async (id) => {
     setOpenAreaProduct(true)
     await findById(id)
   }
 
-  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues, handleOpenAreaProduct, openAreaProduct }
+  const handleNewProduct = async (value) => {
+    setOpenLayouts(value)
+    clearInputs()
+  }
+
+  const handleOpenLayouts = (value) => {
+    setOpenLayouts(value)
+    clearInputs()
+  }
+
+  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues, handleOpenAreaProduct, openAreaProduct, openLayouts, handleNewProduct, handleEditProduct, handleOpenLayouts }
 }
