@@ -120,11 +120,16 @@ export function UseCliente() {
     clearAllInputs()
   }
 
+  const handleEditCustomer = async (value) => {
+    handleOpenLayouts(value)
+    await findById(client.id)
+  }
+
   const handleNewCustomer = (value) => {
     setOpenLayouts(value)
     clearAllInputs()
   }
 
 
-  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteCustomer, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, handleOpenLayouts, handleNewCustomer }
+  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteCustomer, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, handleOpenLayouts, handleNewCustomer, handleEditCustomer }
 }

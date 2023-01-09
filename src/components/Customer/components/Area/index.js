@@ -9,7 +9,7 @@ import {
 
 
 export function CustomerArea() {
-  const { client, handleOpenLayouts, deleteCustomer } = useContext(ClientContext)
+  const { client, deleteCustomer, handleEditCustomer } = useContext(ClientContext)
 
   return (
     <>
@@ -30,7 +30,7 @@ export function CustomerArea() {
                   Ações
                 </button>
                 <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                  <li><Link className="dropdown-item" onClick={() => handleOpenLayouts(true)}>Editar</Link></li>
+                  <li><Link className="dropdown-item" onClick={() => handleEditCustomer(true)}>Editar</Link></li>
                   <li><Link className="dropdown-item" onClick={() => deleteCustomer(client.id)}>Excluir</Link></li>
                   <li><Link className="dropdown-item">Gerar Venda</Link></li>
                 </ul>
