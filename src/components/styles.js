@@ -53,3 +53,22 @@ export const IconDelete = styled(BsTrash)`
   color: red;
 }
 `
+
+
+export const AnimateCard = styled.div`
+  .animate {
+    animation-name: alterOpacity;
+    animation-duration: 0.3s;
+  }
+
+  @keyframes alterOpacity {
+    0% {
+      opacity: 0;
+      /* transform: rotateX(0deg); */
+    }
+    100% {
+      /* transform: rotateY(360deg); */
+      opacity: 1
+    }
+  }
+`

@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import { ProductContext } from '../../../../context/Product/product';
 
-import { ContentTable, ContentChildren } from './styles';
+import { ContentTable } from './styles';
+import { AnimateCard } from "../../../styles"
 
 export function Table({children}) {
   const { returnedProduct, handleOpenAreaProduct } = useContext(ProductContext)
@@ -32,9 +33,9 @@ export function Table({children}) {
         </table>
       </ContentTable>
 
-      <ContentChildren>
+      <AnimateCard>
         {children}
-      </ContentChildren>     
+      </AnimateCard>     
     </div>
   )
 }
