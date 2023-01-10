@@ -64,7 +64,7 @@ export function Product() {
             </div>
 
             <div className='col-sm-4 col-md-4 col-lg-4 col-xl-4' style={{ display: "flex", justifyContent: "flex-end" }}>
-              <button type="button" onClick={() => switchBetweenComponents(false)} className="btn btn-primary btn-sm">Voltar</button>
+              <button type="button" onClick={switchBetweenComponents} className="btn btn-primary btn-sm">Voltar</button>
             </div>
           </div>
         </div>

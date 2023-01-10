@@ -129,8 +129,8 @@ export function UseProducts() {
     setProdutos(INITIAL_STATE_PRODUCT)
   }
 
-  const handleEditProduct = async (value) => {
-    switchBetweenComponents(value)
+  const handleEditProduct = async () => {
+    setOpenLayouts(true)
     await findById(produtos.id)
   }
 
@@ -145,8 +145,8 @@ export function UseProducts() {
     clearInputs()
   }
 
-  const switchBetweenComponents = (value) => {
-    setOpenLayouts(value)
+  const switchBetweenComponents = () => {
+    setOpenLayouts(false)
     clearInputs()
   }
 
