@@ -130,7 +130,7 @@ export function UseProducts() {
   }
 
   const handleEditProduct = async (value) => {
-    handleOpenLayouts(value)
+    switchBetweenComponents(value)
     await findById(produtos.id)
   }
 
@@ -140,15 +140,15 @@ export function UseProducts() {
     await findById(id)
   }
 
-  const handleNewProduct = async (value) => {
+  const handleNewProduct = async () => {
+    setOpenLayouts(true)
+    clearInputs()
+  }
+
+  const switchBetweenComponents = (value) => {
     setOpenLayouts(value)
     clearInputs()
   }
 
-  const handleOpenLayouts = (value) => {
-    setOpenLayouts(value)
-    clearInputs()
-  }
-
-  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues, handleOpenAreaProduct, openAreaProduct, openLayouts, handleNewProduct, handleEditProduct, handleOpenLayouts }
+  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues, handleOpenAreaProduct, openAreaProduct, openLayouts, handleNewProduct, handleEditProduct, switchBetweenComponents }
 }

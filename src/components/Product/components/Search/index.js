@@ -4,13 +4,13 @@ import { ProductContext } from "../../../../context/Product/product"
 import { ContentSearch } from "./style"
 
 export function SearchProduct({ children }) {
-  const { searchProduct, handleChangeSearchProduct } = useContext(ProductContext)
+  const { searchProduct, handleChangeSearchProduct, handleNewProduct } = useContext(ProductContext)
 
   return (
     <div className="card">
       <div className="card-body">
         <div style={{ height: "50px" }}>
-          <button className="btn btn-primary">Novo Produto</button>
+          <button className="btn btn-primary" onClick={handleNewProduct}>Novo Produto</button>
         </div>
 
         <ContentSearch className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
