@@ -139,14 +139,14 @@ export function UseProducts() {
     setOpenAreaProduct(true)
     await findById(id)
   }
-
-  const handleNewProduct = async () => {
-    setOpenLayouts(true)
-    clearInputs()
-  }
-
+  
   const switchBetweenComponents = () => {
     setOpenLayouts(false)
+    clearInputs()
+  }
+  
+  const handleNewProduct = async () => {
+    setOpenLayouts(true)
     clearInputs()
   }
 

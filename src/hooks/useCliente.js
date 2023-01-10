@@ -110,26 +110,26 @@ export function UseCliente() {
     setClient(INITIAL_STATE_CLIENTE)
   }
 
+  const handleEditCustomer = async () => {
+    setOpenLayouts(true)
+    await findById(client.id)
+  }
+
   const handleOpenAreaCustomer = async (id) => {
     setOpenAreaCustomer(true)
     await findById(id)
   }
 
-  const handleOpenLayouts = (value) => {
-    setOpenLayouts(value)
+  const switchBetweenComponents = () => {
+    setOpenLayouts(false)
     clearAllInputs()
   }
 
-  const handleEditCustomer = async (value) => {
-    handleOpenLayouts(value)
-    await findById(client.id)
-  }
-
-  const handleNewCustomer = (value) => {
-    setOpenLayouts(value)
+  const handleNewCustomer = () => {
+    setOpenLayouts(true)
     clearAllInputs()
   }
 
 
-  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteCustomer, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, handleOpenLayouts, handleNewCustomer, handleEditCustomer }
+  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteCustomer, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, switchBetweenComponents, handleNewCustomer, handleEditCustomer }
 }

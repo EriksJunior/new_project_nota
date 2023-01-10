@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { CardHeaderTextCenter } from "../../../styles"
-import { Card, Birthdays, FavoritesCustomers, ContentBirthdays, ContentFavoritesCustomer, ItemBirthdays, P, Position } from "../../style"
+import { Card, Birthdays, FavoritesCustomers, ContentBirthdays, ContentFavoritesCustomer, ItemBirthdays, P, Position } from "./../../styles"
 
-export function Metrics() {
+export function MetricsProd() {
   const [nome, setNome] = useState({ nome: "eriks junikjojfdsgh odfhogu fod", data: "23/10/2900", position: "1°" })
 
   return (

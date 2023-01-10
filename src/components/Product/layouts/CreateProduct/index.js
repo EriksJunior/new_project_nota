@@ -1,6 +1,6 @@
 import { ContentProduct, ContentMetrics } from "./styles"
 import { Product } from "../.."
-// import { Metrics } from "../../components/"
+import { MetricsProd } from "../../components/Metrics"
 import { ContentDesigner } from "../../../Tab"
 
 export function CreateProduct() {
@@ -11,7 +11,7 @@ export function CreateProduct() {
       </ContentDesigner>
 
       <ContentMetrics>
-        {/* <Metrics /> */}
+        <MetricsProd />
       </ContentMetrics>
     </ContentProduct>
   )
