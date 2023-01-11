@@ -13,9 +13,9 @@ export function AreaCustomer() {
       <SearchCliente>
         <Table>
           {openAreaCustomer &&
-          <div className="animate">
-            <CustomerArea />
-          </div>
+            <div className="animate">
+              <CustomerArea />
+            </div>
           }
         </Table>
       </SearchCliente>

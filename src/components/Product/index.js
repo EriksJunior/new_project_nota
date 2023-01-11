@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { ProductContext } from '../../context/Product/product';
 
 export function Product() {
-  const { produtos, clearInputs, handleChange, handleSaveOrUpdate, handleChangeMonetaryValues } = useContext(ProductContext)
+  const { produtos, clearInputs, handleChange, handleSaveOrUpdate, handleChangeMonetaryValues, switchBetweenComponents } = useContext(ProductContext)
 
   return (
     <div>
@@ -57,9 +57,15 @@ export function Product() {
             </div>
           </div>
 
-          <div style={{ display: "flex", gap: "20px" }}>
-            <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</button>
-            <button type="button" onClick={clearInputs} className="btn btn-primary btn-sm">Limpar</button>
+          <div className='row col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+            <div className='col-sm-8 col-md-8 col-lg-8 col-xl-8' style={{ display: "flex", gap: "20px" }}>
+              <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</button>
+              <button type="button" onClick={clearInputs} className="btn btn-primary btn-sm">Limpar</button>
+            </div>
+
+            <div className='col-sm-4 col-md-4 col-lg-4 col-xl-4' style={{ display: "flex", justifyContent: "flex-end" }}>
+              <button type="button" onClick={switchBetweenComponents} className="btn btn-primary btn-sm">Voltar</button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,18 +1,18 @@
-import { ContentCustomer, ContentMetrics } from "./styles"
-import { Customer } from "../.."
-import { Metrics } from "../../components/Metrics"
+import { ContentProduct, ContentMetrics } from "./styles"
+import { Product } from "../.."
+import { MetricsProd } from "../../components/Metrics"
 import { ContentDesigner } from "../../../Tab"
 
-export function CreateCustomer() {
+export function CreateProduct() {
   return (
-    <ContentCustomer className="m-3">
-      <ContentDesigner title={"Cadastre novos clientes"} fistButtonName={"Cadastro"}>
-        <Customer />
+    <ContentProduct className="m-3 animate">
+      <ContentDesigner title={"Cadastre novos Produtos"} fistButtonName={"Cadastro"}>
+        <Product />
       </ContentDesigner>
 
       <ContentMetrics>
-        <Metrics />
+        <MetricsProd />
       </ContentMetrics>
-    </ContentCustomer>
+    </ContentProduct>
   )
 }

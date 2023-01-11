@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContentCustomer = styled.div`
+export const ContentProduct = styled.div`
   display: flex;
   gap: 10px;
 

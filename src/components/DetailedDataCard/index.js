@@ -7,7 +7,7 @@ import {
 } from "./styles"
 
 
-export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetrics }) {
+export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetrics, edit }) {
 
   return (
     <>
@@ -30,7 +30,7 @@ export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetr
                   Ações
                 </button>
                 <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                  <li><Link className="dropdown-item">Editar</Link></li>
+                  <li><Link className="dropdown-item" onClick={edit}>Editar</Link></li>
                   <li><Link className="dropdown-item">Excluir</Link></li>
                   <li><Link className="dropdown-item">Gerar Venda</Link></li>
                 </ul>

@@ -1,47 +1,111 @@
 import styled from "styled-components";
-import { Offcanvas, OffcanvasHeader, OffcanvasTitle, OffcanvasBody, Form, FloatingLabel, FormControl, Button } from 'react-bootstrap';
 
-export const OffcanvasBt = styled(Offcanvas)`
-  width: 50%!important;
+export const Card = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #02769c;
+  gap: 5px;
 `
 
-export const OffcanvasHeaderBt = styled(OffcanvasHeader)`
-  background-color: #1C1C1C!important;
-  .btn-close{
-    background-color: BlueViolet;
-    border-radius: 20px;
+export const Birthdays = styled.div`
+  width: 90%;
+  height: 100%;
+`
+
+export const FavoritesCustomers = styled.div`
+  width: 90%;
+  height: 100%;
+`
+
+export const ContentBirthdays = styled.div`
+  width: 100%;
+  height: 50%;
+  max-height: 210.5px;
+
+  overflow-x: auto;
+  color: #ebebeb;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 19px;
+  border-radius: 5px;
+
+  ::-webkit-scrollbar-track {
+      background-color: transparent;
+  }
+  ::-webkit-scrollbar {
+      width: 6px;
+      background: #F4F4F4;
+      border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+      background: deepskyblue;
+      border-radius: 5px;
+  }
+  
+  p{
+    margin: 0;
   }
 `
 
-export const OffcanvasTitleBt = styled(OffcanvasTitle)`
-  color: LightGrey!important;
-   font-weight: bold!important;
-   font-size: 36px!important;
-   justify-content: center!important;
-   padding-left: 50px!important;
+export const ContentFavoritesCustomer = styled.div`
+  width: 100%;
+  max-height: 210.5px;
+  overflow-x: auto;
+  color: #ebebeb;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 19px;
+  border-radius: 5px;
+
+  ::-webkit-scrollbar-track {
+      background-color: transparent;
+  }
+  ::-webkit-scrollbar {
+      width: 6px;
+      background: #F4F4F4;
+      border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+      background: deepskyblue;
+      border-radius: 5px;
+  }
+  
+  p{
+    margin: 0;
+  }
 `
 
-export const OffcanvasBodyBt = styled(OffcanvasBody)`
-  background-color: #DCDCDC!important;
-  color: lightgrey!important;
-  font-weight: bolder!important;
+export const ItemBirthdays = styled.div`
+  width: 100%;
+  display: flex;
+  text-align: center;
+  gap: 5px;
+  border-radius: 5px;
+  white-space: normal;
 `
 
-export const FormBt = styled(Form)`
+export const P = styled.p`
+  width: 87%;
+  padding: 5px;
+  background-color: rgb(2, 118, 156);
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 `
 
-export const FloatingLabelBt = styled(FloatingLabel)`
-  color: black!important;
-  font-size: 14px!important;
+export const Position = styled.p`
+  width: 10%;
+  padding: 5px;
+  background-color: rgb(2, 118, 156);
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 `
 
-export const FormControlBt = styled(FormControl)`
-  background-color: #f5f5f5!important;
-  height: 48px!important;
-`
-
-export const ButtonProduct = styled(Button)`
-  background: BlueViolet!important;
-  color: white!important;
-  width: 220px!important;
-`

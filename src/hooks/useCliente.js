@@ -69,6 +69,7 @@ export function UseCliente() {
       await CustomerService.delete(id)
       await searchClient()
       clearAllInputs()
+      setOpenAreaCustomer(false)
 
       toast("Registro deletado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -110,21 +111,27 @@ export function UseCliente() {
     setClient(INITIAL_STATE_CLIENTE)
   }
 
+  const handleEditCustomer = async () => {
+    setOpenLayouts(true)
+    await findById(client.id)
+  }
+
   const handleOpenAreaCustomer = async (id) => {
     setOpenAreaCustomer(true)
     await findById(id)
   }
 
-  const handleOpenLayouts = (value) => {
-    setOpenLayouts(value)
+  const switchBetweenComponents = () => {
+    setOpenAreaCustomer(false)
+    setOpenLayouts(false)
     clearAllInputs()
   }
 
-  const handleNewCustomer = (value) => {
-    setOpenLayouts(value)
+  const handleNewCustomer = () => {
+    setOpenLayouts(true)
     clearAllInputs()
   }
 
 
-  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteCustomer, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, handleOpenLayouts, handleNewCustomer }
+  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteCustomer, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, switchBetweenComponents, handleNewCustomer, handleEditCustomer }
 }
