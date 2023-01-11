@@ -69,6 +69,7 @@ export function UseCliente() {
       await CustomerService.delete(id)
       await searchClient()
       clearAllInputs()
+      setOpenAreaCustomer(false)
 
       toast("Registro deletado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -121,6 +122,7 @@ export function UseCliente() {
   }
 
   const switchBetweenComponents = () => {
+    setOpenAreaCustomer(false)
     setOpenLayouts(false)
     clearAllInputs()
   }

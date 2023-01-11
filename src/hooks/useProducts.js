@@ -141,6 +141,7 @@ export function UseProducts() {
   }
   
   const switchBetweenComponents = () => {
+    setOpenAreaProduct(false)
     setOpenLayouts(false)
     clearInputs()
   }
