@@ -6,7 +6,6 @@ class ProductServices {
     }
 
     async update(dataProducts) {
-        console.log(dataProducts)
         await api.put(`/products/${dataProducts.id}`, dataProducts)
     }
 

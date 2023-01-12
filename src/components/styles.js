@@ -24,7 +24,6 @@ export const CardHeader = styled.div`
 
 export const CardHeaderTextCenter = styled.div`
   width: 100%;
-  background-color: #02769c9c;
   margin-bottom: 10px;
   color: #ebebeb;
   padding: 10px;
@@ -35,12 +34,12 @@ export const CardHeaderTextCenter = styled.div`
   align-items: center;
   font-size: 19px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px black;
   
   p{
     margin: 0;
   }
 `
+
 
 export const IconEdit = styled(TbEdit)`
 &:hover{

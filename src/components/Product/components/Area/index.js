@@ -6,7 +6,7 @@ import { DetailedDataCard } from "../../../DetailedDataCard"
 export function ProductArea() {
   const { produtos, handleEditProduct } = useContext(ProductContext)
 
-  const detailsProduct = [`Valor Venda: ${produtos.valorVenda}`, `Unidade: ${produtos.unidade}`, `Estoque: ${produtos.estoque}`, `descricao: ${produtos.descricao}`]
+  const detailsProduct = [`Valor Venda: ${produtos.valorVenda}`, `Unidade: ${produtos.unidade || ""}`, `Estoque: ${produtos.estoque || ""}`, `descricao: ${produtos.descricao || ""}`]
 
   return (
     <>
