@@ -1,10 +1,12 @@
 
 import { Header } from "./components/Header"
+import { ContentInfoFiscal } from "./styles"
+
 export function InfoFiscal(){
 
   return(
-    <div className="mt-3" style={{display: "flex", flexDirection: "column", padding: "10px"}}>
+    <ContentInfoFiscal className="mt-3">
       <Header />
-    </div>
+    </ContentInfoFiscal>
   )
 }

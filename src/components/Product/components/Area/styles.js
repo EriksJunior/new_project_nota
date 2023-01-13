@@ -15,6 +15,15 @@ export const Card = styled.div`
   
 `
 
+export const ContentAreaProduct = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 1579px) {
+   flex-direction: column;
+  }
+`
+
 // export const ContentAreaCustomer = styled.div`
 //   width: 100%;
 //   display: flex;
