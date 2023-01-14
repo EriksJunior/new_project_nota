@@ -4,5 +4,10 @@ import { INITIAL_STATE_ENABLE_INFO_FISCALE } from "../initialStates/impostos"
 export function UseInfoFiscale() {
   const [enable, setEnable] = useState(INITIAL_STATE_ENABLE_INFO_FISCALE)
 
-  return { enable, setEnable }
+  const handleComponentDisplay = (e) => {
+    console.log(e)
+  }
+
+
+  return { enable, setEnable, handleComponentDisplay }
 }
