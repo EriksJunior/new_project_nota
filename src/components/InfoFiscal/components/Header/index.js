@@ -1,7 +1,12 @@
+import { useContext } from "react"
 import { ContentHeader } from "./styles"
-export function Header(){
 
-  return(
+import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
+
+export function Header() {
+  const { setEnable } = useContext(InfoFiscaleContext)
+
+  return (
     <ContentHeader>
       <button className="btn btn-primary">Geral</button>
       <button className="btn btn-primary">ICMS</button>

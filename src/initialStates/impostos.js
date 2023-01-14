@@ -44,3 +44,14 @@ export const INITIAL_STATE_ISSQN = {
   incentivo_fiscal: "",
   aliquota: ""
 }
+
+export const INITIAL_STATE_ENABLE_INFO_FISCALE = {
+  description: true,
+  icms: false,
+  ipi: false,
+  pis: false,
+  cofins: false,
+  issqn: false,
+  information: false,
+  createdRefs: false,
+}
