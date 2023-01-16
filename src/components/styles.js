@@ -53,7 +53,6 @@ export const IconDelete = styled(BsTrash)`
 }
 `
 
-
 export const AnimateCard = styled.div`
   .animate {
     animation-name: alterOpacity;
@@ -70,4 +69,24 @@ export const AnimateCard = styled.div`
       opacity: 1
     }
   }
+`
+
+export const Div = styled.div`
+
+`
+
+export const Label = styled.label`
+`
+
+export const Select = styled.select`
+`
+
+export const Option = styled.option`
+`
+
+export const Input = styled.input`
+`
+
+export const PAlert = styled.p`
+  color: #11b1e5;
 `
