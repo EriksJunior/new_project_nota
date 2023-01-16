@@ -4,6 +4,7 @@ import { CardInfoFiscal } from "./styles"
 
 import { Header } from "../components/Header"
 import { Icms } from "../components/Icms"
+import { Description } from "../components/Description"
 
 import { useContext } from "react"
 import { InfoFiscaleContext } from "../../../context/InfoFiscale/infoFiscale"
@@ -16,6 +17,7 @@ export function LayoutInfoFiscale() {
       <Header />
 
       <CardInfoFiscal className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        {enable.description && <Description />}
         {enable.icms && <Icms />}
       </CardInfoFiscal>
     </ContentInfoFiscal>
