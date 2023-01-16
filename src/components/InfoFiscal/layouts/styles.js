@@ -20,4 +20,8 @@ export const CardInfoFiscal = styled.div`
   height: 250px;
   border-radius: 5px;
   padding: 10px;
+
+  @media screen and (max-width: 1000px) {
+    height: auto;
+  }
 `
