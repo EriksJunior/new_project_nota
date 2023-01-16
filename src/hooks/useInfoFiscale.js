@@ -5,12 +5,7 @@ export function UseInfoFiscale() {
   const [enable, setEnable] = useState(INITIAL_STATE_ENABLE_INFO_FISCALE)
 
   const handleComponentDisplay = (e) => {
-    clear()
-    setEnable({ ...enable, [e.currentTarget.name]: !enable[e.currentTarget.name] })
-  }
-
-  const clear = () => {
-    setEnable(INITIAL_STATE_ENABLE_INFO_FISCALE)
+    setEnable({[e.currentTarget.name]: !enable[e.currentTarget.name] })
   }
 
   return { enable, setEnable, handleComponentDisplay }
