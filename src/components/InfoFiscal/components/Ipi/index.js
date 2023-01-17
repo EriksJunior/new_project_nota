@@ -2,7 +2,7 @@ import { Label, Select, Option, Div, Input, PAlert } from "../../../styles"
 
 export function Ipi() {
   return (
-    <>
+    <Div className="row">
       <Div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
         <Label className="form-label">Tipo pessoa</Label>
         <Select className="form-select form-select-sm" name="uf">
@@ -58,6 +58,6 @@ export function Ipi() {
         <Label className="form-label">Alíquota %</Label>
         <Input name="nome" type="text" className="form-control form-control-sm" />
       </Div>
-    </>
+    </Div>
   )
 }

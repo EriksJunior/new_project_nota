@@ -2,7 +2,7 @@ import { Div, Label, Select, Option } from "../../../styles"
 
 export function Icms() {
   return (
-    <>
+    <Div className="row">
       <Div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
         <Label className="form-label">Tipo de Tributação</Label>
         <Select className="form-select form-select-sm" name="uf">
@@ -75,6 +75,6 @@ export function Icms() {
           <Option value="99">99 - Outras Operações</Option>
         </Select>
       </Div>
-    </>
+    </Div>
   )
 }

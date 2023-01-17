@@ -1,6 +1,6 @@
 
-import { ContentInfoFiscal } from "./styles"
-import { CardInfoFiscal } from "./styles"
+import { ContentInfoFiscal, CardInfoFiscal } from "./styles"
+import { Div } from "../../styles"
 
 import { Header } from "../components/Header"
 import { Icms } from "../components/Icms"
@@ -18,9 +18,17 @@ export function LayoutInfoFiscale() {
       <Header />
 
       <CardInfoFiscal className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        {enable.description && <Description />}
-        {enable.icms && <Icms />}
-        {enable.ipi && <Ipi />}
+        <Div hidden={enable.description}>
+          <Description />
+        </Div>
+
+        <Div hidden={enable.icms}>
+          <Icms />
+        </Div>
+
+        <Div hidden={enable.ipi}>
+          <Ipi />
+        </Div>
       </CardInfoFiscal>
     </ContentInfoFiscal>
   )
