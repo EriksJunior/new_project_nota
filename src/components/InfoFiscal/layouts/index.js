@@ -11,6 +11,7 @@ import { Pis } from "../components/Pis"
 import { useContext } from "react"
 import { InfoFiscaleContext } from "../../../context/InfoFiscale/infoFiscale"
 import { Cofins } from "../components/Cofins"
+import { Issqn } from "../components/Issqn"
 
 export function LayoutInfoFiscale() {
   const { enable } = useContext(InfoFiscaleContext)
@@ -39,6 +40,10 @@ export function LayoutInfoFiscale() {
 
           <Div hidden={enable.cofins} className="animate">
             <Cofins />
+          </Div>
+
+          <Div hidden={enable.issqn} className="animate">
+            <Issqn />
           </Div>
         </CardInfoFiscal>
       </AnimateCard >
