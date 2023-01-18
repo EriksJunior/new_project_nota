@@ -7,7 +7,7 @@ function InfoFiscaleProvider({ children }) {
   const { enable, setEnable, handleComponentDisplay } = UseInfoFiscale()
 
   return (
-    <InfoFiscaleContext.Provider value={{ enable, setEnable, handleComponentDisplay }}>
+    <InfoFiscaleContext.Provider value={{ enable, setEnable, handleComponentDisplay}}>
       {children}
     </InfoFiscaleContext.Provider>
   )
