@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Card = styled.div`
-  width: 100%;
+  width: 40%;
   display: flex;
   flex-direction: row;
   gap: 5%;
@@ -24,8 +24,8 @@ export const Card = styled.div`
 // `
 
 export const Header = styled.div`
-  width: 40%;
-  min-width: 430px;
+  width: 100%;
+  /* min-width: 430px; descomentar, porém mexer no responsivo*/
   padding: 10px;
   border-radius: 5px;
   color: white;

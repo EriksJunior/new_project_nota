@@ -12,7 +12,6 @@ export const ContentProduct = styled.div`
 `
 export const ContentMetrics = styled.div`
   width: 29%;
-  height: 100%;
 
     @media screen and (max-width: 869px) {
     width: 100%;
