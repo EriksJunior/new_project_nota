@@ -46,7 +46,7 @@ export const INITIAL_STATE_ISSQN = {
 }
 
 export const INITIAL_STATE_ENABLE_INFO_FISCALE = {
-  description: true,
+  description: false,
   icms: true,
   ipi: true,
   pis: true,

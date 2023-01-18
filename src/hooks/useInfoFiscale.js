@@ -14,11 +14,5 @@ export function UseInfoFiscale() {
     })
   }, [enable])
 
-
-
-  const handleComponentDisplay = (e) => {
-    setEnable({ ...enable, [e.currentTarget.name]: !enable[e.currentTarget.name] })
-  }
-
-  return { enable, setEnable, handleComponentDisplay }
+  return { enable, setEnable }
 }
