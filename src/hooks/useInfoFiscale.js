@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
-import { INITIAL_STATE_ENABLE_INFO_FISCALE } from "../initialStates/impostos"
+import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE } from "../initialStates/impostos"
 
 export function UseInfoFiscale() {
   const [enable, setEnable] = useState(INITIAL_STATE_ENABLE_INFO_FISCALE)
+  const [infoFiscale, setInfoFiscale] = useState(INITIAL_STATE_INFO_FISCALE)
 
   useEffect(() => {
     Object.keys(enable).forEach(item => {
@@ -14,5 +15,5 @@ export function UseInfoFiscale() {
     })
   }, [enable])
 
-  return { enable, setEnable }
+  return { enable, setEnable, infoFiscale, setInfoFiscale }
 }
