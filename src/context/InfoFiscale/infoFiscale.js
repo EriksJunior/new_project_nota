@@ -4,10 +4,10 @@ import { UseInfoFiscale } from "../../hooks/useInfoFiscale";
 const InfoFiscaleContext = createContext({})
 
 function InfoFiscaleProvider({ children }) {
-  const { enable, setEnable } = UseInfoFiscale()
+  const { enable, setEnable, infoFiscale, setInfoFiscale } = UseInfoFiscale()
 
   return (
-    <InfoFiscaleContext.Provider value={{ enable, setEnable }}>
+    <InfoFiscaleContext.Provider value={{ enable, setEnable,  infoFiscale, setInfoFiscale }}>
       {children}
     </InfoFiscaleContext.Provider>
   )

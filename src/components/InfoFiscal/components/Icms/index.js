@@ -1,7 +1,12 @@
+import { useContext } from "react"
+import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
+
 import { Div, Label, Select, Option } from "../../../styles"
 import { tipoTributacao, cenario, tipoPessoa, situacaoTributaria } from "../../../../common/infoFiscale"
 
 export function Icms() {
+  const { infoFiscale } = useContext(InfoFiscaleContext)
+
   return (
     <Div className="row">
       <Div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -33,7 +38,7 @@ export function Icms() {
 
       <Div className="mb-3 col-sm-8 col-md-8 col-lg-8 col-xl-8">
         <Label className="form-label">Situação tributária</Label>
-        <Select className="form-select form-select-sm" name="uf">
+        <Select className="form-select form-select-sm" name="uf" defaultValue={infoFiscale.icms[0].situacao_tributaria}>
           {situacaoTributaria.map((st) =>
             <Option key={st.value} value={st.value}>{st.tipo}</Option>
           )}
