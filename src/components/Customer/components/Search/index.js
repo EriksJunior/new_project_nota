@@ -4,10 +4,10 @@ import { ClientContext } from "../../../../context/Client/client"
 import { ContentSearch } from "../Search/style"
 
 export function SearchCliente({ children }) {
-  const { searchClient, handleChangeSearchClient, handleNewCustomer } = useContext(ClientContext)
+  const { searchClient, handleChangeSearchClient, handleNewCustomer, returnedClient } = useContext(ClientContext)
 
   return (
-    <div className="card">
+    <div className="card" style={{ height: '85vh' }}>
       <div className="card-body">
         <div style={{ height: "50px" }}>
           <button className="btn btn-primary" onClick={handleNewCustomer}>Novo Cliente</button>
@@ -19,7 +19,7 @@ export function SearchCliente({ children }) {
             <label style={{color: "white"}}>resultados por página</label>
           </div> */}
 
-          <div className="inputSearch col-sm-2 col-md-2 col-lg-2 col-xl-2">
+          <div className="inputSearch col-sm-2 col-md-2 col-lg-2 col-xl-4">
             <div className="input-group">
               <input className="form-control form-control-sm" name="text" onChange={handleChangeSearchClient} placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="btnNavbarSearch" />
               <button className="btn btn-sm" style={{ backgroundColor: "deepskyblue", color: "white" }} id="btnNavbarSearch" type="button" onClick={searchClient}>
@@ -31,6 +31,9 @@ export function SearchCliente({ children }) {
 
         <div>
           {children}
+        </div>
+        <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', display: 'flex', justifyContent: 'flex-start', marginLeft: 10, alignItems: 'center' }}>
+          <p className="text-white">Total: {returnedClient.length} cliente(s)</p>
         </div>
       </div>
     </div>

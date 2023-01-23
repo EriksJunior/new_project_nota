@@ -30,7 +30,6 @@ export const Header = styled.div`
   border-radius: 5px;
   color: white;
   background-color: #0d566f;
-  box-shadow: black 0px 1px 3px 1px!important;
 
   @media (max-width: 1154px) {
     width: 100%;

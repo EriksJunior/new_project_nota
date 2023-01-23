@@ -30,7 +30,6 @@ export const HeaderCustomer = styled.div`
   border-radius: 5px;
   color: white;
   background-color: #0d566f;
-  box-shadow: black 0px 1px 3px 1px!important;
 
   @media (max-width: 1154px) {
     width: 100%;
@@ -61,8 +60,11 @@ export const P = styled.p`
 
 export const CardHeaderTextCenter = styled.div`
   width: 55%;
-  background-color: #02769c9c;
-  margin-bottom: 10px;
+  min-width: 430px;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: #0d566f;
   color: #ebebeb;
   padding: 10px;
   display: flex;
@@ -71,8 +73,7 @@ export const CardHeaderTextCenter = styled.div`
   align-items: center;
   font-size: 19px;
   border-radius: 5px;
-  box-shadow: black 0px 1px 3px 1px!important;
-  
+
   p{
     margin: 0;
   }
@@ -83,10 +84,8 @@ export const CardHeaderTextCenter = styled.div`
   `
 export const ContentIndividualMetrics = styled.div`
     width: 100%;
-    height: 100%;
-    max-height: 190px;
+    height: 200px;
   
-    overflow-x: auto;
     color: #ebebeb;
     display: flex;
     flex-direction: column;

@@ -31,7 +31,7 @@ export function Product() {
               <input type="text" className="form-control form-control-sm" onChange={handleChange} name="unidade" value={produtos.unidade || ""} />
             </div>
 
-            <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-2">
+            <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-4">
               <label className="form-label">Cód. Barras</label>
               <input type="text" className="form-control form-control-sm" onChange={handleChange} name="codBarras" value={produtos.codBarras || ""} />
             </div>
@@ -51,7 +51,7 @@ export function Product() {
               <input type="text" className="form-control form-control-sm" onChange={handleChange} name="estoqueMin" value={produtos.estoqueMin === null ? "" : produtos.estoqueMin} />
             </div>
 
-            <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-4">
+            <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
               <label className="form-label" >Descrição</label>
               <textarea rows={4} style={{ height: "70px" }} type="text" className="form-control form-control-sm" onChange={handleChange} name="descricao" value={produtos.descricao || ""} />
             </div>

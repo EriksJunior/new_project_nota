@@ -2309,7 +2309,7 @@ progress {
 .dataTable-input:disabled,
 .form-control[readonly],
 [readonly].dataTable-input {
-  background-color: black;
+  background-color: #636464;
   opacity: 1;
 }
 .form-control::-webkit-file-upload-button,
@@ -11856,7 +11856,7 @@ body {
   flex-grow: 1;
   min-height: calc(100vh - 56px);
   margin-left: -225px;
-  background-color: #02769c;
+  background-color: #f9fafb;
 }
 
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {

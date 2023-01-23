@@ -19,7 +19,7 @@ export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetr
 
           {details.map((e, i) =>
             <div key={i}>
-              <P>{e}</P>
+              <p>{e}</p>
             </div>
           )}
 

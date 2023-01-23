@@ -14,15 +14,16 @@ export function CustomerArea() {
   return (
     <>
       {client.nome &&
-        <Card className="card mt-3">
+        <Card className="mt-3">
           <HeaderCustomer>
             <HeaderContent>
               <P>{client.nome}</P>
             </HeaderContent>
-            <P>Endereço: {client.endereco}</P>
-            <P>Bairro: {client.bairro}</P>
-            <P>Celular: {client.celular}</P>
-            <P>E-mail: {client.email}</P>
+
+            <p>Endereço: {client.endereco}</p>
+            <p>Bairro: {client.bairro}</p>
+            <p>Celular: {client.celular}</p>
+            <p>E-mail: {client.email}</p>
 
             <div style={{ height: "40px", }}>
               <div className="dropdown" style={{ display: "flex", justifyContent: "flex-end" }}>

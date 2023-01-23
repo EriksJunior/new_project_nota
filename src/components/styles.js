@@ -15,7 +15,6 @@ export const CardHeader = styled.div`
   justify-content: space-between;
   font-size: 19px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px black;
   
   p{
     margin: 0;
