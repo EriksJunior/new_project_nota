@@ -1,6 +1,7 @@
 
 export const HandleInfoFiscale = (icms, aliquotaMva) => {
   const newInfoFicale = {
+    descricao: "",
     icms: [
       {
         tipo_tributacao: icms.tipo_tributacao,
