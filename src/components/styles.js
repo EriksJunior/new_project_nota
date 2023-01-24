@@ -40,7 +40,6 @@ export const CardHeaderTextCenter = styled.div`
   }
 `
 
-
 export const IconEdit = styled(TbEdit)`
 &:hover{
   color: #3bd240;
@@ -75,7 +74,16 @@ export const Div = styled.div`
 
 `
 
+export const DivContentCheckBox = styled.div`
+  margin-top: 28px;
+`
+
 export const Label = styled.label`
+  color: white;
+`
+
+export const LabelForCheckBox = styled.label`
+  color: #11b1e5;
 `
 
 export const Select = styled.select`
@@ -87,6 +95,13 @@ export const Option = styled.option`
 export const Input = styled.input`
 `
 
+export const InputCheckbox = styled.input`
+`
+
 export const PAlert = styled.p`
   color: #11b1e5;
+`
+
+export const P = styled.p`
+  color: white;
 `

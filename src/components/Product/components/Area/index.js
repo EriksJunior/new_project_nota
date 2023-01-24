@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { ProductContext } from "../../../../context/Product/product"
 
 import { DetailedDataCard } from "../../../DetailedDataCard"
-import { InfoFiscal } from "../../../InfoFiscal"
+import { InfoFiscale } from "../../../InfoFiscal"
 
 import { ContentAreaProduct } from "./styles"
 
@@ -17,7 +17,7 @@ export function ProductArea() {
         <DetailedDataCard details={detailsProduct} titleDetails={produtos.nome} edit={handleEditProduct} /> : ""
       }
       
-      {produtos.nome !== "" ? <InfoFiscal /> : ""}
+      {produtos.nome !== "" ? <InfoFiscale /> : ""}
     
     </ContentAreaProduct>
   )

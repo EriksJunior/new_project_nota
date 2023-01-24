@@ -1,4 +1,4 @@
-import { Label, Select, Option, Div, Input, PAlert } from "../../../styles"
+import { Label, Select, Option, Div, Input } from "../../../styles"
 
 export function Issqn() {
   const exigibilidade = [
