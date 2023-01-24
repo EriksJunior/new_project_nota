@@ -378,6 +378,7 @@ button:focus:not(:focus-visible) {
 }
 
 input,
+Input,
 button,
 select,
 optgroup,

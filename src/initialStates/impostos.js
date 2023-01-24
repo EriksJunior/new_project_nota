@@ -71,7 +71,6 @@ export const INITIAL_STATE_INFO_FISCALE = {
   informacoes_complementares: "",
 }
 
-
 export const INITIAL_STATE_ENABLE_INFO_FISCALE = {
   description: true,
   icms: true,
