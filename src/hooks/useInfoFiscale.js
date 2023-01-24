@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback } from "react"
-import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS } from "../initialStates/impostos"
+import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA } from "../initialStates/impostos"
+import { HandleInfoFiscale } from "../utils/handleInfoFiscale/HandleInfoFicale"
 
 export function UseInfoFiscale() {
   const [infoFiscale, setInfoFiscale] = useState(INITIAL_STATE_INFO_FISCALE)
   const [icms, setIcms] = useState(INITIAL_STATE_ICMS)
+  const [aliquotaMva, setAliquotaMva] = useState(INITIAL_STATE_ALIQUOTA_MVA)
   const [enable, setEnable] = useState(INITIAL_STATE_ENABLE_INFO_FISCALE)
 
   // useEffect(() => {
@@ -40,9 +42,19 @@ export function UseInfoFiscale() {
     e.currentTarget.name === "nao_contribuinte" ? setIcms({ ...icms, nao_contribuinte: e.target.checked }) : setIcms({ ...icms, [e.currentTarget.name]: e.currentTarget.value })
   }, [icms])
 
+  const handleChangeAliquotaMva = useCallback((e) => {
+    setAliquotaMva({ ...aliquotaMva, [e.currentTarget.name]: e.currentTarget.value })
+  }, [aliquotaMva])
+
   const teste = () => {
-    console.log(icms)
+    save()
   }
 
-  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, icms, setIcms, handleChangeIcms, teste }
+  const save = () => {
+    const result = HandleInfoFiscale(icms, aliquotaMva)
+    setInfoFiscale({...infoFiscale, icms: result})
+    console.log(infoFiscale)
+  }
+
+  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, teste }
 }

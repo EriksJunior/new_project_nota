@@ -89,7 +89,7 @@ export const INITIAL_STATE_ICMS = {
   nao_contribuinte: false,
   codigo_cfop: "5102",
   situacao_tributaria: "102",
-  aliquota_credito: "",
+  aliquota_credito: "0.00",
   aliquota_mva: [
     {
       estado: "",
@@ -109,3 +109,9 @@ export const INITIAL_STATE_ICMS = {
     },
   ],
 }
+
+export const INITIAL_STATE_ALIQUOTA_MVA = {
+  estado: "",
+  aliquota: "0.00",
+}
+

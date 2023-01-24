@@ -5,7 +5,7 @@ import { Div, Label, Select, Option, DivContentCheckBox, LabelForCheckBox, Input
 import { tipoTributacao, cenario, tipoPessoa, situacaoTributaria, estados, motivoDesoneracao, motivoDesoneracaoSt } from "../../../../common/infoFiscale"
 
 export function Icms() {
-  const { icms, setIcms, handleChangeIcms, teste } = useContext(InfoFiscaleContext)
+  const { icms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, teste } = useContext(InfoFiscaleContext)
 
   return (
     <Div className="row">
@@ -58,6 +58,11 @@ export function Icms() {
       </Div>
 
       <Div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <Label className="form-label">Alíquota aplicável de cálculo de crédito %</Label>
+        <Input name="aliquota_credito" type="text" className="form-control form-control-sm" onChange={handleChangeIcms} defaultValue={icms.aliquota_credito} />
+      </Div>
+
+      <Div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
         <Label className="form-label">Alíquota do diferimento ICMS %</Label>
         <Input name="aliquota_diferimento" type="text" className="form-control form-control-sm" onChange={handleChangeIcms} defaultValue={icms.aliquota_diferimento} />
       </Div>
@@ -69,7 +74,7 @@ export function Icms() {
 
       <Div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
         <Label className="form-label">Alíquota MVA: Estado</Label>
-        <Select name="estado" className="form-select form-select-sm" onChange={handleChangeIcms} defaultValue={icms.aliquota_mva[0].estado}>
+        <Select name="estado" className="form-select form-select-sm" onChange={handleChangeAliquotaMva} defaultValue={aliquotaMva.estado}>
           <Option>Selecione...</Option>
           {estados.map((sigla) =>
             <Option key={sigla.value} value={sigla.value}>{sigla.tipo}</Option>
@@ -79,7 +84,7 @@ export function Icms() {
 
       <Div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
         <Label className="form-label">Alíquota MVA: %</Label>
-        <Input name="aliquota" type="text" className="form-control form-control-sm" onChange={handleChangeIcms} defaultValue={icms.aliquota_mva[0].aliquota} />
+        <Input name="aliquota" type="text" className="form-control form-control-sm" onChange={handleChangeAliquotaMva} defaultValue={aliquotaMva.aliquota} />
       </Div>
 
       <Div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
