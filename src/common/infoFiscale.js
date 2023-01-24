@@ -133,6 +133,23 @@ export const beneficioFiscalEstados = [
   { value: "RJ", tipo: "RJ" },
 ]
 
+export const Situacao = [
+  { value: "00", tipo: "00 - Entrada com recuperação de crédito" },
+  { value: "01", tipo: "01 - Entrada tributada com alíquota zero" },
+  { value: "02", tipo: "02 - Entrada isenta" },
+  { value: "03", tipo: "03 - Entrada não-tributada" },
+  { value: "04", tipo: "04 - Entrada imune" },
+  { value: "05", tipo: "05 - Entrada com suspensão" },
+  { value: "49", tipo: "49 - Outras entradas" },
+  { value: "50", tipo: "50 - Saída tributada" },
+  { value: "51", tipo: "51 - Saída tributada com alíquota zero" },
+  { value: "52", tipo: "52 - Saída isenta" },
+  { value: "53", tipo: "53 - Saída não-tributada" },
+  { value: "54", tipo: "54 - Saída imune" },
+  { value: "55", tipo: "55 - Saída com suspensão" },
+  { value: "99", tipo: "99 - Outras saídas" },
+]
+
 export const enableInputsInfoFiscale = {
   "101": {
     aliquota_credito: true,
