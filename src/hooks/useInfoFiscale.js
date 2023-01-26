@@ -82,8 +82,8 @@ export function UseInfoFiscale() {
   }
 
   const returnNewInfoFiscale = () => {
-    const result = HandleInfoFiscale(icms, aliquotaMva, ipi, pis)
-    const newInfoFiscale = { ...infoFiscale, icms: result.icms, ipi: result.ipi, pis: result.pis }
+    const result = HandleInfoFiscale(icms, aliquotaMva, ipi, pis, cofins)
+    const newInfoFiscale = { ...infoFiscale, icms: result.icms, ipi: result.ipi, pis: result.pis, cofins: result.cofins}
     setInfoFiscale(newInfoFiscale)
 
     return newInfoFiscale

@@ -150,7 +150,7 @@ export const situacaoTributariaIpi = [
   { value: "99", tipo: "99 - Outras saídas" },
 ]
 
-export const situacaoTributariaPis = [
+export const situacaoTributariaPisAndCofins = [
   {
     value: "01",
     tipo: "01 - Operação Tributável - Base de Cálculo = Valor da Operação Alíquota Normal (Cumulativo/Não cumulativo)",
