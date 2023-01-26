@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_COFINS, INITIAL_STATE_ISSQN } from "../initialStates/impostos"
 import { HandleInfoFiscale } from "../utils/handleInfoFiscale/HandleInfoFicale"
+import { api } from '../utils/configs/api';
 
 export function UseInfoFiscale() {
   const [infoFiscale, setInfoFiscale] = useState(INITIAL_STATE_INFO_FISCALE)
@@ -21,6 +22,7 @@ export function UseInfoFiscale() {
   //     }
   //   })
   // }, [enable])
+
 
   const handleComponentDisplay = (e) => {
     if (e.currentTarget.name === "description") {
@@ -66,16 +68,27 @@ export function UseInfoFiscale() {
     setAliquotaMva({ ...aliquotaMva, [e.currentTarget.name]: e.currentTarget.value })
   }, [aliquotaMva])
 
-  const teste = () => {
-    // save()
-    console.log(icms, ipi, aliquotaMva)
+  const handleSaveOrUpdate = () => {
+    const result = returnNewInfoFiscale()
+    infoFiscale.id === "" ? save(result) : update(result)
   }
 
-  const save = () => {
-    const result = HandleInfoFiscale(icms, aliquotaMva)
-    setInfoFiscale({ ...infoFiscale, icms: result })
-    console.log(infoFiscale)
+  const save = async (dataInfoFiscale) => {
+    console.log("SAVE", dataInfoFiscale)
+    // await api.post('/impostos', dataInfoFiscale)
   }
 
-  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, teste }
+  const update = async (dataInfoFiscale) => {
+    console.log("UPDATE", dataInfoFiscale)
+  }
+
+  const returnNewInfoFiscale = () => {
+    const result = HandleInfoFiscale(icms, aliquotaMva, ipi)
+    const newInfoFiscale = { ...infoFiscale, icms: result.icms, ipi: result.ipi }
+    setInfoFiscale(newInfoFiscale)
+
+    return newInfoFiscale
+  }
+
+  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate }
 }
