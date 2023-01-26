@@ -4,7 +4,7 @@ import { ContentHeader } from "./styles"
 import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
 
 export function Header() {
-  const { enable, setEnable, handleComponentDisplay } = useContext(InfoFiscaleContext)
+  const { handleComponentDisplay } = useContext(InfoFiscaleContext)
 
   return (
     <ContentHeader>
