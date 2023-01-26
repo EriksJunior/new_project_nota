@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from "react"
 import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_COFINS, INITIAL_STATE_ISSQN } from "../initialStates/impostos"
 import { HandleInfoFiscale } from "../utils/handleInfoFiscale/HandleInfoFicale"
-import { api } from '../utils/configs/api';
 
 export function UseInfoFiscale() {
   const [infoFiscale, setInfoFiscale] = useState(INITIAL_STATE_INFO_FISCALE)
@@ -83,8 +82,8 @@ export function UseInfoFiscale() {
   }
 
   const returnNewInfoFiscale = () => {
-    const result = HandleInfoFiscale(icms, aliquotaMva, ipi)
-    const newInfoFiscale = { ...infoFiscale, icms: result.icms, ipi: result.ipi }
+    const result = HandleInfoFiscale(icms, aliquotaMva, ipi, pis)
+    const newInfoFiscale = { ...infoFiscale, icms: result.icms, ipi: result.ipi, pis: result.pis }
     setInfoFiscale(newInfoFiscale)
 
     return newInfoFiscale

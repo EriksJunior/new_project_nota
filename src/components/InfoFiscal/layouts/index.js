@@ -15,7 +15,7 @@ import { Issqn } from "../components/Issqn"
 import { Information } from "../components/Information"
 
 export function LayoutInfoFiscale() {
-  const { enable } = useContext(InfoFiscaleContext)
+  const { enable, handleSaveOrUpdate } = useContext(InfoFiscaleContext)
 
   return (
     <ContentInfoFiscal className="mt-3">
@@ -50,8 +50,10 @@ export function LayoutInfoFiscale() {
           <Div hidden={enable.information} className="animate">
             <Information />
           </Div>
+        <button onClick={handleSaveOrUpdate}>Salvar</button>
         </CardInfoFiscal>
       </AnimateCard >
+
     </ContentInfoFiscal>
   )
 }

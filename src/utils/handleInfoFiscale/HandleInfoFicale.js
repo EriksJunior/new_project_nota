@@ -1,5 +1,5 @@
 
-export const HandleInfoFiscale = (icms, aliquotaMva, ipi) => {
+export const HandleInfoFiscale = (icms, aliquotaMva, ipi, pis) => {
   const newInfoFicale = {
     descricao: "",
     icms: [
@@ -38,6 +38,14 @@ export const HandleInfoFiscale = (icms, aliquotaMva, ipi) => {
         situacao_tributaria: ipi.situacao_tributaria,
         codigo_enquadramento: ipi.codigo_enquadramento,
         aliquota: ipi.aliquota,
+      },
+    ],
+    pis: [
+      {
+        cenario: pis.cenario,
+        tipo_pessoa: pis.tipo_pessoa,
+        situacao_tributaria: pis.situacao_tributaria,
+        aliquota: pis.aliquota,
       },
     ],
   }

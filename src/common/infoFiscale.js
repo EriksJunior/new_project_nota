@@ -133,7 +133,7 @@ export const beneficioFiscalEstados = [
   { value: "RJ", tipo: "RJ" },
 ]
 
-export const Situacao = [
+export const situacaoTributariaIpi = [
   { value: "00", tipo: "00 - Entrada com recuperação de crédito" },
   { value: "01", tipo: "01 - Entrada tributada com alíquota zero" },
   { value: "02", tipo: "02 - Entrada isenta" },
@@ -148,6 +148,141 @@ export const Situacao = [
   { value: "54", tipo: "54 - Saída imune" },
   { value: "55", tipo: "55 - Saída com suspensão" },
   { value: "99", tipo: "99 - Outras saídas" },
+]
+
+export const situacaoTributariaPis = [
+  {
+    value: "01",
+    tipo: "01 - Operação Tributável - Base de Cálculo = Valor da Operação Alíquota Normal (Cumulativo/Não cumulativo)",
+  },
+  {
+    value: "02",
+    tipo: "02 - Operação Tributável - Base de Cálculo = Valor da Operação (Alíquota diferenciada)",
+  },
+  {
+    value: "03",
+    tipo: "03 - Operação Tributável - Base de Cálculo = Quantidade Vendida X Alíquota por Unidade de Produto",
+  },
+  {
+    value: "04",
+    tipo: "04 - Operação Tributável - Tributação Monofásica - (Alíquota Zero)",
+  },
+  {
+    value: "05",
+    tipo: "05 - Operação Tributável - (Substituição Tributária)",
+  },
+  {
+    value: "06",
+    tipo: "06 - Operação Tributável (Alíquota Zero)",
+  },
+  {
+    value: "07",
+    tipo: "07 - Operação Isenta de Contribuição",
+  },
+  {
+    value: "08",
+    tipo: "08 - Operação sem Incidência da Contribuição",
+  },
+  {
+    value: "09",
+    tipo: "09 - Operação com Suspensão da Contribuição",
+  },
+  {
+    value: "49",
+    tipo: "49 - Outras Operações de Saída",
+  },
+  {
+    value: "50",
+    tipo: "50 - Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Tributada no Mercado Interno",
+  },
+  {
+    value: "51",
+    tipo: "51 - Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Não Tributada no Mercado Interno",
+  },
+  {
+    value: "52",
+    tipo: "52 - Operação com Direito a Crédito - Vinculada Exclusivamente a Receita de Exportação",
+  },
+  {
+    value: "53",
+    tipo: "53 - Operação com Direito a Crédito - Vinculado a Receitas Tributadas e Não-Tributadas no Mercado Interno",
+  },
+  {
+    value: "54",
+    tipo: "54 - Operação com Direito a Crédito - Vinculada a Receitas Tributadas no Mercado Interno e de Exportação",
+  },
+  {
+    value: "55",
+    tipo: "55 - Operação com Direito a Crédito - Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação",
+  },
+  {
+    value: "56",
+    tipo: "56 - Operação com Direito a Crédito - Vinculado a Receitas Tributadas e Não-Tributadas no Mercado Interno, e de Exportação",
+  },
+  {
+    value: "60",
+    tipo: "60 - Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno",
+  },
+  {
+    value: "61",
+    tipo: "61 - Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno",
+  },
+  {
+    value: "62",
+    tipo: "62 - Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação",
+  },
+  {
+    value: "63",
+    tipo: "63 - Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno",
+  },
+  {
+    value: "64",
+    tipo: "64 - Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação",
+  },
+  {
+    value: "65",
+    tipo: "65 - Crédito Presumido - Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação",
+  },
+  {
+    value: "66",
+    tipo: "66 - Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno, e de Exportação",
+  },
+  {
+    value: "67",
+    tipo: "67 - Crédito Presumido - Outras Operações",
+  },
+  {
+    value: "70",
+    tipo: "70 - Operação de Aquisição sem Direito a Crédito",
+  },
+  {
+    value: "71",
+    tipo: "71 - Operação de Aquisição com Isenção",
+  },
+  {
+    value: "72",
+    tipo: "72 - Operação de Aquisição com Suspensão",
+  },
+  {
+    value: "73",
+    tipo: "73 - Operação de Aquisição a Alíquota Zero",
+  },
+  {
+    value: "74",
+    tipo: "74 - Operação de Aquisição sem Incidência da Contribuição",
+  },
+  {
+    value: "75",
+    tipo: "75 - Operação de Aquisição por Substituição Tributária",
+  },
+  {
+    value: "98",
+    tipo: "98 - Outras Operações de Entrada",
+  },
+  {
+    value: "99",
+    tipo: "99 - Outras Operações",
+  },
 ]
 
 export const enableInputsInfoFiscale = {

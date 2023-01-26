@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
-import { cenario, tipoPessoa, Situacao } from "../../../../common/infoFiscale"
+import { cenario, tipoPessoa, situacaoTributariaIpi } from "../../../../common/infoFiscale"
 
 import { Label, Select, Option, Div, Input, PAlert } from "../../../styles"
 
 export function Ipi() {
-  const { ipi, handleChangeIpi, handleSaveOrUpdate } = useContext(InfoFiscaleContext)
+  const { ipi, handleChangeIpi } = useContext(InfoFiscaleContext)
 
   return (
     <Div className="row">
@@ -30,24 +30,22 @@ export function Ipi() {
       <Div className="mb-3 col-sm-5 col-md-5 col-lg-5 col-xl-5">
         <Label className="form-label">Situação tributária</Label>
         <Select className="form-select form-select-sm" name="situacao_tributaria" onChange={handleChangeIpi} value={ipi.situacao_tributaria}>
-        {Situacao.map((st) =>
-            <Option key={st.value} value={st.value}>{st.tipo}</Option>
+          {situacaoTributariaIpi.map((stIpi) =>
+            <Option key={stIpi.value} value={stIpi.value}>{stIpi.tipo}</Option>
           )}
         </Select>
       </Div>
 
       <Div className="mb-3 col-sm-9 col-md-9 col-lg-9 col-xl-9">
         <Label className="form-label">Código de enquadramento</Label>
-        <Input type="text" className="form-control form-control-sm" name="codigo_enquadramento" onChange={handleChangeIpi} value={ipi.codigo_enquadramento}/>
+        <Input type="text" className="form-control form-control-sm" name="codigo_enquadramento" onChange={handleChangeIpi} value={ipi.codigo_enquadramento} />
         <PAlert>Caso não possua um código de enquadramento, mantenha o valor padrão 999.</PAlert>
       </Div>
 
       <Div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
         <Label className="form-label">Alíquota %</Label>
-        <Input type="text" className="form-control form-control-sm" name="aliquota" onChange={handleChangeIpi} value={ipi.aliquota}/>
+        <Input type="text" className="form-control form-control-sm" name="aliquota" onChange={handleChangeIpi} value={ipi.aliquota} />
       </Div>
-
-      <button onClick={handleSaveOrUpdate}>teste</button>
     </Div>
   )
 }
