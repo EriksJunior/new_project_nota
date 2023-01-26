@@ -147,4 +147,12 @@ export const INITIAL_STATE_ISSQN = {
   aliquota: "",
 }
 
+export const INITIAL_STATE_ADDITIONAL_DATA = {
+  id: "",
+  referencia: "",
+  descricao: "",
+  informacoes_fisco: "",
+  informacoes_complementares: "",
+}
+
 

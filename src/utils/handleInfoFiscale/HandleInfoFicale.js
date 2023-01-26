@@ -1,7 +1,9 @@
 
-export const HandleInfoFiscale = (icms, aliquotaMva, ipi, pis, cofins, issqn) => {
+export const HandleInfoFiscale = (icms, aliquotaMva, ipi, pis, cofins, issqn, additionalData) => {
   const newInfoFicale = {
-    descricao: "",
+    id: "",
+    referencia: "",
+    descricao: additionalData.descricao,
     icms: [
       {
         tipo_tributacao: icms.tipo_tributacao,
@@ -67,6 +69,8 @@ export const HandleInfoFiscale = (icms, aliquotaMva, ipi, pis, cofins, issqn) =>
         aliquota: issqn.aliquota,
       },
     ],
+    informacoes_fisco: additionalData.informacoes_fisco,
+    informacoes_complementares: additionalData.informacoes_complementares,
   }
 
   return newInfoFicale
