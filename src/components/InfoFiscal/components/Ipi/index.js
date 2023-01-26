@@ -5,7 +5,7 @@ import { cenario, tipoPessoa, Situacao } from "../../../../common/infoFiscale"
 import { Label, Select, Option, Div, Input, PAlert } from "../../../styles"
 
 export function Ipi() {
-  const { ipi, handleChangeIpi, teste } = useContext(InfoFiscaleContext)
+  const { ipi, handleChangeIpi, handleSaveOrUpdate } = useContext(InfoFiscaleContext)
 
   return (
     <Div className="row">
@@ -47,7 +47,7 @@ export function Ipi() {
         <Input type="text" className="form-control form-control-sm" name="aliquota" onChange={handleChangeIpi} value={ipi.aliquota}/>
       </Div>
 
-      <button onClick={teste}>teste</button>
+      <button onClick={handleSaveOrUpdate}>teste</button>
     </Div>
   )
 }
