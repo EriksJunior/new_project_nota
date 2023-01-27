@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
 
 import { Label, Select, Option, Div, Input } from "../../../styles"
-import { cenario, tipoPessoa, situacaoTributariaPis } from "../../../../common/infoFiscale"
+import { cenario, tipoPessoa, situacaoTributariaPisAndCofins } from "../../../../common/infoFiscale"
 
 export function Pis() {
   const { pis, handleChangePis } = useContext(InfoFiscaleContext)
@@ -29,7 +29,7 @@ export function Pis() {
       <Div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
         <Label className="form-label">Situação Tributária</Label>
         <Select className="form-select form-select-sm" name="situacao_tributaria" value={pis.situacao_tributaria} onChange={handleChangePis}>
-          {situacaoTributariaPis.map((stPis) =>
+          {situacaoTributariaPisAndCofins.map((stPis) =>
             <Option key={stPis.value} value={stPis.value}>{stPis.tipo}</Option>
           )}
         </Select>

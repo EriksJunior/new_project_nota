@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from "react"
-import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_COFINS, INITIAL_STATE_ISSQN } from "../initialStates/impostos"
+import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_COFINS, INITIAL_STATE_ISSQN, INITIAL_STATE_ADDITIONAL_DATA, INITIAL_STATE_OBJECT_ICMS } from "../initialStates/impostos"
 import { HandleInfoFiscale } from "../utils/handleInfoFiscale/HandleInfoFicale"
 
 export function UseInfoFiscale() {
   const [infoFiscale, setInfoFiscale] = useState(INITIAL_STATE_INFO_FISCALE)
+  const [additionalData, setAdditionalData] = useState(INITIAL_STATE_ADDITIONAL_DATA)
   const [icms, setIcms] = useState(INITIAL_STATE_ICMS)
   const [ipi, setIpi] = useState(INITIAL_STATE_IPI)
   const [pis, setPis] = useState(INITIAL_STATE_PIS)
@@ -11,6 +12,7 @@ export function UseInfoFiscale() {
   const [issqn, setIssqn] = useState(INITIAL_STATE_ISSQN)
   const [aliquotaMva, setAliquotaMva] = useState(INITIAL_STATE_ALIQUOTA_MVA)
   const [enable, setEnable] = useState(INITIAL_STATE_ENABLE_INFO_FISCALE)
+  const [objectIcms, setObjectIcms] = useState(INITIAL_STATE_OBJECT_ICMS)
 
   // useEffect(() => {
   //   Object.keys(enable).forEach(item => {
@@ -43,21 +45,25 @@ export function UseInfoFiscale() {
     }
   }
 
-  const handleChangeIpi = useCallback((e) => [
+  const handleChangeAdditionalData = useCallback((e) => {
+    setAdditionalData({ ...additionalData, [e.currentTarget.name]: e.currentTarget.value })
+  }, [additionalData])
+
+  const handleChangeIpi = useCallback((e) => {
     setIpi({ ...ipi, [e.currentTarget.name]: e.currentTarget.value })
-  ], [ipi])
+  }, [ipi])
 
-  const handleChangePis = useCallback((e) => [
+  const handleChangePis = useCallback((e) => {
     setPis({ ...pis, [e.currentTarget.name]: e.currentTarget.value })
-  ], [pis])
+  }, [pis])
 
-  const handleChangeCofins = useCallback((e) => [
+  const handleChangeCofins = useCallback((e) => {
     setCofins({ ...cofins, [e.currentTarget.name]: e.currentTarget.value })
-  ], [cofins])
+  }, [cofins])
 
-  const handleChangeIssqn = useCallback((e) => [
+  const handleChangeIssqn = useCallback((e) => {
     setIssqn({ ...issqn, [e.currentTarget.name]: e.currentTarget.value })
-  ], [issqn])
+  }, [issqn])
 
   const handleChangeIcms = useCallback((e) => {
     e.currentTarget.name === "nao_contribuinte" ? setIcms({ ...icms, nao_contribuinte: e.target.checked }) : setIcms({ ...icms, [e.currentTarget.name]: e.currentTarget.value })
@@ -82,12 +88,14 @@ export function UseInfoFiscale() {
   }
 
   const returnNewInfoFiscale = () => {
-    const result = HandleInfoFiscale(icms, aliquotaMva, ipi, pis)
-    const newInfoFiscale = { ...infoFiscale, icms: result.icms, ipi: result.ipi, pis: result.pis }
+    const result = HandleInfoFiscale(icms, aliquotaMva, ipi, pis, cofins, issqn, additionalData)
+
+    const newInfoFiscale = { ...infoFiscale, descricao: result.descricao, icms: result.icms, ipi: result.ipi, pis: result.pis, cofins: result.cofins, issqn: result.issqn, informacoes_fisco: result.informacoes_fisco, informacoes_complementares: result.informacoes_complementares }
+
     setInfoFiscale(newInfoFiscale)
 
     return newInfoFiscale
   }
 
-  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate }
+  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate, objectIcms }
 }

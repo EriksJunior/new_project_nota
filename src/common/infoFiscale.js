@@ -150,7 +150,7 @@ export const situacaoTributariaIpi = [
   { value: "99", tipo: "99 - Outras saídas" },
 ]
 
-export const situacaoTributariaPis = [
+export const situacaoTributariaPisAndCofins = [
   {
     value: "01",
     tipo: "01 - Operação Tributável - Base de Cálculo = Valor da Operação Alíquota Normal (Cumulativo/Não cumulativo)",
@@ -518,3 +518,21 @@ export const enableInputsInfoFiscale = {
     beneficio_fiscal: false,
   },
 }
+
+export const exigibilidade = [
+  { value: "1", tipo: "1 - Exigível" },
+  { value: "2", tipo: "2 - Não incidência" },
+  { value: "3", tipo: "3 - Isenção" },
+  { value: "4", tipo: "4 - Exportação" },
+  { value: "5", tipo: "5 - Imunidade" },
+  { value: "6", tipo: "6 - Exigibilidade Suspensa por Decisão Judicial" },
+  {
+    value: "7",
+    tipo: "7 - Exigibilidade Suspensa por Processo Administrativo",
+  },
+]
+
+export const incentivo_fiscal = [
+  { value: "1", tipo: "Sim" },
+  { value: "2", tipo: "Não" },
+]
