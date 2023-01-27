@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react"
-import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_COFINS, INITIAL_STATE_ISSQN, INITIAL_STATE_ADDITIONAL_DATA } from "../initialStates/impostos"
+import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_COFINS, INITIAL_STATE_ISSQN, INITIAL_STATE_ADDITIONAL_DATA, INITIAL_STATE_OBJECT_ICMS } from "../initialStates/impostos"
 import { HandleInfoFiscale } from "../utils/handleInfoFiscale/HandleInfoFicale"
 
 export function UseInfoFiscale() {
@@ -12,6 +12,7 @@ export function UseInfoFiscale() {
   const [issqn, setIssqn] = useState(INITIAL_STATE_ISSQN)
   const [aliquotaMva, setAliquotaMva] = useState(INITIAL_STATE_ALIQUOTA_MVA)
   const [enable, setEnable] = useState(INITIAL_STATE_ENABLE_INFO_FISCALE)
+  const [objectIcms, setObjectIcms] = useState(INITIAL_STATE_OBJECT_ICMS)
 
   // useEffect(() => {
   //   Object.keys(enable).forEach(item => {
@@ -96,5 +97,5 @@ export function UseInfoFiscale() {
     return newInfoFiscale
   }
 
-  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate }
+  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate, objectIcms }
 }
