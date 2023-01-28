@@ -105,3 +105,17 @@ export const PAlert = styled.p`
 export const P = styled.p`
   color: white;
 `
+
+
+export const ContentGeneralButtons = styled.div`
+  border-top: solid 1px #0d566f;
+
+`
+
+export const ContentButtonsSaveOrClear = styled.div`
+  display: flex;
+  gap: 20px;
+`
+
+export const Button = styled.button`
+`

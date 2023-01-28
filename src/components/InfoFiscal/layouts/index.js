@@ -1,6 +1,6 @@
 
 import { ContentInfoFiscal, CardInfoFiscal } from "./styles"
-import { Div, AnimateCard } from "../../styles"
+import { Div, AnimateCard, ContentGeneralButtons, ContentButtonsSaveOrClear, Button } from "../../styles"
 
 import { Header } from "../components/Header"
 import { Icms } from "../components/Icms"
@@ -50,8 +50,14 @@ export function LayoutInfoFiscale() {
           <Div hidden={enable.information} className="animate">
             <Information />
           </Div>
-        <button onClick={handleSaveOrUpdate}>Salvar</button>
         </CardInfoFiscal>
+
+        <ContentGeneralButtons className='row mt-2 p-2 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+          <ContentButtonsSaveOrClear className='col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+            <Button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</Button>
+            <Button type="button" className="btn btn-primary btn-sm">Limpar</Button>
+          </ContentButtonsSaveOrClear>
+        </ContentGeneralButtons>
       </AnimateCard >
 
     </ContentInfoFiscal>
