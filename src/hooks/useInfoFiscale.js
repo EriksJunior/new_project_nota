@@ -14,6 +14,7 @@ export function UseInfoFiscale() {
   const [aliquotaMva, setAliquotaMva] = useState(INITIAL_STATE_ALIQUOTA_MVA)
   const [enable, setEnable] = useState(INITIAL_STATE_ENABLE_INFO_FISCALE)
   const [objectIcms, setObjectIcms] = useState(INITIAL_STATE_OBJECT_ICMS)
+  const [enableIssqn, setEnableIssqn] = useState(false)
 
   // useEffect(() => {
   //   Object.keys(enable).forEach(item => {
@@ -99,5 +100,5 @@ export function UseInfoFiscale() {
     return newInfoFiscale
   }
 
-  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate, objectIcms }
+  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate, objectIcms, enableIssqn }
 }

@@ -9,7 +9,7 @@ export const ContentInfoFiscal = styled.div`
   flex-wrap: wrap;
 
 
-  @media screen and (max-width: 1579px) {
+  @media screen and (max-width: 1614px) {
     width: 100%;
     flex-direction: column;
   }
