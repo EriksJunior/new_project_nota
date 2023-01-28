@@ -1,9 +1,8 @@
 import { api } from "../utils/configs/api";
-import { IImpostos , Iicms } from '../interface/IImpostos';
 
 class ImpostosService {
-    async save(dataImpostos: any) {
-        const { data } = await api.post('/impostos', dataImpostos)
+    async save(dataInfoFiscale) {
+        const { data } = await api.post('/impostos', dataInfoFiscale)
         return data
     }
 
