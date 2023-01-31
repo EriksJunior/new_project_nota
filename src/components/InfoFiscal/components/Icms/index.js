@@ -116,7 +116,7 @@ export function Icms() {
         }
       >
         <Label className="form-label">Alíquota MVA: %</Label>
-        <Input name="aliquota" type="text" className="form-control form-control-sm" onChange={handleChangeAliquotaMva} defaultValue={aliquotaMva.aliquota} />
+        <Input name="aliquota" type="text" className="form-control form-control-sm" onChange={handleChangeAliquotaMva} value={aliquotaMva.aliquota} />
       </Div>
 
       <Div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6"
@@ -127,7 +127,7 @@ export function Icms() {
         }
       >
         <Label className="form-label">Alíquota da redução da base de cálculo ICMS %</Label>
-        <Input name="aliquota_reducao" type="text" className="form-control form-control-sm" onChange={handleChangeIcms} defaultValue={icms.aliquota_reducao} />
+        <Input name="aliquota_reducao" type="text" className="form-control form-control-sm" onChange={handleChangeIcms} value={icms.aliquota_reducao} />
       </Div>
 
       <Div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6"
@@ -138,7 +138,7 @@ export function Icms() {
         }
       >
         <Label className="form-label">Alíquota da redução da base de cálculo ICMS-ST %</Label>
-        <Input name="aliquota_reducao_st" type="text" className="form-control form-control-sm" onChange={handleChangeIcms} defaultValue={icms.aliquota_reducao_st} />
+        <Input name="aliquota_reducao_st" type="text" className="form-control form-control-sm" onChange={handleChangeIcms} value={icms.aliquota_reducao_st} />
       </Div>
 
       <Div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6"
@@ -149,7 +149,7 @@ export function Icms() {
         }
       >
         <Label className="form-label">Motivo da Desoneração do ICMS</Label>
-        <Select name="motivo_desoneracao" className="form-select form-select-sm" onChange={handleChangeIcms} defaultValue={icms.motivo_desoneracao}>
+        <Select name="motivo_desoneracao" className="form-select form-select-sm" onChange={handleChangeIcms} value={icms.motivo_desoneracao}>
           {motivoDesoneracao.map((motivo) =>
             <Option key={motivo.value} value={motivo.value}>{motivo.tipo}</Option>
           )}
@@ -164,7 +164,7 @@ export function Icms() {
         }
       >
         <Label className="form-label">Motivo da Desoneração do ICMS-ST</Label>
-        <Select name="motivo_desoneracao_st" className="form-select form-select-sm" onChange={handleChangeIcms} defaultValue={icms.motivo_desoneracao_st}>
+        <Select name="motivo_desoneracao_st" className="form-select form-select-sm" onChange={handleChangeIcms} value={icms.motivo_desoneracao_st}>
           {motivoDesoneracaoSt.map((motivoSt) =>
             <Option key={motivoSt.value} value={motivoSt.value}>{motivoSt.tipo}</Option>
           )}

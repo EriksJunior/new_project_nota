@@ -100,6 +100,7 @@ export function UseInfoFiscale() {
       const result = await InfoFiscaleService.save(dataInfoFiscale)
       setInfoFiscale({ ...infoFiscale, id: result.id })
 
+      await findAllRefs()
       return toast("Salvo com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -114,6 +115,7 @@ export function UseInfoFiscale() {
     try {
       await InfoFiscaleService.update(dataInfoFiscale)
 
+      await findAllRefs()
       return toast("Atualizado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -128,9 +130,11 @@ export function UseInfoFiscale() {
   const findById = async (id) => {
     try {
       const result = await InfoFiscaleService.findById(id)
-      console.log(result)
-      // TODO - falta seta o result ao states de icms, ipi, pis, cofins, issqn, descrição e informações ao fisco
+      assignValuesToTaxes(result)
+
+      await findAllRefs()
     } catch (error) {
+      console.log(error)
       toast.error("Ocorreu um erro ao buscar esse Ref", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -159,15 +163,30 @@ export function UseInfoFiscale() {
     }
   }
 
-
   const returnNewInfoFiscale = () => {
-    const result = HandleInfoFiscale(icms, aliquotaMva, ipi, pis, cofins, issqn, additionalData, enableIssqn)
+    const result = HandleInfoFiscale(icms, aliquotaMva, ipi, pis, cofins, issqn, additionalData)
 
     const newInfoFiscale = { ...infoFiscale, descricao: result.descricao, icms: result.icms, ipi: result.ipi, pis: result.pis, cofins: result.cofins, issqn: result.issqn, informacoes_fisco: result.informacoes_fisco, informacoes_complementares: result.informacoes_complementares }
 
-    setInfoFiscale(newInfoFiscale)
-
+    setInfoFiscale({ ...infoFiscale, ...newInfoFiscale })
     return newInfoFiscale
+  }
+
+  const assignValuesToTaxes = (infoFiscale) => {
+    setInfoFiscale({ ...infoFiscale, id: infoFiscale.id })
+    setAdditionalData({ ...additionalData, referencia: infoFiscale.ref, descricao: infoFiscale.descricao, informacoes_fisco: infoFiscale.refObject.informacoes_fisco || "", informacoes_complementares: infoFiscale.refObject.informacoes_complementares || "" })
+    setIcms({ ...icms, ...infoFiscale.refObject.icms[0] })
+    setIpi({ ...ipi, ...infoFiscale.refObject.ipi[0] })
+    setPis({ ...pis, ...infoFiscale.refObject.pis[0] })
+    setCofins({ ...cofins, ...infoFiscale.refObject.cofins[0] })
+
+    if ("issqn" in infoFiscale.refObject) {
+      setIssqn({ ...issqn, ...infoFiscale.refObject.issqn[0] })
+    } else {
+      setIssqn(INITIAL_STATE_ISSQN)
+    }
+
+    setAliquotaMva({ ...aliquotaMva, ...infoFiscale.refObject.icms[0].aliquota_mva[0] })
   }
 
 
