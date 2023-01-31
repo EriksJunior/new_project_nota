@@ -101,6 +101,7 @@ export function UseInfoFiscale() {
       setInfoFiscale({ ...infoFiscale, id: result.id })
 
       await findAllRefs()
+
       return toast("Salvo com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -116,6 +117,7 @@ export function UseInfoFiscale() {
       await InfoFiscaleService.update(dataInfoFiscale)
 
       await findAllRefs()
+      
       return toast("Atualizado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -134,7 +136,6 @@ export function UseInfoFiscale() {
 
       await findAllRefs()
     } catch (error) {
-      console.log(error)
       toast.error("Ocorreu um erro ao buscar esse Ref", {
         position: toast.POSITION.TOP_RIGHT
       });
