@@ -18,7 +18,7 @@ export function UseCliente() {
         const result = await CustomerService.search(search.text, search.page)
         setReturnedClient(result.data)
       } catch (error) {
-        return toast.error(error?.response?.data?.erros, {
+        toast.error(error?.response?.data?.erros, {
           position: toast.POSITION.TOP_RIGHT
         });
       }

@@ -6,10 +6,14 @@ class InfoFiscaleService {
         return data
     }
 
-    async findAll(){
+    async update(dataInfoFiscale) {
+        await api.put(`/impostos/${dataInfoFiscale.id}`, dataInfoFiscale)
+    }
+
+    async findAll() {
         const { data } = await api.get('/impostos')
         return data
     }
-  }
+}
 
-  export default new InfoFiscaleService()
+export default new InfoFiscaleService()

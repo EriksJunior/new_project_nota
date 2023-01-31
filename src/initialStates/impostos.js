@@ -72,7 +72,7 @@ export const INITIAL_STATE_INFO_FISCALE = {
 }
 
 export const INITIAL_STATE_ENABLE_INFO_FISCALE = {
-  description: true,
+  description: false,
   icms: true,
   ipi: true,
   pis: true,

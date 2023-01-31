@@ -2,16 +2,16 @@ import React, { useCallback, useEffect, useState } from "react";
 
 import ImpostosService from '../../services/ImpostosService';
 import { Iicms, IPis, IIpi, ICofins, IIssqn, IImpostos } from "../../interface/IImpostos";
-import { INITIAL_STATE_IMPOSTOS , INITIAL_STATE_ICMS , INITIAL_STATE_IPI , INITIAL_STATE_PIS , INITIAL_STATE_ISSQN , INITIAL_STATE_COFINS } from "../initialStates/impostos";
+import { INITIAL_STATE_IMPOSTOS, INITIAL_STATE_ICMS, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_ISSQN, INITIAL_STATE_COFINS } from "../initialStates/impostos";
 import { toast } from "react-toastify";
 
 export function UseImpostos() {
-  const [impostos, setImpostos] = useState<IImpostos>(INITIAL_STATE_IMPOSTOS);
-  const [icms, setIcms] = useState<Iicms>(INITIAL_STATE_ICMS);
-  const [ipi, setIpi] = useState<IIpi>(INITIAL_STATE_IPI);
-  const [pis, setPis] = useState<IPis>(INITIAL_STATE_PIS);
-  const [cofins, setCofins] = useState<ICofins>(INITIAL_STATE_COFINS);
-  const [issqn, setIssqn] = useState<IIssqn>(INITIAL_STATE_ISSQN);
+  const [impostos, setImpostos] = useState < IImpostos > (INITIAL_STATE_IMPOSTOS);
+  const [icms, setIcms] = useState < Iicms > (INITIAL_STATE_ICMS);
+  const [ipi, setIpi] = useState < IIpi > (INITIAL_STATE_IPI);
+  const [pis, setPis] = useState < IPis > (INITIAL_STATE_PIS);
+  const [cofins, setCofins] = useState < ICofins > (INITIAL_STATE_COFINS);
+  const [issqn, setIssqn] = useState < IIssqn > (INITIAL_STATE_ISSQN);
 
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement & HTMLSelectElement>) => {
@@ -46,9 +46,9 @@ export function UseImpostos() {
       console.log(result)
       findAll()
       toast("Salvo com sucesso!",
-      { position: toast.POSITION.TOP_RIGHT }
+        { position: toast.POSITION.TOP_RIGHT }
       );
-    } catch (error: any) {
+    } catch (error) {
       toast.error(error,
         { position: toast.POSITION.TOP_RIGHT }
       )
@@ -86,5 +86,5 @@ export function UseImpostos() {
     setImpostos(INITIAL_STATE_IMPOSTOS)
   }
 
-  return { impostos, setImpostos, icms , setIcms , ipi , setIpi , pis , setPis , cofins , setCofins , issqn , setIssqn , handleChange, handleChangeIcms, handleChangePis, handleChangeIpi, handleChangeCofins, handleChangeIssqn, handleSaveOrUpdate, findAll , clearInputs }
+  return { impostos, setImpostos, icms, setIcms, ipi, setIpi, pis, setPis, cofins, setCofins, issqn, setIssqn, handleChange, handleChangeIcms, handleChangePis, handleChangeIpi, handleChangeCofins, handleChangeIssqn, handleSaveOrUpdate, findAll, clearInputs }
 }

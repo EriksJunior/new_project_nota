@@ -1,7 +1,13 @@
 import { useState, useEffect, useCallback } from "react"
+
 import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_COFINS, INITIAL_STATE_ISSQN, INITIAL_STATE_ADDITIONAL_DATA, INITIAL_STATE_OBJECT_ICMS } from "../initialStates/impostos"
+
 import { HandleInfoFiscale } from "../utils/handleInfoFiscale/HandleInfoFicale"
 import InfoFiscaleService from "../services/InfoFiscaleService"
+
+import { toast } from "react-toastify";
+
+
 
 export function UseInfoFiscale() {
   const [infoFiscale, setInfoFiscale] = useState(INITIAL_STATE_INFO_FISCALE)
@@ -85,12 +91,33 @@ export function UseInfoFiscale() {
   }
 
   const save = async (dataInfoFiscale) => {
-    const id = await InfoFiscaleService.save(dataInfoFiscale)
-    console.log(id)
+    try {
+      const result = await InfoFiscaleService.save(dataInfoFiscale)
+      setInfoFiscale({ ...infoFiscale, id: result.id })
+
+      return toast("Salvo com sucesso! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } catch (error) {
+      toast.error(error.response.data.erros, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   }
 
   const update = async (dataInfoFiscale) => {
-    console.log("UPDATE", dataInfoFiscale)
+    try {
+      await InfoFiscaleService.update(dataInfoFiscale)
+
+      return toast("Atualizado com sucesso! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } catch (error) {
+      toast.error(error.response.data.erros, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+
   }
 
   const returnNewInfoFiscale = () => {
