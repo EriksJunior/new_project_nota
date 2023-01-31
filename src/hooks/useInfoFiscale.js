@@ -126,13 +126,26 @@ export function UseInfoFiscale() {
   }
 
   const findById = async (id) => {
-    const result = await InfoFiscaleService.findById(id)
-    console.log(result)
+    try {
+      const result = await InfoFiscaleService.findById(id)
+      console.log(result)
+      // TODO - falta seta o result ao states de icms, ipi, pis, cofins, issqn, descrição e informações ao fisco
+    } catch (error) {
+      toast.error("Ocorreu um erro ao buscar esse Ref", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   }
 
   const deleteInfoFiscale = async (id, classeImposto) => {
-    await InfoFiscaleService.delete(id, classeImposto)
-    await findAllRefs()
+    try {
+      await InfoFiscaleService.delete(id, classeImposto)
+      await findAllRefs()
+    } catch (error) {
+      toast.error("Ocorreu um erro ao deletar seus REF's", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   }
 
   const findAllRefs = async () => {
