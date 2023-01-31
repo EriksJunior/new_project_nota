@@ -125,10 +125,27 @@ export function UseInfoFiscale() {
 
   }
 
-  const findAllRefs = async () => {
-    const result = await InfoFiscaleService.findAllRefs()
-    setRefs(result.data)
+  const findById = async (id) => {
+    const result = await InfoFiscaleService.findById(id)
+    console.log(result)
   }
+
+  const deleteInfoFiscale = async (id, classeImposto) => {
+    await InfoFiscaleService.delete(id, classeImposto)
+    await findAllRefs()
+  }
+
+  const findAllRefs = async () => {
+    try {
+      const result = await InfoFiscaleService.findAllRefs()
+      setRefs(result.data)
+    } catch (error) {
+      toast.error("Ocorreu um erro ao listar seus REF's", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
+
 
   const returnNewInfoFiscale = () => {
     const result = HandleInfoFiscale(icms, aliquotaMva, ipi, pis, cofins, issqn, additionalData, enableIssqn)
@@ -141,5 +158,5 @@ export function UseInfoFiscale() {
   }
 
 
-  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate, objectIcms, enableIssqn, setEnableIssqn, refs }
+  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate, objectIcms, enableIssqn, setEnableIssqn, refs, findById, deleteInfoFiscale }
 }

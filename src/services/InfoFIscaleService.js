@@ -10,6 +10,16 @@ class InfoFiscaleService {
         await api.put(`/impostos/${dataInfoFiscale.id}`, dataInfoFiscale)
     }
 
+    async findById(id) {
+        const { data } = await api.get(`/impostos/${id}`)
+        return data
+    }
+
+    async delete(id, classeImposto) {
+        const { data } = await api.delete(`/impostos/${id}?classImposto=${classeImposto}`)
+        return data
+    }
+
     async findAllRefs() {
         const { data } = await api.get('/impostos')
         return data
