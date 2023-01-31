@@ -4,7 +4,7 @@ import { AreaCustomer } from "./AreaCustomer"
 import { CreateCustomer } from "./CreateCustomer"
 import { AnimateCard } from "../../styles"
 
-export function LayoutCustomer() {
+export function Customer() {
   const { openLayouts } = useContext(ClientContext)
 
   return (

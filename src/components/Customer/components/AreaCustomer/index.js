@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { ClientContext } from "../../../../context/Client/client"
 
-import { SearchCliente } from "../../components/Search"
-import { Table } from "../../components/Table"
-import { CustomerArea } from "../../components/Area"
+import { SearchCliente } from "../../components/UI/Search"
+import { Table } from "../../components/UI/Table"
+import { CustomerArea } from "../../components/UI/Area"
 
 export function AreaCustomer() {
   const { openAreaCustomer } = useContext(ClientContext)

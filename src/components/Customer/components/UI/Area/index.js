@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { ClientContext } from "../../../../context/Client/client"
+import { ClientContext } from "../../../../../context/Client/client"
 
 import {
   Card, HeaderCustomer, HeaderContent,

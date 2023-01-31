@@ -1,13 +1,13 @@
 import { ContentCustomer, ContentMetrics } from "./styles"
-import { Customer } from "../../"
-import { Metrics } from "../../components/Metrics"
+import { FormCustomer } from "../../"
+import { Metrics } from "../../components/UI/Metrics"
 import { ContentDesigner } from "../../../Tab"
 
 export function CreateCustomer() {
   return (
     <ContentCustomer className="m-3 animate">
       <ContentDesigner title={"Cadastre novos clientes"} fistButtonName={"Cadastro"}>
-        <Customer />
+        <FormCustomer />
       </ContentDesigner>
 
       <ContentMetrics>

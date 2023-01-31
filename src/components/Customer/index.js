@@ -3,7 +3,7 @@ import { ClientContext } from "../../context/Client/client"
 
 import { Masks } from "../../utils/masks/Masks"
 
-export function Customer() {
+export function FormCustomer() {
   const { client, handleChange, clearAllInputs, handleSaveOrUpdate, switchBetweenComponents } = useContext(ClientContext)
   const { maskCep, maskCpfCnpj } = Masks()
 

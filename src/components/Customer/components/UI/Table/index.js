@@ -1,7 +1,7 @@
 import { useContext } from "react"
-import { ClientContext } from "../../../../context/Client/client"
+import { ClientContext } from "../../../../../context/Client/client"
 import { ContentTable } from "./style"
-import { AnimateCard } from "../../../styles"
+import { AnimateCard } from "../../../../styles"
 
 export function Table({children}) {
   const { returnedClient, handleOpenAreaCustomer } = useContext(ClientContext)

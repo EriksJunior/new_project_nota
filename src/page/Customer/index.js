@@ -1,12 +1,12 @@
 import { ClientProvider } from "../../context/Client/client"
-import { LayoutCustomer } from "../../components/Customer/layouts"
+import { Customer } from "../../components/Customer/components"
 
-export function Customer() {
+export function PageCustomer() {
 
   return (
     <div className="m-3">
       <ClientProvider>
-        <LayoutCustomer />
+        <Customer />
       </ClientProvider>
     </div>
   )
