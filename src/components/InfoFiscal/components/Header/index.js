@@ -5,7 +5,7 @@ import { Div, Button, InputCheckbox } from "../../../styles"
 import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
 
 export function Header() {
-  const { handleComponentDisplay, enableIssqn } = useContext(InfoFiscaleContext)
+  const { handleComponentDisplay, enableIssqn, setEnableIssqn } = useContext(InfoFiscaleContext)
 
   return (
     <ContentHeader>
@@ -36,7 +36,7 @@ export function Header() {
           </Div>
 
           <Div>
-            <InputCheckbox name="nao_contribuinte" className="form-check-input" type="checkbox" defaultChecked={enableIssqn} id="flexCheckIndeterminate" />
+            <InputCheckbox className="form-check-input" type="checkbox" checked={enableIssqn}  onChange={() => setEnableIssqn(!enableIssqn)}/>
           </Div>
         </Div>
       </Button>

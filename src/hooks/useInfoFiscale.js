@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_COFINS, INITIAL_STATE_ISSQN, INITIAL_STATE_ADDITIONAL_DATA, INITIAL_STATE_OBJECT_ICMS } from "../initialStates/impostos"
 import { HandleInfoFiscale } from "../utils/handleInfoFiscale/HandleInfoFicale"
-import InfoFIscaleService from "../services/InfoFIscaleService"
+import InfoFiscaleService from "../services/InfoFiscaleService"
 
 export function UseInfoFiscale() {
   const [infoFiscale, setInfoFiscale] = useState(INITIAL_STATE_INFO_FISCALE)
@@ -42,6 +42,7 @@ export function UseInfoFiscale() {
       setEnable({ ...enable, description: true, cofins: true, createdRefs: true, ipi: true, icms: true, information: !enable[e.currentTarget.name], issqn: true, pis: true })
     } else if (e.currentTarget.name === "issqn") {
       setEnable({ ...enable, description: true, cofins: true, createdRefs: true, ipi: true, icms: true, information: true, issqn: !enable[e.currentTarget.name], pis: true })
+      setEnableIssqn(!enableIssqn)
     } else if (e.currentTarget.name === "pis") {
       setEnable({ ...enable, description: true, cofins: true, createdRefs: true, ipi: true, icms: true, information: true, issqn: true, pis: !enable[e.currentTarget.name] })
     }
@@ -77,12 +78,14 @@ export function UseInfoFiscale() {
 
   const handleSaveOrUpdate = () => {
     const result = returnNewInfoFiscale()
+
+    if (!enableIssqn) delete result.issqn
+
     infoFiscale.id === "" ? save(result) : update(result)
   }
 
   const save = async (dataInfoFiscale) => {
-    delete dataInfoFiscale.issqn
-    const id = await InfoFIscaleService.save(dataInfoFiscale)
+    const id = await InfoFiscaleService.save(dataInfoFiscale)
     console.log(id)
   }
 
@@ -91,7 +94,7 @@ export function UseInfoFiscale() {
   }
 
   const returnNewInfoFiscale = () => {
-    const result = HandleInfoFiscale(icms, aliquotaMva, ipi, pis, cofins, issqn, additionalData)
+    const result = HandleInfoFiscale(icms, aliquotaMva, ipi, pis, cofins, issqn, additionalData, enableIssqn)
 
     const newInfoFiscale = { ...infoFiscale, descricao: result.descricao, icms: result.icms, ipi: result.ipi, pis: result.pis, cofins: result.cofins, issqn: result.issqn, informacoes_fisco: result.informacoes_fisco, informacoes_complementares: result.informacoes_complementares }
 
@@ -100,5 +103,6 @@ export function UseInfoFiscale() {
     return newInfoFiscale
   }
 
-  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate, objectIcms, enableIssqn }
+
+  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate, objectIcms, enableIssqn, setEnableIssqn }
 }

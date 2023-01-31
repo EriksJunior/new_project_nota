@@ -1,5 +1,5 @@
 
-export const HandleInfoFiscale = (icms, aliquotaMva, ipi, pis, cofins, issqn, additionalData) => {
+export const HandleInfoFiscale = (icms, aliquotaMva, ipi, pis, cofins, issqn, additionalData, enableIssqn) => {
   const newInfoFicale = {
     id: "",
     referencia: "",

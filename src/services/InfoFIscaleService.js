@@ -1,6 +1,6 @@
 import { api } from "../utils/configs/api";
 
-class ImpostosService {
+class InfoFiscaleService {
     async save(dataInfoFiscale) {
         const { data } = await api.post('/impostos', dataInfoFiscale)
         return data
@@ -12,4 +12,4 @@ class ImpostosService {
     }
   }
 
-  export default new ImpostosService()
+  export default new InfoFiscaleService()

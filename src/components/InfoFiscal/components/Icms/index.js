@@ -39,8 +39,8 @@ export function Icms() {
       <DivContentCheckBox className="mb-3 col-sm-8 col-md-9 col-lg-9 col-xl-9 form-check" 
         hidden={icms.tipo_pessoa !== 'juridica'}
       >
-        <Input name="nao_contribuinte" className="form-check-input" type="checkbox" onChange={handleChangeIcms} value={icms.nao_contribuinte} id="flexCheckIndeterminate" />
-        <LabelForCheckBox className="form-check-label" htmlFor="flexCheckIndeterminate">
+        <Input name="nao_contribuinte" className="form-check-input" type="checkbox" onChange={handleChangeIcms} value={icms.nao_contribuinte} id="icmsTipoPessoa" />
+        <LabelForCheckBox className="form-check-label" htmlFor="icmsTipoPessoa">
           Marque essa opção caso a configuração deste cenário seja específico para Pessoa Jurídica não contribuinte do ICMS ou Consumidor final.
         </LabelForCheckBox>
       </DivContentCheckBox>
