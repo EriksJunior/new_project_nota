@@ -16,7 +16,7 @@ import { ContentInfoFiscal, CardInfoFiscal } from "./styles"
 import { Div, AnimateCard, ContentGeneralButtons, ContentButtonsSaveOrClear, Button } from "../../styles"
 
 export function LayoutInfoFiscale() {
-  const { enable, handleSaveOrUpdate } = useContext(InfoFiscaleContext)
+  const { enable, handleSaveOrUpdate, clear } = useContext(InfoFiscaleContext)
 
   return (
     <ContentInfoFiscal className="mt-3">
@@ -60,7 +60,7 @@ export function LayoutInfoFiscale() {
         <ContentGeneralButtons className='row mt-2 p-2 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
           <ContentButtonsSaveOrClear className='col-sm-12 col-md-12 col-lg-12 col-xl-12'>
             <Button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdate}>Salvar</Button>
-            <Button type="button" className="btn btn-primary btn-sm">Limpar</Button>
+            <Button type="button" className="btn btn-primary btn-sm" onClick={clear}>Limpar</Button>
           </ContentButtonsSaveOrClear>
         </ContentGeneralButtons>
       </AnimateCard >

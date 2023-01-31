@@ -117,7 +117,7 @@ export function UseInfoFiscale() {
       await InfoFiscaleService.update(dataInfoFiscale)
 
       await findAllRefs()
-      
+
       return toast("Atualizado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -190,6 +190,17 @@ export function UseInfoFiscale() {
     setAliquotaMva({ ...aliquotaMva, ...infoFiscale.refObject.icms[0].aliquota_mva[0] })
   }
 
+  const clear = () => {
+    setInfoFiscale(INITIAL_STATE_INFO_FISCALE)
+    setAdditionalData(INITIAL_STATE_ADDITIONAL_DATA)
+    setIcms(INITIAL_STATE_ICMS)
+    setIpi(INITIAL_STATE_IPI)
+    setPis(INITIAL_STATE_PIS)
+    setCofins(INITIAL_STATE_COFINS)
+    setIssqn(INITIAL_STATE_ISSQN)
+    setAliquotaMva(INITIAL_STATE_ALIQUOTA_MVA)
+  }
 
-  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate, objectIcms, enableIssqn, setEnableIssqn, refs, findById, deleteInfoFiscale }
+
+  return { handleComponentDisplay, enable, setEnable, infoFiscale, setInfoFiscale, additionalData, handleChangeAdditionalData, icms, setIcms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, ipi, handleChangeIpi, pis, handleChangePis, cofins, handleChangeCofins, issqn, handleChangeIssqn, handleSaveOrUpdate, clear, objectIcms, enableIssqn, setEnableIssqn, refs, findById, deleteInfoFiscale }
 }
