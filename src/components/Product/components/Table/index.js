@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import { ProductContext } from '../../../../context/Product/product';
+import { useContext } from "react";
+import { ProductContext } from "../../../../context/Product/product";
 
-import { ContentTable } from './styles';
+import { ContentTable } from "./styles";
 import { AnimateCard } from "../../../styles"
 
-export function Table({children}) {
+export function Table({ children }) {
   const { returnedProduct, handleOpenAreaProduct } = useContext(ProductContext)
-  
+
 
   return (
     <div>
@@ -22,7 +22,7 @@ export function Table({children}) {
           </thead>
           <tbody>
             {returnedProduct.map((e) =>
-              <tr key={e.id} onClick={() => handleOpenAreaProduct(e.id)}>
+              <tr className="underlineProduct" key={e.id} onClick={() => handleOpenAreaProduct(e.id)}>
                 <td className="text-center">{e.nome}</td>
                 <td className="text-center">{e.valor.toLocaleString("pr-BR", { minimumFractionDigits: 2 })}</td>
                 <td className="text-center">{e.estoque}</td>
@@ -35,7 +35,7 @@ export function Table({children}) {
 
       <AnimateCard>
         {children}
-      </AnimateCard>     
+      </AnimateCard>
     </div>
   )
 }

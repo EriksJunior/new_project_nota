@@ -10,7 +10,7 @@ class InfoFiscaleService {
         await api.put(`/impostos/${dataInfoFiscale.id}`, dataInfoFiscale)
     }
 
-    async findAll() {
+    async findAllRefs() {
         const { data } = await api.get('/impostos')
         return data
     }

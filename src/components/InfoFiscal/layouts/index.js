@@ -1,18 +1,19 @@
-
-import { ContentInfoFiscal, CardInfoFiscal } from "./styles"
-import { Div, AnimateCard, ContentGeneralButtons, ContentButtonsSaveOrClear, Button } from "../../styles"
-
-import { Header } from "../components/Header"
-import { Icms } from "../components/Icms"
-import { Description } from "../components/Description"
-import { Ipi } from "../components/Ipi"
-import { Pis } from "../components/Pis"
-
 import { useContext } from "react"
 import { InfoFiscaleContext } from "../../../context/InfoFiscale/infoFiscale"
+
+import { Header } from "../components/Header"
+
+import { Description } from "../components/Description"
+import { Icms } from "../components/Icms"
+import { Ipi } from "../components/Ipi"
+import { Pis } from "../components/Pis"
 import { Cofins } from "../components/Cofins"
 import { Issqn } from "../components/Issqn"
 import { Information } from "../components/Information"
+import { CreatedRefs } from "../components/CreatedRefs"
+
+import { ContentInfoFiscal, CardInfoFiscal } from "./styles"
+import { Div, AnimateCard, ContentGeneralButtons, ContentButtonsSaveOrClear, Button } from "../../styles"
 
 export function LayoutInfoFiscale() {
   const { enable, handleSaveOrUpdate } = useContext(InfoFiscaleContext)
@@ -49,6 +50,10 @@ export function LayoutInfoFiscale() {
 
           <Div hidden={enable.information} className="animate">
             <Information />
+          </Div>
+
+          <Div hidden={enable.createdRefs} className="animate">
+            <CreatedRefs />
           </Div>
         </CardInfoFiscal>
 

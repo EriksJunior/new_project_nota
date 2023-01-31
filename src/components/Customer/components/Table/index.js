@@ -20,7 +20,7 @@ export function Table({children}) {
           </thead>
           <tbody>
             {returnedClient.map((e) =>
-              <tr key={e.id} className="name testee" onClick={() => handleOpenAreaCustomer(e.id)}>
+              <tr key={e.id} className="underlineCustomer" onClick={() => handleOpenAreaCustomer(e.id)}>
                 <td className="text-center ">{e.nome}</td>
                 <td className="text-center ">{e.cpfCnpj}</td>
                 <td className="text-center ">{e.telefone}</td>

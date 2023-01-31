@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const ContentTable = styled.div`
   box-shadow: black 0px 1px 3px 1px!important ;
 
@@ -13,16 +14,7 @@ export const ContentTable = styled.div`
 
   td{
     color: rgb(2, 118, 156)!important;
-    cursor: pointer;
     transition: all 0.2s;
   }
 
-  .underlineCustomer:hover > td{
-    text-decoration: underline;
-    color: deepskyblue!important;
-  }
-`
-
-
-export const Container = styled.div`
 `

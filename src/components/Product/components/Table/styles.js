@@ -17,7 +17,7 @@ export const ContentTable = styled.div`
     transition: all 0.2s;
   }
 
-  .name:hover > td{
+  .underlineProduct:hover > td{
     text-decoration: underline;
     color: deepskyblue!important;
   }
