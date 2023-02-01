@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { ProductContext } from "../../../../context/Product/product"
+import { ProductContext } from "../../context"
 import { Table } from "../../components/UI/Table"
 import { SearchProduct } from "../../components/UI/Search"
 import { ProductArea } from "../../components/UI/Area"

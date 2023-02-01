@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { INITIAL_STATE_CLIENTE } from "../components/Customer/initalStates";
-import { INITIAL_STATE_PRODUCT } from "../initialStates/product";
+import { INITIAL_STATE_PRODUCT } from "../components/Product/initalStates";
 
 import CustomerService from "../services/CustomerService";
 import ProductService from "../services/ProductService";

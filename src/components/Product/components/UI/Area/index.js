@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { ProductContext } from "../../../../../context/Product/product"
+import { ProductContext } from "../../../context"
 
 import { DetailedDataCard } from "../../../../DetailedDataCard"
 import { InfoFiscale } from "../../../../InfoFiscal"

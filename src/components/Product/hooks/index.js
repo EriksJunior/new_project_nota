@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 
-import { INITIAL_STATE_PRODUCT, INITIAL_STATE_SEARCH } from '../initialStates/product';
-import ProductServices from '../services/ProductService';
+import { INITIAL_STATE_PRODUCT, INITIAL_STATE_SEARCH } from '../initalStates';
+import ProductServices from '../../../services/ProductService';
 
 import { toast } from "react-toastify";
 import { useEffect } from 'react';
