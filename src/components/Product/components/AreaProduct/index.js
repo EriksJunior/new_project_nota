@@ -1,8 +1,8 @@
 import { useContext } from "react"
 import { ProductContext } from "../../../../context/Product/product"
-import { Table } from "../../components/Table"
-import { SearchProduct } from "../../components/Search"
-import { ProductArea } from "../../components/Area"
+import { Table } from "../../components/UI/Table"
+import { SearchProduct } from "../../components/UI/Search"
+import { ProductArea } from "../../components/UI/Area"
 
 export function AreaProductLayout() {
   const { openAreaProduct } = useContext(ProductContext)

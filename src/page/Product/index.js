@@ -1,11 +1,11 @@
 import { ProductProvider } from "../../context/Product/product"
-import { LayoutProducts } from "../../components/Product/layouts"
+import { Products } from "../../components/Product/components"
 
 export function PageProduct() {
   return (
     <div className="m-3">
       <ProductProvider>
-        <LayoutProducts />
+        <Products />
       </ProductProvider>
     </div>
   )

@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ProductContext } from "../../../../context/Product/product";
+import { ProductContext } from "../../../../../context/Product/product";
 
 import { ContentTable } from "./styles";
-import { AnimateCard } from "../../../styles"
+import { AnimateCard } from "../../../../styles"
 
 export function Table({ children }) {
   const { returnedProduct, handleOpenAreaProduct } = useContext(ProductContext)

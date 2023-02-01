@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { CardHeaderTextCenter } from "../../../styles"
-import { Card, ContentTopSellingProducts, ContentFavoritesCustomer, RankProducts, P, Position } from "./../../styles"
+import { CardHeaderTextCenter } from "../../../../styles"
+import { Card, ContentTopSellingProducts, ContentFavoritesCustomer, RankProducts, P, Position } from "../../../styles"
 
 export function MetricsProd() {
   const [nome, setNome] = useState({ nome: "eriks junikjojfdsgh odfhogu fod", data: "23/10/2900", position: "1°" })

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ProductContext } from '../../context/Product/product';
 
-export function Product() {
+export function FormProduct() {
   const { produtos, clearInputs, handleChange, handleSaveOrUpdate, handleChangeMonetaryValues, switchBetweenComponents } = useContext(ProductContext)
 
   return (

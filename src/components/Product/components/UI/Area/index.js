@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { ProductContext } from "../../../../context/Product/product"
+import { ProductContext } from "../../../../../context/Product/product"
 
-import { DetailedDataCard } from "../../../DetailedDataCard"
-import { InfoFiscale } from "../../../InfoFiscal"
+import { DetailedDataCard } from "../../../../DetailedDataCard"
+import { InfoFiscale } from "../../../../InfoFiscal"
 
 import { ContentAreaProduct } from "./styles"
 

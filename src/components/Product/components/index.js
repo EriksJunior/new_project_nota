@@ -4,7 +4,7 @@ import { AreaProductLayout } from "./AreaProduct"
 import { CreateProduct } from "./CreateProduct"
 import { AnimateCard } from "../../styles"
 
-export function LayoutProducts() {
+export function Products() {
   const { openLayouts } = useContext(ProductContext)
   return (
     <div>
