@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
+import { InfoFiscaleContext } from "../../../../../context/InfoFiscale/infoFiscale"
 
-import { Label, Select, Option, Div, Input } from "../../../styles"
-import { cenario, tipoPessoa, situacaoTributariaPisAndCofins } from "../../../../common/infoFiscale"
+import { Label, Select, Option, Div, Input } from "../../../../styles"
+import { cenario, tipoPessoa, situacaoTributariaPisAndCofins } from "../../../../../common/infoFiscale"
 
 export function Pis() {
   const { pis, handleChangePis } = useContext(InfoFiscaleContext)

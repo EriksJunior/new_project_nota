@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
-import { cenario, tipoPessoa, situacaoTributariaPisAndCofins } from "../../../../common/infoFiscale"
+import { InfoFiscaleContext } from "../../../../../context/InfoFiscale/infoFiscale"
+import { cenario, tipoPessoa, situacaoTributariaPisAndCofins } from "../../../../../common/infoFiscale"
 
-import { Label, Select, Option, Div, Input } from "../../../styles"
+import { Label, Select, Option, Div, Input } from "../../../../styles"
 
 export function Cofins() {
   const { cofins, handleChangeCofins } = useContext(InfoFiscaleContext)

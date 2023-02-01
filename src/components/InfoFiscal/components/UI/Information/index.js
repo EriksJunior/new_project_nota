@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
+import { InfoFiscaleContext } from "../../../../../context/InfoFiscale/infoFiscale"
 
-import { Div, Label } from "../../../styles"
-import { TextArea } from "../../styles"
+import { Div, Label } from "../../../../styles"
+import { TextArea } from "../../../styles"
 
 export function Information() {
   const { additionalData, handleChangeAdditionalData } = useContext(InfoFiscaleContext)

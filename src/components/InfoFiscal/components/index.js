@@ -1,21 +1,21 @@
 import { useContext } from "react"
 import { InfoFiscaleContext } from "../../../context/InfoFiscale/infoFiscale"
 
-import { Header } from "../components/Header"
+import { Header } from "../components/UI/Header"
 
-import { Description } from "../components/Description"
-import { Icms } from "../components/Icms"
-import { Ipi } from "../components/Ipi"
-import { Pis } from "../components/Pis"
-import { Cofins } from "../components/Cofins"
-import { Issqn } from "../components/Issqn"
-import { Information } from "../components/Information"
-import { CreatedRefs } from "../components/CreatedRefs"
+import { Description } from "../components/UI/Description"
+import { Icms } from "../components/UI/Icms"
+import { Ipi } from "../components/UI/Ipi"
+import { Pis } from "../components/UI/Pis"
+import { Cofins } from "../components/UI/Cofins"
+import { Issqn } from "../components/UI/Issqn"
+import { Information } from "../components/UI/Information"
+import { CreatedRefs } from "../components/UI/CreatedRefs"
 
 import { ContentInfoFiscal, CardInfoFiscal } from "./styles"
 import { Div, AnimateCard, ContentGeneralButtons, ContentButtonsSaveOrClear, Button } from "../../styles"
 
-export function LayoutInfoFiscale() {
+export function Taxes() {
   const { enable, handleSaveOrUpdate, clear } = useContext(InfoFiscaleContext)
 
   return (

@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
+import { InfoFiscaleContext } from "../../../../../context/InfoFiscale/infoFiscale"
 
-import { Div, Label, Select, Option, DivContentCheckBox, LabelForCheckBox, Input } from "../../../styles"
-import { tipoTributacao, cenario, tipoPessoa, situacaoTributaria, estados, motivoDesoneracao, motivoDesoneracaoSt } from "../../../../common/infoFiscale"
+import { Div, Label, Select, Option, DivContentCheckBox, LabelForCheckBox, Input } from "../../../../styles"
+import { tipoTributacao, cenario, tipoPessoa, situacaoTributaria, estados, motivoDesoneracao, motivoDesoneracaoSt } from "../../../../../common/infoFiscale"
 
 export function Icms() {
   const { icms, handleChangeIcms, aliquotaMva, handleChangeAliquotaMva, objectIcms } = useContext(InfoFiscaleContext)
@@ -36,7 +36,7 @@ export function Icms() {
         </Select>
       </Div>
 
-      <DivContentCheckBox className="mb-3 col-sm-8 col-md-9 col-lg-9 col-xl-9 form-check" 
+      <DivContentCheckBox className="mb-3 col-sm-8 col-md-9 col-lg-9 col-xl-9 form-check"
         hidden={icms.tipo_pessoa !== 'juridica'}
       >
         <Input name="nao_contribuinte" className="form-check-input" type="checkbox" onChange={handleChangeIcms} value={icms.nao_contribuinte} id="icmsTipoPessoa" />

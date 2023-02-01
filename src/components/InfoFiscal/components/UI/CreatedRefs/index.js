@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
+import { InfoFiscaleContext } from "../../../../../context/InfoFiscale/infoFiscale"
 
 import { ContentTable } from "./styles"
-import { Div } from "../../../styles"
+import { Div } from "../../../../styles"
 
 export function CreatedRefs() {
   const { refs, findById, deleteInfoFiscale } = useContext(InfoFiscaleContext)

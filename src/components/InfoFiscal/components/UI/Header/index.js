@@ -1,8 +1,8 @@
 import { useContext } from "react"
 import { ContentHeader } from "./styles"
-import { Div, Button, InputCheckbox } from "../../../styles"
+import { Div, Button, InputCheckbox } from "../../../../styles"
 
-import { InfoFiscaleContext } from "../../../../context/InfoFiscale/infoFiscale"
+import { InfoFiscaleContext } from "../../../../../context/InfoFiscale/infoFiscale"
 
 export function Header() {
   const { handleComponentDisplay, enableIssqn, setEnableIssqn } = useContext(InfoFiscaleContext)
