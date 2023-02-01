@@ -88,6 +88,7 @@ export function UseProducts() {
   const deleteProduct = async (id) => {
     try {
       await ProductServices.delete(id)
+
       await searchProduct()
       toast("Produto deletado com sucesso!", {
         position: toast.POSITION.TOP_RIGHT

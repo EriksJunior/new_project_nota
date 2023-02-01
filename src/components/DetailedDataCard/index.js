@@ -1,13 +1,10 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 
-import {
-  Card, Header, HeaderContent,
-  CardHeaderTextCenter, ContentIndividualMetrics, ItemMetrics, P, PType, PData
-} from "./styles"
+import { Card, Header, HeaderContent, CardHeaderTextCenter, ContentIndividualMetrics, P } from "./styles"
 
 
-export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetrics, edit, enableMetrics }) {
+export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetrics, edit, enableMetrics, generateSale = true }) {
 
   return (
     <>
@@ -32,6 +29,9 @@ export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetr
               <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                 <li><Link className="dropdown-item" onClick={edit}>Editar</Link></li>
                 <li><Link className="dropdown-item">Excluir</Link></li>
+                {generateSale &&
+                  <li><Link className="dropdown-item">Gerar venda</Link></li>
+                }
               </ul>
             </div>
           </div>
