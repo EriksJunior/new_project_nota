@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { InfoFiscaleContext } from "../../../../../context/InfoFiscale/infoFiscale"
+import { InfoFiscaleContext } from "../../../context"
 
 import { Label, Select, Option, Div, Input } from "../../../../styles"
 import { cenario, tipoPessoa, exigibilidade, incentivo_fiscal } from "../../../../../common/infoFiscale"

@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { InfoFiscaleContext } from "../../../../../context/InfoFiscale/infoFiscale"
+import { InfoFiscaleContext } from "../../../context"
 import { cenario, tipoPessoa, situacaoTributariaIpi } from "../../../../../common/infoFiscale"
 
 import { Label, Select, Option, Div, Input, PAlert } from "../../../../styles"

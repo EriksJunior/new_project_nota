@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { InfoFiscaleContext } from "../../../../../context/InfoFiscale/infoFiscale"
+import { InfoFiscaleContext } from "../../../context"
 
 import { ContentTable } from "./styles"
 import { Div } from "../../../../styles"

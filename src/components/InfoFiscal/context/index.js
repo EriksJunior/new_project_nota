@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { UseInfoFiscale } from "../../hooks/useInfoFiscale";
+import { UseInfoFiscale } from "../hooks";
 
 const InfoFiscaleContext = createContext({})
 
