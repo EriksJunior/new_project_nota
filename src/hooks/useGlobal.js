@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { INITIAL_STATE_CLIENTE } from "../initialStates/client";
+import { INITIAL_STATE_CLIENTE } from "../components/Customer/initalStates";
 import { INITIAL_STATE_PRODUCT } from "../initialStates/product";
 
 import CustomerService from "../services/CustomerService";

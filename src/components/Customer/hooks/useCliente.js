@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 
-import { INITIAL_STATE_CLIENTE, INITIAL_STATE_SEARCH } from '../initialStates/client';
-import CustomerService from '../services/CustomerService'
+import { INITIAL_STATE_CLIENTE, INITIAL_STATE_SEARCH } from '../initalStates';
+import CustomerService from '../../../services/CustomerService'
 
 import { toast } from "react-toastify";
 

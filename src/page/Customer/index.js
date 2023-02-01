@@ -1,4 +1,4 @@
-import { ClientProvider } from "../../context/Client/client"
+import { ClientProvider } from "../../components/Customer/context"
 import { Customer } from "../../components/Customer/components"
 
 export function PageCustomer() {

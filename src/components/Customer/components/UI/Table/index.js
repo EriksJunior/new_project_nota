@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { ClientContext } from "../../../../../context/Client/client"
+import { ClientContext } from "../../../context"
 import { ContentTable } from "./style"
 import { AnimateCard } from "../../../../styles"
 

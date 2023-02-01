@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { UseCliente } from "../../hooks/useCliente";
+import { UseCliente } from "../hooks/useCliente";
 
 const ClientContext = createContext({})
 
