@@ -52,6 +52,7 @@ export function UseProducts() {
       const result = await ProductServices.save({ ...produtos, valor: formatedValues.valor, valorVenda: formatedValues.valorVenda })
       setProdutos({ ...produtos, id: result.id })
 
+      await searchProduct()
       toast("Produto salvo com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -66,6 +67,8 @@ export function UseProducts() {
     try {
       const formatValueTotal = formatValue()
       await ProductServices.update({ ...produtos, valor: formatValueTotal.valor, valorVenda: formatValueTotal.valorVenda });
+
+      await searchProduct()
       toast("Produto atualizado com sucesso!✅", {
         position: toast.POSITION.TOP_RIGHT
       })

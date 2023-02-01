@@ -24,7 +24,7 @@ export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetr
           )}
 
 
-          <div style={{ height: "40px", }}>
+          <div style={{ height: "29px", }}>
             <div className="dropdown" style={{ display: "flex", justifyContent: "flex-end" }}>
               <button className="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Ações
@@ -32,7 +32,6 @@ export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetr
               <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                 <li><Link className="dropdown-item" onClick={edit}>Editar</Link></li>
                 <li><Link className="dropdown-item">Excluir</Link></li>
-                <li><Link className="dropdown-item">Gerar Venda</Link></li>
               </ul>
             </div>
           </div>

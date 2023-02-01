@@ -40,6 +40,7 @@ export function UseCliente() {
       const result = await CustomerService.save(client)
       setClient({ ...client, id: result.id })
 
+      await searchClient()
       toast("Salvo com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -54,6 +55,7 @@ export function UseCliente() {
     try {
       await CustomerService.update(client)
 
+      await searchClient()
       toast("Atualizado com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });

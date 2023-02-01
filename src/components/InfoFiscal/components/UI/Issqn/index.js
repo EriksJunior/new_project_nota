@@ -40,7 +40,7 @@ export function Issqn() {
       </Div>
 
       <Div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-        <Label className="form-label">Item da lista de serviços</Label>
+        <Label className="form-label">Item serviços</Label>
         <Input type="text" className="form-control form-control-sm" name="item_servico" value={issqn.item_servico} onChange={handleChangeIssqn} />
       </Div>
 
