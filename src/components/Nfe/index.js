@@ -12,7 +12,7 @@ import { ContentNfe } from "./styles"
 import { ContainerNav } from "./components/UI/Nav/styles"
 
 
-export function Nfe() {
+export function FormTaxDocument() {
   const { navItems } = useContext(LeafContext)
 
   return (

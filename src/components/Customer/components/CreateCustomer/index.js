@@ -6,7 +6,7 @@ import { ContentDesigner } from "../../../Tab"
 export function CreateCustomer() {
   return (
     <ContentCustomer className="m-3 animate">
-      <ContentDesigner title={"Cadastre novos clientes"} fistButtonName={"Cadastro"}>
+      <ContentDesigner title={"Cadastre novos clientes"} >
         <FormCustomer />
       </ContentDesigner>
 

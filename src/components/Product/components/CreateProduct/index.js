@@ -6,7 +6,7 @@ import { ContentDesigner } from "../../../Tab"
 export function CreateProduct() {
   return (
     <ContentProduct className="m-3 animate">
-      <ContentDesigner title={"Cadastre novos Produtos"} fistButtonName={"Cadastro"}>
+      <ContentDesigner title={"Cadastre novos Produtos"} >
         <FormProduct />
       </ContentDesigner>
 

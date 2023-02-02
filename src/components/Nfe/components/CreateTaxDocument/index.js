@@ -1,40 +1,19 @@
-import { Header } from "./components/Header"
-import { Nav } from "./components/Nav"
-import { ProductNfe } from "./components/ProductNfe"
-import { CustomertNfe } from "./components/CustomerNfe"
-import { PedidoNfe } from "./components/PedidoNfe"
-import { TransporteNfe } from "./components/TransporteNfe"
+import { ContentTaxDocument, ContentMetrics } from "./styles"
+import { FormTaxDocument } from "../.."
+// import { Metrics } from "../../components/UI/Metrics"
+import { ContentDesigner } from "../../../Tab"
 
-import { useContext } from "react"
-import { LeafContext } from "../../context/Leaf/leaf"
-
-import { ContentNfe } from "./styles"
-import { ContainerNav } from "./Nav/styles"
-
-
-export function Nfe() {
-  const { navItems } = useContext(LeafContext)
-
+export function CreateTaxDocument() {
   return (
-    <ContentNfe>
-      <Header />
+    <ContentTaxDocument className="m-3 animate">
+      <ContentDesigner title={"Realize emissões de documentos fiscais"}>
+        <FormTaxDocument />
+      </ContentDesigner>
 
-      <ContainerNav >
-        <Nav>
-          {navItems.cliente &&
-            <CustomertNfe />
-          }
-          {navItems.produto &&
-            <ProductNfe />
-          }
-          {navItems.pedido &&
-            <PedidoNfe />
-          }
-          {navItems.transporte &&
-            <TransporteNfe />
-          }
-        </Nav>
-      </ContainerNav>
-    </ContentNfe>
+      <ContentMetrics>
+        <p className="m-3">Metricas</p>
+        {/* <Metrics /> */}
+      </ContentMetrics>
+    </ContentTaxDocument>
   )
 }
