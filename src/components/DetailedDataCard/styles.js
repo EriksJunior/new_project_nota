@@ -1,35 +1,20 @@
 import styled from "styled-components"
 
 export const Card = styled.div`
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: row;
   gap: 5%;
-  padding: 10px;
+  padding: 10px 10px 26px 10px;
   flex-grow: 1;
-
-  @media (max-width: 1154px) {
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
   
 `
-
-// export const ContentAreaCustomer = styled.div`
-//   width: 100%;
-//   display: flex;
-//   gap: 15px;
-//   margin-bottom: 20px;
-//   margin-top: 20px;
-// `
 
 export const Header = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* min-width: 430px; descomentar, porém mexer no responsivo*/
   padding: 10px 10px 10px 10px;
   border-radius: 5px;
   color: white;
