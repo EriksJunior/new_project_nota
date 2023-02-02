@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { Card, Header, HeaderContent, CardHeaderTextCenter, ContentIndividualMetrics, P } from "./styles"
 
 
-export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetrics, edit, deleteCustomer, enableMetrics, generateSale }) {
+export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetrics, edit, delet, enableMetrics, generateSale }) {
 
   return (
     <>
@@ -27,7 +27,7 @@ export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetr
               </button>
               <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                 <li><Link className="dropdown-item" onClick={edit}>Editar</Link></li>
-                <li><Link className="dropdown-item" onClick={deleteCustomer}>Excluir</Link></li>
+                <li><Link className="dropdown-item" onClick={delet}>Excluir</Link></li>
                 {generateSale &&
                   <li><Link className="dropdown-item">Gerar venda</Link></li>
                 }

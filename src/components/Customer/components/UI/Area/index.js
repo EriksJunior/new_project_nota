@@ -16,7 +16,7 @@ export function CustomerArea() {
       {client.nome &&
         <ContentAreaCustomer >
           <ContentDetailedDataCard>
-            <DetailedDataCard details={detailsCustomer} titleDetails={client.nome} edit={handleEditCustomer} deleteCustomer={deleteCustomer} generateSale responsiveCustomer={"respCustomer"} />
+            <DetailedDataCard details={detailsCustomer} titleDetails={client.nome} edit={handleEditCustomer} delet={() => deleteCustomer(client.id)} generateSale responsiveCustomer={"respCustomer"} />
           </ContentDetailedDataCard>
 
           <Card className="mt-3">

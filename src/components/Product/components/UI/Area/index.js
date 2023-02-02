@@ -7,7 +7,7 @@ import { InfoFiscale } from "../../../../InfoFiscal"
 import { ContentAreaProduct, ContentDetailedDataCard } from "./styles"
 
 export function ProductArea() {
-  const { produtos, handleEditProduct } = useContext(ProductContext)
+  const { produtos, handleEditProduct, deleteProduct } = useContext(ProductContext)
 
   const detailsProduct = [`Valor Venda: ${produtos.valorVenda}`, `Unidade: ${produtos.unidade || ""}`, `Estoque: ${produtos.estoque || ""}`, `descricao: ${produtos.descricao || ""}`]
 
@@ -15,7 +15,7 @@ export function ProductArea() {
     <ContentAreaProduct>
       {produtos.nome !== "" ?
         <ContentDetailedDataCard>
-          <DetailedDataCard details={detailsProduct} titleDetails={produtos.nome} edit={handleEditProduct} />
+          <DetailedDataCard details={detailsProduct} titleDetails={produtos.nome} edit={handleEditProduct} delet={() => deleteProduct(produtos.id)}/>
         </ContentDetailedDataCard>
         : ""
       }

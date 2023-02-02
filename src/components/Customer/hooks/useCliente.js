@@ -70,7 +70,6 @@ export function UseCliente() {
     try {
       await CustomerService.delete(id)
       await searchClient()
-      clearAllInputs()
       setOpenAreaCustomer(false)
 
       toast("Registro deletado com sucesso! ✅", {
