@@ -1,12 +1,12 @@
 import { useState, useCallback, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
 
-import LeafService from "../services/LeafService";
-import { HandleErrorsLeaf } from "../utils/handleErrors/handleErrorsLeaf";
+import LeafService from "../../../services/LeafService";
+import { HandleErrorsLeaf } from "../../../utils/handleErrors/handleErrorsLeaf";
 
-import { GlobalContext } from "../context/Global/global";
+import { GlobalContext } from "../../../context/Global/global";
 
-import { INITIAL_VALUE_PEDIDO, INITIAL_VALUE_PRODUTOS, INITIAL_VALUE_RESPONSE_WEBMANIA, INITIAL_STATE_SEARCH, INITIAL_VALUE_CANCEL_LEAF, INITIAL_VALUE_NAV_ITEMS } from "../initialStates/leaf";
+import { INITIAL_VALUE_PEDIDO, INITIAL_VALUE_PRODUTOS, INITIAL_VALUE_RESPONSE_WEBMANIA, INITIAL_STATE_SEARCH, INITIAL_VALUE_CANCEL_LEAF, INITIAL_VALUE_NAV_ITEMS } from "../../../initialStates/leaf";
 
 export function UseLeaf() {
   const { clientSelectBox, loading, setLoading } = useContext(GlobalContext)

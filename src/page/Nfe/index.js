@@ -1,5 +1,5 @@
 import { Nfe } from "../../components/Nfe"
-import { LeafProvider } from "../../context/Leaf/leaf"
+import { LeafProvider } from "../../components/Nfe/context"
 
 export function PageNfe() {
   return (

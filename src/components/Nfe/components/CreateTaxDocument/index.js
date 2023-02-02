@@ -1,15 +1,15 @@
-import { Header } from "./components/UI/Header"
-import { Nav } from "./components/UI/Nav"
-import { ProductNfe } from "./components/UI/ProductNfe"
-import { CustomertNfe } from "./components/UI/CustomerNfe"
-import { PedidoNfe } from "./components/UI/PedidoNfe"
-import { TransporteNfe } from "./components/UI/TransporteNfe"
+import { Header } from "./components/Header"
+import { Nav } from "./components/Nav"
+import { ProductNfe } from "./components/ProductNfe"
+import { CustomertNfe } from "./components/CustomerNfe"
+import { PedidoNfe } from "./components/PedidoNfe"
+import { TransporteNfe } from "./components/TransporteNfe"
 
 import { useContext } from "react"
-import { LeafContext } from "./context"
+import { LeafContext } from "../../context/Leaf/leaf"
 
 import { ContentNfe } from "./styles"
-import { ContainerNav } from "./components/UI/Nav/styles"
+import { ContainerNav } from "./Nav/styles"
 
 
 export function Nfe() {

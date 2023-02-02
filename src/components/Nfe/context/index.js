@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { UseLeaf } from "../../hooks/useLeaf";
+import { UseLeaf } from "../hooks";
 
 const LeafContext = createContext({})
 
