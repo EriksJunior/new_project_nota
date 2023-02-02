@@ -1,10 +1,10 @@
 
-export function ProductNfe() {
+export function PedidoNfe() {
   return (
     <div className="card">
       <div className="card-body">
-        <div className="pt-4">
-          <h5>Informações dos Produtos</h5>
+        <div className="pt-4" style={{color: 'white'}}>
+          <h5>Informações do Pedido</h5>
           <hr />
         </div>
 

@@ -1,10 +1,10 @@
 
-export function TransporteNfe() {
+export function ProductNfe() {
   return (
     <div className="card">
       <div className="card-body">
-        <div className="pt-4">
-          <h5>Informações de Transporte</h5>
+        <div className="pt-4" style={{color: 'white'}}>
+          <h5>Informações dos Produtos</h5>
           <hr />
         </div>
 

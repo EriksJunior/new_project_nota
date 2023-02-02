@@ -1,7 +1,7 @@
 import { ContentNavItems, NavItems, Div } from "./styles"
-import { ContentNav } from "../styles"
+import { ContentNav } from "../../styles"
 import { useContext } from "react"
-import { LeafContext } from "../../../context/Leaf/leaf"
+import { LeafContext } from "../../../../context/Leaf/leaf"
 
 import { IoPersonAdd } from "react-icons/io5"
 import { FaTruckMoving } from "react-icons/fa"
