@@ -4,7 +4,7 @@ import { ProductContext } from "../../../context"
 import { DetailedDataCard } from "../../../../DetailedDataCard"
 import { InfoFiscale } from "../../../../InfoFiscal"
 
-import { ContentAreaProduct } from "./styles"
+import { ContentAreaProduct, ContentDetailedDataCard } from "./styles"
 
 export function ProductArea() {
   const { produtos, handleEditProduct } = useContext(ProductContext)
@@ -14,11 +14,14 @@ export function ProductArea() {
   return (
     <ContentAreaProduct>
       {produtos.nome !== "" ?
-        <DetailedDataCard details={detailsProduct} titleDetails={produtos.nome} edit={handleEditProduct} /> : ""
+        <ContentDetailedDataCard>
+          <DetailedDataCard details={detailsProduct} titleDetails={produtos.nome} edit={handleEditProduct} />
+        </ContentDetailedDataCard>
+        : ""
       }
-      
+
       {produtos.nome !== "" ? <InfoFiscale /> : ""}
-    
+
     </ContentAreaProduct>
   )
 }

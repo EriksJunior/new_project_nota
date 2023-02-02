@@ -1,39 +1,23 @@
 import styled from "styled-components"
 
 export const Card = styled.div`
-  width: 100%;
+  width: 60%;
   display: flex;
-  flex-direction: row;
-  gap: 5%;
+  justify-content: space-between;
   padding: 10px;
 
-  @media (max-width: 1154px) {
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
+  @media (max-width: 925px) {
+    width: 100%;
   }
-  
 `
 
-// export const ContentAreaCustomer = styled.div`
-//   width: 100%;
-//   display: flex;
-//   gap: 15px;
-//   margin-bottom: 20px;
-//   margin-top: 20px;
-// `
+export const ContentAreaCustomer = styled.div`
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
 
-export const HeaderCustomer = styled.div`
-  width: 40%;
-  min-width: 430px;
-  padding: 10px;
-  border-radius: 5px;
-  color: white;
-  background-color: #0d566f;
-  box-shadow: black 0px 1px 3px 1px!important;
-
-  @media (max-width: 1154px) {
-    width: 100%;
+  @media (max-width: 925px) {
+    flex-direction: column;
   }
 `
 
@@ -60,14 +44,13 @@ export const P = styled.p`
 
 
 export const CardHeaderTextCenter = styled.div`
-  width: 55%;
+  width: 100%;
   background-color: #02769c9c;
-  margin-bottom: 10px;
   color: #ebebeb;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
   font-size: 19px;
   border-radius: 5px;
@@ -134,3 +117,11 @@ export const PData = styled.p`
     overflow-x: hidden;
     text-overflow: ellipsis;
   `
+
+export const ContentDetailedDataCard = styled.div`
+  width: 40%;
+
+  @media (max-width: 926px) {
+    width: 100%;
+  }
+`

@@ -1,11 +1,12 @@
 import styled from "styled-components"
 
 export const Card = styled.div`
-  width: 40%;
+  height: auto;
   display: flex;
   flex-direction: row;
   gap: 5%;
   padding: 10px;
+  flex-grow: 1;
 
   @media (max-width: 1154px) {
     flex-direction: column;
@@ -42,13 +43,14 @@ export const Header = styled.div`
 
 export const HeaderContent = styled.div`
   width: 100%;
-  margin: 0;
+  margin: 0!important;
   background-color: rgb(2 118 156);
   border-radius: 5px;
   text-align: center;
 
   p{
     padding: 10px;
+    margin: 0;
   }
 `
 

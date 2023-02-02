@@ -17,32 +17,11 @@ export const Card = styled.div`
 
 export const ContentAreaProduct = styled.div`
   display: flex;
+  flex: 1;
   flex-wrap: wrap;
 
-  @media screen and (max-width: 1579px) {
+  @media screen and (max-width: 1629px) {
    flex-direction: column;
-  }
-`
-
-// export const ContentAreaCustomer = styled.div`
-//   width: 100%;
-//   display: flex;
-//   gap: 15px;
-//   margin-bottom: 20px;
-//   margin-top: 20px;
-// `
-
-export const HeaderCustomer = styled.div`
-  width: 40%;
-  min-width: 430px;
-  padding: 10px;
-  border-radius: 5px;
-  color: white;
-  background-color: #0d566f;
-  box-shadow: black 0px 1px 3px 1px!important;
-
-  @media (max-width: 1154px) {
-    width: 100%;
   }
 `
 
@@ -143,3 +122,11 @@ export const PData = styled.p`
     overflow-x: hidden;
     text-overflow: ellipsis;
   `
+
+export const ContentDetailedDataCard = styled.div`
+  width: 40%;
+
+  @media (max-width: 1330px) {
+    width: 100%;
+  }
+`

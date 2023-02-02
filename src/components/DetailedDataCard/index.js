@@ -1,34 +1,33 @@
-import { useContext } from "react"
 import { Link } from "react-router-dom"
 
 import { Card, Header, HeaderContent, CardHeaderTextCenter, ContentIndividualMetrics, P } from "./styles"
 
 
-export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetrics, edit, enableMetrics, generateSale = true }) {
+export function DetailedDataCard({ details, titleDetails, metricsTitle, dataMetrics, edit, deleteCustomer, enableMetrics, generateSale }) {
 
   return (
     <>
       <Card className="mt-3">
         <Header>
-          <HeaderContent>
-            <P>{titleDetails}</P>
-          </HeaderContent>
+            <HeaderContent>
+              <P>{titleDetails}</P>
+            </HeaderContent>
 
-          {details.map((e, i) =>
-            <div key={i}>
-              <P>{e}</P>
-            </div>
-          )}
+            {details.map((e, i) =>
+              <div key={i} className="mt-1">
+                <P>{e}</P>
+              </div>
+            )}
 
 
-          <div style={{ height: "29px", }}>
+          <div style={{ height: "29px" }}>
             <div className="dropdown" style={{ display: "flex", justifyContent: "flex-end" }}>
               <button className="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Ações
               </button>
               <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                 <li><Link className="dropdown-item" onClick={edit}>Editar</Link></li>
-                <li><Link className="dropdown-item">Excluir</Link></li>
+                <li><Link className="dropdown-item" onClick={deleteCustomer}>Excluir</Link></li>
                 {generateSale &&
                   <li><Link className="dropdown-item">Gerar venda</Link></li>
                 }
