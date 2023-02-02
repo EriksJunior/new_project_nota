@@ -31,7 +31,7 @@ export const NavItems = styled.button`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1e2529;
+  background-color: #02769c;
   gap: 3px;
   border-radius: 5px;
 
