@@ -15,16 +15,16 @@ export function Nav({ children }) {
   return (
     <Div>
       <ContentNavItems>
-        <NavItems name="cliente" onClick={(e) => handleRenderNavItem(e.target.name)}>
-          <IoPersonAdd size={25} color={"white"} /><p>Cliente</p>
+        <NavItems onClick={() => handleRenderNavItem("cliente")}>
+          <IoPersonAdd size={25} color={"white"}/><p>Cliente</p>
         </NavItems>
-        <NavItems name="produto" onClick={(e) => handleRenderNavItem(e.target.name)}>
+        <NavItems onClick={() => handleRenderNavItem("produto")}>
           <BsBasket2Fill size={25} color={"white"} /><p>Produto</p>
         </NavItems>
-        <NavItems name="transporte" onClick={(e) => handleRenderNavItem(e.target.name)}>
+        <NavItems onClick={() => handleRenderNavItem("transporte")}>
           <FaTruckMoving size={25} color={"white"} /><p>Transporte</p>
         </NavItems>
-        <NavItems name="pedido" onClick={(e) => handleRenderNavItem(e.target.name)}>
+        <NavItems onClick={() => handleRenderNavItem("pedido")}>
           <IoIosPaper size={25} color={"white"} /><p>Pedido</p>
         </NavItems>
       </ContentNavItems>

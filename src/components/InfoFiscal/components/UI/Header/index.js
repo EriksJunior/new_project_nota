@@ -9,27 +9,27 @@ export function Header() {
 
   return (
     <ContentHeader>
-      <Button name="description" className="btn btn-primary" onClick={handleComponentDisplay}>
+      <Button className="btn btn-primary" onClick={() => handleComponentDisplay("description")}>
         Geral
       </Button>
 
-      <Button name="icms" className="btn btn-primary" onClick={handleComponentDisplay}>
+      <Button className="btn btn-primary" onClick={() => handleComponentDisplay("icms")}>
         ICMS
       </Button>
 
-      <Button name="ipi" className="btn btn-primary" onClick={handleComponentDisplay}>
+      <Button className="btn btn-primary" onClick={() => handleComponentDisplay("ipi")}>
         IPI
       </Button>
 
-      <Button name="pis" className="btn btn-primary" onClick={handleComponentDisplay}>
+      <Button className="btn btn-primary" onClick={() => handleComponentDisplay("pis")}>
         PIS
       </Button>
 
-      <Button name="cofins" className="btn btn-primary" onClick={handleComponentDisplay}>
+      <Button className="btn btn-primary" onClick={() => handleComponentDisplay("cofins")}>
         COFINS
       </Button>
 
-      <Button name="issqn" className="btn btn-primary" onClick={handleComponentDisplay}>
+      <Button className="btn btn-primary" onClick={() => handleComponentDisplay("issqn")}>
         <Div style={{ display: "flex", gap: "5px" }}>
           <Div>
             ISSQN
@@ -41,11 +41,11 @@ export function Header() {
         </Div>
       </Button>
 
-      <Button name="information" className="btn btn-primary" onClick={handleComponentDisplay}>
+      <Button className="btn btn-primary" onClick={() => handleComponentDisplay("information")}>
         Informações
       </Button>
 
-      <Button name="createdRefs" className="btn btn-primary" onClick={handleComponentDisplay}>
+      <Button className="btn btn-primary" onClick={() => handleComponentDisplay("createdRefs")}>
         Refs Cadastrados
       </Button>
     </ContentHeader>

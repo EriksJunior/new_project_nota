@@ -57,24 +57,25 @@ export function UseLeaf() {
     setCancel({ ...cancel, [e.currentTarget.name]: e.currentTarget.value })
   }, [cancel])
 
-  const handleRenderNavItem = (e) => {
-    console.log(e)
-    if (e === "cliente") {
-      setNavItems({ ...navItems, cliente: true, produto: false, pedido: false, transporte: false })
-      console.log(e, "cliente")
-    }
-    else if (e === "produto") {
-      setNavItems({ ...navItems, produto: true, cliente: false, pedido: false, transporte: false })
-      console.log(e, "produto")
-    }
-    else if (e === "pedido") {
-      setNavItems({ ...navItems, pedido: true, produto: false, cliente: false, transporte: false })
-      console.log(e, "pedido")
-    }
-    else if (e === "transporte") {
-      setNavItems({ ...navItems, transporte: true, pedido: false, produto: false, cliente: false })
-      console.log(e, "transporte")
-    }
+  const handleRenderNavItem = (value) => {
+    setNavItems({ ...navItems, cliente: false, produto: false, pedido: false, transporte: false, [value]: true })
+    // console.log(value)
+    // if (value === "cliente") {
+    //   setNavItems({ ...navItems, cliente: true, produto: false, pedido: false, transporte: false })
+    //   console.log(value, "cliente")
+    // }
+    // else if (value === "produto") {
+    //   setNavItems({ ...navItems, produto: true, cliente: false, pedido: false, transporte: false })
+    //   console.log(value, "produto")
+    // }
+    // else if (value === "pedido") {
+    //   setNavItems({ ...navItems, pedido: true, produto: false, cliente: false, transporte: false })
+    //   console.log(value, "pedido")
+    // }
+    // else if (value === "transporte") {
+    //   setNavItems({ ...navItems, transporte: true, pedido: false, produto: false, cliente: false })
+    //   console.log(value, "transporte")
+    // }
   }
 
   const saveLeaf = async () => {
