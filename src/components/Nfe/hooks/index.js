@@ -16,13 +16,15 @@ export function UseLeaf() {
   const [produtoLeaf, setProdutoLeaf] = useState(INITIAL_VALUE_PRODUTOS)
   const [returnedProductsLeaf, setReturnedProductsLeaf] = useState([])
   const [responseWebmania, setResponseWebmania] = useState(INITIAL_VALUE_RESPONSE_WEBMANIA)
-  const [cpfCnpjCliente, setCpfCnpjCliente] = useState({ cpfCnpj: "" });
+  const [cpfCnpjCliente, setCpfCnpjCliente] = useState({ cpfCnpj: "" })
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState(INITIAL_STATE_SEARCH)
   const [resultSearchLeaf, setResultSearchLeaf] = useState()
   const [cancel, setCancel] = useState(INITIAL_VALUE_CANCEL_LEAF)
-  const [showModalCancelLeaf, setShowModalCanelLeaf] = useState(false);
+  const [showModalCancelLeaf, setShowModalCanelLeaf] = useState(false)
   const [navItems, setNavItems] = useState(INITIAL_VALUE_NAV_ITEMS)
+  const [openAreaLeaf, setOpenAreaLeaf] = useState(false)
+  const [openLayouts, setOpenLayouts] = useState(false)
 
 
   const handleShow = () => setShow(true)
@@ -280,5 +282,23 @@ export function UseLeaf() {
     return handleError
   }
 
-  return { pedido, setPedido, produtoLeaf, setProdutoLeaf, handleChange, handleChangeProductLeaf, responseWebmania, returnedProductsLeaf, handleSaveOrUpdate, addProduct, deleteProduct, cpfCnpjCliente, handleTotalValueProducts, sendLeaf, handleShow, handleClose, show, search, searchLeaf, handleChangeSeachLeaf, resultSearchLeaf, findLeafById, deleteLeafAndProducts, handleTotalValueGeneralLeafInformation, cancelLeaf, handleCloseModalCancelLeaf, handleShowModalCancelLeaf, showModalCancelLeaf, handleChangeCancelLeaf, loading, handleRenderNavItem, navItems }
+  const handleEditCustomer = async () => {
+    setOpenLayouts(true)
+  }
+
+  const handleOpenAreaCustomer = async () => {
+    setOpenAreaLeaf(true)
+  }
+
+  const switchBetweenComponents = () => {
+    // setOpenAreaCustomer(false)
+    setOpenLayouts(false)
+    // clearAllInputs()
+  }
+
+  const handleNewLeaf = () => {
+    setOpenLayouts(true)
+  }
+
+  return { pedido, setPedido, produtoLeaf, setProdutoLeaf, handleChange, handleChangeProductLeaf, responseWebmania, returnedProductsLeaf, handleSaveOrUpdate, addProduct, deleteProduct, cpfCnpjCliente, handleTotalValueProducts, sendLeaf, handleShow, handleClose, show, search, searchLeaf, handleChangeSeachLeaf, resultSearchLeaf, findLeafById, deleteLeafAndProducts, handleTotalValueGeneralLeafInformation, cancelLeaf, handleCloseModalCancelLeaf, handleShowModalCancelLeaf, showModalCancelLeaf, handleChangeCancelLeaf, loading, handleRenderNavItem, navItems, openLayouts, handleNewLeaf, switchBetweenComponents }
 }

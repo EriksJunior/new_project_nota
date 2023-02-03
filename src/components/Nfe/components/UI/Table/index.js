@@ -9,10 +9,10 @@ export function Table({children}) {
         <table className="table table-dark">
           <thead>
             <tr>
-              <th className="text-center">Nome</th>
-              <th className="text-center" >CPF/CNPJ</th>
-              <th className="text-center">Telefone</th>
-              <th className="text-center">Data Nascimento</th>
+              <th className="text-center">Cliente</th>
+              <th className="text-center" >Numero NFe</th>
+              <th className="text-center">Data emissão</th>
+              <th className="text-center">Valor total</th>
             </tr>
           </thead>
           <tbody>

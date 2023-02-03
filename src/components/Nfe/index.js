@@ -10,10 +10,11 @@ import { LeafContext } from "./context"
 
 import { ContentNfe } from "./styles"
 import { ContainerNav } from "./components/UI/Nav/styles"
+import { Div, Button } from "../styles"
 
 
 export function FormTaxDocument() {
-  const { navItems } = useContext(LeafContext)
+  const { navItems, switchBetweenComponents } = useContext(LeafContext)
 
   return (
     <ContentNfe>
@@ -35,6 +36,10 @@ export function FormTaxDocument() {
           }
         </Nav>
       </ContainerNav>
+
+      <Div style={{ width: "80%", display: "flex", justifyContent: "flex-end", }}>
+        <Button className="btn btn-primary btn-sm" onClick={switchBetweenComponents}>Voltar</Button>
+      </Div>
     </ContentNfe>
   )
 }
