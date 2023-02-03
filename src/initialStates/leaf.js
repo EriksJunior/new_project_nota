@@ -88,8 +88,8 @@ export const INITIAL_VALUE_CANCEL_LEAF = {
 }
 
 export const INITIAL_VALUE_NAV_ITEMS = {
-  produto: false,
-  cliente: true,
-  pedido: false,
-  transporte: false,
+  produto: true,
+  cliente: false,
+  pedido: true,
+  transporte: true,
 }

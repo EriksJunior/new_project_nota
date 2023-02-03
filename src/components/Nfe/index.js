@@ -22,18 +22,21 @@ export function FormTaxDocument() {
 
       <ContainerNav >
         <Nav>
-          {navItems.cliente &&
+          <Div hidden={navItems.cliente}>
             <CustomertNfe />
-          }
-          {navItems.produto &&
+          </Div>
+
+          <Div hidden={navItems.produto}>
             <ProductNfe />
-          }
-          {navItems.pedido &&
+          </Div>
+
+          <Div hidden={navItems.pedido}>
             <PedidoNfe />
-          }
-          {navItems.transporte &&
+          </Div>
+
+          <Div hidden={navItems.transporte}>
             <TransporteNfe />
-          }
+          </Div>
         </Nav>
       </ContainerNav>
 

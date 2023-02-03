@@ -58,7 +58,7 @@ export function UseLeaf() {
   }, [cancel])
 
   const handleRenderNavItem = (value) => {
-    setNavItems({ ...navItems, cliente: false, produto: false, pedido: false, transporte: false, [value]: true })
+    setNavItems({ ...navItems, cliente: true, produto: true, pedido: true, transporte: true, [value]: false })
     // console.log(value)
     // if (value === "cliente") {
     //   setNavItems({ ...navItems, cliente: true, produto: false, pedido: false, transporte: false })
