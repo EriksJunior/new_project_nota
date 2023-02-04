@@ -59,23 +59,6 @@ export function UseLeaf() {
 
   const handleRenderNavItem = (value) => {
     setNavItems({ ...navItems, cliente: true, produto: true, pedido: true, transporte: true, [value]: false })
-    // console.log(value)
-    // if (value === "cliente") {
-    //   setNavItems({ ...navItems, cliente: true, produto: false, pedido: false, transporte: false })
-    //   console.log(value, "cliente")
-    // }
-    // else if (value === "produto") {
-    //   setNavItems({ ...navItems, produto: true, cliente: false, pedido: false, transporte: false })
-    //   console.log(value, "produto")
-    // }
-    // else if (value === "pedido") {
-    //   setNavItems({ ...navItems, pedido: true, produto: false, cliente: false, transporte: false })
-    //   console.log(value, "pedido")
-    // }
-    // else if (value === "transporte") {
-    //   setNavItems({ ...navItems, transporte: true, pedido: false, produto: false, cliente: false })
-    //   console.log(value, "transporte")
-    // }
   }
 
   const saveLeaf = async () => {
@@ -283,11 +266,11 @@ export function UseLeaf() {
     return handleError
   }
 
-  const handleEditCustomer = async () => {
+  const handleEditLeaf = async () => {
     setOpenLayouts(true)
   }
 
-  const handleOpenAreaCustomer = async () => {
+  const handleOpenAreaLeaf = async () => {
     setOpenAreaLeaf(true)
   }
 
