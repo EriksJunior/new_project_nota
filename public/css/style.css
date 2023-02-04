@@ -2534,6 +2534,14 @@ textarea.form-control-lg {
   outline: 0;
   box-shadow: 0 0 0 0.10rem deepskyblue;
 }
+
+.form-select-product:focus,
+.dataTable-selector:focus {
+  border-color: none;
+  outline: 0;
+  box-shadow: none;
+}
+
 .form-select[multiple],
 [multiple].dataTable-selector,
 .form-select[size]:not([size="1"]),

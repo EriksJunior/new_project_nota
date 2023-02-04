@@ -16,3 +16,13 @@ export const ContentNav = styled.div`
     width: 100%;
   }
 `
+
+export const ContentHeaderTitle = styled.div`
+  h5 {
+    color: #b4b2b2;
+  }
+
+  hr {
+    color: #b4b2b2;
+  }
+`

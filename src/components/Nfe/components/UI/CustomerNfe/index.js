@@ -1,14 +1,14 @@
-import { ContentHeader } from "./styles"
+import { ContentHeaderTitle } from "../../../styles"
 import { cidades } from "../../../../../common/customer"
 
 export function CustomertNfe() {
   return (
     <div className="card">
       <div className="card-body">
-        <ContentHeader className="pt-4">
+        <ContentHeaderTitle className="pt-4">
           <h5 >Informações do Cliente</h5>
           <hr />
-        </ContentHeader>
+        </ContentHeaderTitle>
 
         <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
