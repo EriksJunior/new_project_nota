@@ -40,7 +40,7 @@ export function FormTaxDocument() {
         </Nav>
       </ContainerNav>
 
-      <Div style={{ width: "80%", display: "flex", justifyContent: "flex-end", }}>
+      <Div style={{ width: "80%", display: "flex", justifyContent: "flex-end", marginTop: "10px"}}>
         <Button className="btn btn-primary btn-sm" onClick={switchBetweenComponents}>Voltar</Button>
       </Div>
     </ContentNfe>
