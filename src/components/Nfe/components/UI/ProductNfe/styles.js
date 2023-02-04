@@ -17,6 +17,13 @@ export const ContentTable = styled.div`
   }
 `
 
+export const Table = styled.table`
+width: 100%;
+   @media screen and (max-width: 1190px) {
+      min-width: 690px;
+    }
+`
+
 export const Separator = styled.div`
  height: 20px;
 `
@@ -77,6 +84,7 @@ export const TdWidth10 = styled.td`
 `
 
 export const TableHeader = styled.tr`
+width: 100%;
   display: flex;
   background-color: #02769c;
   border-radius: 5px;
@@ -95,8 +103,4 @@ export const TableBodyContent = styled.tr`
   display: flex;
   border: solid 1px #02769c;
   border-radius: 5px ;
-
-    @media screen and (max-width: 1190px) {
-      min-width: 690px;
-    }
 `

@@ -1,7 +1,7 @@
 import { ContentHeaderTitle } from "../../../styles"
 import { BsFillCheckCircleFill } from "react-icons/bs"
 
-import { ContentTable, InputTable, Separator, InputSelect, TableHeader, TableBodyContent, TdWidth33, TdWidth16, TdWidth12, TdWidth10, TdWidthTotal } from "./styles"
+import { ContentTable, InputTable, Table, Separator, InputSelect, TableHeader, TableBodyContent, TdWidth33, TdWidth16, TdWidth12, TdWidth10, TdWidthTotal } from "./styles"
 
 export function ProductNfe() {
   return (
@@ -13,7 +13,7 @@ export function ProductNfe() {
         </ContentHeaderTitle>
 
         <ContentTable>
-            <table>
+            <Table>
               <thead>
                 <TableHeader>
                   <TdWidth33>Nome</TdWidth33>
@@ -72,7 +72,7 @@ export function ProductNfe() {
                   </td>
                 </TableBodyContent>
               </tbody>
-            </table>
+            </Table>
             <Separator
             ></Separator>
         </ContentTable>
