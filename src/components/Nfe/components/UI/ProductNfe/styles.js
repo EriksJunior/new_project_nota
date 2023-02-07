@@ -78,16 +78,33 @@ export const TdWidthTotal = styled.td`
   width: 12%;
 `
 
+export const HeaderTdWidthTotal = styled.td`
+  width: 12%;
+  background-color: #02769c;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+`
+
 export const TdWidth10 = styled.td`
   width: 12%;
   border-right: 1px solid white;
 `
 
-export const TableHeader = styled.tr`
-width: 100%;
+export const TdActions = styled.td`
+  width: 12%;
+  border-left: 1px solid white;
   display: flex;
-  background-color: #02769c;
-  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+`
+
+export const InvisibleHeaderTdActions = styled.td`
+ width: 12%;
+`
+
+export const TableHeader = styled.tr`
+  width: 100%;
+  display: flex;
   
    tr, td{
     border-top: none;
@@ -96,6 +113,14 @@ width: 100%;
     padding: 5px;
     color: white;
   }
+
+  .colorTdHeader {
+    background-color: #02769c;
+  }
+  .fistTdItemHeader {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
 `
 
 export const TableBodyContent = styled.tr`
@@ -103,4 +128,12 @@ export const TableBodyContent = styled.tr`
   display: flex;
   border: solid 1px #02769c;
   border-radius: 5px ;
+`
+
+export const ContentButtonAddMoreItems = styled.div`
+  width: 100%;
+  height: 51px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `
