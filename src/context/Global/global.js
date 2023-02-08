@@ -4,13 +4,13 @@ import { useGlobal } from "../../hooks/useGlobal";
 const GlobalContext = createContext({})
 
 function GlobalProvider({ children }) {
-  const { client, setClient, getClientesFromSelectBox, clientSelectBox, produtos, setProdutos, getProductsFromSelectBox, produtoSelectBox, loading, setLoading, showAndHideNavigate, openNavigate } = useGlobal()
+  const { loading, setLoading } = useGlobal()
 
   return (
-    <GlobalContext.Provider value={{client, setClient, getClientesFromSelectBox, clientSelectBox, produtos, setProdutos, getProductsFromSelectBox, produtoSelectBox, loading, setLoading, showAndHideNavigate, openNavigate}}>
+    <GlobalContext.Provider value={{ loading, setLoading }}>
       {children}
     </GlobalContext.Provider>
   )
-} 
+}
 
-export {GlobalProvider, GlobalContext}
+export { GlobalProvider, GlobalContext }

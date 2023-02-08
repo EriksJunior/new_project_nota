@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { INITIAL_VALUE_NAV_ITEMS } from "../../../initialStates/leaf";
+import { INITIAL_VALUE_NAV_ITEMS } from "../initialStates";
 
 export function UseGeneral() {
   const [navItems, setNavItems] = useState(INITIAL_VALUE_NAV_ITEMS)

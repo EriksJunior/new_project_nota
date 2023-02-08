@@ -1,3 +1,6 @@
+import { useEffect,useContext } from "react"
+import { LeafContext } from "./context"
+
 import { Header } from "./components/UI/Header"
 import { Nav } from "./components/UI/Nav"
 import { ProductNfe } from "./components/UI/ProductNfe"
@@ -5,16 +8,18 @@ import { CustomertNfe } from "./components/UI/CustomerNfe"
 import { PedidoNfe } from "./components/UI/PedidoNfe"
 import { TransporteNfe } from "./components/UI/TransporteNfe"
 
-import { useContext } from "react"
-import { LeafContext } from "./context"
 
 import { ContentNfe } from "./styles"
 import { ContainerNav } from "./components/UI/Nav/styles"
 import { Div, Button } from "../styles"
 
 
-export function FormTaxDocument() {
-  const { navItems, switchBetweenComponents } = useContext(LeafContext)
+export function FormLeaf() {
+  const { navItems, switchBetweenComponents, getCustomersFromSelectBox } = useContext(LeafContext)
+
+  useEffect(() => {
+    getCustomersFromSelectBox()
+  }, [])
 
   return (
     <ContentNfe>
