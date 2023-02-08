@@ -21,12 +21,12 @@ export const ambientes = [
 ]
 
 export const consumidorFinalNfe = [
-  {value: "1", text: "Sim"},
-  {value: "0", text: "Não"},
+  { value: "1", text: "Sim" },
+  { value: "0", text: "Não" },
 ]
 
 export const constribuinte = [
-  {value: "1", tipo: "1 - Contribuinte ICMS"},
-  {value: "2", tipo: "2 - Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS"},
-  {value: "9", tipo: "9 - Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS."}
+  { value: "1", tipo: "1 - Contribuinte ICMS" },
+  { value: "2", tipo: "2 - Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS" },
+  { value: "9", tipo: "9 - Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS." }
 ]

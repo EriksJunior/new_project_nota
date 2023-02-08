@@ -1,13 +1,14 @@
 import { useContext } from "react"
 import { LeafContext } from "../../../context"
 
-import { ContentHeaderTitle } from "../../../styles"
 import { cidades } from "../../../../../common/customer"
+import { ContentHeaderTitle } from "../../../styles"
+import { ContentButtonUpdateCustomer } from "./styles"
 
 import { consumidorFinalNfe, constribuinte } from "../../../../../common/nfe"
 
 export function CustomertNfe() {
-  const { customersFromSelectBox, customer, handleChangeIdCustomerAndList, handleChangeCustomer } = useContext(LeafContext)
+  const { customersFromSelectBox, customer, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer } = useContext(LeafContext)
 
   return (
     <div className="card">
@@ -104,12 +105,18 @@ export function CustomertNfe() {
 
           <div className="mb-3 col-sm-9 col-md-9 col-lg-9 col-xl-9">
             <label className="form-label">Contribuinte ICMS</label>
-            <select className="form-select form-select-sm" name="uf" value={customer.contribuinte || ""} onChange={handleChangeCustomer}>
+            <select className="form-select form-select-sm" name="contribuinte" value={customer.contribuinte || ""} onChange={handleChangeCustomer}>
               {constribuinte.map((contrib) =>
                 <option key={contrib.value} value={contrib.value}>{contrib.tipo}</option>
               )}
             </select>
           </div>
+        </div>
+
+        <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <ContentButtonUpdateCustomer className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <button className="btn btn-primary btn-sm" onClick={updateCustomer}>Atualizar cadastro</button>
+          </ContentButtonUpdateCustomer>
         </div>
       </div>
     </div>

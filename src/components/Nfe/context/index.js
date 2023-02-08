@@ -26,13 +26,13 @@ const LeafContext = createContext({})
 function LeafProvider({ children }) {
   const { handleRenderNavItem, navItems, openLayouts, handleNewLeaf, switchBetweenComponents, handleOpenAreaLeaf } = UseGeneral()
   const { pedido, handleChangePedido } = UseLeaf()
-  const { getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, customer, handleChangeIdCustomerAndList, handleChangeCustomer } = UseCustomer()
+  const { getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, customer, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer } = UseCustomer()
 
   return (
     <LeafContext.Provider value={{
      /*UseGeneral*/ handleRenderNavItem, navItems, openLayouts, handleNewLeaf, switchBetweenComponents, handleOpenAreaLeaf, /*UseGeneral*/
      /*UseLeaf*/ pedido, handleChangePedido, /*UseLeaf*/
-     /*UseCustomer*/ getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, customer, handleChangeIdCustomerAndList, handleChangeCustomer /*UseCustomer*/
+     /*UseCustomer*/ getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, customer, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer /*UseCustomer*/
     }}>
       {children}
     </LeafContext.Provider>
