@@ -11,7 +11,11 @@ export function UseCustomer() {
     setCustomer({ ...customer, id: e.currentTarget.value })
   }, [customer])
 
-  const handleChangeCustomerAndList = async (e) => {
+  const handleChangeCustomer = useCallback((e) => {
+    setCustomer({ ...customer, [e.currentTarget.name]: e.currentTarget.value })
+  }, [customer])
+
+  const handleChangeIdCustomerAndList = async (e) => {
     handleChangeIdCustomer(e)
 
     const idCustomer = e.currentTarget.value
@@ -24,10 +28,9 @@ export function UseCustomer() {
   }
 
   const findCustomerById = async (id) => {
-    console.log(id)
     const customer = await CustomerService.findById(id)
-    console.log(customer, 'lkfdsjlkjdsfkdsjfl')
+    setCustomer(customer)
   }
 
-  return { getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, customer, handleChangeCustomerAndList }
+  return { getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, customer, handleChangeIdCustomerAndList, handleChangeCustomer }
 }

@@ -98,6 +98,7 @@ export const INITIAL_STATE_CLIENTE_NFE = {
   id: "",
   nome: "",
   cpfCnpj: "",
+  ie: "",
   endereco: "",
   numero: "",
   complemento: "",
@@ -110,4 +111,6 @@ export const INITIAL_STATE_CLIENTE_NFE = {
   email: "",
   dataNascimento: "",
   observacao: "",
+  consumidor_final: "0",
+  contribuinte: "9"
 }
