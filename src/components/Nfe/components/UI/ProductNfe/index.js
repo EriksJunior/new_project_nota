@@ -1,9 +1,18 @@
+import { useState } from "react"
+
 import { ContentHeaderTitle } from "../../../styles"
 import { BsFillCheckCircleFill } from "react-icons/bs"
 
-import { ContentTable, InputTable, Table, Separator, InputSelect, TableHeader, TableBodyContent, TdWidth33, TdWidth16, TdWidth12, TdWidth10, TdWidthTotal, HeaderTdWidthTotal, TdActions, InvisibleHeaderTdActions, ContentButtonAddMoreItems } from "./styles"
+import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdWidth33, TdWidth16, TdWidth12, TdWidth10, TdWidthTotal, HeaderTdWidthTotal, TdActions, InvisibleHeaderTdActions, ContentButtonAddMoreItems } from "./styles"
 
 export function ProductNfe() {
+  const [products, setProducts] = useState([1])
+
+  const addProducts = () => {
+    const lastItem = products.length - 1
+    setProducts([...products, products[lastItem] + 1]);
+  }
+
   return (
     <div className="card">
       <div className="card-body">
@@ -27,58 +36,49 @@ export function ProductNfe() {
             </thead>
 
             <tbody>
-              <TableBodyContent>
-                <TdWidth33>
-                  <div>
+              {products.map((e, i) =>
+                <TrBodyContent key={i}>
+                  <TdWidth33>
                     <InputSelect className="form-select form-select-product form-select-sm" name='idCliente'>
                       <option value="" >---selecione---</option>
                       <option value="" >teste1</option>
                       <option value="" >teste2</option>
                     </InputSelect>
-                  </div>
-                </TdWidth33>
+                  </TdWidth33>
 
-                <TdWidth16>
-                  <div>
+                  <TdWidth16>
                     <InputTable name="nome" type="text" className="form-control-sm" placeholder="UN" />
-                  </div>
-                </TdWidth16>
+                  </TdWidth16>
 
-                <TdWidth10>
-                  <div>
+                  <TdWidth10>
+
                     <InputTable name="nome" type="text" className="form-control-sm" placeholder="QNT" />
-                  </div>
-                </TdWidth10>
+                  </TdWidth10>
 
-                <TdWidth12>
-                  <div>
+                  <TdWidth12>
                     <InputTable name="nome" type="text" className="form-control-sm" placeholder="0,0000" />
-                  </div>
-                </TdWidth12>
+                  </TdWidth12>
 
-                <TdWidth12>
-                  <div>
+                  <TdWidth12>
                     <InputTable name="nome" type="text" className="form-control-sm" placeholder="0,0000" />
-                  </div>
-                </TdWidth12>
+                  </TdWidth12>
 
-                <TdWidthTotal>
-                  <div>
+                  <TdWidthTotal>
                     <InputTable name="nome" type="text" className="form-control-sm" placeholder="0,0000" />
-                  </div>
-                </TdWidthTotal>
+                  </TdWidthTotal>
 
-                <TdActions>
-                  <BsFillCheckCircleFill size={20} color={"#02769c"} />
-                </TdActions>
-              </TableBodyContent>
-
-              <ContentButtonAddMoreItems>
-                <button className="btn btn-primary btn-sm">Adicionar mais</button>
-              </ContentButtonAddMoreItems>
+                  <TdActions>
+                    <BsFillCheckCircleFill size={20} color={"#02769c"} />
+                  </TdActions>
+                </TrBodyContent>
+              )}
             </tbody>
           </Table>
-          <Separator />
+
+          <ContentButtonAddMoreItems>
+            <button className="btn btn-primary btn-sm" onClick={addProducts}>Adicionar Produtos</button>
+            <button className="btn btn-primary btn-sm">Salvar</button>
+          </ContentButtonAddMoreItems>
         </ContentTable>
       </div>
     </div>

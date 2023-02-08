@@ -24,11 +24,6 @@ width: 100%;
     }
 `
 
-export const Separator = styled.div`
- height: 20px;
-`
-
-
 export const InputTable = styled.input`
   width: 100%;
   border-top: none;
@@ -61,17 +56,17 @@ export const InputSelect = styled.select`
 
 export const TdWidth33 = styled.td`
   width: 33%;
-  border-right: 1px solid white;
+  border-right: 1px solid #b4b2b2;
 `
 
 export const TdWidth16 = styled.td`
   width: 12%;
-  border-right: 1px solid white;
+  border-right: 1px solid #b4b2b2;
 `
 
 export const TdWidth12 = styled.td`
   width: 12%;
-  border-right: 1px solid white;
+  border-right: 1px solid #b4b2b2;
 `
 
 export const TdWidthTotal = styled.td`
@@ -87,12 +82,12 @@ export const HeaderTdWidthTotal = styled.td`
 
 export const TdWidth10 = styled.td`
   width: 12%;
-  border-right: 1px solid white;
+  border-right: 1px solid #b4b2b2;
 `
 
 export const TdActions = styled.td`
   width: 12%;
-  border-left: 1px solid white;
+  border-left: 1px solid #b4b2b2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,7 +118,7 @@ export const TableHeader = styled.tr`
   }
 `
 
-export const TableBodyContent = styled.tr`
+export const TrBodyContent = styled.tr`
   width: 100%;
   display: flex;
   border: solid 1px #02769c;
@@ -136,4 +131,5 @@ export const ContentButtonAddMoreItems = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 5px;
 `
