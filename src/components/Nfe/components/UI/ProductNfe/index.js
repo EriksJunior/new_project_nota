@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import { ContentHeaderTitle } from "../../../styles"
-import { BsFillCheckCircleFill } from "react-icons/bs"
+import { BsFillGearFill } from "react-icons/bs"
 
 import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdWidth33, TdWidth16, TdWidth12, TdWidth10, TdWidthTotal, HeaderTdWidthTotal, TdActions, InvisibleHeaderTdActions, ContentButtonAddMoreItems } from "./styles"
 
@@ -67,8 +67,8 @@ export function ProductNfe() {
                     <InputTable name="nome" type="text" className="form-control-sm" placeholder="0,0000" />
                   </TdWidthTotal>
 
-                  <TdActions>
-                    <BsFillCheckCircleFill size={20} color={"#02769c"} />
+                  <TdActions role="button">
+                    <BsFillGearFill size={20} color={"#02769c"} />
                   </TdActions>
                 </TrBodyContent>
               )}
