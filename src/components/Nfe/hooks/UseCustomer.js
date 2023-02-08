@@ -26,12 +26,18 @@ export function UseCustomer() {
 
   const updateCustomer = async () => {
     try {
+      if (!customer.id) {
+        return toast.warning("Selecione um cliente!", {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      }
+
       await CustomerService.update(customer)
       toast("Dados atualizados! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
     } catch (error) {
-      toast.error("Ocorreu um erro ao atualizar o cliente! ✅", {
+      toast.error("Ocorreu um erro ao atualizar o cliente!", {
         position: toast.POSITION.TOP_RIGHT
       });
     }
