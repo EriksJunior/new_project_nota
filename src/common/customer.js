@@ -27,3 +27,8 @@ export const cidades = [
   {value: "SE", nome: "Sergipe"},
   {value: "TO", nome: "Tocantins"},
 ]
+
+export const consumidorFinal = [
+  {value: "1", text: "Sim"},
+  {value: "0", text: "Não"},
+]

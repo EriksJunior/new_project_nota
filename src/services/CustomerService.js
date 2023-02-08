@@ -15,7 +15,7 @@ class CustomerService {
   }
 
   async getFromSelectBox() {
-    const { data } = await api.get('/customers/combobox')
+    const { data: { data } } = await api.get('/customers/combobox')
     return data
   }
 

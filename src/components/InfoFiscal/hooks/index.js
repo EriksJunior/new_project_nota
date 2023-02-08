@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react"
 
-import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_COFINS, INITIAL_STATE_ISSQN, INITIAL_STATE_ADDITIONAL_DATA, INITIAL_STATE_OBJECT_ICMS } from "../../../initialStates/impostos"
+import { INITIAL_STATE_ENABLE_INFO_FISCALE, INITIAL_STATE_INFO_FISCALE, INITIAL_STATE_ICMS, INITIAL_STATE_ALIQUOTA_MVA, INITIAL_STATE_IPI, INITIAL_STATE_PIS, INITIAL_STATE_COFINS, INITIAL_STATE_ISSQN, INITIAL_STATE_ADDITIONAL_DATA, INITIAL_STATE_OBJECT_ICMS } from "../initialStates"
 
 import { HandleInfoFiscale } from "../../../utils/handleInfoFiscale/HandleInfoFicale"
 import InfoFiscaleService from "../../../services/InfoFiscaleService"
@@ -106,9 +106,9 @@ export function UseInfoFiscale() {
     try {
       const result = await InfoFiscaleService.findById(id)
       assignValuesToTaxes(result)
-
       await findAllRefs()
     } catch (error) {
+      console.log(error)
       toast.error("Ocorreu um erro ao buscar esse Ref", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -119,6 +119,10 @@ export function UseInfoFiscale() {
     try {
       await InfoFiscaleService.delete(id, classeImposto)
       await findAllRefs()
+
+      return toast("REF removido! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
     } catch (error) {
       toast.error("Ocorreu um erro ao deletar seus REF's", {
         position: toast.POSITION.TOP_RIGHT
@@ -147,6 +151,7 @@ export function UseInfoFiscale() {
   }
 
   const assignValuesToTaxes = (infoFiscale) => {
+    console.log(infoFiscale)
     setInfoFiscale({ ...infoFiscale, id: infoFiscale.id })
     setAdditionalData({ ...additionalData, referencia: infoFiscale.ref, descricao: infoFiscale.descricao, informacoes_fisco: infoFiscale.refObject.informacoes_fisco || "", informacoes_complementares: infoFiscale.refObject.informacoes_complementares || "" })
     setIcms({ ...icms, ...infoFiscale.refObject.icms[0] })
@@ -160,7 +165,10 @@ export function UseInfoFiscale() {
       setIssqn(INITIAL_STATE_ISSQN)
     }
 
-    setAliquotaMva({ ...aliquotaMva, ...infoFiscale.refObject.icms[0].aliquota_mva[0] })
+    if ("aliquota_mva" in infoFiscale.refObject.icms[0]) {
+      setAliquotaMva({ ...aliquotaMva, ...infoFiscale.refObject.icms[0].aliquota_mva[0] })
+    }
+
   }
 
   const clear = () => {

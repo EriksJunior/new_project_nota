@@ -93,3 +93,24 @@ export const INITIAL_VALUE_NAV_ITEMS = {
   pedido: true,
   transporte: true,
 }
+
+export const INITIAL_STATE_CLIENTE_NFE = {
+  id: "",
+  nome: "",
+  cpfCnpj: "",
+  ie: "",
+  endereco: "",
+  numero: "",
+  complemento: "",
+  bairro: "",
+  cidade: "",
+  uf: "",
+  cep: "",
+  telefone: "",
+  celular: "",
+  email: "",
+  dataNascimento: "",
+  observacao: "",
+  consumidor_final: "0",
+  contribuinte: "9"
+}

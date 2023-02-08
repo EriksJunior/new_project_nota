@@ -2551,7 +2551,8 @@ textarea.form-control-lg {
 }
 .form-select:disabled,
 .dataTable-selector:disabled {
-  background-color: #e9ecef;
+  background-color: black;
+
 }
 .form-select:-moz-focusring,
 .dataTable-selector:-moz-focusring {
