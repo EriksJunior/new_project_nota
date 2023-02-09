@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContentTable = styled.div`
-  overflow-x: auto;
+  /* overflow-x: auto; */
   
   ::-webkit-scrollbar-track {
       background-color: transparent;
@@ -18,9 +18,10 @@ export const ContentTable = styled.div`
 `
 
 export const Table = styled.table`
-width: 100%;
-   @media screen and (max-width: 1190px) {
+  width: 100%;
+   @media screen and (max-width: 1191px) {
       min-width: 690px;
+      overflow-x: auto;
     }
 `
 
@@ -54,47 +55,77 @@ export const InputSelect = styled.select`
 `
 
 
-export const TdWidth33 = styled.td`
-  width: 33%;
+export const TdHeaderName = styled.td`
+  width: 30%;
   border-right: 1px solid #b4b2b2;
 `
 
-export const TdWidth16 = styled.td`
+export const TdBodyName = styled.td`
+  width: 30%;
+  border: solid 1px #02769c;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+`
+
+export const TdHeaderUnit = styled.td`
   width: 12%;
   border-right: 1px solid #b4b2b2;
 `
 
-export const TdWidth12 = styled.td`
+export const TdBodyUnit = styled.td`
   width: 12%;
+  border: solid 1px #02769c;
+`
+
+export const TdHeaderAmmount = styled.td`
+  width: 10%;
   border-right: 1px solid #b4b2b2;
 `
 
-export const TdWidthTotal = styled.td`
-  width: 12%;
+export const TdBodyAmmount = styled.td`
+  width: 10%;
+  border: solid 1px #02769c;
 `
 
-export const HeaderTdWidthTotal = styled.td`
-  width: 12%;
+export const TdHeaderSubtotal = styled.td`
+  width: 15%;
+  border-right: 1px solid #b4b2b2;
+`
+
+export const TdBodySubtotal = styled.td`
+  width: 15%;
+  border: solid 1px #02769c;
+`
+
+export const TdHeaderDiscount = styled.td`
+  width: 15%;
+  border-right: 1px solid #b4b2b2;
+`
+
+export const TdBodyDiscount = styled.td`
+  width: 15%;
+  border: solid 1px #02769c;
+`
+
+export const TdHeaderTotal = styled.td`
+  width: 13.6%;
   background-color: #02769c;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 `
 
-export const TdWidth10 = styled.td`
-  width: 12%;
-  border-right: 1px solid #b4b2b2;
+export const TdBodyTotal = styled.td`
+  width: 13.6%;
+  border: solid 1px #02769c;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 `
 
-export const TdActions = styled.td`
-  width: 12%;
-  border-left: 1px solid #b4b2b2;
+export const SpanActions = styled.span`
+  width: 4%;
   display: flex;
   justify-content: center;
   align-items: center;
-`
-
-export const InvisibleHeaderTdActions = styled.td`
- width: 12%;
 `
 
 export const TableHeader = styled.tr`
@@ -121,7 +152,6 @@ export const TableHeader = styled.tr`
 export const TrBodyContent = styled.tr`
   width: 100%;
   display: flex;
-  border: solid 1px #02769c;
   border-radius: 5px ;
 `
 
