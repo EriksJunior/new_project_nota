@@ -1,8 +1,12 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ProductContext } from './context';
 
 export function FormProduct() {
-  const { produtos, clearInputs, handleChange, handleSaveOrUpdate, handleChangeMonetaryValues, switchBetweenComponents } = useContext(ProductContext)
+  const { produtos, clearInputs, handleChange, handleSaveOrUpdate, handleChangeMonetaryValues, switchBetweenComponents, findAllRefs, refsFromSelectBox } = useContext(ProductContext)
+
+  useEffect(() => {
+    findAllRefs()
+  }, [])
 
   return (
     <div>
@@ -31,12 +35,12 @@ export function FormProduct() {
               <input type="text" className="form-control form-control-sm" onChange={handleChange} name="unidade" value={produtos.unidade || ""} />
             </div>
 
-            <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-2">
+            <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
               <label className="form-label">Cód. Barras</label>
               <input type="text" className="form-control form-control-sm" onChange={handleChange} name="codBarras" value={produtos.codBarras || ""} />
             </div>
 
-            <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-2">
+            <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
               <label className="form-label">Cód. Ref</label>
               <input type="text" className="form-control form-control-sm" onChange={handleChange} name="codReferencia" value={produtos.codReferencia || ""} />
             </div>
@@ -51,7 +55,27 @@ export function FormProduct() {
               <input type="text" className="form-control form-control-sm" onChange={handleChange} name="estoqueMin" value={produtos.estoqueMin === null ? "" : produtos.estoqueMin} />
             </div>
 
-            <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-4">
+            <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+              <label className="form-label">REF's</label>
+              <select className="form-select form-select-sm" name="refFiscal" value={produtos.refFiscal || ""} onChange={handleChange}>
+                <option value="" >---selecione---</option>
+                {refsFromSelectBox.map((ref) =>
+                  <option key={ref.id} value={ref.ref}>{ref.ref}</option>
+                )}
+              </select>
+            </div>
+
+            <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+              <label className="form-label">NCM</label>
+              <input type="text" className="form-control form-control-sm" name="ncm" value={produtos.ncm || ""} onChange={handleChange} />
+            </div>
+
+            <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+              <label className="form-label">CEST</label>
+              <input type="text" className="form-control form-control-sm" name="cest" value={produtos.cest || ""} onChange={handleChange} />
+            </div>
+
+            <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
               <label className="form-label" >Descrição</label>
               <textarea rows={4} style={{ height: "70px" }} type="text" className="form-control form-control-sm" onChange={handleChange} name="descricao" value={produtos.descricao || ""} />
             </div>
