@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { LeafContext } from "../../../context"
 
 import { ContentHeaderTitle } from "../../../styles"
 import { BsFillGearFill } from "react-icons/bs"
@@ -6,6 +7,7 @@ import { BsFillGearFill } from "react-icons/bs"
 import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdWidth33, TdWidth16, TdWidth12, TdWidth10, TdWidthTotal, HeaderTdWidthTotal, TdActions, InvisibleHeaderTdActions, ContentButtonAddMoreItems } from "./styles"
 
 export function ProductNfe() {
+  const { productsFromSelectBox } = useContext(LeafContext)
   const [products, setProducts] = useState([1])
 
   const addProducts = () => {
@@ -40,9 +42,10 @@ export function ProductNfe() {
                 <TrBodyContent key={i}>
                   <TdWidth33>
                     <InputSelect className="form-select form-select-product form-select-sm" name='idCliente'>
-                      <option value="" >---selecione---</option>
-                      <option value="" >teste1</option>
-                      <option value="" >teste2</option>
+                      <option value="">---selecione---</option>
+                      {productsFromSelectBox.map((product) =>
+                        <option key={product.id} value={product.id}>{product.nome}</option>
+                      )}
                     </InputSelect>
                   </TdWidth33>
 

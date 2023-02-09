@@ -66,7 +66,7 @@ export function Header() {
 
             <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12" hidden={pedido.finalidade === "1"}>
               <label className="form-label">Chave de referencia</label>
-              <input type="text" className="form-control form-control-sm" />
+              <input type="text" className="form-control form-control-sm" placeholder="Informe aqui a chave da nota fiscal que deseja realizar a devolução"/>
             </div>
           </div>
         </div>

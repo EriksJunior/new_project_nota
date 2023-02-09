@@ -20,6 +20,7 @@ import { createContext } from "react";
 import { UseGeneral } from "../hooks/UseGeneral";
 import { UseLeaf } from "../hooks/UseLeaf";
 import { UseCustomer } from "../hooks/UseCustomer";
+import { UseProduct } from "../hooks/UseProduct";
 
 const LeafContext = createContext({})
 
@@ -27,12 +28,14 @@ function LeafProvider({ children }) {
   const { handleRenderNavItem, navItems, openLayouts, handleNewLeaf, switchBetweenComponents, handleOpenAreaLeaf } = UseGeneral()
   const { pedido, handleChangePedido } = UseLeaf()
   const { getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, customer, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer } = UseCustomer()
+  const { getProcuctsFromSelectBox, productsFromSelectBox } = UseProduct()
 
   return (
     <LeafContext.Provider value={{
-     /*UseGeneral*/ handleRenderNavItem, navItems, openLayouts, handleNewLeaf, switchBetweenComponents, handleOpenAreaLeaf, /*UseGeneral*/
-     /*UseLeaf*/ pedido, handleChangePedido, /*UseLeaf*/
-     /*UseCustomer*/ getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, customer, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer /*UseCustomer*/
+     /*UseGeneral*/ handleRenderNavItem, navItems, openLayouts, handleNewLeaf, switchBetweenComponents, handleOpenAreaLeaf,
+     /*UseLeaf*/ pedido, handleChangePedido,
+     /*UseCustomer*/ getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, customer, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer,
+     /*UseProduct*/ getProcuctsFromSelectBox, productsFromSelectBox
     }}>
       {children}
     </LeafContext.Provider>

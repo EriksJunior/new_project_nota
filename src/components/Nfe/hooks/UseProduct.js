@@ -1,4 +1,13 @@
-export function UseProduct(){
+import { useState } from "react"
+import ProductServices from "../../../services/ProductService"
 
-  return {}
+export function UseProduct() {
+  const [productsFromSelectBox, setProductsFromSelectBox] = useState([])
+
+  const getProcuctsFromSelectBox = async () => {
+    const products = await ProductServices.getFromSelectBox()
+    setProductsFromSelectBox(products)
+  }
+
+  return { getProcuctsFromSelectBox, productsFromSelectBox }
 }

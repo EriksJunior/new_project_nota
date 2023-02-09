@@ -14,7 +14,7 @@ class ProductServices {
     }
 
     async getFromSelectBox() {
-        const { data } = await api.get('/products')
+        const { data: { data } } = await api.get('/products')
         return data
     }
 

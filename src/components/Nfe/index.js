@@ -15,10 +15,11 @@ import { Div, Button } from "../styles"
 
 
 export function FormLeaf() {
-  const { navItems, switchBetweenComponents, getCustomersFromSelectBox } = useContext(LeafContext)
+  const { navItems, switchBetweenComponents, getCustomersFromSelectBox, getProcuctsFromSelectBox } = useContext(LeafContext)
 
   useEffect(() => {
     getCustomersFromSelectBox()
+    getProcuctsFromSelectBox()
   }, [])
 
   return (
