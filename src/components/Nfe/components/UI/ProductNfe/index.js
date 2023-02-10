@@ -1,11 +1,12 @@
 import { useContext } from "react"
-import { Link } from "react-router-dom"
 import { LeafContext } from "../../../context"
+
+import { DropdownActions } from "../DropdownActions"
 
 import { ContentHeaderTitle } from "../../../styles"
 import { BsFillGearFill } from "react-icons/bs"
 
-import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, SpanActions, ContentButtonAddMoreItems } from "./styles"
+import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItems } from "./styles"
 
 export function ProductNfe() {
   const { productsFromSelectBox, addProducts, products, handleChangeProducts, saveLeafProducts } = useContext(LeafContext)
@@ -65,9 +66,17 @@ export function ProductNfe() {
                       <InputTable type="text" className="form-control-sm" placeholder="0,0000" name='total' value={products[index].total} onChange={(e) => handleChangeProducts(e, index)} />
                     </TdBodyTotal>
 
-                    <SpanActions role="button">
-                      <BsFillGearFill size={20} color={"#02769c"} className="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" />
-                    </SpanActions>
+                    <TdActions>
+                      <div className="productActions">
+                        <span>
+                          <BsFillGearFill role="button" size={20} color={"#02769c"} />
+                        </span>
+
+                        <div className="dropdownActions">
+                          <DropdownActions />
+                        </div>
+                      </div>
+                    </TdActions>
                   </TrBodyContent>
                 )}
               </tbody>

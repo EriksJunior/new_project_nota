@@ -21,7 +21,7 @@ export const Table = styled.table`
   width: 100%;
    @media screen and (max-width: 1191px) {
       min-width: 690px;
-      overflow-x: auto;
+      /* overflow-x: auto; */
     }
 `
 
@@ -34,9 +34,8 @@ export const InputTable = styled.input`
   background-color: #202529;
   outline: none;
   color: #b4b2b2;
-  overflow-x: auto;
-
 `
+
 export const InputSelect = styled.select`
   width: 100%;
   border-top: none;
@@ -121,11 +120,28 @@ export const TdBodyTotal = styled.td`
   border-bottom-right-radius: 5px;
 `
 
-export const SpanActions = styled.span`
+export const TdActions = styled.td`
   width: 4%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .productActions {
+    position: absolute;
+    right: 30px;
+  }
+
+  .dropdownActions{
+    display: none;
+    position: absolute;
+    right: 30px;
+    bottom: 0px;
+    z-index: 999;
+  }
+
+  .productActions:hover .dropdownActions{
+    display: block;
+  }
 `
 
 export const TableHeader = styled.tr`
