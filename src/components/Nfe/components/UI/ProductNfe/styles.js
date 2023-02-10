@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const ContentTable = styled.div`
-  /* overflow-x: auto; */
-  
+    /* overflow-x: auto; */
+
   ::-webkit-scrollbar-track {
       background-color: transparent;
   }
@@ -125,10 +125,11 @@ export const TdActions = styled.td`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   .productActions {
     position: absolute;
-    right: 30px;
+    right: 0px;
   }
 
   .dropdownActions{
