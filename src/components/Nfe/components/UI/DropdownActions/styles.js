@@ -27,7 +27,8 @@ export const Dropdown = styled.div`
   }
 
   li:hover {
-    background-color: #02769c;
+    background-color: #02769c9c;
     border-radius: 5px;
+    cursor: pointer;
   }
 `
