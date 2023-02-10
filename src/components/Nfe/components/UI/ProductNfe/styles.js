@@ -18,7 +18,7 @@ export const ContentTable = styled.div`
 `
 
 export const Table = styled.table`
-  width: 100%;
+    width: 100%;
    @media screen and (max-width: 1191px) {
       min-width: 690px;
       /* overflow-x: auto; */
@@ -118,6 +118,17 @@ export const TdBodyTotal = styled.td`
   border: solid 1px #02769c;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+`
+
+export const Scrollllll = styled.div`
+   @media screen and (max-width: 1191px) {
+      overflow-x: auto;
+
+      .dropdownActions {
+        right: 190px!important;
+        bottom: 30px!important;
+      }
+    }
 `
 
 export const TdActions = styled.td`
