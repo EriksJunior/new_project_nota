@@ -21,7 +21,7 @@ class InfoFiscaleService {
     }
 
     async findAllRefs() {
-        const { data } = await api.get('/impostos')
+        const { data: { data } } = await api.get('/impostos')
         return data
     }
 }

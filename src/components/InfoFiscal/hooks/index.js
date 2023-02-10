@@ -133,7 +133,7 @@ export function UseInfoFiscale() {
   const findAllRefs = async () => {
     try {
       const result = await InfoFiscaleService.findAllRefs()
-      setRefs(result.data)
+      setRefs(result)
     } catch (error) {
       toast.error("Ocorreu um erro ao listar seus REF's", {
         position: toast.POSITION.TOP_RIGHT

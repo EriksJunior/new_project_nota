@@ -8,7 +8,10 @@ export const INITIAL_STATE_PRODUCT = {
   codBarras: "",
   codReferencia: "",
   estoque: "0",
-  estoqueMin: "1" 
+  estoqueMin: "1" ,
+  refFiscal: "",
+  cest: "",
+  ncm: "",
 }
 
 export const INITIAL_STATE_SEARCH = {

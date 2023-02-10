@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 
 import { INITIAL_STATE_PRODUCT, INITIAL_STATE_SEARCH } from '../initalStates';
 import ProductServices from '../../../services/ProductService';
+import InfoFiscaleService from '../../../services/InfoFiscaleService';
 
 import { toast } from "react-toastify";
 import { useEffect } from 'react';
@@ -12,6 +13,7 @@ export function UseProducts() {
   const [returnedProduct, setReturnedProduct] = useState([])
   const [openLayouts, setOpenLayouts] = useState(false)
   const [openAreaProduct, setOpenAreaProduct] = useState(false)
+  const [refsFromSelectBox, setRefsFromSelectBox] = useState([])
 
   useEffect(() => {
     const searchProduct = async () => {
@@ -126,6 +128,11 @@ export function UseProducts() {
     }
   }
 
+  const findAllRefs = async () => {
+    const refs = await InfoFiscaleService.findAllRefs()
+    setRefsFromSelectBox(refs)
+  }
+
   const handleSaveOrUpdate = async () => {
     produtos?.id === "" ? saveProducts() : update()
   }
@@ -144,17 +151,17 @@ export function UseProducts() {
     setOpenAreaProduct(true)
     await findById(id)
   }
-  
+
   const switchBetweenComponents = () => {
     setOpenAreaProduct(false)
     setOpenLayouts(false)
     clearInputs()
   }
-  
+
   const handleNewProduct = async () => {
     setOpenLayouts(true)
     clearInputs()
   }
 
-  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues, handleOpenAreaProduct, openAreaProduct, openLayouts, handleNewProduct, handleEditProduct, switchBetweenComponents }
+  return { produtos, deleteProduct, clearInputs, search, setSearch, searchProduct, returnedProduct, handleChange, findById, handleSaveOrUpdate, handleChangeSearchProduct, handleChangeMonetaryValues, handleOpenAreaProduct, openAreaProduct, openLayouts, handleNewProduct, handleEditProduct, switchBetweenComponents, findAllRefs, refsFromSelectBox }
 }
