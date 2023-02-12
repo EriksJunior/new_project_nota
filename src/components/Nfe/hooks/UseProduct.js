@@ -21,9 +21,10 @@ export function UseProduct() {
     setProducts([...products, INITIAL_VALUE_PRODUTOS]);
   }
 
-  const removeProducts = (index) => {
-    const newProducts = [...products]
 
+  const removeProduct = (index) => {
+    const newProducts = [...products]
+    
     if (index !== 0) {
       newProducts.splice(index, 1)
       setProducts(newProducts)
@@ -39,5 +40,5 @@ export function UseProduct() {
     setProductsFromSelectBox(products)
   }
 
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, removeProducts, products, handleChangeProducts, saveLeafProducts }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, removeProduct, products, handleChangeProducts, saveLeafProducts }
 }
