@@ -9,7 +9,7 @@ import { BsFillGearFill } from "react-icons/bs"
 import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItems, Scrollllll } from "./styles"
 
 export function ProductNfe() {
-  const { productsFromSelectBox, addProducts, products, handleChangeProducts, saveLeafProducts } = useContext(LeafContext)
+  const { productsFromSelectBox, addProducts, removeProduct, products, handleChangeProducts, saveLeafProducts } = useContext(LeafContext)
 
   return (
     <div className="card">
@@ -68,15 +68,12 @@ export function ProductNfe() {
                     <TdActions>
                       <div className="productActions">
                         <span>
-                          <input type="checkbox" name={`action-${index}`} id={`action-${index}`} />
-                          <label htmlFor={`action-${index}`}>
-                            <BsFillGearFill role="button" size={20} color={"#02769c"} />
-                          </label>
-                        </span>
+                          <BsFillGearFill role="button" size={20} color={"#02769c"} />
 
-                        <div className="dropdownActions">
-                          <DropdownActions />
-                        </div>
+                          <div className="dropdownActions">
+                            <DropdownActions index={index} remove={() => removeProduct(index)} />
+                          </div>
+                        </span>
                       </div>
                     </TdActions>
                   </TrBodyContent>

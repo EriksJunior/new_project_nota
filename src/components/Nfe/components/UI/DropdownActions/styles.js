@@ -32,3 +32,21 @@ export const Dropdown = styled.div`
     cursor: pointer;
   }
 `
+
+export const ContentRemoveIrem = styled.label`
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  
+  .checkRemoveIcon { 
+    display: none;
+  }
+
+  .remove:checked ~ .checkRemoveIcon{
+    display: block;
+    cursor: pointer;
+    background-color: red;
+    border-radius: 5px;
+  }
+
+`

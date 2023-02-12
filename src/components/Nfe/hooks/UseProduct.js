@@ -19,7 +19,16 @@ export function UseProduct() {
 
   const addProducts = () => {
     setProducts([...products, INITIAL_VALUE_PRODUTOS]);
-    console.log(products)
+  }
+
+
+  const removeProduct = (index) => {
+    const newProducts = [...products]
+    
+    if (index !== 0) {
+      newProducts.splice(index, 1)
+      setProducts(newProducts)
+    }
   }
 
   const saveLeafProducts = () => {
@@ -31,6 +40,5 @@ export function UseProduct() {
     setProductsFromSelectBox(products)
   }
 
-
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, products, handleChangeProducts, saveLeafProducts }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, removeProduct, products, handleChangeProducts, saveLeafProducts }
 }
