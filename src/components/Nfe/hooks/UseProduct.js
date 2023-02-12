@@ -19,7 +19,6 @@ export function UseProduct() {
 
   const addProducts = () => {
     setProducts([...products, INITIAL_VALUE_PRODUTOS]);
-    console.log(products)
   }
 
   const saveLeafProducts = () => {
@@ -30,7 +29,6 @@ export function UseProduct() {
     const products = await ProductServices.getFromSelectBox()
     setProductsFromSelectBox(products)
   }
-
 
   return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, products, handleChangeProducts, saveLeafProducts }
 }

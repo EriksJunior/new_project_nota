@@ -151,7 +151,13 @@ export const TdActions = styled.td`
     z-index: 999;
   }
 
-  .productActions:hover .dropdownActions{
+  .action {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .action:focus ~ .dropdownActions{
     display: block;
   }
 `
