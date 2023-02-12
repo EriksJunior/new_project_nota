@@ -68,7 +68,10 @@ export function ProductNfe() {
                     <TdActions>
                       <div className="productActions">
                         <span>
-                          <BsFillGearFill role="button" size={20} color={"#02769c"} />
+                          <input type="checkbox" name={`action-${index}`} id={`action-${index}`} />
+                          <label htmlFor={`action-${index}`}>
+                            <BsFillGearFill role="button" size={20} color={"#02769c"} />
+                          </label>
                         </span>
 
                         <div className="dropdownActions">
