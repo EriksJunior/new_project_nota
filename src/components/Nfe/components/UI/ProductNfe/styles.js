@@ -157,7 +157,7 @@ export const TdActions = styled.td`
     opacity: 0;
   }
 
-  .action:focus ~ .dropdownActions{
+  .productActions:hover .dropdownActions{
     display: block;
   }
 `
