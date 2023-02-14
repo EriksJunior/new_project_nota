@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { SAVE_CUSTOMER } from "./store/reducers/LeafReducers"
+import { SAVE_LEAF } from "./store/reducers/LeafReducers"
 
 import { LeafContext } from "./context"
 
@@ -53,7 +53,7 @@ export function FormLeaf() {
 
       <Div style={{ width: "80%", display: "flex", justifyContent: "flex-end", marginTop: "10px" }}>
         <Button className="btn btn-primary btn-sm" onClick={switchBetweenComponents}>Voltar</Button>
-        <Button className="btn btn-primary btn-sm" onClick={() => console.log(stateInital)}>testando</Button>
+        <Button className="btn btn-primary btn-sm" onClick={() => dispatch(SAVE_LEAF({...stateInital, id: "23987498324728937dsuhfs"}))}>testando</Button>
       </Div>
     </ContentNfe>
   )

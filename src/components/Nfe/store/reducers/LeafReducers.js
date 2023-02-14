@@ -10,11 +10,17 @@ export const LeafReducer = createSlice({
   },
   reducers: {
     SAVE_CUSTOMER: (state, action) => {
-      console.log(state.cliente)
-    }
+
+    },
+    SAVE_LEAF: (state, action) => {
+      state.pedido = action.payload
+      console.log(state.pedido)
+    },
+    SAVE_PRODUCTS: (state, action) => {
+    },
   }
 })
 
-export const { SAVE_CUSTOMER } = LeafReducer.actions
+export const { SAVE_CUSTOMER, SAVE_LEAF, SAVE_PRODUCTS } = LeafReducer.actions
 
 export default LeafReducer.reducer
