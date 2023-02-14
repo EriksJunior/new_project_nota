@@ -10,7 +10,7 @@ export const LeafReducer = createSlice({
   },
   reducers: {
     SAVE_CUSTOMER: (state, action) => {
-
+      state.cliente = action.payload
     },
     SAVE_LEAF: (state, action) => {
       state.pedido = action.payload
