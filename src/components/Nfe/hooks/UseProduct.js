@@ -31,8 +31,8 @@ export function UseProduct() {
     }
   }
 
-  const saveLeafProducts = () => {
-    console.log(products)
+  const saveLeafProducts = async (products) => {
+    // chamar serviço para salvar os produtos da nota
   }
 
   const getProcuctsFromSelectBox = async () => {
