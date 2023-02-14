@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { useSelector } from "react-redux"
 import { LeafContext } from "../../../context"
 
 import { cidades } from "../../../../../common/customer"
@@ -8,7 +9,8 @@ import { ContentButtonUpdateCustomer } from "./styles"
 import { consumidorFinalNfe, constribuinte } from "../../../../../common/nfe"
 
 export function CustomertNfe() {
-  const { customersFromSelectBox, customer, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer } = useContext(LeafContext)
+  const { customersFromSelectBox, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer } = useContext(LeafContext)
+  const customer = useSelector(state => state.leaf.cliente)
 
   return (
     <div className="card">

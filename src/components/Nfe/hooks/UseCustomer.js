@@ -1,20 +1,29 @@
 import { useState, useCallback } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import { SAVE_CUSTOMER } from "../store/reducers/LeafReducers" 
+import { INITIAL_STATE_CLIENTE_NFE } from "../initialStates";
 
-import { INITIAL_STATE_CLIENTE_NFE } from "../initialStates"
 import CustomerService from "../../../services/CustomerService"
 
 import { toast } from "react-toastify";
 
 export function UseCustomer() {
-  const [customer, setCustomer] = useState(INITIAL_STATE_CLIENTE_NFE)
   const [customersFromSelectBox, setCustomersFromSelectBox] = useState([])
 
+  const dispatch = useDispatch()
+  const customer = useSelector(state => state.leaf.cliente)
+
   const handleChangeIdCustomer = useCallback((e) => {
-    setCustomer({ ...customer, id: e.currentTarget.value })
+    if (!e.currentTarget.value) {
+      dispatch(SAVE_CUSTOMER({ ...customer }))
+    }
+
+    // setCustomer({ ...customer, id: e.currentTarget.value })
+    dispatch(SAVE_CUSTOMER({ ...customer, id: e.currentTarget.value }))
   }, [customer])
 
   const handleChangeCustomer = useCallback((e) => {
-    setCustomer({ ...customer, [e.currentTarget.name]: e.currentTarget.value })
+    dispatch(SAVE_CUSTOMER({ ...customer, [e.currentTarget.name]: e.currentTarget.value }))
   }, [customer])
 
   const handleChangeIdCustomerAndList = async (e) => {
@@ -49,10 +58,14 @@ export function UseCustomer() {
   }
 
   const findCustomerById = async (id) => {
-    const customer = await CustomerService.findById(id)
+    if (!id) {
+      return dispatch(SAVE_CUSTOMER(INITIAL_STATE_CLIENTE_NFE))
+    }
+     
+    const newCustomer = await CustomerService.findById(id)
     const stringConsumidorFinal = String(customer.consumidor_final)
 
-    setCustomer({ ...customer, consumidor_final: stringConsumidorFinal })
+    dispatch(SAVE_CUSTOMER({ ...newCustomer, consumidor_final: stringConsumidorFinal }))
   }
 
   return { getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, customer, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer }

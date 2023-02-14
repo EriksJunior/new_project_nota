@@ -1,6 +1,5 @@
 import { useEffect, useContext } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { SAVE_LEAF } from "./store/reducers/LeafReducers"
 
 import { LeafContext } from "./context"
 
@@ -19,8 +18,7 @@ import { Div, Button } from "../styles"
 
 export function FormLeaf() {
   const { navItems, switchBetweenComponents, getCustomersFromSelectBox, getProcuctsFromSelectBox } = useContext(LeafContext)
-  const dispatch = useDispatch()
-  const stateInital = useSelector((state) => state.leaf.cliente)
+  const stateInital = useSelector(state => state.leaf.cliente)
 
   useEffect(() => {
     getCustomersFromSelectBox()
@@ -53,7 +51,7 @@ export function FormLeaf() {
 
       <Div style={{ width: "80%", display: "flex", justifyContent: "flex-end", marginTop: "10px" }}>
         <Button className="btn btn-primary btn-sm" onClick={switchBetweenComponents}>Voltar</Button>
-        <Button className="btn btn-primary btn-sm" onClick={() => dispatch(SAVE_LEAF({...stateInital, id: "23987498324728937dsuhfs"}))}>testando</Button>
+        <Button className="btn btn-primary btn-sm" onClick={() => console.log(stateInital)}>testando</Button>
       </Div>
     </ContentNfe>
   )
