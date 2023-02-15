@@ -1,5 +1,4 @@
 import { useEffect, useContext } from "react"
-import { useSelector, useDispatch } from "react-redux"
 
 import { LeafContext } from "./context"
 
@@ -10,15 +9,12 @@ import { CustomertNfe } from "./components/UI/CustomerNfe"
 import { PedidoNfe } from "./components/UI/PedidoNfe"
 import { TransporteNfe } from "./components/UI/TransporteNfe"
 
-
 import { ContentNfe } from "./styles"
 import { ContainerNav } from "./components/UI/Nav/styles"
 import { Div, Button } from "../styles"
 
-
 export function FormLeaf() {
   const { navItems, switchBetweenComponents, getCustomersFromSelectBox, getProcuctsFromSelectBox } = useContext(LeafContext)
-  const stateInital = useSelector(state => state.leaf.cliente)
 
   useEffect(() => {
     getCustomersFromSelectBox()
@@ -51,7 +47,6 @@ export function FormLeaf() {
 
       <Div style={{ width: "80%", display: "flex", justifyContent: "flex-end", marginTop: "10px" }}>
         <Button className="btn btn-primary btn-sm" onClick={switchBetweenComponents}>Voltar</Button>
-        <Button className="btn btn-primary btn-sm" onClick={() => console.log(stateInital)}>testando</Button>
       </Div>
     </ContentNfe>
   )

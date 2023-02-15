@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_CUSTOMER } from "../store/reducers/LeafReducers" 
+import { SAVE_CUSTOMER } from "../store/reducers/LeafReducers"
 import { INITIAL_STATE_CLIENTE_NFE } from "../initialStates";
 
 import CustomerService from "../../../services/CustomerService"
@@ -13,18 +13,18 @@ export function UseCustomer() {
   const dispatch = useDispatch()
   const customer = useSelector(state => state.leaf.cliente)
 
-  const handleChangeIdCustomer = useCallback((e) => {
+  const handleChangeIdCustomer = (e) => {
     if (!e.currentTarget.value) {
       dispatch(SAVE_CUSTOMER({ ...customer }))
     }
 
     // setCustomer({ ...customer, id: e.currentTarget.value })
     dispatch(SAVE_CUSTOMER({ ...customer, id: e.currentTarget.value }))
-  }, [customer])
+  }
 
-  const handleChangeCustomer = useCallback((e) => {
+  const handleChangeCustomer = (e) => {
     dispatch(SAVE_CUSTOMER({ ...customer, [e.currentTarget.name]: e.currentTarget.value }))
-  }, [customer])
+  }
 
   const handleChangeIdCustomerAndList = async (e) => {
     handleChangeIdCustomer(e)
@@ -61,7 +61,7 @@ export function UseCustomer() {
     if (!id) {
       return dispatch(SAVE_CUSTOMER(INITIAL_STATE_CLIENTE_NFE))
     }
-     
+
     const newCustomer = await CustomerService.findById(id)
     const stringConsumidorFinal = String(customer.consumidor_final)
 

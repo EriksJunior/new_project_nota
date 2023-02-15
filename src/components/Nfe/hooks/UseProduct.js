@@ -24,7 +24,7 @@ export function UseProduct() {
 
   const removeProduct = (index) => {
     const newProducts = [...products]
-    
+
     if (index !== 0) {
       newProducts.splice(index, 1)
       setProducts(newProducts)
@@ -32,6 +32,7 @@ export function UseProduct() {
   }
 
   const saveLeafProducts = async (products) => {
+    console.log(products)
     // chamar serviço para salvar os produtos da nota
   }
 

@@ -1,25 +1,32 @@
-import { useState, useCallback } from "react"
-// import { UseCustomer } from "./UseCustomer";
-import { UseProduct } from "./UseProduct"
+import { useDispatch, useSelector } from "react-redux";
+import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
-import { INITIAL_VALUE_PEDIDO } from "../initialStates";
+import { UseProduct } from "./UseProduct";
+
+import LeafService from "../../../services/LeafService";
 
 export function UseLeaf() {
   const { saveLeafProducts } = UseProduct()
-  const [pedido, setPedido] = useState(INITIAL_VALUE_PEDIDO)
 
-  const handleChangePedido = useCallback((e) => {
-    setPedido({ ...pedido, [e.currentTarget.name]: e.currentTarget.value })
-  }, [pedido])
+  const dispatch = useDispatch()
+  const pedido = useSelector(state => state.leaf.pedido)
+  const produtos = useSelector(state => state.leaf.produto)
+  const cliente = useSelector(state => state.leaf.cliente)
+
+  const handleChangePedido = (e) => {
+    dispatch(SAVE_LEAF({ ...pedido, [e.currentTarget.name]: e.currentTarget.value }))
+  }
+
+  const saveLeaf = async (pedido) => {
+    console.log({...pedido, idCliente: cliente.id})
+    // const result = await LeafService.save(pedido)
+    // console.log(result)
+  }
 
   const handleSave = async () => {
-    // await saveLeaf()
-    // await saveLeafProducts()
+    await saveLeaf(pedido)
+    await saveLeafProducts(produtos)
   }
 
-  const saveLeaf = async () => {
-    //chamar serviço para salvar pedido
-  }
-
-  return { pedido, handleChangePedido }
+  return { handleChangePedido, handleSave }
 }

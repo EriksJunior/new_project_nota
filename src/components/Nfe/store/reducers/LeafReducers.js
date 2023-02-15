@@ -14,7 +14,6 @@ export const LeafReducer = createSlice({
     },
     SAVE_LEAF: (state, action) => {
       state.pedido = action.payload
-      console.log(state.pedido)
     },
     SAVE_PRODUCTS: (state, action) => {
     },
