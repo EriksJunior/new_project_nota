@@ -10,7 +10,7 @@ import { BsFillGearFill } from "react-icons/bs"
 import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItems, Scrollllll } from "./styles"
 
 export function ProductNfe() {
-  const { productsFromSelectBox, addProducts, removeProduct, handleChangeProducts, handleSave } = useContext(LeafContext)
+  const { productsFromSelectBox, addProducts, removeProduct, handleChangeProducts, saveLeafProducts } = useContext(LeafContext)
   const products = useSelector(state => state.leaf.produto)
 
   return (
@@ -85,7 +85,7 @@ export function ProductNfe() {
 
             <ContentButtonAddMoreItems>
               <button className="btn btn-primary btn-sm" onClick={addProducts}>Adicionar Produtos</button>
-              <button className="btn btn-primary btn-sm" onClick={handleSave}>Salvar</button>
+              <button className="btn btn-primary btn-sm" onClick={saveLeafProducts}>Salvar</button>
             </ContentButtonAddMoreItems>
           </ContentTable>
         </Scrollllll>
