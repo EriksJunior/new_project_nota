@@ -2,9 +2,13 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import ProductServices from "../../../services/ProductService"
+import LeafService from "../../../services/LeafService"
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
 
 import { SAVE_PRODUCTS } from "../store/reducers/LeafReducers"
+
+import { toast } from "react-toastify";
+
 
 export function UseProduct() {
   const [productsFromSelectBox, setProductsFromSelectBox] = useState([])
@@ -38,8 +42,15 @@ export function UseProduct() {
   }
 
   const saveLeafProducts = async (products) => {
-    console.log(products, 'aqui estão os produtos')
-    // chamar serviço para salvar os produtos da nota
+    try {
+      console.log(products)
+      // await Promise.all(products.map(product => LeafService.addProduct(product)))
+      // return toast("Itens salvos! ✅", {
+      //   position: toast.POSITION.TOP_RIGHT
+      // });
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const getProcuctsFromSelectBox = async () => {
