@@ -25,15 +25,35 @@ export function UseLeaf() {
 
       const id = await LeafService.save(pedido)
       dispatch(SAVE_LEAF({ ...pedido, id: id }))
+
+      toast("Documento fiscal salvo! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
     } catch (error) {
-      toast.error(error.message, {
+       toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
   }
 
   const updateLeaf = async (pedido) => {
-    await LeafService.update(pedido)
+    try {
+      validadeLeaf(pedido)
+
+      await LeafService.update(pedido)
+
+      toast("Documento fiscal salvo! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } catch (error) {
+      console.log(error.errors)
+      // error.map((e) => {
+
+      // })
+      // toast.error(error.message, {
+      //   position: toast.POSITION.TOP_RIGHT
+      // });
+    }
   }
 
   const handleSave = async () => {

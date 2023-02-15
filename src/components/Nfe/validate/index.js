@@ -38,12 +38,13 @@ const validadeLeaf = (leaf) => {
     status: z.string().optional(),
   })
 
-    const result = schema.safeParse(leaf)
-    if(!result.success) {
-      const msg = result.error.errors[0].message
-      throw new Error(msg)
-    }
- 
+  const result = schema.safeParse(leaf)
+  if (!result.success) {
+    const messages = result.error.errors[0].message
+    
+    throw Error(messages)
+  }
+
 }
 
 export { validadeLeaf }
