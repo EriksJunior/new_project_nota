@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
 import { UseProduct } from "./UseProduct";
-
 import LeafService from "../../../services/LeafService";
+import { validadeLeaf } from "../validate";
 
 import { toast } from "react-toastify";
 
@@ -21,10 +21,12 @@ export function UseLeaf() {
 
   const saveLeaf = async (pedido) => {
     try {
+      validadeLeaf(pedido)
+
       const id = await LeafService.save(pedido)
       dispatch(SAVE_LEAF({ ...pedido, id: id }))
     } catch (error) {
-      toast.error(error.response.data, {
+      toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
