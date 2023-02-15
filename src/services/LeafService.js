@@ -1,8 +1,8 @@
 import { api } from "../utils/configs/api";
 class LeafService {
   async save(nota) {
-    const { data } = await api.post('/nota', nota)
-    return data
+    const { data: { id } } = await api.post('/nota', nota)
+    return id
   }
 
   async update(nota) {

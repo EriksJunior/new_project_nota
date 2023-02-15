@@ -1,37 +1,44 @@
-import { useCallback, useState } from "react"
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+
 import ProductServices from "../../../services/ProductService"
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
 
-export function UseProduct() {
-  const [products, setProducts] = useState([INITIAL_VALUE_PRODUTOS])
-  const [productsFromSelectBox, setProductsFromSelectBox] = useState([])
+import { SAVE_PRODUCTS } from "../store/reducers/LeafReducers"
 
-  const handleChangeProducts = useCallback((e, index) => {
-    setProducts(prevProducts =>
-      prevProducts.map((product, i) => {
+export function UseProduct() {
+  const [productsFromSelectBox, setProductsFromSelectBox] = useState([])
+  const dispatch = useDispatch()
+  const products = useSelector(state => state.leaf.produto)
+
+  const handleChangeProducts = (e, index) => {
+    dispatch(SAVE_PRODUCTS(
+      products.map((product, i) => {
         if (i === index) {
           return { ...product, [e.target.name]: e.target.value };
         }
         return product;
       })
-    );
-  }, []);
+    ))
+  };
+
 
   const addProducts = () => {
-    setProducts([...products, INITIAL_VALUE_PRODUTOS]);
+    dispatch(SAVE_PRODUCTS([...products, INITIAL_VALUE_PRODUTOS]))
   }
 
 
   const removeProduct = (index) => {
     const newProducts = [...products]
-    
+
     if (index !== 0) {
       newProducts.splice(index, 1)
-      setProducts(newProducts)
+      dispatch(SAVE_PRODUCTS(newProducts))
     }
   }
 
   const saveLeafProducts = async (products) => {
+    console.log(products, 'aqui estão os produtos')
     // chamar serviço para salvar os produtos da nota
   }
 
@@ -40,5 +47,5 @@ export function UseProduct() {
     setProductsFromSelectBox(products)
   }
 
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, removeProduct, products, handleChangeProducts, saveLeafProducts }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, removeProduct, handleChangeProducts, saveLeafProducts }
 }

@@ -19,7 +19,8 @@
     "styled-components": "^5.3.6",
     "sweetalert2": "^11.6.15",
     "sweetalert2-react-content": "^5.0.7",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zod": "^3.20.6"
   },
   "scripts": {
     "start": "react-scripts start",
