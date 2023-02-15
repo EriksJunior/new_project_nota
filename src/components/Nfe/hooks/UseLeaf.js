@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
-import { UseProduct } from "./UseProduct";
 import LeafService from "../../../services/LeafService";
 import { validadeLeaf } from "../validate";
 
@@ -9,12 +8,10 @@ import { toast } from "react-toastify";
 
 
 export function UseLeaf() {
-  const { saveLeafProducts } = UseProduct()
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
-  const produtos = useSelector(state => state.leaf.produto)
-  
+
   const handleChangePedido = (e) => {
     dispatch(SAVE_LEAF({ ...pedido, [e.currentTarget.name]: e.currentTarget.value }))
   }
@@ -29,6 +26,8 @@ export function UseLeaf() {
       toast("Documento fiscal salvo! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
+
+      return id
     } catch (error) {
       toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT
@@ -42,7 +41,7 @@ export function UseLeaf() {
 
       await LeafService.update(pedido)
 
-      toast("Documento fiscal salvo! ✅", {
+      return toast("Documento fiscal atualizado! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
     } catch (error) {
@@ -54,8 +53,8 @@ export function UseLeaf() {
 
   const handleSaveLeaf = async () => {
     if (!pedido.id) {
-      await saveLeaf({ ...pedido, idCliente: cliente.id })
-      await saveLeafProducts(produtos)
+      const id = await saveLeaf({ ...pedido, idCliente: cliente.id })
+      return id
     } else {
       await updateLeaf(pedido)
     }
