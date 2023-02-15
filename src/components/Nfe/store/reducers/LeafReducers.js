@@ -6,7 +6,7 @@ export const LeafReducer = createSlice({
   initialState: {
     pedido: INITIAL_VALUE_PEDIDO,
     cliente: INITIAL_STATE_CLIENTE_NFE,
-    produto: INITIAL_VALUE_PRODUTOS
+    produto: [INITIAL_VALUE_PRODUTOS]
   },
   reducers: {
     SAVE_CUSTOMER: (state, action) => {
@@ -16,6 +16,7 @@ export const LeafReducer = createSlice({
       state.pedido = action.payload
     },
     SAVE_PRODUCTS: (state, action) => {
+      state.produto = action.payload
     },
   }
 })

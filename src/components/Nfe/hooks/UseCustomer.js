@@ -1,6 +1,6 @@
-import { useState, useCallback } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_CUSTOMER } from "../store/reducers/LeafReducers"
+import { SAVE_CUSTOMER, SAVE_LEAF } from "../store/reducers/LeafReducers"
 import { INITIAL_STATE_CLIENTE_NFE } from "../initialStates";
 
 import CustomerService from "../../../services/CustomerService"
@@ -18,10 +18,9 @@ export function UseCustomer() {
       dispatch(SAVE_CUSTOMER({ ...customer }))
     }
 
-    // setCustomer({ ...customer, id: e.currentTarget.value })
     dispatch(SAVE_CUSTOMER({ ...customer, id: e.currentTarget.value }))
   }
-
+ 
   const handleChangeCustomer = (e) => {
     dispatch(SAVE_CUSTOMER({ ...customer, [e.currentTarget.name]: e.currentTarget.value }))
   }

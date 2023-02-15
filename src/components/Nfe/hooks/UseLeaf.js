@@ -5,27 +5,42 @@ import { UseProduct } from "./UseProduct";
 
 import LeafService from "../../../services/LeafService";
 
+import { toast } from "react-toastify";
+
+
 export function UseLeaf() {
   const { saveLeafProducts } = UseProduct()
-
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
-  const produtos = useSelector(state => state.leaf.produto)
   const cliente = useSelector(state => state.leaf.cliente)
+  const produtos = useSelector(state => state.leaf.produto)
 
   const handleChangePedido = (e) => {
     dispatch(SAVE_LEAF({ ...pedido, [e.currentTarget.name]: e.currentTarget.value }))
   }
 
   const saveLeaf = async (pedido) => {
-    console.log({...pedido, idCliente: cliente.id})
-    // const result = await LeafService.save(pedido)
-    // console.log(result)
+    try {
+      const id = await LeafService.save(pedido)
+      dispatch(SAVE_LEAF({ ...pedido, id: id }))
+    } catch (error) {
+      toast.error(error.response.data, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
+
+  const updateLeaf = async (pedido) => {
+    await LeafService.update(pedido)
   }
 
   const handleSave = async () => {
-    await saveLeaf(pedido)
-    await saveLeafProducts(produtos)
+    if (!pedido.id) {
+      await saveLeaf({ ...pedido, idCliente: cliente.id })
+      await saveLeafProducts(produtos)
+    } else {
+      await updateLeaf(pedido)
+    }
   }
 
   return { handleChangePedido, handleSave }

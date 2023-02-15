@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { useSelector } from "react-redux"
 import { LeafContext } from "../../../context"
 
 import { DropdownActions } from "../DropdownActions"
@@ -9,7 +10,8 @@ import { BsFillGearFill } from "react-icons/bs"
 import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItems, Scrollllll } from "./styles"
 
 export function ProductNfe() {
-  const { productsFromSelectBox, addProducts, removeProduct, products, handleChangeProducts, handleSave } = useContext(LeafContext)
+  const { productsFromSelectBox, addProducts, removeProduct, handleChangeProducts, handleSave } = useContext(LeafContext)
+  const products = useSelector(state => state.leaf.produto)
 
   return (
     <div className="card">
