@@ -29,25 +29,15 @@ export function UseProduct() {
     ))
   };
 
-
-  const addProducts = () => {
+  const addProductInTable = () => {
     dispatch(SAVE_PRODUCTS([...produtos, INITIAL_VALUE_PRODUTOS]))
-  }
-
-
-  const removeProduct = (index) => {
-    const newProducts = [...produtos]
-
-    if (index !== 0) {
-      newProducts.splice(index, 1)
-      dispatch(SAVE_PRODUCTS(newProducts))
-    }
   }
 
   const saveLeafProducts = async (idLeaf) => {
     try {
-      await Promise.all(produtos.map(product => ProductLeafService.save({ ...product, idNota: idLeaf })))
-
+      const ids = await Promise.all(produtos.map(product => ProductLeafService.save({ ...product, idNota: idLeaf })))
+      console.log(ids)
+      
       return toast("Itens salvos! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -63,16 +53,35 @@ export function UseProduct() {
         return
       }
 
-      await saveLeafProducts(idLeaf)
+      return await saveLeafProducts(idLeaf)
     }
 
     await saveLeafProducts(pedido.id)
+
   }
+
+  const removeProductInTable = (index) => {
+    const newProducts = [...produtos]
+
+    if (index !== 0) {
+      newProducts.splice(index, 1)
+      dispatch(SAVE_PRODUCTS(newProducts))
+    }
+  }
+
+  const removeLeafProducts = async (idLeaf) => {
+    // chamar api
+  }
+
+  const handleRemoveProductInTableAndLeafProducts = async () => {
+
+  }
+
 
   const getProcuctsFromSelectBox = async () => {
     const products = await ProductServices.getFromSelectBox()
     setProductsFromSelectBox(products)
   }
 
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, removeProduct, handleChangeProducts, handleSaveLeafAndLeafProducts }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, removeProductInTable, handleChangeProducts, handleSaveLeafAndLeafProducts }
 }

@@ -6,7 +6,8 @@ class ProductLeafService {
   }
 
   async save(product) {
-    await api.post('/nota-item', product)
+    const { data: { id } } = await api.post('/nota-item', product)
+    return { ...product, id: id }
   }
 
   async remove(id) {

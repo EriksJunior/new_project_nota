@@ -10,7 +10,7 @@ import { BsFillGearFill } from "react-icons/bs"
 import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItems, Scrollllll } from "./styles"
 
 export function ProductNfe() {
-  const { productsFromSelectBox, addProducts, removeProduct, handleChangeProducts, handleSaveLeafAndLeafProducts } = useContext(LeafContext)
+  const { productsFromSelectBox, addProductInTable, removeProductInTable, handleChangeProducts, handleSaveLeafAndLeafProducts } = useContext(LeafContext)
   const products = useSelector(state => state.leaf.produto)
 
   return (
@@ -73,7 +73,7 @@ export function ProductNfe() {
                           <BsFillGearFill role="button" size={20} color={"#02769c"} />
 
                           <div className="dropdownActions">
-                            <DropdownActions index={index} remove={() => removeProduct(index)} />
+                            <DropdownActions index={index} remove={() => removeProductInTable(index)} />
                           </div>
                         </span>
                       </div>
@@ -84,7 +84,7 @@ export function ProductNfe() {
             </Table>
 
             <ContentButtonAddMoreItems>
-              <button className="btn btn-primary btn-sm" onClick={addProducts}>Adicionar Produtos</button>
+              <button className="btn btn-primary btn-sm" onClick={addProductInTable}>Adicionar Produtos</button>
               <button className="btn btn-primary btn-sm" onClick={handleSaveLeafAndLeafProducts}>Salvar</button>
             </ContentButtonAddMoreItems>
           </ContentTable>
