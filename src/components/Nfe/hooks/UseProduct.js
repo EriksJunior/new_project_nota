@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { UseLeaf } from "./UseLeaf"
 
 import ProductServices from "../../../services/ProductService"
-import LeafService from "../../../services/LeafService"
+import ProductLeafService from "../../../services/ProductLeafService"
 
 import { SAVE_PRODUCTS } from "../store/reducers/LeafReducers"
 
@@ -44,24 +44,34 @@ export function UseProduct() {
     }
   }
 
-  const saveLeafProducts = async () => {
+  const saveLeafProducts = async (idLeaf) => {
     try {
-      if (!pedido.id) {
-        const idLeaf = await handleSaveLeaf(pedido)
-        await Promise.all(produtos.map(product => LeafService.addProduct({ ...product, idNota: idLeaf })))
+      await Promise.all(produtos.map(product => ProductLeafService.save({ ...product, idNota: idLeaf })))
 
-        return toast("Itens salvos! ✅", {
-          position: toast.POSITION.TOP_RIGHT
-        });
-      } else {
-        await Promise.all(produtos.map(product => LeafService.addProduct({ ...product, idNota: pedido.id })))
-        return toast("Itens salvos! ✅", {
-          position: toast.POSITION.TOP_RIGHT
-        });
-      }
+      return toast("Itens salvos! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const saveLeaf = async () => {
+    const idLeaf = await handleSaveLeaf(pedido)
+    return idLeaf
+  }
+
+  const handleSaveLeafAndLeafProducts = async () => {
+    if (!pedido.id) {
+      const idLeaf = await saveLeaf()
+      if (!idLeaf) {
+        return
+      }
+
+      await saveLeafProducts(idLeaf)
+    }
+
+    await saveLeafProducts(pedido.id)
   }
 
   const getProcuctsFromSelectBox = async () => {
@@ -69,5 +79,5 @@ export function UseProduct() {
     setProductsFromSelectBox(products)
   }
 
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, removeProduct, handleChangeProducts, saveLeafProducts }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, removeProduct, handleChangeProducts, handleSaveLeafAndLeafProducts }
 }

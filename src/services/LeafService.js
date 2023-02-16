@@ -28,23 +28,6 @@ class LeafService {
     const { data } = await api.put(`/nota/cancel/nota/${idNota}`, dataCancelamento)
     return data
   }
-
-  async deleteLeafAndProducts(id) {
-    await api.delete(`/nota-item/delete-all/${id}`)
-  }
-
-  async addProduct(product) {
-    await api.post('/nota-item', product)
-  }
-
-  async findLeafProductsByIdNota(id) {
-    const { data } = await api.get(`/nota-item/${id}`)
-    return data
-  }
-
-  async deleteProduct(id) {
-    await api.delete(`/nota-item/${id}`)
-  }
 }
 
 export default new LeafService()
