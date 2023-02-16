@@ -56,14 +56,9 @@ export function UseProduct() {
     }
   }
 
-  const saveLeaf = async () => {
-    const idLeaf = await handleSaveLeaf(pedido)
-    return idLeaf
-  }
-
   const handleSaveLeafAndLeafProducts = async () => {
     if (!pedido.id) {
-      const idLeaf = await saveLeaf()
+      const idLeaf = await handleSaveLeaf(pedido)
       if (!idLeaf) {
         return
       }
