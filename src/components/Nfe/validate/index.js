@@ -41,10 +41,35 @@ const validadeLeaf = (leaf) => {
   const result = schema.safeParse(leaf)
   if (!result.success) {
     const messages = result.error.errors[0].message
-    
+
     throw Error(messages)
   }
 
 }
 
-export { validadeLeaf }
+const validateLeafProduct = (leafProduct) => {
+  const schema = z.object({
+    idProduto: z.string().uuid("Deve ser selecionado um (Produto) para prosseguir"),
+    idNota: z.string().optional(),
+    codigo: z.string().optional(),
+    ncm: z.string().optional(),
+    cest: z.string().optional(),
+    quantidade: z.string().optional(),
+    unidade: z.string().optional(),
+    peso: z.string().optional(),
+    origem: z.string().optional(),
+    desconto: z.string().optional(),
+    subtotal: z.string().optional(),
+    total: z.string().optional(),
+    classe_imposto: z.string().optional(),
+    informacoes_adicionais: z.string().optional() ,
+  })
+
+  const result = schema.safeParse(leafProduct)
+  if (!result.success) {
+    const messages = result.error.errors[0].message
+
+    throw Error(messages)
+  }
+}
+export { validadeLeaf, validateLeafProduct }

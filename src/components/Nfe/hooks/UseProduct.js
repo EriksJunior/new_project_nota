@@ -39,7 +39,7 @@ export function UseProduct() {
       const products = await Promise.all(produtos.map((product) => {
         if (product.id) {
           return product
-        } 
+        }
 
         return ProductLeafService.save({ ...product, idNota: idLeaf })
       }))
