@@ -1,4 +1,5 @@
 import { useContext } from "react"
+
 import { useSelector } from "react-redux"
 import { LeafContext } from "../../../context"
 
@@ -10,7 +11,7 @@ import { BsFillGearFill } from "react-icons/bs"
 import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItems, Scrollllll } from "./styles"
 
 export function ProductNfe() {
-  const { productsFromSelectBox, addProductInTable, removeProductInTable, handleChangeProducts, handleSaveLeafAndLeafProducts } = useContext(LeafContext)
+  const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleSaveLeafAndLeafProducts } = useContext(LeafContext)
   const products = useSelector(state => state.leaf.produto)
 
   return (
@@ -37,9 +38,9 @@ export function ProductNfe() {
 
               <tbody>
                 {products.map((item, index) =>
-                  <TrBodyContent key={index}>
+                  <TrBodyContent key={index} >
                     <TdBodyName>
-                      <InputSelect className="form-select form-select-product form-select-sm" name='idProduto' value={products[index].idProduto} onChange={(e) => handleChangeProducts(e, index)}>
+                      <InputSelect disabled={item.id} className="form-select form-select-product form-select-sm" name='idProduto' value={products[index].idProduto} onChange={(e) => handleChangeProducts(e, index)}>
                         <option value="">---selecione---</option>
                         {productsFromSelectBox.map((product) =>
                           <option key={product.id} value={product.id}>{product.nome}</option>
@@ -48,23 +49,23 @@ export function ProductNfe() {
                     </TdBodyName>
 
                     <TdBodyUnit>
-                      <InputTable type="text" className="form-control-sm" placeholder="UN" name='unidade' value={products[index].unidade} onChange={(e) => handleChangeProducts(e, index)} />
+                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="UN" name='unidade' value={products[index].unidade} onChange={(e) => handleChangeProducts(e, index)} />
                     </TdBodyUnit>
 
                     <TdBodyAmmount>
-                      <InputTable type="text" className="form-control-sm" placeholder="QNT" name='quantidade' value={products[index].quantidade} onChange={(e) => handleChangeProducts(e, index)} />
+                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="QNT" name='quantidade' value={products[index].quantidade} onChange={(e) => handleChangeProducts(e, index)} />
                     </TdBodyAmmount>
 
                     <TdBodySubtotal>
-                      <InputTable type="text" className="form-control-sm" placeholder="0,0000" name='subtotal' value={products[index].subtotal} onChange={(e) => handleChangeProducts(e, index)} />
+                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='subtotal' value={products[index].subtotal} onChange={(e) => handleChangeProducts(e, index)} />
                     </TdBodySubtotal>
 
                     <TdBodyDiscount>
-                      <InputTable type="text" className="form-control-sm" placeholder="0,0000" name='desconto' value={products[index].desconto} onChange={(e) => handleChangeProducts(e, index)} />
+                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='desconto' value={products[index].desconto} onChange={(e) => handleChangeProducts(e, index)} />
                     </TdBodyDiscount>
 
                     <TdBodyTotal>
-                      <InputTable type="text" className="form-control-sm" placeholder="0,0000" name='total' value={products[index].total} onChange={(e) => handleChangeProducts(e, index)} />
+                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='total' value={products[index].total} onChange={(e) => handleChangeProducts(e, index)} />
                     </TdBodyTotal>
 
                     <TdActions>
@@ -73,7 +74,7 @@ export function ProductNfe() {
                           <BsFillGearFill role="button" size={20} color={"#02769c"} />
 
                           <div className="dropdownActions">
-                            <DropdownActions index={index} remove={() => removeProductInTable(index)} />
+                            <DropdownActions index={index} remove={() => handleRemoveProductInTableAndLeafProducts(index, item.id)} />
                           </div>
                         </span>
                       </div>

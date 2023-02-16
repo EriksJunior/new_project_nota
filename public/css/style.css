@@ -2247,6 +2247,24 @@ progress {
   color: #6c757d;
 }
 
+.form-control-nfe {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #b4b2b2;
+  background-color: #212529;
+  background-clip: padding-box;
+  border: 1px solid #6b6b6b9f;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 .form-control,
 .dataTable-input {
   display: block;
@@ -2287,6 +2305,13 @@ progress {
   outline: 0;
   box-shadow: 0 0 0 0.10rem deepskyblue;
 }
+
+.form-control-nfe:focus{
+  color: #b4b2b2;
+  background-color: #212529;
+  border-color: #86b7fe;
+  outline: 0;
+}
 .form-control::-webkit-date-and-time-value,
 .dataTable-input::-webkit-date-and-time-value {
   height: 1.5em;
@@ -2310,6 +2335,11 @@ progress {
 .dataTable-input:disabled,
 .form-control[readonly],
 [readonly].dataTable-input {
+  background-color: black;
+  opacity: 1;
+}
+.form-control-nfe:disabled,
+.form-control[readonly] {
   background-color: black;
   opacity: 1;
 }

@@ -1,15 +1,16 @@
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-
 import { UseLeaf } from "./UseLeaf"
+
+import { useDispatch, useSelector } from "react-redux"
+import { SAVE_PRODUCTS } from "../store/reducers/LeafReducers"
+
+import { toast } from "react-toastify";
 
 import ProductServices from "../../../services/ProductService"
 import ProductLeafService from "../../../services/ProductLeafService"
 
-import { SAVE_PRODUCTS } from "../store/reducers/LeafReducers"
-
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
-import { toast } from "react-toastify";
+
 
 export function UseProduct() {
   const { handleSaveLeaf } = UseLeaf()
@@ -35,14 +36,23 @@ export function UseProduct() {
 
   const saveLeafProducts = async (idLeaf) => {
     try {
-      const ids = await Promise.all(produtos.map(product => ProductLeafService.save({ ...product, idNota: idLeaf })))
-      console.log(ids)
-      
+      const products = await Promise.all(produtos.map((product) => {
+        if (product.id) {
+          return product
+        } 
+
+        return ProductLeafService.save({ ...product, idNota: idLeaf })
+      }))
+
+      dispatch(SAVE_PRODUCTS(products))
+
       return toast("Itens salvos! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
     } catch (error) {
-      console.log(error)
+      toast.error("Ocorreu um erro ao salvar os produtos", {
+        position: toast.POSITION.TOP_RIGHT
+      });
     }
   }
 
@@ -63,18 +73,25 @@ export function UseProduct() {
   const removeProductInTable = (index) => {
     const newProducts = [...produtos]
 
-    if (index !== 0) {
+    if (produtos.length > 1) {
       newProducts.splice(index, 1)
-      dispatch(SAVE_PRODUCTS(newProducts))
+      return dispatch(SAVE_PRODUCTS(newProducts))
     }
+
+    dispatch(SAVE_PRODUCTS([INITIAL_VALUE_PRODUTOS]))
   }
 
-  const removeLeafProducts = async (idLeaf) => {
-    // chamar api
+  const removeLeafProducts = async (idLeafProduct) => {
+    await ProductLeafService.remove(idLeafProduct)
   }
 
-  const handleRemoveProductInTableAndLeafProducts = async () => {
+  const handleRemoveProductInTableAndLeafProducts = async (index, idLeafProduct) => {
+    if (!produtos[index].id) {
+      return removeProductInTable(index)
+    }
 
+    await removeLeafProducts(idLeafProduct)
+    removeProductInTable(index)
   }
 
 
@@ -83,5 +100,5 @@ export function UseProduct() {
     setProductsFromSelectBox(products)
   }
 
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, removeProductInTable, handleChangeProducts, handleSaveLeafAndLeafProducts }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleSaveLeafAndLeafProducts }
 }
