@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-
+import { useState } from "react"
 import { UseLeaf } from "./UseLeaf"
 
-import ProductServices from "../../../services/ProductService"
-import LeafService from "../../../services/LeafService"
-
+import { useDispatch, useSelector } from "react-redux"
 import { SAVE_PRODUCTS } from "../store/reducers/LeafReducers"
 
-import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
 import { toast } from "react-toastify";
+
+import ProductServices from "../../../services/ProductService"
+import ProductLeafService from "../../../services/ProductLeafService"
+
+import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
+
 
 export function UseProduct() {
   const { handleSaveLeaf } = UseLeaf()
@@ -29,45 +30,75 @@ export function UseProduct() {
     ))
   };
 
-
-  const addProducts = () => {
+  const addProductInTable = () => {
     dispatch(SAVE_PRODUCTS([...produtos, INITIAL_VALUE_PRODUTOS]))
   }
 
+  const saveLeafProducts = async (idLeaf) => {
+    try {
+      const products = await Promise.all(produtos.map((product) => {
+        if (product.id) {
+          return product
+        }
 
-  const removeProduct = (index) => {
+        return ProductLeafService.save({ ...product, idNota: idLeaf })
+      }))
+
+      dispatch(SAVE_PRODUCTS(products))
+
+      return toast("Itens salvos! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } catch (error) {
+      toast.error("Ocorreu um erro ao salvar os produtos", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
+
+  const handleSaveLeafAndLeafProducts = async () => {
+    if (!pedido.id) {
+      const idLeaf = await handleSaveLeaf(pedido)
+      if (!idLeaf) {
+        return
+      }
+
+      return await saveLeafProducts(idLeaf)
+    }
+
+    await saveLeafProducts(pedido.id)
+
+  }
+
+  const removeProductInTable = (index) => {
     const newProducts = [...produtos]
 
-    if (index !== 0) {
+    if (produtos.length > 1) {
       newProducts.splice(index, 1)
-      dispatch(SAVE_PRODUCTS(newProducts))
+      return dispatch(SAVE_PRODUCTS(newProducts))
     }
+
+    dispatch(SAVE_PRODUCTS([INITIAL_VALUE_PRODUTOS]))
   }
 
-  const saveLeafProducts = async () => {
-    try {
-      if (!pedido.id) {
-        const idLeaf = await handleSaveLeaf(pedido)
-        await Promise.all(produtos.map(product => LeafService.addProduct({ ...product, idNota: idLeaf })))
-
-        return toast("Itens salvos! ✅", {
-          position: toast.POSITION.TOP_RIGHT
-        });
-      } else {
-        await Promise.all(produtos.map(product => LeafService.addProduct({ ...product, idNota: pedido.id })))
-        return toast("Itens salvos! ✅", {
-          position: toast.POSITION.TOP_RIGHT
-        });
-      }
-    } catch (error) {
-      console.log(error)
-    }
+  const removeLeafProducts = async (idLeafProduct) => {
+    await ProductLeafService.remove(idLeafProduct)
   }
+
+  const handleRemoveProductInTableAndLeafProducts = async (index, idLeafProduct) => {
+    if (!produtos[index].id) {
+      return removeProductInTable(index)
+    }
+
+    await removeLeafProducts(idLeafProduct)
+    removeProductInTable(index)
+  }
+
 
   const getProcuctsFromSelectBox = async () => {
     const products = await ProductServices.getFromSelectBox()
     setProductsFromSelectBox(products)
   }
 
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProducts, removeProduct, handleChangeProducts, saveLeafProducts }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleSaveLeafAndLeafProducts }
 }
