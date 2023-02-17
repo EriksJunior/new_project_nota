@@ -86,7 +86,7 @@ export function ProductNfe() {
 
             <ContentButtonAddMoreItems>
               <button className="btn btn-primary btn-sm" onClick={addProductInTable}>Adicionar Produtos</button>
-              <button className="btn btn-primary btn-sm" onClick={handleSaveLeafAndLeafProducts}>Salvar</button>
+              <button className="btn btn-primary btn-sm" hidden={!products[0].idProduto} onClick={handleSaveLeafAndLeafProducts}>Salvar</button>
             </ContentButtonAddMoreItems>
           </ContentTable>
         </Scrollllll>

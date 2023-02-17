@@ -8,8 +8,10 @@ import { toast } from "react-toastify";
 
 import ProductServices from "../../../services/ProductService"
 import ProductLeafService from "../../../services/ProductLeafService"
+import { validateLeafProduct } from "../validate";
 
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
+
 
 
 export function UseProduct() {
@@ -36,7 +38,11 @@ export function UseProduct() {
 
   const saveLeafProducts = async (idLeaf) => {
     try {
-      const products = await Promise.all(produtos.map((product) => {
+      const selectedProducts = produtos.filter((prod) => prod.idProduto)
+
+      selectedProducts.map(product => validateLeafProduct(product))
+
+      const products = await Promise.all(selectedProducts.map((product) => {
         if (product.id) {
           return product
         }
@@ -50,7 +56,7 @@ export function UseProduct() {
         position: toast.POSITION.TOP_RIGHT
       });
     } catch (error) {
-      toast.error("Ocorreu um erro ao salvar os produtos", {
+      toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
@@ -67,7 +73,6 @@ export function UseProduct() {
     }
 
     await saveLeafProducts(pedido.id)
-
   }
 
   const removeProductInTable = (index) => {
