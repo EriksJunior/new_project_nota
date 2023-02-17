@@ -63,16 +63,12 @@ export function UseProduct() {
   }
 
   const handleSaveLeafAndLeafProducts = async () => {
-    if (!pedido.id) {
-      const idLeaf = await handleSaveLeaf(pedido)
-      if (!idLeaf) {
-        return
-      }
-
-      return await saveLeafProducts(idLeaf)
+    if (pedido.id) {
+      return await saveLeafProducts(pedido.id)
     }
 
-    await saveLeafProducts(pedido.id)
+    const idPedido = await handleSaveLeaf(pedido)
+    await saveLeafProducts(idPedido)
   }
 
   const removeProductInTable = (index) => {
