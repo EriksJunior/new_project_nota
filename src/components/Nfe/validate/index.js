@@ -47,29 +47,24 @@ const validadeLeaf = (leaf) => {
 
 }
 
-const validateLeafProduct = (leafProduct) => {
-  const schema = z.object({
-    idProduto: z.string().uuid("Deve ser selecionado um (Produto) para prosseguir"),
-    idNota: z.string().optional(),
-    codigo: z.string().optional(),
-    ncm: z.string().optional(),
-    cest: z.string().optional(),
-    quantidade: z.string().optional(),
-    unidade: z.string().optional(),
-    peso: z.string().optional(),
-    origem: z.string().optional(),
-    desconto: z.string().optional(),
-    subtotal: z.string().optional(),
-    total: z.string().optional(),
-    classe_imposto: z.string().optional(),
-    informacoes_adicionais: z.string().optional() ,
-  })
+const validateLeafProduct = (leafProducts) => {
+  if (leafProducts.idProduto) {
+    const schema = z.object({
+      idProduto: z.string().uuid("Deve ser selecionado ao menos um (Produto) para prosseguir"),
+      quantidade: z.string().min(1, "O campo (Quantidade) deve ser preenchido").optional(),
+      unidade: z.string().min(1, "O campo (Unidade) deve ser preenchido").optional(),
+      subtotal: z.string().min(1, "O campo (SubTotal) deve ser preenchido").optional(),
+      total: z.string().min(1, "O campo (Total) deve ser preenchido").optional(),
+    })
 
-  const result = schema.safeParse(leafProduct)
-  if (!result.success) {
-    const messages = result.error.errors[0].message
+    const result = schema.safeParse(leafProducts)
+    if (!result.success) {
+      const messages = result.error.errors[0].message
 
-    throw Error(messages)
+      throw Error(messages)
+    } else {
+      return leafProducts
+    }
   }
 }
 export { validadeLeaf, validateLeafProduct }
