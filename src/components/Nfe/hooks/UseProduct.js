@@ -9,10 +9,8 @@ import { toast } from "react-toastify";
 import ProductServices from "../../../services/ProductService"
 import ProductLeafService from "../../../services/ProductLeafService"
 import { validateLeafProduct } from "../validate";
-
+import { Masks } from "../../../utils/masks/Masks";
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
-
-
 
 export function UseProduct() {
   const { handleSaveLeaf } = UseLeaf()
@@ -20,6 +18,7 @@ export function UseProduct() {
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
   const produtos = useSelector(state => state.leaf.produto)
+  const { maskCurrency } = Masks()
 
   const handleChangeProducts = (e, index) => {
     dispatch(SAVE_PRODUCTS(
@@ -32,8 +31,35 @@ export function UseProduct() {
     ))
   };
 
+  const handleChangeMonetaryValues = (e, index) => {
+    dispatch(SAVE_PRODUCTS(
+      produtos.map((product, i) => {
+        if (i === index) {
+          return { ...product, [e.target.name]: maskCurrency(e.target.value) };
+        }
+        return product;
+      })
+    ))
+  };
+
+  const calculateTotalValue = (index) => {
+    const formattedSubtotal = produtos[index].subtotal.replace(".", "").replace(",", ".").replace(",", ".")
+    const totalValue = parseFloat(produtos[index].quantidade * formattedSubtotal)
+    const formattedTotal = totalValue.toLocaleString("pt-BR", {minimumFractionDigits: 2})
+
+    dispatch(SAVE_PRODUCTS(
+      produtos.map((product, i) => {
+        if (i === index) {
+          return { ...product, total: formattedTotal };
+        }
+        return product;
+      })
+    ))
+  }
+
   const addProductInTable = () => {
     dispatch(SAVE_PRODUCTS([...produtos, INITIAL_VALUE_PRODUTOS]))
+    console.log(produtos)
   }
 
   const saveLeafProducts = async (idLeaf) => {
@@ -95,11 +121,10 @@ export function UseProduct() {
     removeProductInTable(index)
   }
 
-
   const getProcuctsFromSelectBox = async () => {
     const products = await ProductServices.getFromSelectBox()
     setProductsFromSelectBox(products)
   }
 
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleSaveLeafAndLeafProducts }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue }
 }

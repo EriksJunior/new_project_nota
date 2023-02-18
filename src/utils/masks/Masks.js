@@ -27,13 +27,15 @@ export function Masks() {
     }
   }, [])
 
-  // const maskCurrency = useCallback((e) => {
-  //   let value = e.currentTarget.value;
-  //   value = value.replace(/\D/g, "");
-  //   value = value.replace(/(\d)(\d{2})$/, "$1,$2");
-  //   value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
-  //   e.currentTarget.value = value
-  // }, [])
 
-  return { maskCep, maskCpfCnpj }
+  const maskCurrency = (monetaryValue) => {
+    let value = monetaryValue;
+    value = value.replace(/\D/g, "");
+    value = value.replace(/(\d)(\d{2})$/, "$1,$2");
+    value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
+  
+    return value
+  }
+
+  return { maskCep, maskCpfCnpj, maskCurrency }
 }
