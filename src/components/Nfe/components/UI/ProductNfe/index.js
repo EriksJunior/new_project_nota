@@ -11,7 +11,7 @@ import { BsFillGearFill } from "react-icons/bs"
 import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItems, Scrollllll } from "./styles"
 
 export function ProductNfe() {
-  const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleSaveLeafAndLeafProducts } = useContext(LeafContext)
+  const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue } = useContext(LeafContext)
   const products = useSelector(state => state.leaf.produto)
 
   return (
@@ -53,19 +53,19 @@ export function ProductNfe() {
                     </TdBodyUnit>
 
                     <TdBodyAmmount>
-                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="QNT" name='quantidade' value={products[index].quantidade} onChange={(e) => handleChangeProducts(e, index)} />
+                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="QNT" name='quantidade' value={products[index].quantidade} onChange={(e) => handleChangeProducts(e, index)} onKeyUp={() => calculateTotalValue(index)}/>
                     </TdBodyAmmount>
 
                     <TdBodySubtotal>
-                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='subtotal' value={products[index].subtotal} onChange={(e) => handleChangeProducts(e, index)} />
+                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='subtotal' value={products[index].subtotal} onChange={(e) => handleChangeMonetaryValues(e, index)} onKeyUp={() => calculateTotalValue(index)}/>
                     </TdBodySubtotal>
 
                     <TdBodyDiscount>
-                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='desconto' value={products[index].desconto} onChange={(e) => handleChangeProducts(e, index)} />
+                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='desconto' value={products[index].desconto} onChange={(e) => handleChangeMonetaryValues(e, index)} />
                     </TdBodyDiscount>
 
                     <TdBodyTotal>
-                      <InputTable disabled={item.id}  type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='total' value={products[index].total} onChange={(e) => handleChangeProducts(e, index)} />
+                      <InputTable disabled  type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='total' value={products[index].total} onChange={(e) => handleChangeMonetaryValues(e, index)} />
                     </TdBodyTotal>
 
                     <TdActions>
