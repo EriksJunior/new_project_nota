@@ -6,7 +6,10 @@ class ProductLeafService {
   }
 
   async save(product) {
-    const { data: { id } } = await api.post('/nota-item', product)
+    const formattedSubtotal = product.subtotal.replace(".", "").replace(".", "").replace(",", ".")
+    const formattedTotal = product.total.replace(".", "").replace(".", "").replace(",", ".")
+
+    const { data: { id } } = await api.post('/nota-item', { ...product, subtotal: formattedSubtotal, total: formattedTotal })
     return { ...product, id: id }
   }
 

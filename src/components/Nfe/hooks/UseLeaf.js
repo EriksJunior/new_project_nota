@@ -19,7 +19,7 @@ export function UseLeaf() {
   const saveLeaf = async (pedido) => {
     try {
       validadeLeaf(pedido)
-
+      
       const id = await LeafService.save(pedido)
       dispatch(SAVE_LEAF({ ...pedido, id: id }))
 
@@ -51,7 +51,7 @@ export function UseLeaf() {
     }
   }
 
-  const handleSaveLeaf = async () => {
+  const handleSaveLeaf = async (pedido) => {
     if (!pedido.id) {
       const id = await saveLeaf({ ...pedido, idCliente: cliente.id })
       return id
