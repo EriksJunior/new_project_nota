@@ -2335,12 +2335,12 @@ progress {
 .dataTable-input:disabled,
 .form-control[readonly],
 [readonly].dataTable-input {
-  background-color: black;
+  background-color: #484646;
   opacity: 1;
 }
 .form-control-nfe:disabled,
 .form-control[readonly] {
-  background-color: black;
+  background-color: #484646;
   opacity: 1;
 }
 .form-control::-webkit-file-upload-button,
@@ -2581,7 +2581,7 @@ textarea.form-control-lg {
 }
 .form-select:disabled,
 .dataTable-selector:disabled {
-  background-color: black;
+  background-color: #484646;
 
 }
 .form-select:-moz-focusring,
