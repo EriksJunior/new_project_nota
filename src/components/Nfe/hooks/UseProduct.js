@@ -45,7 +45,7 @@ export function UseProduct() {
   const calculateTotalValue = (index) => {
     const formattedSubtotal = produtos[index].subtotal.replace(".", "").replace(",", ".").replace(",", ".")
     const totalValue = parseFloat(produtos[index].quantidade * formattedSubtotal)
-    const formattedTotal = totalValue.toLocaleString("pt-BR", {minimumFractionDigits: 2})
+    const formattedTotal = totalValue.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
 
     dispatch(SAVE_PRODUCTS(
       produtos.map((product, i) => {
@@ -59,7 +59,6 @@ export function UseProduct() {
 
   const addProductInTable = () => {
     dispatch(SAVE_PRODUCTS([...produtos, INITIAL_VALUE_PRODUTOS]))
-    console.log(produtos)
   }
 
   const saveLeafProducts = async (idLeaf) => {
@@ -93,8 +92,8 @@ export function UseProduct() {
       return await saveLeafProducts(pedido.id)
     }
 
-    const idPedido = await handleSaveLeaf(pedido)
-    await saveLeafProducts(idPedido)
+    const idNota = await handleSaveLeaf(pedido)
+    if (idNota) await saveLeafProducts(idNota)
   }
 
   const removeProductInTable = (index) => {

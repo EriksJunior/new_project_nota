@@ -38,6 +38,7 @@ export const InputTable = styled.input`
 
 export const InputSelect = styled.select`
   width: 100%;
+  height: 100%;
   border-top: none;
   border-bottom: none;
   border-left: none;
