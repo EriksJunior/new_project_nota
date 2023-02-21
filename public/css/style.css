@@ -2335,12 +2335,12 @@ progress {
 .dataTable-input:disabled,
 .form-control[readonly],
 [readonly].dataTable-input {
-  background-color: #484646;
+  background-color: #424242eb;
   opacity: 1;
 }
 .form-control-nfe:disabled,
 .form-control[readonly] {
-  background-color: #484646;
+  background-color: #424242eb;
   opacity: 1;
 }
 .form-control::-webkit-file-upload-button,
@@ -2581,8 +2581,11 @@ textarea.form-control-lg {
 }
 .form-select:disabled,
 .dataTable-selector:disabled {
-  background-color: #484646;
-
+  background-color: #424242eb;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.8) brightness(70%) sepia(100%) saturate(0%) hue-rotate(240deg);
 }
 .form-select:-moz-focusring,
 .dataTable-selector:-moz-focusring {

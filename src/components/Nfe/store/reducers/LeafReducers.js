@@ -1,4 +1,4 @@
-import { INITIAL_VALUE_PEDIDO, INITIAL_STATE_CLIENTE_NFE, INITIAL_VALUE_PRODUTOS } from "../../initialStates"
+import { INITIAL_VALUE_PEDIDO, INITIAL_STATE_CLIENTE_NFE, INITIAL_VALUE_PRODUTOS, INITIAL_STATE_FATURA_NFE, INITIAL_STATE_PARCELA_NFE } from "../../initialStates"
 import { createSlice } from "@reduxjs/toolkit";
 
 export const LeafReducer = createSlice({
@@ -6,7 +6,9 @@ export const LeafReducer = createSlice({
   initialState: {
     pedido: INITIAL_VALUE_PEDIDO,
     cliente: INITIAL_STATE_CLIENTE_NFE,
-    produto: [INITIAL_VALUE_PRODUTOS]
+    produto: [INITIAL_VALUE_PRODUTOS],
+    fatura: INITIAL_STATE_FATURA_NFE,
+    parcela: [INITIAL_STATE_PARCELA_NFE]
   },
   reducers: {
     SAVE_CUSTOMER: (state, action) => {

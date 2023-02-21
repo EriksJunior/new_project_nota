@@ -46,6 +46,7 @@ export const INITIAL_VALUE_PEDIDO = {
   },
   response_cancelamento: "",
   pagamento: "0",
+  forma_pagamento: "01",
   presenca: "1",
   modalidade_frete: "9",
   frete: "0",
@@ -113,4 +114,16 @@ export const INITIAL_STATE_CLIENTE_NFE = {
   observacao: "",
   consumidor_final: "0",
   contribuinte: "9"
+}
+
+export const INITIAL_STATE_FATURA_NFE = {
+  numero: "",
+  valor: "",
+  valor_liquido: "",
+  desconto: ""
+}
+
+export const INITIAL_STATE_PARCELA_NFE = {
+  vencimento: "",
+  valor: ""
 }
