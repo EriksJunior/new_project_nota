@@ -10,7 +10,7 @@ export function Colapse({ children, title }) {
   }
 
   return (
-    <div style={{marginRight: "24px"}}>
+    <div style={{ marginRight: "24px" }}>
       <ContentTypePayments onClick={open}>
         <ContentColapseIcon>
           {enable ? <BsDashLg color="white" size={17} /> : <BsPlusLg color="white" size={17} />}
@@ -21,11 +21,9 @@ export function Colapse({ children, title }) {
         </div>
       </ContentTypePayments>
 
-      {enable &&
-        <ContentChildrenColapse>
-          {children}
-        </ContentChildrenColapse>
-      }
+      <ContentChildrenColapse hidden={!enable}>
+        {children}
+      </ContentChildrenColapse>
     </div>
   )
 }

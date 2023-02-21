@@ -10,6 +10,7 @@ export const ContentTypePayments = styled.div`
   color: #b4b2b2;
   margin-top: 20px;
   margin-bottom: 10px;
+  cursor: pointer;
   h5 {
     margin: 0;
   }
