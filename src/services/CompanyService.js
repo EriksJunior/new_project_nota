@@ -1,13 +1,11 @@
 import { api } from '../utils/configs/api';
-import { ICompany } from '../interface/ICompany';
-
 class CompanyService {
-    async save(dataCompany: ICompany){
+    async save(dataCompany){
         const { data } = await api.post('/company', dataCompany)
         return data
     }
 
-    async update(dataCompany: ICompany) {
+    async update(dataCompany) {
         await api.put(`/company/${dataCompany.id}`, dataCompany)
       }
 }
