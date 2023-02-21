@@ -1,10 +1,11 @@
 import { useContext } from "react"
 import { LeafContext } from "../../../context"
 import { useSelector } from "react-redux"
-import { ContentHeaderTitle } from "../../../styles"
 
 import { presenca, intermediador } from "../../../../../common/nfe"
+import { Colapse } from "../../../../Colapse"
 
+import { ContentHeaderTitle } from "../../../styles"
 export function PedidoNfe() {
   const { handleChangePedido } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
@@ -69,14 +70,26 @@ export function PedidoNfe() {
 
           <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <label className="form-label">Informações complementares</label>
-            <textarea style={{maxHeight: "115px"}} rows={5} name="observacao" type="area" className="form-control form-control-sm"></textarea>
+            <textarea style={{ maxHeight: "90px", height: "90px" }} name="observacao" type="area" className="form-control form-control-sm"></textarea>
           </div>
 
           <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <label className="form-label">Informações ao fisco</label>
-            <textarea style={{maxHeight: "115px"}} rows={5} name="observacao" type="area" className="form-control form-control-sm"></textarea>
+            <textarea style={{ maxHeight: "90px", height: "90px" }} name="observacao" type="area" className="form-control form-control-sm"></textarea>
           </div>
         </div>
+
+        <Colapse title={"Forma de pagamento"}>
+          <label style={{ color: "white" }}>meu ovooooooo</label>
+        </Colapse>
+          
+        <Colapse title={"Fatura"}>
+          <label style={{ color: "white" }}>meu ovooooooo</label>
+        </Colapse>
+
+        <Colapse title={"Parcelas"}>
+          <label style={{ color: "white" }}>meu ovooooooo</label>
+        </Colapse>
       </div>
     </div>
   )
