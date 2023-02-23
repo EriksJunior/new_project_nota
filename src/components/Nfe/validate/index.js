@@ -1,4 +1,5 @@
 import { z } from "zod"
+import { DateTime } from "luxon"
 
 const validadeLeaf = (leaf) => {
   const schema = z.object({
@@ -67,4 +68,30 @@ const validateLeafProduct = (leafProducts) => {
     }
   }
 }
-export { validadeLeaf, validateLeafProduct }
+
+const validateLeafBill = (leafBill) => {
+  const formatedDate = DateTime.fromISO(leafBill.data).setLocale('fr').toFormat('YYYY-MM-DD')
+  
+  console.log(formatedDate)
+
+  const schema = z.object({
+    data: z.date(new Date(leafBill.data), {
+      invalid_type_error: "O campo (Data de vencimento) deve ser preenchido corretamente",
+    }),
+    idCliente: z.string().uuid("Deve ser selecionado um (Cliente) para prosseguir"),
+    idFormaPagamento: z.string().uuid("O campo (Forma de pagamento) deve ser preenchido").optional(),
+    idNota: z.string().uuid("O Documento fiscal deve ser salvo para processeguir"),
+    tipo: z.string().min(1, "O campo (Total) deve ser preenchido").optional(),
+    valorTotal: z.string().min(1, "O campo (Total) deve ser preenchido").optional(),
+  })
+
+  const result = schema.safeParse(leafBill)
+  if (!result.success) {
+    const messages = result.error.errors[0].message
+
+    throw Error(messages)
+  } else {
+    return leafBill
+  }
+}
+export { validadeLeaf, validateLeafProduct, validateLeafBill }

@@ -1,9 +1,9 @@
 import { api } from '../utils/configs/api';
 
-class BillService{
+class BillService {
   async save(bill) {
-    const result = await api.post("/bills", bill)
-    console.log(result)
+    const { data: { id } } = await api.post("/bills", bill)
+    return { ...bill, id: id }
   }
 }
 

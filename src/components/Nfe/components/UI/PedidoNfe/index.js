@@ -5,12 +5,14 @@ import { useSelector } from "react-redux"
 import { presenca, intermediador, pagamaneto, formaPagamento } from "../../../../../common/nfe"
 import { Colapse } from "../../../../Colapse"
 
-import { TextArea, Hr } from "./styles"
+import { TextArea, Hr, ContentButtonAddMoreBillsAndSave, ContentBills, ContentActionBills } from "./styles"
 import { ContentHeaderTitle } from "../../../styles"
+import { BsFillTrashFill } from "react-icons/bs"
 
 export function PedidoNfe() {
-  const { handleChangePedido } = useContext(LeafContext)
+  const { handleChangePedido, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
+  const parcelas = useSelector(state => state.leaf.parcela)
 
   return (
     <div className="card">
@@ -52,7 +54,7 @@ export function PedidoNfe() {
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <label className="form-label">Intermediador</label>
-            <select className="form-select form-select-sm" name="intermediador" value={pedido.intermediador} onChange={handleChangePedido}>
+            <select className="form-select form-select-sm" name="id_intermediador" value={pedido.id_intermediador} onChange={handleChangePedido}>
               <option value={""}>---selecione---</option>
               {intermediador.map((intermed) =>
                 <option key={intermed.value} value={intermed.value}>{intermed.tipo}</option>
@@ -62,12 +64,12 @@ export function PedidoNfe() {
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <label className="form-label">CNPJ do Intermediador</label>
-            <input type="text" disabled={!pedido.intermediador} className="form-control form-control-sm" name="cnpj_intermediador" value={pedido.cnpj_intermediador} onChange={handleChangePedido} />
+            <input type="text" disabled={!pedido.id_intermediador} className="form-control form-control-sm" name="cnpj_intermediador" value={pedido.cnpj_intermediador} onChange={handleChangePedido} />
           </div>
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <label className="form-label">Nome do intermediador</label>
-            <input type="text" disabled={!pedido.intermediador} className="form-control form-control-sm" name="intermediador" value={pedido.intermediador} onChange={handleChangePedido} />
+            <input type="text" disabled={!pedido.id_intermediador} className="form-control form-control-sm" name="intermediador" value={pedido.intermediador} onChange={handleChangePedido} />
           </div>
 
           <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -130,22 +132,48 @@ export function PedidoNfe() {
         </Colapse>
 
         <Colapse title={"Parcelas"}>
-          <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-              <label className="form-label">Data de vencimento</label>
-              <input type="date" className="form-control form-control-sm" />
-            </div>
+          {parcelas.map((parcela, index) =>
+            <ContentBills className="row col-sm-12 col-md-12 col-lg-12 col-xl-12" key={index}>
+              <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <label className="form-label">Data de vencimento</label>
+                <input type="date" className="form-control form-control-sm" disabled={parcela.id} name="data" value={parcela.data} onChange={(e) => handleChangeBill(e, index)} />
+              </div>
 
-            <div className="mb-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-              <label className="form-label">Valor</label>
-              <input type="text" placeholder="0,0000" className="form-control form-control-sm" />
-            </div>
-            
-            <div className="d-flex justify-content-end">
-              <button type="button" className="btn btn-primary btn-sm">Adicionar</button>
-            </div>
+              <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <label className="form-label">Valor</label>
+                <input type="text" placeholder="0,0000" className="form-control form-control-sm" disabled={parcela.id} name="valorTotal" value={parcela.valorTotal} onChange={(e) => handleChangeBill(e, index)} />
+              </div>
+
+              <div>
+                <Hr />
+              </div>
+
+              <ContentActionBills >
+                <input type="checkbox" id={`removeBill-${index}`} value={confirmRemoveBill[index]} checked={confirmRemoveBill[index]} hidden onChange={(e) => handleChangeConfirmRemoveBill(e, index)} />
+                {confirmRemoveBill[index] ?
+                  <label className="iconConfirmRemove" htmlFor={`removeBill-${index}`}><BsFillTrashFill role={"button"} color="#c10000" size={18} onMouseLeave={() => cancelRemoveBill(index)} onClick={() => removeBillFromList(index)} /></label>
+                  :
+                  <label className="iconRemove" htmlFor={`removeBill-${index}`}><BsFillTrashFill role={"button"} color="#02769c" size={18} /></label>
+                }
+              </ContentActionBills>
+            </ContentBills>
+          )}
+
+
+          <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <ContentButtonAddMoreBillsAndSave>
+              <button type="button" className="btn btn-primary btn-sm" onClick={addBillToList}>Adicionar</button>
+              <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveLeafAndLeafBills}>Salvar</button>
+            </ContentButtonAddMoreBillsAndSave>
           </div>
         </Colapse>
+
+        <div className="row mt-5 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div className="d-flex gap-2">
+            <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveLeaf}>Salvar Documento</button>
+            <button type="button" className="btn btn-primary btn-sm">Emitir Documento</button>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -16,12 +16,12 @@ export function UseLeaf() {
     dispatch(SAVE_LEAF({ ...pedido, [e.currentTarget.name]: e.currentTarget.value }))
   }
 
-  const saveLeaf = async (pedido) => {
+  const saveLeaf = async (dataPedido) => {
     try {
-      validadeLeaf(pedido)
+      validadeLeaf(dataPedido)
       
-      const id = await LeafService.save(pedido)
-      dispatch(SAVE_LEAF({ ...pedido, id: id }))
+      const id = await LeafService.save(dataPedido)
+      dispatch(SAVE_LEAF({ ...dataPedido, id: id }))
 
       toast("Documento fiscal salvo! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -35,11 +35,11 @@ export function UseLeaf() {
     }
   }
 
-  const updateLeaf = async (pedido) => {
+  const updateLeaf = async (dataPedido) => {
     try {
-      validadeLeaf(pedido)
+      validadeLeaf(dataPedido)
 
-      await LeafService.update(pedido)
+      await LeafService.update(dataPedido)
 
       return toast("Documento fiscal atualizado! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -51,12 +51,12 @@ export function UseLeaf() {
     }
   }
 
-  const handleSaveLeaf = async (pedido) => {
+  const handleSaveLeaf = async () => {
     if (!pedido.id) {
       const id = await saveLeaf({ ...pedido, idCliente: cliente.id })
       return id
     } else {
-      await updateLeaf(pedido)
+      await updateLeaf({ ...pedido, idCliente: cliente.id })
     }
   }
 
