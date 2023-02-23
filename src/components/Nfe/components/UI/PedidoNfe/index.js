@@ -10,7 +10,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill } from "react-icons/bs"
 
 export function PedidoNfe() {
-  const { handleChangePedido, saveLeafBill, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill } = useContext(LeafContext)
+  const { handleChangePedido, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const parcelas = useSelector(state => state.leaf.parcela)
 
@@ -54,7 +54,7 @@ export function PedidoNfe() {
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <label className="form-label">Intermediador</label>
-            <select className="form-select form-select-sm" name="intermediador" value={pedido.intermediador} onChange={handleChangePedido}>
+            <select className="form-select form-select-sm" name="id_intermediador" value={pedido.id_intermediador} onChange={handleChangePedido}>
               <option value={""}>---selecione---</option>
               {intermediador.map((intermed) =>
                 <option key={intermed.value} value={intermed.value}>{intermed.tipo}</option>
@@ -64,12 +64,12 @@ export function PedidoNfe() {
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <label className="form-label">CNPJ do Intermediador</label>
-            <input type="text" disabled={!pedido.intermediador} className="form-control form-control-sm" name="cnpj_intermediador" value={pedido.cnpj_intermediador} onChange={handleChangePedido} />
+            <input type="text" disabled={!pedido.id_intermediador} className="form-control form-control-sm" name="cnpj_intermediador" value={pedido.cnpj_intermediador} onChange={handleChangePedido} />
           </div>
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <label className="form-label">Nome do intermediador</label>
-            <input type="text" disabled={!pedido.intermediador} className="form-control form-control-sm" name="intermediador" value={pedido.intermediador} onChange={handleChangePedido} />
+            <input type="text" disabled={!pedido.id_intermediador} className="form-control form-control-sm" name="intermediador" value={pedido.intermediador} onChange={handleChangePedido} />
           </div>
 
           <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -163,10 +163,17 @@ export function PedidoNfe() {
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <ContentButtonAddMoreBillsAndSave>
               <button type="button" className="btn btn-primary btn-sm" onClick={addBillToList}>Adicionar</button>
-              <button type="button" className="btn btn-primary btn-sm" onClick={saveLeafBill}>Salvar</button>
+              <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveLeafAndLeafBills}>Salvar</button>
             </ContentButtonAddMoreBillsAndSave>
           </div>
         </Colapse>
+
+        <div className="row mt-5 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div className="d-flex gap-2">
+            <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveLeaf}>Salvar Documento</button>
+            <button type="button" className="btn btn-primary btn-sm">Emitir Documento</button>
+          </div>
+        </div>
       </div>
     </div>
   )

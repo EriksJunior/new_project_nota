@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { UseLeaf } from "./UseLeaf";
 
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_BILL } from "../store/reducers/LeafReducers";
@@ -6,9 +7,11 @@ import { SAVE_BILL } from "../store/reducers/LeafReducers";
 import { toast } from "react-toastify";
 
 import BillService from "../../../services/BillService";
+import { validateLeafBill } from "../validate";
 import { INITIAL_STATE_PARCELA_NFE } from "../initialStates";
 
 export function UseBill() {
+  const { handleSaveLeaf } = UseLeaf()
   const [confirmRemoveBill, setConfirmRemoveBill] = useState([false])
 
   const parcelas = useSelector(state => state.leaf.parcela)
@@ -17,9 +20,11 @@ export function UseBill() {
 
   const dispatch = useDispatch()
 
-  const saveLeafBill = async () => {
+  const saveLeafBill = async (idLeaf) => {
     try {
-      const newBills = handleWithBillsBeforeSave(parcelas)
+      const newBills = handleWithBillsBeforeSave(parcelas, idLeaf)
+
+      newBills.map(bill => validateLeafBill(bill))
 
       const bills = await Promise.all(newBills.map((bill) => {
         if (bill.id) {
@@ -35,17 +40,28 @@ export function UseBill() {
         position: toast.POSITION.TOP_RIGHT
       });
     } catch (error) {
-      console.log(error.response.data.erros)
+       toast.error(error.message, {
+        position: toast.POSITION.TOP_RIGHT
+      });
     }
 
   }
 
-  const handleWithBillsBeforeSave = (bills) => {
+  const handleSaveLeafAndLeafBills = async () => {
+    if (pedido.id) {
+      return await saveLeafBill(pedido.id)
+    }
+
+    const idNota = await handleSaveLeaf(pedido)
+    if (idNota) await saveLeafBill(idNota)
+  }
+
+  const handleWithBillsBeforeSave = (bills, idLeaf) => {
     const newBills = bills.map((bill) => {
       return {
         ...bill,
         idCliente: cliente.id,
-        idNota: pedido.id
+        idNota: idLeaf
       }
     })
 
@@ -105,5 +121,5 @@ export function UseBill() {
 
 
 
-  return { saveLeafBill, addBillToList, confirmRemoveBill, removeBillFromList, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
+  return { handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, removeBillFromList, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
 }
