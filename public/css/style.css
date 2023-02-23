@@ -2335,12 +2335,12 @@ progress {
 .dataTable-input:disabled,
 .form-control[readonly],
 [readonly].dataTable-input {
-  background-color: #424242eb;
+  background-color: #56565645;
   opacity: 1;
 }
 .form-control-nfe:disabled,
 .form-control[readonly] {
-  background-color: #424242eb;
+  background-color: #56565645;
   opacity: 1;
 }
 .form-control::-webkit-file-upload-button,
@@ -2581,7 +2581,7 @@ textarea.form-control-lg {
 }
 .form-select:disabled,
 .dataTable-selector:disabled {
-  background-color: #424242eb;
+  background-color: #56565645;
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;

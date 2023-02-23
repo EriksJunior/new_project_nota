@@ -1,6 +1,9 @@
 import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_BILL } from "../store/reducers/LeafReducers";
+
+import { toast } from "react-toastify";
 
 import BillService from "../../../services/BillService";
 import { INITIAL_STATE_PARCELA_NFE } from "../initialStates";
@@ -15,17 +18,26 @@ export function UseBill() {
   const dispatch = useDispatch()
 
   const saveLeafBill = async () => {
-    const newBills = handleWithBillsBeforeSave(parcelas)
+    try {
+      const newBills = handleWithBillsBeforeSave(parcelas)
 
-    const bills = await Promise.all(newBills.map((bill) => {
-      if (bill.id) {
-        return bill
-      }
+      const bills = await Promise.all(newBills.map((bill) => {
+        if (bill.id) {
+          return bill
+        }
 
-      return BillService.save(bill)
-    }))
+        return BillService.save(bill)
+      }))
 
-    dispatch(SAVE_BILL(bills))
+      dispatch(SAVE_BILL(bills))
+
+      return toast("Parcelas salvas! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } catch (error) {
+      console.log(error.response.data.erros)
+    }
+
   }
 
   const handleWithBillsBeforeSave = (bills) => {

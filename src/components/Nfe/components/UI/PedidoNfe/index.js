@@ -136,12 +136,12 @@ export function PedidoNfe() {
             <ContentBills className="row col-sm-12 col-md-12 col-lg-12 col-xl-12" key={index}>
               <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <label className="form-label">Data de vencimento</label>
-                <input type="date" className="form-control form-control-sm" name="data" value={parcela.data} onChange={(e) => handleChangeBill(e, index)} />
+                <input type="date" className="form-control form-control-sm" disabled={parcela.id} name="data" value={parcela.data} onChange={(e) => handleChangeBill(e, index)} />
               </div>
 
               <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <label className="form-label">Valor</label>
-                <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="valorTotal" value={parcela.valorTotal} onChange={(e) => handleChangeBill(e, index)} />
+                <input type="text" placeholder="0,0000" className="form-control form-control-sm" disabled={parcela.id} name="valorTotal" value={parcela.valorTotal} onChange={(e) => handleChangeBill(e, index)} />
               </div>
 
               <div>
