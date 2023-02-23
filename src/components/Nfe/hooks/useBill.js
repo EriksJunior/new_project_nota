@@ -7,22 +7,47 @@ import { INITIAL_STATE_PARCELA_NFE } from "../initialStates";
 
 export function UseBill() {
   const [confirmRemoveBill, setConfirmRemoveBill] = useState([false])
-  const bills = useSelector(state => state.leaf.parcela)
+
+  const parcelas = useSelector(state => state.leaf.parcela)
+  const cliente = useSelector(state => state.leaf.cliente)
+  const pedido = useSelector(state => state.leaf.pedido)
+
   const dispatch = useDispatch()
 
   const saveLeafBill = async () => {
-    const id = await BillService.save(bills)
-    console.log(id)
+    const newBills = handleWithBillsBeforeSave(parcelas)
+
+    const bills = await Promise.all(newBills.map((bill) => {
+      if (bill.id) {
+        return bill
+      }
+
+      return BillService.save(bill)
+    }))
+
+    dispatch(SAVE_BILL(bills))
+  }
+
+  const handleWithBillsBeforeSave = (bills) => {
+    const newBills = bills.map((bill) => {
+      return {
+        ...bill,
+        idCliente: cliente.id,
+        idNota: pedido.id
+      }
+    })
+
+    return newBills
   }
 
   const addBillToList = async () => {
-    dispatch(SAVE_BILL([...bills, INITIAL_STATE_PARCELA_NFE]))
+    dispatch(SAVE_BILL([...parcelas, INITIAL_STATE_PARCELA_NFE]))
     setConfirmRemoveBill([...confirmRemoveBill, false])
   }
 
   const handleChangeBill = (e, index) => {
     dispatch(SAVE_BILL(
-      bills.map((bill, i) => {
+      parcelas.map((bill, i) => {
         if (i === index) {
           return { ...bill, [e.target.name]: e.target.value };
         }
@@ -53,9 +78,9 @@ export function UseBill() {
   }
 
   const removeBillFromList = (index) => {
-    const newBills = [...bills]
+    const newBills = [...parcelas]
 
-    if (bills.length > 1) {
+    if (parcelas.length > 1) {
       newBills.splice(index, 1)
       console.log(newBills)
 

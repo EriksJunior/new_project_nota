@@ -10,7 +10,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill } from "react-icons/bs"
 
 export function PedidoNfe() {
-  const { handleChangePedido, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill } = useContext(LeafContext)
+  const { handleChangePedido, saveLeafBill, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const parcelas = useSelector(state => state.leaf.parcela)
 
@@ -136,12 +136,12 @@ export function PedidoNfe() {
             <ContentBills className="row col-sm-12 col-md-12 col-lg-12 col-xl-12" key={index}>
               <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <label className="form-label">Data de vencimento</label>
-                <input type="date" className="form-control form-control-sm" name="vencimento" value={parcela.vencimento} onChange={(e) => handleChangeBill(e, index)} />
+                <input type="date" className="form-control form-control-sm" name="data" value={parcela.data} onChange={(e) => handleChangeBill(e, index)} />
               </div>
 
               <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <label className="form-label">Valor</label>
-                <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="valor" value={parcela.valor} onChange={(e) => handleChangeBill(e, index)} />
+                <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="valorTotal" value={parcela.valorTotal} onChange={(e) => handleChangeBill(e, index)} />
               </div>
 
               <div>
@@ -163,7 +163,7 @@ export function PedidoNfe() {
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <ContentButtonAddMoreBillsAndSave>
               <button type="button" className="btn btn-primary btn-sm" onClick={addBillToList}>Adicionar</button>
-              <button type="button" className="btn btn-primary btn-sm" onClick={() => console.log(confirmRemoveBill)}>Salvar</button>
+              <button type="button" className="btn btn-primary btn-sm" onClick={saveLeafBill}>Salvar</button>
             </ContentButtonAddMoreBillsAndSave>
           </div>
         </Colapse>
