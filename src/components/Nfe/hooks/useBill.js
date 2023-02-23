@@ -59,7 +59,7 @@ export function UseBill() {
       newBills.splice(index, 1)
       console.log(newBills)
 
-      // removeConfirmedBillsToList(index)
+      removeConfirmedBillsToList(index)
       return dispatch(SAVE_BILL(newBills))
     }
 

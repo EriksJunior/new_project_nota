@@ -163,7 +163,7 @@ export function PedidoNfe() {
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <ContentButtonAddMoreBillsAndSave>
               <button type="button" className="btn btn-primary btn-sm" onClick={addBillToList}>Adicionar</button>
-              <button type="button" className="btn btn-primary btn-sm" onClick={() => console.log(parcelas)}>Salvar</button>
+              <button type="button" className="btn btn-primary btn-sm" onClick={() => console.log(confirmRemoveBill)}>Salvar</button>
             </ContentButtonAddMoreBillsAndSave>
           </div>
         </Colapse>
