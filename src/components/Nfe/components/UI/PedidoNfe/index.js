@@ -5,12 +5,14 @@ import { useSelector } from "react-redux"
 import { presenca, intermediador, pagamaneto, formaPagamento } from "../../../../../common/nfe"
 import { Colapse } from "../../../../Colapse"
 
-import { TextArea, Hr } from "./styles"
+import { TextArea, Hr, ContentButtonAddMoreBillsAndSave, ContentBills, ContentActionBills } from "./styles"
 import { ContentHeaderTitle } from "../../../styles"
+import { BsFillTrashFill } from "react-icons/bs"
 
 export function PedidoNfe() {
-  const { handleChangePedido } = useContext(LeafContext)
+  const { handleChangePedido, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
+  const parcelas = useSelector(state => state.leaf.parcela)
 
   return (
     <div className="card">
@@ -130,20 +132,39 @@ export function PedidoNfe() {
         </Colapse>
 
         <Colapse title={"Parcelas"}>
-          <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-              <label className="form-label">Data de vencimento</label>
-              <input type="date" className="form-control form-control-sm" />
-            </div>
+          {parcelas.map((parcela, index) =>
+            <ContentBills className="row col-sm-12 col-md-12 col-lg-12 col-xl-12" key={index}>
+              <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <label className="form-label">Data de vencimento</label>
+                <input type="date" className="form-control form-control-sm" name="vencimento" value={parcela.vencimento} onChange={(e) => handleChangeBill(e, index)} />
+              </div>
 
-            <div className="mb-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-              <label className="form-label">Valor</label>
-              <input type="text" placeholder="0,0000" className="form-control form-control-sm" />
-            </div>
-            
-            <div className="d-flex justify-content-end">
-              <button type="button" className="btn btn-primary btn-sm">Adicionar</button>
-            </div>
+              <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <label className="form-label">Valor</label>
+                <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="valor" value={parcela.valor} onChange={(e) => handleChangeBill(e, index)} />
+              </div>
+
+              <div>
+                <Hr />
+              </div>
+
+              <ContentActionBills >
+                <input type="checkbox" id={`removeBill-${index}`} value={confirmRemoveBill[index]} checked={confirmRemoveBill[index]} hidden onChange={(e) => handleChangeConfirmRemoveBill(e, index)} />
+                {confirmRemoveBill[index] ?
+                  <label className="iconConfirmRemove" htmlFor={`removeBill-${index}`}><BsFillTrashFill role={"button"} color="#c10000" size={18} onMouseLeave={() => cancelRemoveBill(index)} onClick={() => removeBillFromList(index)} /></label>
+                  :
+                  <label className="iconRemove" htmlFor={`removeBill-${index}`}><BsFillTrashFill role={"button"} color="#02769c" size={18} /></label>
+                }
+              </ContentActionBills>
+            </ContentBills>
+          )}
+
+
+          <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <ContentButtonAddMoreBillsAndSave>
+              <button type="button" className="btn btn-primary btn-sm" onClick={addBillToList}>Adicionar</button>
+              <button type="button" className="btn btn-primary btn-sm" onClick={() => console.log(parcelas)}>Salvar</button>
+            </ContentButtonAddMoreBillsAndSave>
           </div>
         </Colapse>
       </div>

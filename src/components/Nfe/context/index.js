@@ -3,6 +3,7 @@ import { UseGeneral } from "../hooks/UseGeneral";
 import { UseLeaf } from "../hooks/UseLeaf";
 import { UseCustomer } from "../hooks/UseCustomer";
 import { UseProduct } from "../hooks/UseProduct";
+import { UseBill } from "../hooks/useBill";
 
 const LeafContext = createContext({})
 
@@ -11,13 +12,15 @@ function LeafProvider({ children }) {
   const { handleChangePedido, handleSaveLeaf } = UseLeaf()
   const { getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer } = UseCustomer()
   const { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue } = UseProduct()
+  const { saveLeafBill, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill } = UseBill()
 
   return (
     <LeafContext.Provider value={{
      /*UseGeneral*/ handleRenderNavItem, navItems, openLayouts, handleNewLeaf, switchBetweenComponents, handleOpenAreaLeaf,
      /*UseLeaf*/ handleChangePedido, handleSaveLeaf,
      /*UseCustomer*/ getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer,
-     /*UseProduct*/ getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue
+     /*UseProduct*/ getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue,
+     /*UseBill*/ saveLeafBill, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill
     }}>
       {children}
     </LeafContext.Provider>

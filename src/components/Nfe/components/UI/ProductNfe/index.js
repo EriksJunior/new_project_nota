@@ -8,7 +8,7 @@ import { DropdownActions } from "../DropdownActions"
 import { ContentHeaderTitle } from "../../../styles"
 import { BsFillGearFill } from "react-icons/bs"
 
-import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItems, Scrollllll } from "./styles"
+import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItemsAndSave, Scrollllll } from "./styles"
 
 export function ProductNfe() {
   const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue } = useContext(LeafContext)
@@ -84,10 +84,10 @@ export function ProductNfe() {
               </tbody>
             </Table>
 
-            <ContentButtonAddMoreItems>
+            <ContentButtonAddMoreItemsAndSave>
               <button className="btn btn-primary btn-sm" onClick={addProductInTable}>Adicionar Produtos</button>
               <button className="btn btn-primary btn-sm" hidden={!products[0].idProduto} onClick={handleSaveLeafAndLeafProducts}>Salvar</button>
-            </ContentButtonAddMoreItems>
+            </ContentButtonAddMoreItemsAndSave>
           </ContentTable>
         </Scrollllll>
 

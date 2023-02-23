@@ -190,7 +190,7 @@ export const TrBodyContent = styled.tr`
   border-radius: 5px ;
 `
 
-export const ContentButtonAddMoreItems = styled.div`
+export const ContentButtonAddMoreItemsAndSave = styled.div`
   width: 100%;
   height: 51px;
   display: flex;
