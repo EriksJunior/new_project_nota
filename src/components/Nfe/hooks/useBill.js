@@ -110,7 +110,6 @@ export function UseBill() {
 
     if (parcelas.length > 1) {
       newBills.splice(index, 1)
-      console.log(newBills)
 
       removeConfirmedBillsToList(index)
       return dispatch(SAVE_BILL(newBills))
