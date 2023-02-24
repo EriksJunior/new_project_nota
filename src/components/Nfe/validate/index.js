@@ -1,5 +1,4 @@
 import { z } from "zod"
-import { DateTime } from "luxon"
 
 const validadeLeaf = (leaf) => {
   const schema = z.object({
@@ -63,31 +62,31 @@ const validateLeafProduct = (leafProducts) => {
       const messages = result.error.errors[0].message
 
       throw Error(messages)
-    } else {
-      return leafProducts
     }
   }
 }
 
 const validateLeafBill = (leafBill) => {
-  const newBills = { ...leafBill, data: new Date(leafBill.data) }
-
   const schema = z.object({
-    data: z.date(new Date(leafBill.data), {
-      invalid_type_error: "O campo (Data de vencimento) deve ser preenchido corretamente"
+    data: z.string().transform((val) => {
+      const date = new Date(val);
+      if (isNaN(date.getTime())) {
+        throw new Error("O campo (Data de vencimento) deve ser preenchido corretamente");
+      }
+      return date;
     }),
     idCliente: z.string().uuid("Deve ser selecionado um (Cliente) para prosseguir"),
-    idFormaPagamento: z.string().uuid("O campo (Forma de pagamento) deve ser preenchido").optional(),
+    idFormaPagamento: z.string().uuid("O campo (Forma de pagamento) deve ser preenchido"),
     idNota: z.string().uuid("O Documento fiscal deve ser salvo para processeguir"),
-    tipo: z.string().min(1, "O campo (Total) deve ser preenchido").optional(),
-    valorTotal: z.string().min(1, "O campo (Total) deve ser preenchido").optional(),
+    tipo: z.string().min(1, "O campo (Tipo) deve ser preenchido"),
+    valorTotal: z.string().min(1, "O campo (Valor) deve ser preenchido"),
   })
 
-  const result = schema.safeParse(newBills)
+  const result = schema.safeParse(leafBill)
   if (!result.success) {
     const messages = result.error.errors[0].message
 
-    throw Error(messages)
-  } 
+    throw new Error(messages)
+  }
 }
 export { validadeLeaf, validateLeafProduct, validateLeafBill }

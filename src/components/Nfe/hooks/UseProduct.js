@@ -63,7 +63,7 @@ export function UseProduct() {
 
   const saveLeafProducts = async (idLeaf) => {
     try {
-      const selectedProducts = produtos.filter((prod) => prod.idProduto)
+      const selectedProducts = produtos.filter(prod => prod.idProduto)
 
       selectedProducts.map(product => validateLeafProduct(product))
 
