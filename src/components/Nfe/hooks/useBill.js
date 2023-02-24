@@ -24,9 +24,11 @@ export function UseBill() {
     try {
       const newBills = handleWithBillsBeforeSave(parcelas, idLeaf)
 
-      newBills.map(bill => validateLeafBill(bill))
+      const trueBills = newBills.filter(bill => bill.data && bill.valorTotal)
 
-      const bills = await Promise.all(newBills.map((bill) => {
+      trueBills.map(bill => validateLeafBill(bill))
+
+      const bills = await Promise.all(trueBills.map((bill) => {
         if (bill.id) {
           return bill
         }
@@ -40,12 +42,13 @@ export function UseBill() {
         position: toast.POSITION.TOP_RIGHT
       });
     } catch (error) {
-       toast.error(error.message, {
+      toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
 
   }
+
 
   const handleSaveLeafAndLeafBills = async () => {
     if (pedido.id) {
