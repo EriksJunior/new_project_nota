@@ -170,7 +170,7 @@ export function PedidoNfe() {
 
         <div className="row mt-5 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <div className="d-flex gap-2">
-            <button type="button" className="btn btn-primary btn-sm" onClick={() => console.log(parcelas)}>Salvar Documento</button>
+            <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveLeaf}>Salvar Documento</button>
             <button type="button" className="btn btn-primary btn-sm">Emitir Documento</button>
           </div>
         </div>
