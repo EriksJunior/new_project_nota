@@ -3,6 +3,7 @@ import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
 import LeafService from "../../../services/LeafService";
 import { validadeLeaf } from "../validate";
+import { Masks } from "../../../utils/masks/Masks";
 
 import { toast } from "react-toastify";
 
@@ -11,16 +12,23 @@ export function UseLeaf() {
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
+  const { maskCurrency } = Masks()
 
   const handleChangePedido = (e) => {
-    dispatch(SAVE_LEAF({ ...pedido, [e.currentTarget.name]: e.currentTarget.value }))
+    dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: e.target.value }))
   }
+
+  const handleChangeFreightAndOthers = (e) => {
+    dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: maskCurrency(e.target.value) }))
+  };
 
   const saveLeaf = async (dataPedido) => {
     try {
       validadeLeaf(dataPedido)
-      
-      const id = await LeafService.save(dataPedido)
+
+      const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat(dataPedido)
+
+      const id = await LeafService.save(formattedMonetaryValuesLeaf)
       dispatch(SAVE_LEAF({ ...dataPedido, id: id }))
 
       toast("Documento fiscal salvo! ✅", {
@@ -60,6 +68,13 @@ export function UseLeaf() {
     }
   }
 
+  const convertMonetaryValuesToFloat = (leaf) => {
+   const formattedFrete = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
+   const formattedDespesasAcessorias = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
 
-  return { handleChangePedido, handleSaveLeaf }
+   return {...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias}
+  }
+
+
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers }
 }
