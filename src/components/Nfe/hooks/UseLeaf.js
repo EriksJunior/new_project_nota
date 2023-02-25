@@ -3,6 +3,7 @@ import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
 import LeafService from "../../../services/LeafService";
 import { validadeLeaf } from "../validate";
+import { Masks } from "../../../utils/masks/Masks";
 
 import { toast } from "react-toastify";
 
@@ -11,16 +12,24 @@ export function UseLeaf() {
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
+  const produtos = useSelector(state => state.leaf.produto)
+  const { maskCurrency } = Masks()
 
   const handleChangePedido = (e) => {
-    dispatch(SAVE_LEAF({ ...pedido, [e.currentTarget.name]: e.currentTarget.value }))
+    dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: e.target.value }))
   }
+
+  const handleChangeFreightAndOthers = (e) => {
+    dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: maskCurrency(e.target.value) }))
+  };
 
   const saveLeaf = async (dataPedido) => {
     try {
       validadeLeaf(dataPedido)
-      
-      const id = await LeafService.save(dataPedido)
+
+      const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat(dataPedido)
+
+      const id = await LeafService.save(formattedMonetaryValuesLeaf)
       dispatch(SAVE_LEAF({ ...dataPedido, id: id }))
 
       toast("Documento fiscal salvo! ✅", {
@@ -60,6 +69,32 @@ export function UseLeaf() {
     }
   }
 
+  const convertMonetaryValuesToFloat = (leaf) => {
+    const formattedFrete = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
+    const formattedDespesasAcessorias = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
+    const formattedTotal = leaf.total.replace(".", "").replace(".", "").replace(",", ".")
 
-  return { handleChangePedido, handleSaveLeaf }
+    return { ...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias, total: formattedTotal }
+  }
+
+  const calculateTotalValueLeaf = (dataPedido, dataProducts) => {
+    const formattedSubtotal = dataProducts.map((prod) => {
+      const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
+      const quantidade = prod.quantidade
+
+      return parseFloat(subtotal) * quantidade
+    })
+
+    const totalValuesProducts = formattedSubtotal.reduce((oldValue, value) => parseFloat(oldValue) + parseFloat(value))
+    //falta calcular mais o frete
+    //falta calcular menos o desconto
+
+    const totoalMonetary = totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+
+    dispatch(SAVE_LEAF({ ...dataPedido, total: totoalMonetary }))
+  }
+
+
+
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalValueLeaf }
 }

@@ -13,7 +13,7 @@ import { Masks } from "../../../utils/masks/Masks";
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
 
 export function UseProduct() {
-  const { handleSaveLeaf } = UseLeaf()
+  const { handleSaveLeaf, calculateTotalValueLeaf } = UseLeaf()
   const [productsFromSelectBox, setProductsFromSelectBox] = useState([])
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
@@ -77,6 +77,7 @@ export function UseProduct() {
 
       dispatch(SAVE_PRODUCTS(products))
 
+      calculateTotalValueLeaf(pedido, products)
       // return toast("Itens salvos! ✅", {
       //   position: toast.POSITION.TOP_RIGHT
       // });

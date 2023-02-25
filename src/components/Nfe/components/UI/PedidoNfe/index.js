@@ -10,7 +10,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill } from "react-icons/bs"
 
 export function PedidoNfe() {
-  const { handleChangePedido, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf } = useContext(LeafContext)
+  const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalValueLeaf } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const parcelas = useSelector(state => state.leaf.parcela)
 
@@ -34,22 +34,22 @@ export function PedidoNfe() {
 
           <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
             <label className="form-label">Total frete</label>
-            <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="frete" value={pedido.frete} onChange={handleChangePedido} />
+            <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="frete" value={pedido.frete} onChange={handleChangeFreightAndOthers} />
           </div>
 
           <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
             <label className="form-label">Total desc</label>
-            <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="desconto" value={pedido.desconto} onChange={handleChangePedido} />
+            <input type="text" disabled placeholder="0,0000" className="form-control form-control-sm" name="desconto" value={pedido.desconto} onChange={handleChangePedido} />
           </div>
 
           <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
             <label className="form-label">Outras despesas</label>
-            <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="despesas_acessorias" value={pedido.despesas_acessorias} onChange={handleChangePedido} />
+            <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="despesas_acessorias" value={pedido.despesas_acessorias} onChange={handleChangeFreightAndOthers} />
           </div>
 
           <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
             <label className="form-label">Total pedido</label>
-            <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="total" value={pedido.total} onChange={handleChangePedido} />
+            <input type="text" disabled placeholder="0,0000" className="form-control form-control-sm" name="total" value={pedido.total} onChange={handleChangePedido} />
           </div>
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
