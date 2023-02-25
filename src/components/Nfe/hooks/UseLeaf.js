@@ -12,6 +12,7 @@ export function UseLeaf() {
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
+  const produtos = useSelector(state => state.leaf.produto)
   const { maskCurrency } = Masks()
 
   const handleChangePedido = (e) => {
@@ -69,12 +70,31 @@ export function UseLeaf() {
   }
 
   const convertMonetaryValuesToFloat = (leaf) => {
-   const formattedFrete = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
-   const formattedDespesasAcessorias = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
+    const formattedFrete = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
+    const formattedDespesasAcessorias = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
+    const formattedTotal = leaf.total.replace(".", "").replace(".", "").replace(",", ".")
 
-   return {...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias}
+    return { ...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias, total: formattedTotal }
+  }
+
+  const calculateTotalValueLeaf = (dataPedido, dataProducts) => {
+    const formattedSubtotal = dataProducts.map((prod) => {
+      const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
+      const quantidade = prod.quantidade
+
+      return parseFloat(subtotal) * quantidade
+    })
+
+    const totalValuesProducts = formattedSubtotal.reduce((oldValue, value) => parseFloat(oldValue) + parseFloat(value))
+    //falta calcular mais o frete
+    //falta calcular menos o desconto
+
+    const totoalMonetary = totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+
+    dispatch(SAVE_LEAF({ ...dataPedido, total: totoalMonetary }))
   }
 
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers }
+
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalValueLeaf }
 }
