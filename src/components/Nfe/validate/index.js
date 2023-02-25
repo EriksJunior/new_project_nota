@@ -40,9 +40,10 @@ const validadeLeaf = (leaf) => {
 
   const result = schema.safeParse(leaf)
   if (!result.success) {
-    return result.error.errors[0].message
-  }
+    const messages = result.error.errors[0].message
 
+    throw Error(messages)
+  }
 }
 
 const validateLeafProduct = (leafProducts) => {
@@ -57,20 +58,16 @@ const validateLeafProduct = (leafProducts) => {
 
     const result = schema.safeParse(leafProducts)
     if (!result.success) {
-      return result.error.errors[0].message
+      const messages = result.error.errors[0].message
+
+      throw Error(messages)
     }
   }
 }
 
 const validateLeafBill = (leafBill) => {
   const schema = z.object({
-    data: z.string().transform((val) => {
-      const date = new Date(val);
-      if (isNaN(date.getTime())) {
-        throw new Error("O campo (Data de vencimento) deve ser preenchido corretamente");
-      }
-      return date;
-    }),
+    data: z.string().min(10, "O campo (Data de vencimento) deve ser preenchido corretamente"),
     idCliente: z.string().uuid("Deve ser selecionado um (Cliente) para prosseguir"),
     idFormaPagamento: z.string().uuid("O campo (Forma de pagamento) deve ser preenchido"),
     idNota: z.string().uuid("O Documento fiscal deve ser salvo para processeguir"),
@@ -79,6 +76,7 @@ const validateLeafBill = (leafBill) => {
   })
 
   const result = schema.safeParse(leafBill)
+
   if (!result.success) {
     return result.error.errors[0].message
   }

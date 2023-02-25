@@ -29,7 +29,7 @@ export function UseLeaf() {
 
       return id
     } catch (error) {
-      toast.error(error.message, {
+      toast.warning(error.message, {
         position: toast.POSITION.TOP_RIGHT
       });
     }

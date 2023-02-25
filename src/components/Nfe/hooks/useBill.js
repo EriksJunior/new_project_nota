@@ -29,7 +29,7 @@ export function UseBill() {
           return bill
         }
 
-        if(!bill.data && !bill.valorToal) {
+        if (!bill.data || !bill.valorTotal) {
           return bill
         }
 
@@ -38,11 +38,11 @@ export function UseBill() {
 
       dispatch(SAVE_BILL(bills))
 
-      return toast("Parcelas salvas! ✅", {
-        position: toast.POSITION.TOP_RIGHT
-      });
+      // return toast("Parcelas salvas! ✅", {
+      //   position: toast.POSITION.TOP_RIGHT
+      // });
     } catch (error) {
-      toast.error(error.message, {
+      toast.warning(error.message, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
@@ -68,10 +68,16 @@ export function UseBill() {
       }
     })
 
-    const billsFilled = newBills.filter(bill => bill.data && bill.valorTotal)
+    const billsFilled = newBills.filter(bill => !bill.data || !bill.valorTotal)
 
-    if (!billsFilled.length) {
-      newBills.map(bill => validateLeafBill(bill))
+    if (billsFilled.length) {
+      const result = billsFilled.map((bill) => {
+        return validateLeafBill(bill)
+      })
+
+      toast.warning(result[0], {
+        position: toast.POSITION.TOP_RIGHT
+      });
     }
 
     return newBills
