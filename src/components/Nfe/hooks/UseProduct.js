@@ -63,19 +63,12 @@ export function UseProduct() {
 
   const saveLeafProducts = async (idLeaf) => {
     try {
-      // const selectedProducts = produtos.filter(prod => prod.idProduto)
-
-      // selectedProducts.map(product => validateLeafProduct(product))
-
-      handleWithBillsBeforeSave(produtos)
-
-
       const products = await Promise.all(produtos.map((product) => {
         if (product.id) {
           return product
         }
 
-        if (!product.idProduto || !product.total) {
+        if (handleWithBillsBeforeSave(product)) {
           return product
         }
 
@@ -133,18 +126,19 @@ export function UseProduct() {
   }
 
   const handleWithBillsBeforeSave = (product) => {
+    const productsFilled = !product.idProduto || !product.unidade || !product.total || !product.subtotal || !product.quantidade || !product.desconto //refatorar, realizar uma forma dinamica de fazer isso
 
-    const productsFilled = product.filter(prod => !prod.unidade || !prod.total || !prod.subtotal || !prod.quantidade|| !prod.desconto)
-    
-    if (productsFilled.length) {
-      const result = productsFilled.map((prod) => {
-        return validateLeafProduct(prod)
-      })
+    if (productsFilled) {
+      const result = validateLeafProduct(product)
 
-      toast.warning(result[0], {
+      toast.warning(result, {
         position: toast.POSITION.TOP_RIGHT
       });
+
+      return true
     }
+
+    return false
   }
 
   return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue }

@@ -47,7 +47,6 @@ const validadeLeaf = (leaf) => {
 }
 
 const validateLeafProduct = (leafProducts) => {
-  if (leafProducts.idProduto) {
     const schema = z.object({
       idProduto: z.string().uuid("Deve ser selecionado ao menos um (Produto) para prosseguir"),
       quantidade: z.string().min(1, "O campo (Quantidade) deve ser preenchido").optional(),
@@ -62,9 +61,8 @@ const validateLeafProduct = (leafProducts) => {
 
       // throw Error(messages)
 
-      return result.error.errors[0].message
+       return result.error.errors[0].message
     }
-  }
 }
 
 const validateLeafBill = (leafBill) => {
