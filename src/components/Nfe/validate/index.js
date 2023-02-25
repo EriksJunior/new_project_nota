@@ -58,9 +58,11 @@ const validateLeafProduct = (leafProducts) => {
 
     const result = schema.safeParse(leafProducts)
     if (!result.success) {
-      const messages = result.error.errors[0].message
+      // const messages = result.error.errors[0].message
 
-      throw Error(messages)
+      // throw Error(messages)
+
+      return result.error.errors[0].message
     }
   }
 }

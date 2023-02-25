@@ -63,12 +63,19 @@ export function UseProduct() {
 
   const saveLeafProducts = async (idLeaf) => {
     try {
-      const selectedProducts = produtos.filter(prod => prod.idProduto)
+      // const selectedProducts = produtos.filter(prod => prod.idProduto)
 
-      selectedProducts.map(product => validateLeafProduct(product))
+      // selectedProducts.map(product => validateLeafProduct(product))
 
-      const products = await Promise.all(selectedProducts.map((product) => {
+      handleWithBillsBeforeSave(produtos)
+
+
+      const products = await Promise.all(produtos.map((product) => {
         if (product.id) {
+          return product
+        }
+
+        if (!product.idProduto || !product.total) {
           return product
         }
 
@@ -77,9 +84,9 @@ export function UseProduct() {
 
       dispatch(SAVE_PRODUCTS(products))
 
-      return toast("Itens salvos! ✅", {
-        position: toast.POSITION.TOP_RIGHT
-      });
+      // return toast("Itens salvos! ✅", {
+      //   position: toast.POSITION.TOP_RIGHT
+      // });
     } catch (error) {
       toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT
@@ -123,6 +130,21 @@ export function UseProduct() {
   const getProcuctsFromSelectBox = async () => {
     const products = await ProductServices.getFromSelectBox()
     setProductsFromSelectBox(products)
+  }
+
+  const handleWithBillsBeforeSave = (product) => {
+
+    const productsFilled = product.filter(prod => !prod.unidade || !prod.total || !prod.subtotal || !prod.quantidade|| !prod.desconto)
+    
+    if (productsFilled.length) {
+      const result = productsFilled.map((prod) => {
+        return validateLeafProduct(prod)
+      })
+
+      toast.warning(result[0], {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   }
 
   return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue }

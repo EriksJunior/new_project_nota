@@ -23,7 +23,7 @@ export function UseBill() {
   const saveLeafBill = async (idLeaf) => {
     try {
       const newBills = handleWithBillsBeforeSave(parcelas, idLeaf)
-
+      
       const bills = await Promise.all(newBills.map((bill) => {
         if (bill.id) {
           return bill
