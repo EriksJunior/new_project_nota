@@ -24,12 +24,12 @@ export function UseBill() {
     try {
       const newBills = handleWithBillsBeforeSave(parcelas, idLeaf)
 
-      const trueBills = newBills.filter(bill => bill.data && bill.valorTotal)
-
-      trueBills.map(bill => validateLeafBill(bill))
-
-      const bills = await Promise.all(trueBills.map((bill) => {
+      const bills = await Promise.all(newBills.map((bill) => {
         if (bill.id) {
+          return bill
+        }
+
+        if(!bill.data && !bill.valorToal) {
           return bill
         }
 
@@ -67,6 +67,12 @@ export function UseBill() {
         idNota: idLeaf
       }
     })
+
+    const billsFilled = newBills.filter(bill => bill.data && bill.valorTotal)
+
+    if (!billsFilled.length) {
+      newBills.map(bill => validateLeafBill(bill))
+    }
 
     return newBills
   }

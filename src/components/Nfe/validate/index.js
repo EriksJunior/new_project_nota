@@ -40,9 +40,7 @@ const validadeLeaf = (leaf) => {
 
   const result = schema.safeParse(leaf)
   if (!result.success) {
-    const messages = result.error.errors[0].message
-
-    throw Error(messages)
+    return result.error.errors[0].message
   }
 
 }
@@ -59,9 +57,7 @@ const validateLeafProduct = (leafProducts) => {
 
     const result = schema.safeParse(leafProducts)
     if (!result.success) {
-      const messages = result.error.errors[0].message
-
-      throw Error(messages)
+      return result.error.errors[0].message
     }
   }
 }
@@ -84,9 +80,7 @@ const validateLeafBill = (leafBill) => {
 
   const result = schema.safeParse(leafBill)
   if (!result.success) {
-    const messages = result.error.errors[0].message
-
-    throw new Error(messages)
+    return result.error.errors[0].message
   }
 }
 export { validadeLeaf, validateLeafProduct, validateLeafBill }
