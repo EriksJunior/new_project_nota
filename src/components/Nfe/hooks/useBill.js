@@ -23,13 +23,13 @@ export function UseBill() {
   const saveLeafBill = async (idLeaf) => {
     try {
       const newBills = handleWithBillsBeforeSave(parcelas, idLeaf)
-
-      const trueBills = newBills.filter(bill => bill.data && bill.valorTotal)
-
-      trueBills.map(bill => validateLeafBill(bill))
-
-      const bills = await Promise.all(trueBills.map((bill) => {
+      
+      const bills = await Promise.all(newBills.map((bill) => {
         if (bill.id) {
+          return bill
+        }
+
+        if (!bill.data || !bill.valorTotal) {
           return bill
         }
 
@@ -38,11 +38,11 @@ export function UseBill() {
 
       dispatch(SAVE_BILL(bills))
 
-      return toast("Parcelas salvas! ✅", {
-        position: toast.POSITION.TOP_RIGHT
-      });
+      // return toast("Parcelas salvas! ✅", {
+      //   position: toast.POSITION.TOP_RIGHT
+      // });
     } catch (error) {
-      toast.error(error.message, {
+      toast.warning(error.message, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
@@ -67,6 +67,18 @@ export function UseBill() {
         idNota: idLeaf
       }
     })
+
+    const billsFilled = newBills.filter(bill => !bill.data || !bill.valorTotal)
+
+    if (billsFilled.length) {
+      const result = billsFilled.map((bill) => {
+        return validateLeafBill(bill)
+      })
+
+      toast.warning(result[0], {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
 
     return newBills
   }

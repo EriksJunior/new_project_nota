@@ -44,11 +44,9 @@ const validadeLeaf = (leaf) => {
 
     throw Error(messages)
   }
-
 }
 
 const validateLeafProduct = (leafProducts) => {
-  if (leafProducts.idProduto) {
     const schema = z.object({
       idProduto: z.string().uuid("Deve ser selecionado ao menos um (Produto) para prosseguir"),
       quantidade: z.string().min(1, "O campo (Quantidade) deve ser preenchido").optional(),
@@ -59,22 +57,17 @@ const validateLeafProduct = (leafProducts) => {
 
     const result = schema.safeParse(leafProducts)
     if (!result.success) {
-      const messages = result.error.errors[0].message
+      // const messages = result.error.errors[0].message
 
-      throw Error(messages)
+      // throw Error(messages)
+
+       return result.error.errors[0].message
     }
-  }
 }
 
 const validateLeafBill = (leafBill) => {
   const schema = z.object({
-    data: z.string().transform((val) => {
-      const date = new Date(val);
-      if (isNaN(date.getTime())) {
-        throw new Error("O campo (Data de vencimento) deve ser preenchido corretamente");
-      }
-      return date;
-    }),
+    data: z.string().min(10, "O campo (Data de vencimento) deve ser preenchido corretamente"),
     idCliente: z.string().uuid("Deve ser selecionado um (Cliente) para prosseguir"),
     idFormaPagamento: z.string().uuid("O campo (Forma de pagamento) deve ser preenchido"),
     idNota: z.string().uuid("O Documento fiscal deve ser salvo para processeguir"),
@@ -83,10 +76,9 @@ const validateLeafBill = (leafBill) => {
   })
 
   const result = schema.safeParse(leafBill)
-  if (!result.success) {
-    const messages = result.error.errors[0].message
 
-    throw new Error(messages)
+  if (!result.success) {
+    return result.error.errors[0].message
   }
 }
 export { validadeLeaf, validateLeafProduct, validateLeafBill }
