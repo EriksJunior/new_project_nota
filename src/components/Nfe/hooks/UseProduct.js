@@ -13,7 +13,7 @@ import { Masks } from "../../../utils/masks/Masks";
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
 
 export function UseProduct() {
-  const { handleSaveLeaf, calculateTotalValueLeaf } = UseLeaf()
+  const { handleSaveLeaf, calculateTotalLeafBasedProducts } = UseLeaf()
   const [productsFromSelectBox, setProductsFromSelectBox] = useState([])
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
@@ -77,10 +77,7 @@ export function UseProduct() {
 
       dispatch(SAVE_PRODUCTS(products))
 
-      calculateTotalValueLeaf(pedido, products)
-      // return toast("Itens salvos! ✅", {
-      //   position: toast.POSITION.TOP_RIGHT
-      // });
+      calculateTotalLeafBasedProducts(pedido, products)
     } catch (error) {
       toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT
@@ -100,12 +97,14 @@ export function UseProduct() {
   const removeProductInTable = (index) => {
     const newProducts = [...produtos]
 
-    if (produtos.length > 1) {
+    if (newProducts.length > 1) {
       newProducts.splice(index, 1)
+      calculateTotalLeafBasedProducts(pedido, newProducts)
       return dispatch(SAVE_PRODUCTS(newProducts))
     }
 
     dispatch(SAVE_PRODUCTS([INITIAL_VALUE_PRODUTOS]))
+    calculateTotalLeafBasedProducts(pedido, [INITIAL_VALUE_PRODUTOS])
   }
 
   const removeLeafProducts = async (idLeafProduct) => {

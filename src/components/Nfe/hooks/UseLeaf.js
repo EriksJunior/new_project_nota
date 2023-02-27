@@ -12,7 +12,6 @@ export function UseLeaf() {
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
-  const produtos = useSelector(state => state.leaf.produto)
   const { maskCurrency } = Masks()
 
   const handleChangePedido = (e) => {
@@ -77,24 +76,21 @@ export function UseLeaf() {
     return { ...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias, total: formattedTotal }
   }
 
-  const calculateTotalValueLeaf = (dataPedido, dataProducts) => {
+  const calculateTotalLeafBasedProducts = (dataPedido, dataProducts) => {
     const formattedSubtotal = dataProducts.map((prod) => {
       const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
+      const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
       const quantidade = prod.quantidade
 
-      return parseFloat(subtotal) * quantidade
+      return (parseFloat(subtotal) * quantidade) - desconto
     })
 
     const totalValuesProducts = formattedSubtotal.reduce((oldValue, value) => parseFloat(oldValue) + parseFloat(value))
-    //falta calcular mais o frete
-    //falta calcular menos o desconto
+    const totalMonetary = totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
 
-    const totoalMonetary = totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
-
-    dispatch(SAVE_LEAF({ ...dataPedido, total: totoalMonetary }))
+    dispatch(SAVE_LEAF({ ...dataPedido, total: totalMonetary }))
   }
 
 
-
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalValueLeaf }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts }
 }
