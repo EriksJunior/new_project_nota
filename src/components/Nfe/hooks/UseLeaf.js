@@ -4,16 +4,13 @@ import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 import LeafService from "../../../services/LeafService";
 import { validadeLeaf } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
-
 import { toast } from "react-toastify";
-
 
 export function UseLeaf() {
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
   const { maskCurrency } = Masks()
-
   const handleChangePedido = (e) => {
     dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: e.target.value }))
   }
@@ -77,7 +74,7 @@ export function UseLeaf() {
   }
 
   const calculateTotalLeafBasedProducts = (dataPedido, dataProducts) => {
-    const formattedSubtotal = dataProducts.map((prod) => {
+    const formattedValues = dataProducts.map((prod) => {
       const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
       const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
       const quantidade = prod.quantidade
@@ -85,10 +82,19 @@ export function UseLeaf() {
       return (parseFloat(subtotal) * quantidade) - desconto
     })
 
-    const totalValuesProducts = formattedSubtotal.reduce((oldValue, value) => parseFloat(oldValue) + parseFloat(value))
+    const formattedDiscount = dataProducts.map((prod) => {
+      return parseFloat(prod.desconto)
+    })
+
+    // refatorar isso
+
+    const totalValuesProducts = formattedValues.reduce((oldValue, value) => parseFloat(oldValue) + parseFloat(value))
+    const totalDiscount = formattedDiscount.reduce((oldValue, value) => parseFloat(oldValue) + parseFloat(value))
+
+    const totalDiscountFomatted = totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
     const totalMonetary = totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
 
-    dispatch(SAVE_LEAF({ ...dataPedido, total: totalMonetary }))
+    dispatch(SAVE_LEAF({ ...dataPedido, total: totalMonetary, desconto: totalDiscountFomatted }))
   }
 
 
