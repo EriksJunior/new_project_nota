@@ -69,32 +69,35 @@ export function UseLeaf() {
     const formattedFrete = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
     const formattedDespesasAcessorias = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
     const formattedTotal = leaf.total.replace(".", "").replace(".", "").replace(",", ".")
+    const formattedDesconto = leaf.desconto.replace(".", "").replace(".", "").replace(",", ".")
 
-    return { ...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias, total: formattedTotal }
+    return { ...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias, total: formattedTotal, desconto: formattedDesconto }
   }
 
   const calculateTotalLeafBasedProducts = (dataPedido, dataProducts) => {
-    const formattedValues = dataProducts.map((prod) => {
-      const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
-      const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
-      const quantidade = prod.quantidade
+    try {
+      const formattedValues = dataProducts.map((prod) => {
+        const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
+        const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
+        const quantidade = prod.quantidade
 
-      return (parseFloat(subtotal) * quantidade) - desconto
-    })
+        return {
+          total: (parseFloat(subtotal) * quantidade) - desconto,
+          discount: parseFloat(desconto)
+        }
+      }, 0)
 
-    const formattedDiscount = dataProducts.map((prod) => {
-      return parseFloat(prod.desconto)
-    })
+      const totalValuesProducts = formattedValues.reduce((oldValue, value) => oldValue + value.total, 0)
+      const totalDiscount = formattedValues.reduce((oldValue, value) => oldValue + value.discount, 0)
 
-    // refatorar isso
+      const totalDiscountFomatted = totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+      const totalMonetary = totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
 
-    const totalValuesProducts = formattedValues.reduce((oldValue, value) => parseFloat(oldValue) + parseFloat(value))
-    const totalDiscount = formattedDiscount.reduce((oldValue, value) => parseFloat(oldValue) + parseFloat(value))
+      dispatch(SAVE_LEAF({ ...dataPedido, total: totalMonetary, desconto: totalDiscountFomatted }))
+    } catch (error) {
+      console.log(error)
+    }
 
-    const totalDiscountFomatted = totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
-    const totalMonetary = totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
-
-    dispatch(SAVE_LEAF({ ...dataPedido, total: totalMonetary, desconto: totalDiscountFomatted }))
   }
 
 
