@@ -10,7 +10,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill } from "react-icons/bs"
 
 export function PedidoNfe() {
-  const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf } = useContext(LeafContext)
+  const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const parcelas = useSelector(state => state.leaf.parcela)
 
@@ -39,7 +39,7 @@ export function PedidoNfe() {
 
           <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
             <label className="form-label">Total desc</label>
-            <input type="text" disabled placeholder="0,0000" className="form-control form-control-sm" name="desconto" value={pedido.desconto} onChange={handleChangePedido} />
+            <input type="text" disabled placeholder="0,0000" ref={refTotalDescontoPedido} className="form-control form-control-sm" name="desconto" value={calculateTotalDiscountLeaf()} onChange={handleChangePedido} />
           </div>
 
           <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
@@ -49,7 +49,7 @@ export function PedidoNfe() {
 
           <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
             <label className="form-label">Total pedido</label>
-            <input type="text" disabled placeholder="0,0000" className="form-control form-control-sm" name="total" value={pedido.total} onChange={handleChangePedido} />
+            <input type="text" disabled placeholder="0,0000" ref={refValorTotalPedido} className="form-control form-control-sm" value={calculateTotalLeafBasedProducts()} />
           </div>
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">

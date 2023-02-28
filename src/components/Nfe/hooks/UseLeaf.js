@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
@@ -7,10 +8,16 @@ import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
 
 export function UseLeaf() {
+  const refValorTotalPedido = useRef("")
+  const refTotalDescontoPedido = useRef("")
+
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
+  const produtos = useSelector(state => state.leaf.produto)
+
   const { maskCurrency } = Masks()
+
   const handleChangePedido = (e) => {
     dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: e.target.value }))
   }
@@ -43,8 +50,10 @@ export function UseLeaf() {
   const updateLeaf = async (dataPedido) => {
     try {
       validadeLeaf(dataPedido)
+      const totalDesconto = refTotalDescontoPedido.current.value
+      const total = refValorTotalPedido.current.value
 
-      const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat(dataPedido)
+      const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat({...dataPedido, total: total, desconto: totalDesconto})
 
       await LeafService.update(formattedMonetaryValuesLeaf)
 
@@ -76,32 +85,34 @@ export function UseLeaf() {
     return { ...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias, total: formattedTotal, desconto: formattedDesconto }
   }
 
-  const calculateTotalLeafBasedProducts = (dataPedido, dataProducts) => {
-    try {
-      const formattedValues = dataProducts.map((prod) => {
-        const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
-        const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
-        const quantidade = prod.quantidade
+  const calculateTotalLeafBasedProducts = () => {
+    const formattedTotal = produtos.map((prod) => {
+      const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
+      const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
+      const quantidade = prod.quantidade
 
-        return {
-          total: (parseFloat(subtotal) * quantidade) - desconto,
-          discount: parseFloat(desconto)
-        }
-      }, 0)
+      return (parseFloat(subtotal) * quantidade) - desconto
+    }, 0)
+    const formattedFrete = pedido.frete.replace(".", "").replace(",", ".").replace(",", ".")
 
-      const totalValuesProducts = formattedValues.reduce((oldValue, value) => oldValue + value.total, 0)
-      const totalDiscount = formattedValues.reduce((oldValue, value) => oldValue + value.discount, 0)
+    const totalValuesProducts = formattedTotal.reduce((oldValue, value) => oldValue + value, 0)
+    const totalMonetary = totalValuesProducts + parseFloat(formattedFrete)
 
-      const totalDiscountFomatted = totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
-      const totalMonetary = totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+    return totalMonetary.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+  }
 
-      dispatch(SAVE_LEAF({ ...dataPedido, id: dataPedido.id, total: totalMonetary, desconto: totalDiscountFomatted }))
-    } catch (error) {
-      console.log(error)
-    }
+  const calculateTotalDiscountLeaf = () => {
+    const formattedDiscount = produtos.map((prod) => {
+      const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
 
+      return parseFloat(desconto)
+    }, 0)
+
+    const totalDiscount = formattedDiscount.reduce((oldValue, value) => oldValue + value, 0)
+    return totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
 
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts }
+
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido }
 }

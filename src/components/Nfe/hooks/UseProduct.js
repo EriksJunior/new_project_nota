@@ -13,7 +13,7 @@ import { Masks } from "../../../utils/masks/Masks";
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
 
 export function UseProduct() {
-  const { handleSaveLeaf, calculateTotalLeafBasedProducts } = UseLeaf()
+  const { handleSaveLeaf } = UseLeaf()
   const [productsFromSelectBox, setProductsFromSelectBox] = useState([])
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
@@ -90,7 +90,6 @@ export function UseProduct() {
 
     
     const idNota = await handleSaveLeaf(pedido)
-    calculateTotalLeafBasedProducts({...pedido, id: idNota}, produtos)
     if (idNota) await saveLeafProducts(idNota)
   }
 
@@ -99,12 +98,10 @@ export function UseProduct() {
 
     if (newProducts.length > 1) {
       newProducts.splice(index, 1)
-      calculateTotalLeafBasedProducts(pedido, newProducts)
       return dispatch(SAVE_PRODUCTS(newProducts))
     }
 
     dispatch(SAVE_PRODUCTS([INITIAL_VALUE_PRODUTOS]))
-    calculateTotalLeafBasedProducts(pedido, [INITIAL_VALUE_PRODUTOS])
   }
 
   const removeLeafProducts = async (idLeafProduct) => {
