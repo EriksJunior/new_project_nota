@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
@@ -7,10 +8,16 @@ import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
 
 export function UseLeaf() {
+  const refValorTotalPedido = useRef("")
+  const refTotalDescontoPedido = useRef("")
+
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
+  const produtos = useSelector(state => state.leaf.produto)
+
   const { maskCurrency } = Masks()
+
   const handleChangePedido = (e) => {
     dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: e.target.value }))
   }
@@ -43,8 +50,12 @@ export function UseLeaf() {
   const updateLeaf = async (dataPedido) => {
     try {
       validadeLeaf(dataPedido)
+      const totalDesconto = refTotalDescontoPedido.current.value
+      const total = refValorTotalPedido.current.value
 
-      await LeafService.update(dataPedido)
+      const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat({...dataPedido, total: total, desconto: totalDesconto})
+
+      await LeafService.update(formattedMonetaryValuesLeaf)
 
       return toast("Documento fiscal atualizado! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -69,34 +80,39 @@ export function UseLeaf() {
     const formattedFrete = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
     const formattedDespesasAcessorias = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
     const formattedTotal = leaf.total.replace(".", "").replace(".", "").replace(",", ".")
+    const formattedDesconto = leaf.desconto.replace(".", "").replace(".", "").replace(",", ".")
 
-    return { ...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias, total: formattedTotal }
+    return { ...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias, total: formattedTotal, desconto: formattedDesconto }
   }
 
-  const calculateTotalLeafBasedProducts = (dataPedido, dataProducts) => {
-    const formattedValues = dataProducts.map((prod) => {
+  const calculateTotalLeafBasedProducts = () => {
+    const formattedTotal = produtos.map((prod) => {
       const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
       const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
       const quantidade = prod.quantidade
 
       return (parseFloat(subtotal) * quantidade) - desconto
-    })
+    }, 0)
+    const formattedFrete = pedido.frete.replace(".", "").replace(",", ".").replace(",", ".")
 
-    const formattedDiscount = dataProducts.map((prod) => {
-      return parseFloat(prod.desconto)
-    })
+    const totalValuesProducts = formattedTotal.reduce((oldValue, value) => oldValue + value, 0)
+    const totalMonetary = totalValuesProducts + parseFloat(formattedFrete)
 
-    // refatorar isso
+    return totalMonetary.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+  }
 
-    const totalValuesProducts = formattedValues.reduce((oldValue, value) => parseFloat(oldValue) + parseFloat(value))
-    const totalDiscount = formattedDiscount.reduce((oldValue, value) => parseFloat(oldValue) + parseFloat(value))
+  const calculateTotalDiscountLeaf = () => {
+    const formattedDiscount = produtos.map((prod) => {
+      const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
 
-    const totalDiscountFomatted = totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
-    const totalMonetary = totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+      return parseFloat(desconto)
+    }, 0)
 
-    dispatch(SAVE_LEAF({ ...dataPedido, total: totalMonetary, desconto: totalDiscountFomatted }))
+    const totalDiscount = formattedDiscount.reduce((oldValue, value) => oldValue + value, 0)
+    return totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
 
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts }
+
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido }
 }
