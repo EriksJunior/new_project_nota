@@ -76,8 +76,6 @@ export function UseProduct() {
       }))
 
       dispatch(SAVE_PRODUCTS(products))
-
-      calculateTotalLeafBasedProducts(pedido, products)
     } catch (error) {
       toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT
@@ -90,7 +88,9 @@ export function UseProduct() {
       return await saveLeafProducts(pedido.id)
     }
 
+    
     const idNota = await handleSaveLeaf(pedido)
+    calculateTotalLeafBasedProducts({...pedido, id: idNota}, produtos)
     if (idNota) await saveLeafProducts(idNota)
   }
 

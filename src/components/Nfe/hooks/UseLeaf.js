@@ -44,7 +44,9 @@ export function UseLeaf() {
     try {
       validadeLeaf(dataPedido)
 
-      await LeafService.update(dataPedido)
+      const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat(dataPedido)
+
+      await LeafService.update(formattedMonetaryValuesLeaf)
 
       return toast("Documento fiscal atualizado! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -93,7 +95,7 @@ export function UseLeaf() {
       const totalDiscountFomatted = totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
       const totalMonetary = totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
 
-      dispatch(SAVE_LEAF({ ...dataPedido, total: totalMonetary, desconto: totalDiscountFomatted }))
+      dispatch(SAVE_LEAF({ ...dataPedido, id: dataPedido.id, total: totalMonetary, desconto: totalDiscountFomatted }))
     } catch (error) {
       console.log(error)
     }
