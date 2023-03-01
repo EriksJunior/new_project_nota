@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 
 import { INITIAL_STATE_CLIENTE, INITIAL_STATE_SEARCH } from '../initalStates';
 import CustomerService from '../../../services/CustomerService'
@@ -11,6 +11,25 @@ export function UseCliente() {
   const [returnedClient, setReturnedClient] = useState([])
   const [openLayouts, setOpenLayouts] = useState(false)
   const [openAreaCustomer, setOpenAreaCustomer] = useState(false)
+
+  // console.log('kçldjsfld')
+  const objCustomer = {
+    id: useRef(""),
+    nome: useRef(""),
+    cpfCnpj: useRef(""),
+    endereco: useRef(""),
+    numero: useRef(""),
+    complemento: useRef(""),
+    bairro: useRef(""),
+    cidade: useRef(""),
+    uf: useRef(""),
+    cep: useRef(""),
+    telefone: useRef(""),
+    celular: useRef(""),
+    email: useRef(""),
+    dataNascimento: useRef(""),
+    observacao: useRef(""),
+  }
 
   useEffect(() => {
     const searchClient = async () => {
@@ -26,6 +45,11 @@ export function UseCliente() {
     }
     searchClient()
   }, [search])
+
+
+  // const handleChange = () => {
+  //   setClient({ ...client, nome: objCustomer.nome.current.value })
+  // };
 
   const handleChange = useCallback((e) => {
     setClient({ ...client, [e.target.name]: e.target.value })
@@ -134,5 +158,5 @@ export function UseCliente() {
   }
 
 
-  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteCustomer, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, switchBetweenComponents, handleNewCustomer, handleEditCustomer }
+  return { search, setSearch, searchClient, findById, returnedClient, clearAllInputs, handleChange, handleChangeSearchClient, handleSaveOrUpdate, deleteCustomer, client, openAreaCustomer, handleOpenAreaCustomer, openLayouts, switchBetweenComponents, handleNewCustomer, handleEditCustomer, objCustomer }
 }
