@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { LeafContext } from "../../../context"
 import { useSelector } from "react-redux"
 
@@ -15,6 +15,7 @@ export function PedidoNfe() {
   const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const parcelas = useSelector(state => state.leaf.parcela)
+  const [openModal, setOpenModal] = useState("hide")
 
   return (
     <div className="card">
@@ -139,7 +140,7 @@ export function PedidoNfe() {
               <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <ContentTypePayment>
                   <label className="form-label">Tipo de pagamento</label>
-                  <span style={{ color: 'white' }}><BsFillPlusCircleFill role={"button"} color={"#02769c"} /></span>
+                  <span style={{ color: 'white' }}><BsFillPlusCircleFill role={"button"} color={"#02769c"} onClick={() => setOpenModal("show")}/></span>
                 </ContentTypePayment>
                 <select className="form-select form-select-sm" name="presenca" value={pedido.presenca} onChange={handleChangePedido}>
                   <option>Cartão</option>
@@ -188,7 +189,7 @@ export function PedidoNfe() {
         </div>
       </div>
 
-      <Modal isOpen={"show"}>
+      <Modal isOpen={openModal}>
         <div style={{ width: "40%", backgroundColor: "black", padding: "15px", marginTop: "50px", borderRadius: "5px" }}>
           <TypePayment />
         </div>
