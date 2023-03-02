@@ -5,7 +5,7 @@ export const ContainerGeneral = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 2000;
   outline: 0;
   background-color: #0d566fa1;
 

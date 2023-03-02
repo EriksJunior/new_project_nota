@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 
 import { Colapse } from "../../../../Colapse"
 import { Modal } from "../../../../Modal"
-import { TypePayment } from "../../../../TypePayment/components"
+import { PricipalTypePayment } from "../../../../TypePayment/components"
 import { presenca, intermediador, pagamaneto, formaPagamento } from "../../../../../common/nfe"
 
 import { TextArea, Hr, ContentButtonAddMoreBillsAndSave, ContentBills, ContentActionBills, ContentTypePayment } from "./styles"
@@ -190,8 +190,8 @@ export function PedidoNfe() {
       </div>
 
       <Modal isOpen={openModal}>
-        <div style={{ width: "40%", backgroundColor: "black", padding: "15px", marginTop: "50px", borderRadius: "5px" }}>
-          <TypePayment />
+        <div style={{ width: "40%", marginTop: "50px" }}>
+          <PricipalTypePayment />
         </div>
       </Modal>
     </div>

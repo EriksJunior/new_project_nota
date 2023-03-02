@@ -1,18 +1,10 @@
-import { AnimateCard } from "../../styles"
-import { CreateTypePayment } from "./CreateTypePayment"
-import { AreaTypePayment } from "./AreaTypePayment"
+import { TypePaymentProvider } from "../context"
+import { TypePayment } from "./typePayment"
 
-
-export function TypePayment() {
+export function PricipalTypePayment() {
   return (
-    <div style={{width: "100%"}}>
-      <AnimateCard>
-        <CreateTypePayment />
-      </AnimateCard>
-
-      <AnimateCard>
-        <AreaTypePayment />
-      </AnimateCard>
-    </div>
+    <TypePaymentProvider>
+      <TypePayment />
+    </TypePaymentProvider>
   )
 }
