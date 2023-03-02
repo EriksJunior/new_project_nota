@@ -2,12 +2,14 @@ import { useContext } from "react"
 import { LeafContext } from "../../../context"
 import { useSelector } from "react-redux"
 
-import { presenca, intermediador, pagamaneto, formaPagamento } from "../../../../../common/nfe"
 import { Colapse } from "../../../../Colapse"
+import { Modal } from "../../../../Modal"
+import { TypePayment } from "../../../../TypePayment/components"
+import { presenca, intermediador, pagamaneto, formaPagamento } from "../../../../../common/nfe"
 
-import { TextArea, Hr, ContentButtonAddMoreBillsAndSave, ContentBills, ContentActionBills } from "./styles"
+import { TextArea, Hr, ContentButtonAddMoreBillsAndSave, ContentBills, ContentActionBills, ContentTypePayment } from "./styles"
 import { ContentHeaderTitle } from "../../../styles"
-import { BsFillTrashFill } from "react-icons/bs"
+import { BsFillTrashFill, BsFillPlusCircleFill } from "react-icons/bs"
 
 export function PedidoNfe() {
   const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido } = useContext(LeafContext)
@@ -107,7 +109,7 @@ export function PedidoNfe() {
           </div>
         </Colapse>
 
-        <Colapse title={"Fatura"}>
+        {/* <Colapse title={"Fatura"}>
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
               <label className="form-label"> N° fatura</label>
@@ -129,17 +131,27 @@ export function PedidoNfe() {
               <input type="text" placeholder="0,0000" disabled className="form-control form-control-sm" name="cpfCnpj" />
             </div>
           </div>
-        </Colapse>
+        </Colapse> */}
 
         <Colapse title={"Parcelas"}>
           {parcelas.map((parcela, index) =>
             <ContentBills className="row col-sm-12 col-md-12 col-lg-12 col-xl-12" key={index}>
-              <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <ContentTypePayment>
+                  <label className="form-label">Tipo de pagamento</label>
+                  <span style={{ color: 'white' }}><BsFillPlusCircleFill role={"button"} color={"#02769c"} /></span>
+                </ContentTypePayment>
+                <select className="form-select form-select-sm" name="presenca" value={pedido.presenca} onChange={handleChangePedido}>
+                  <option>Cartão</option>
+                </select>
+              </div>
+
+              <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <label className="form-label">Data de vencimento</label>
                 <input type="date" className="form-control form-control-sm" disabled={parcela.id} name="data" value={parcela.data} onChange={(e) => handleChangeBill(e, index)} />
               </div>
 
-              <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <label className="form-label">Valor</label>
                 <input type="text" placeholder="0,0000" className="form-control form-control-sm" disabled={parcela.id} name="valorTotal" value={parcela.valorTotal} onChange={(e) => handleChangeBill(e, index)} />
               </div>
@@ -175,6 +187,12 @@ export function PedidoNfe() {
           </div>
         </div>
       </div>
+
+      <Modal isOpen={"show"}>
+        <div style={{ width: "40%", backgroundColor: "black", padding: "15px", marginTop: "50px", borderRadius: "5px" }}>
+          <TypePayment />
+        </div>
+      </Modal>
     </div>
   )
 }

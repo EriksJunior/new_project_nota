@@ -19,6 +19,11 @@ export const ContentBills = styled.div`
   position: relative;
 `
 
+export const ContentTypePayment = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
 export const ContentActionBills = styled.div`
   position: absolute;
   width: auto;
