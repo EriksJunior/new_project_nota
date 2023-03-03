@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 
 import { Colapse } from "../../../../Colapse"
 import { Modal } from "../../../../Modal"
-import { TypePayment } from "../../../../TypePayment/components"
+import { PricipalTypePayment } from "../../../../TypePayment/components"
 import { presenca, intermediador, pagamaneto, formaPagamento } from "../../../../../common/nfe"
 
 import { TextArea, Hr, ContentButtonAddMoreBillsAndSave, ContentBills, ContentActionBills, ContentTypePayment } from "./styles"
@@ -140,7 +140,7 @@ export function PedidoNfe() {
               <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <ContentTypePayment>
                   <label className="form-label">Tipo de pagamento</label>
-                  <span style={{ color: 'white' }}><BsFillPlusCircleFill role={"button"} color={"#02769c"} onClick={() => setOpenModal("show")}/></span>
+                  <span style={{ color: 'white' }}><BsFillPlusCircleFill role={"button"} color={"#02769c"} onClick={() => setOpenModal("show")} /></span>
                 </ContentTypePayment>
                 <select className="form-select form-select-sm" name="presenca" value={pedido.presenca} onChange={handleChangePedido}>
                   <option>Cartão</option>
@@ -189,10 +189,8 @@ export function PedidoNfe() {
         </div>
       </div>
 
-      <Modal isOpen={openModal}>
-        <div style={{ width: "40%", backgroundColor: "black", padding: "15px", marginTop: "50px", borderRadius: "5px" }}>
-          <TypePayment />
-        </div>
+      <Modal isOpen={openModal} closeModal={setOpenModal}>
+        <PricipalTypePayment />
       </Modal>
     </div>
   )
