@@ -26,7 +26,6 @@ export const ContainerGeneral = styled.div`
 
   &.show {
     display: block;
-    animation: opacFadeInDown 0.18s;
   }
 
 `

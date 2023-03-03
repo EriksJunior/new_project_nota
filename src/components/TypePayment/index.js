@@ -5,7 +5,7 @@ export function FormTypePayment() {
   const { handleOpenLayouts } = useContext(TypePaymentContext)
 
   return (
-    <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12 animate">
       <div className="mb-5 d-flex justify-content-between">
         <button type="button" className="btn btn-primary btn-sm" onClick={handleOpenLayouts}>Voltar</button>
         <h5 style={{ color: "whitesmoke" }}>Forma pagamento</h5>

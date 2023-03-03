@@ -7,7 +7,7 @@ export function AreaTypePayment() {
   const { handleOpenLayouts } = useContext(TypePaymentContext)
 
   return (
-    <div>
+    <div className="animate">
       <div style={{ height: "80px" }}>
         <button type="button" className="btn btn-primary btn-sm" onClick={handleOpenLayouts}>Cadastrar</button>
       </div>

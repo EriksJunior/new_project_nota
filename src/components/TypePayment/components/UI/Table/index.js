@@ -1,12 +1,12 @@
-import { useState } from "react"
-// import { useContext } from "react"
-// import { ClientContext } from "../../../context"
+
+import { useContext } from "react"
+import { TypePaymentContext } from "../../../context"
+
 import { ContentTable } from "./style"
 import { BsFillTrashFill } from "react-icons/bs"
 
 export function Table() {
-  const [teste, setTest] = useState(["Eriks", "Jr", "Pb"])
-  // const { returnedClient, handleOpenAreaCustomer } = useContext(ClientContext)
+  const { confirmRemoveTypePayment, handleChangeConfirmRemoveTypePayment, cancelRemoveTypePayment, removeTypePaymentFromList, typesPayments } = useContext(TypePaymentContext)
 
   return (
     <div>
@@ -18,12 +18,18 @@ export function Table() {
             </tr>
           </thead>
           <tbody>
-            {teste.map((e, i) =>
+            {typesPayments.map((e, i) =>
               <tr key={i} className="underlineTypePayment">
                 <td className="text-center tdName">{e}</td>
                 <td className="text-center" style={{ position: "absolute", backgroundColor: "transparent", border: "none" }}>
-                  <div style={{ position: "relative", right: "-10px"}}>
-                    <BsFillTrashFill role={"button"} color="#02769c" size={18} />
+                  <div style={{ position: "relative", right: "-10px" }}>
+                    <input type="checkbox" id={`removeTypePayment-${i}`} value={confirmRemoveTypePayment[i]}  hidden onChange={(e) => handleChangeConfirmRemoveTypePayment(e, i)} />
+                    
+                    {confirmRemoveTypePayment[i] ?
+                      <label className="iconConfirmRemove" htmlFor={`removeTypePayment-${i}`}><BsFillTrashFill role={"button"} color="#c10000" size={18} onMouseLeave={() => cancelRemoveTypePayment(i)} onClick={() => removeTypePaymentFromList(i)}/></label>
+                      :
+                      <label className="iconRemove" htmlFor={`removeTypePayment-${i}`}><BsFillTrashFill role={"button"} color="#02769c" size={18} /></label>
+                    }
                   </div>
                 </td>
               </tr>
