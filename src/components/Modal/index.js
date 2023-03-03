@@ -1,10 +1,13 @@
-import { ContainerGeneral, ContentModalChildren } from "./styles"
 
-export function Modal({ isOpen = "hide", children }) {
+import { ContainerGeneral, ContentModalChildren, ModalChildren } from "./styles"
+
+export function Modal({ isOpen = "hide", closeModal, children }) {
   return (
-    <ContainerGeneral className={isOpen}  onClick={() => console.log('clicou')}>
+    <ContainerGeneral className={isOpen} onClick={() => closeModal("hide")}>
       <ContentModalChildren>
-        {children}
+        <ModalChildren onClick={e => e.stopPropagation()}>
+          {children}
+        </ModalChildren>
       </ContentModalChildren>
     </ContainerGeneral>
   )
