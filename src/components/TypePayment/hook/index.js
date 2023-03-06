@@ -1,23 +1,69 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import TypePaymentService from "../../../services/TypePaymentService"
+import { INITIAL_STATE_TYPE_PAYMENT } from "../initalStates"
+import { toast } from "react-toastify";
+
 
 export function UseTypePayment() {
-  const [typesPayments, setTypePayments] = useState(["Eriks", "Jr", "Pb"])
+  const [typePayment, setTypePayment] = useState(INITIAL_STATE_TYPE_PAYMENT)
+  const [typesPaymentsFromSelectBox, setTypesPaymentsFromSelectBox] = useState([])
   const [openLayouts, setOpenLayouts] = useState(false)
   const [confirmRemoveTypePayment, setConfirmRemoveTypePayment] = useState([false])
+
+  useEffect(() => {
+    findAll()
+  }, [])
+
+  const handleChange = (e) => {
+    setTypePayment({ ...typePayment, tipo: e.target.value })
+  }
 
   const handleOpenLayouts = () => {
     setOpenLayouts(state => !state)
   }
 
-  const save = () => {
+  const save = async () => {
+    try {
+      const id = await TypePaymentService.save(typePayment)
+      setTypePayment({ ...typePayment, id })
 
+      toast("Salvo com sucesso! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } catch (error) {
+      toast.error("Ocorreu um erro ao salvar", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   }
 
-  const findAll = () => {
+  const update = async () => {
+    try {
+      await TypePaymentService.update(typePayment)
+      toast("Atualizado com sucesso! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } catch (error) {
+      toast.error("Ocorreu um erro ao atualizar", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
 
+  const handleSaveOrUpdate = async () => {
+    typePayment.id ? await update() : await save()
+  }
+
+  const findAll = async () => {
+    const allTypePayments =  await TypePaymentService.findAll()
+    setTypesPaymentsFromSelectBox(allTypePayments)
   }
 
   const deleteTypePayments = () => {
+  }
+
+  const clear = () => {
+    setTypePayment(INITIAL_STATE_TYPE_PAYMENT)
   }
 
   const handleChangeConfirmRemoveTypePayment = (e, index) => {
@@ -42,15 +88,15 @@ export function UseTypePayment() {
   }
 
   const removeTypePaymentFromList = (index) => {
-    const newTypesPayments = [...typesPayments]
+    const newTypesPayments = [...typesPaymentsFromSelectBox]
 
     newTypesPayments.splice(index, 1)
 
     removeConfirmedBillsToList(index)
-    return setTypePayments(newTypesPayments)
+    return setTypesPaymentsFromSelectBox(newTypesPayments)
   }
 
 
 
-  return { openLayouts, handleOpenLayouts, confirmRemoveTypePayment, handleChangeConfirmRemoveTypePayment, removeTypePaymentFromList, cancelRemoveTypePayment, typesPayments }
+  return { openLayouts, handleOpenLayouts, confirmRemoveTypePayment, handleChangeConfirmRemoveTypePayment, removeTypePaymentFromList, cancelRemoveTypePayment, typesPaymentsFromSelectBox, handleChange, typePayment, handleSaveOrUpdate, clear }
 } 

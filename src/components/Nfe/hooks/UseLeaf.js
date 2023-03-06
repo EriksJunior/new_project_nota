@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 export function UseLeaf() {
   const refValorTotalPedido = useRef("")
   const refTotalDescontoPedido = useRef("")
+  const [openModal, setOpenModal] = useState("hide")
 
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
@@ -114,5 +115,5 @@ export function UseLeaf() {
 
 
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal }
 }
