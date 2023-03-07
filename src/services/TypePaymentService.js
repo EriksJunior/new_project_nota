@@ -15,9 +15,13 @@ class TypePaymentService {
     return data
   }
 
-  async deleteTypePayments(data) {
-    const { data: { id } } = await api.post('/payments', { data })
-    return id
+  async findById(id) {
+    const { data } = await api.get(`/payments/${id}`)
+    return data[0]
+  }
+
+  async deleteTypePayments(id) {
+    await api.delete(`/payments/${id}`)
   }
 
 }

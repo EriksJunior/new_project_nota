@@ -20,6 +20,12 @@ export function UseTypePayment() {
 
   const handleOpenLayouts = () => {
     setOpenLayouts(state => !state)
+    clear()
+  }
+
+  const handleOpenArea = (id) => {
+    handleOpenLayouts()
+    findById(id)
   }
 
   const save = async () => {
@@ -27,6 +33,7 @@ export function UseTypePayment() {
       const id = await TypePaymentService.save(typePayment)
       setTypePayment({ ...typePayment, id })
 
+      await findAll()
       toast("Salvo com sucesso! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -51,15 +58,40 @@ export function UseTypePayment() {
   }
 
   const handleSaveOrUpdate = async () => {
-    typePayment.id ? await update() : await save()
+    typePayment.id ? update() : save()
   }
 
   const findAll = async () => {
-    const allTypePayments =  await TypePaymentService.findAll()
-    setTypesPaymentsFromSelectBox(allTypePayments)
+    try {
+      const allTypePayments = await TypePaymentService.findAll()
+      setTypesPaymentsFromSelectBox(allTypePayments)
+    } catch (error) {
+      toast.error("Ocorreu um erro ao Buscar todas as formas de pagamento", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   }
 
-  const deleteTypePayments = () => {
+  const findById = async (id) => {
+    try {
+      const allTypePayments = await TypePaymentService.findById(id)
+      setTypePayment(allTypePayments)
+    } catch (error) {
+      toast.error("Ocorreu um erro ao buscar essa forma de pagamento", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
+
+  const deleteTypePayments = async (index) => {
+    try {
+      const id = typesPaymentsFromSelectBox[index].id
+      await TypePaymentService.deleteTypePayments(id)
+    } catch (error) {
+      toast.error("Ocorreu um erro ao Deletar", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   }
 
   const clear = () => {
@@ -87,16 +119,17 @@ export function UseTypePayment() {
     setConfirmRemoveTypePayment(newConfirmRemoveTypePayment)
   }
 
-  const removeTypePaymentFromList = (index) => {
+  const removeTypePaymentFromList = async (index) => {
     const newTypesPayments = [...typesPaymentsFromSelectBox]
 
     newTypesPayments.splice(index, 1)
 
+    deleteTypePayments(index)
     removeConfirmedBillsToList(index)
-    return setTypesPaymentsFromSelectBox(newTypesPayments)
+    setTypesPaymentsFromSelectBox(newTypesPayments)
   }
 
 
 
-  return { openLayouts, handleOpenLayouts, confirmRemoveTypePayment, handleChangeConfirmRemoveTypePayment, removeTypePaymentFromList, cancelRemoveTypePayment, typesPaymentsFromSelectBox, handleChange, typePayment, handleSaveOrUpdate, clear }
+  return { openLayouts, handleOpenLayouts, confirmRemoveTypePayment, handleChangeConfirmRemoveTypePayment, removeTypePaymentFromList, cancelRemoveTypePayment, typesPaymentsFromSelectBox, handleChange, typePayment, handleSaveOrUpdate, clear, handleOpenArea }
 } 

@@ -24,6 +24,18 @@ export const ContentTable = styled.div`
     transition: all 0.2s;
   }
 
+  .trash {
+    position: relative;
+    background-color: transparent;
+    border: none;
+  }
+
+  .contentTrash {
+    position: absolute;
+    right: -30px;
+    top: -1px;
+  }
+
   .underlineTypePayment:hover > .type{
     text-decoration: underline;
     color: deepskyblue!important;
