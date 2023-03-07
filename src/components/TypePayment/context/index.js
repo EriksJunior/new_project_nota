@@ -4,10 +4,10 @@ import { UseTypePayment } from "../hook";
 const TypePaymentContext = createContext({})
 
 function TypePaymentProvider({ children }) {
-  const { openLayouts, handleOpenLayouts, confirmRemoveTypePayment, handleChangeConfirmRemoveTypePayment, cancelRemoveTypePayment, removeTypePaymentFromList, typesPayments  } = UseTypePayment()
+  const { openLayouts, handleOpenLayouts, confirmRemoveTypePayment, handleChangeConfirmRemoveTypePayment, cancelRemoveTypePayment, removeTypePaymentFromList, typesPaymentsFromSelectBox, handleChange, typePayment, handleSaveOrUpdate, clear, handleOpenArea } = UseTypePayment()
 
   return (
-    <TypePaymentContext.Provider value={{ openLayouts, handleOpenLayouts, confirmRemoveTypePayment, handleChangeConfirmRemoveTypePayment, cancelRemoveTypePayment, removeTypePaymentFromList, typesPayments  }}>
+    <TypePaymentContext.Provider value={{ openLayouts, handleOpenLayouts, confirmRemoveTypePayment, handleChangeConfirmRemoveTypePayment, cancelRemoveTypePayment, removeTypePaymentFromList, typesPaymentsFromSelectBox, handleChange, typePayment, handleSaveOrUpdate, clear, handleOpenArea }}>
       {children}
     </TypePaymentContext.Provider>
   )

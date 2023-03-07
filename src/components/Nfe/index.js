@@ -19,7 +19,7 @@ export function FormLeaf() {
   useEffect(() => {
     getCustomersFromSelectBox()
     getProcuctsFromSelectBox()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <ContentNfe>
