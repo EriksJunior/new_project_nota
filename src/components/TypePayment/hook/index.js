@@ -3,7 +3,6 @@ import TypePaymentService from "../../../services/TypePaymentService"
 import { INITIAL_STATE_TYPE_PAYMENT } from "../initalStates"
 import { toast } from "react-toastify";
 
-
 export function UseTypePayment() {
   const [typePayment, setTypePayment] = useState(INITIAL_STATE_TYPE_PAYMENT)
   const [typesPaymentsFromSelectBox, setTypesPaymentsFromSelectBox] = useState([])
@@ -128,8 +127,6 @@ export function UseTypePayment() {
     removeConfirmedBillsToList(index)
     setTypesPaymentsFromSelectBox(newTypesPayments)
   }
-
-
 
   return { openLayouts, handleOpenLayouts, confirmRemoveTypePayment, handleChangeConfirmRemoveTypePayment, removeTypePaymentFromList, cancelRemoveTypePayment, typesPaymentsFromSelectBox, handleChange, typePayment, handleSaveOrUpdate, clear, handleOpenArea }
 } 

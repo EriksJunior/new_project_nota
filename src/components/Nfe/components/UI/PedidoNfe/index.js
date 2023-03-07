@@ -12,7 +12,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill, BsFillPlusCircleFill } from "react-icons/bs"
 
 export function PedidoNfe() {
-  const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal } = useContext(LeafContext)
+  const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, typesPayment } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const parcelas = useSelector(state => state.leaf.parcela)
 
@@ -142,7 +142,7 @@ export function PedidoNfe() {
                   <span style={{ color: 'white' }}><BsFillPlusCircleFill role={"button"} color={"#02769c"} onClick={() => setOpenModal("show")} /></span>
                 </ContentTypePayment>
                 <select className="form-select form-select-sm" name="presenca" value={pedido.presenca} onChange={handleChangePedido}>
-                  <option>Cartão</option>
+                  {typesPayment.map((type) => <option key={type.id}>{type.tipo}</option>)}
                 </select>
               </div>
 
