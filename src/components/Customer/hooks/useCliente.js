@@ -13,21 +13,8 @@ export function UseCliente() {
   const [openAreaCustomer, setOpenAreaCustomer] = useState(false)
 
   useEffect(() => {
-    const searchClient = async () => {
-      try {
-        const result = await CustomerService.search(search.text, search.page)
-        setReturnedClient(result.data)
-      } catch (error) {
-        toast.error(error?.response?.data?.erros, {
-          position: toast.POSITION.TOP_RIGHT
-        });
-      }
-
-    }
     searchClient()
-  }, [search])
-
-
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
   
   const handleChange = useCallback((e) => {
     setClient({ ...client, [e.target.name]: e.target.value })

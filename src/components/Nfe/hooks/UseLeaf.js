@@ -1,11 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
 import LeafService from "../../../services/LeafService";
-import TypePaymentService from "../../../services/TypePaymentService";
 
-import { INITIAL_STATE_TYPE_PAYMENT } from "../../TypePayment/initalStates";
 import { validadeLeaf } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
@@ -14,26 +12,15 @@ export function UseLeaf() {
   const refValorTotalPedido = useRef("")
   const refTotalDescontoPedido = useRef("")
   const [openModal, setOpenModal] = useState("hide")
-  const [typesPayment, setTypesPayments] = useState([INITIAL_STATE_TYPE_PAYMENT])
 
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
   const produtos = useSelector(state => state.leaf.produto)
-
-  useEffect(() => {
-    findAllTypesPayments()
-  }, [])
-
+  
   const { maskCurrency } = Masks()
-
   const handleChangePedido = (e) => {
     dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: e.target.value }))
-  }
-
-  const findAllTypesPayments = async () => {
-    const allTypes = await TypePaymentService.findAll()
-    setTypesPayments(allTypes)
   }
 
   const handleChangeFreightAndOthers = (e) => {
@@ -125,8 +112,21 @@ export function UseLeaf() {
     const totalDiscount = formattedDiscount.reduce((oldValue, value) => oldValue + value, 0)
     return totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
+    
+  const sendLeaf = async () => {
+    try {
+      await handleSaveLeaf()
+      await LeafService.sendLeaf(pedido.id)
+      toast("Documento fiscal Emitido! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } catch (error) {
+      console.log(error)
+      toast("Ocorreu um erro ao emitir o documento fiscal! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
 
-
-
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, typesPayment, findAllTypesPayments }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, sendLeaf }
 }

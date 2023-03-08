@@ -21,9 +21,14 @@ export function UseProduct() {
   const { maskCurrency } = Masks()
 
   const handleChangeProducts = (e, index) => {
+    const prodAux = productsFromSelectBox.find(prod => prod.id === e.target.value)
+
     dispatch(SAVE_PRODUCTS(
       produtos.map((product, i) => {
         if (i === index) {
+          if (e.target.name === "idProduto") {
+            return { ...product, [e.target.name]: e.target.value, classe_imposto: prodAux.refFiscal };
+          }
           return { ...product, [e.target.name]: e.target.value };
         }
         return product;
@@ -88,7 +93,7 @@ export function UseProduct() {
       return await saveLeafProducts(pedido.id)
     }
 
-    
+
     const idNota = await handleSaveLeaf(pedido)
     if (idNota) await saveLeafProducts(idNota)
   }

@@ -151,7 +151,6 @@ export function UseInfoFiscale() {
   }
 
   const assignValuesToTaxes = (infoFiscale) => {
-    console.log(infoFiscale)
     setInfoFiscale({ ...infoFiscale, id: infoFiscale.id })
     setAdditionalData({ ...additionalData, referencia: infoFiscale.ref, descricao: infoFiscale.descricao, informacoes_fisco: infoFiscale.refObject.informacoes_fisco || "", informacoes_complementares: infoFiscale.refObject.informacoes_complementares || "" })
     setIcms({ ...icms, ...infoFiscale.refObject.icms[0] })

@@ -40,7 +40,7 @@ export function ProductNfe() {
                 {products.map((item, index) =>
                   <TrBodyContent key={index} >
                     <TdBodyName>
-                      <InputSelect disabled={item.id} className="form-select form-select-product form-select-sm" name='idProduto' value={products[index].idProduto} onChange={(e) => handleChangeProducts(e, index)}>
+                      <InputSelect disabled={item.id} className="form-select form-select-product form-select-sm" name='idProduto' value={products[index].idProduto} onChange={(e) => handleChangeProducts(e, index, item.classe_imposto)}>
                         <option value="">---selecione---</option>
                         {productsFromSelectBox.map((product) =>
                           <option key={product.id} value={product.id}>{product.nome}</option>
