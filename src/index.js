@@ -7,11 +7,11 @@ import App from './App'
 import { GlobalProvider } from './context/Global/global';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <GlobalProvider>
         <App />
       </GlobalProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 )

@@ -15,8 +15,7 @@ class LeafService {
   }
 
   async findLeafById(id) {
-    const { data } = await api.get(`/nota/${id}`)
-    return data
+    await api.get(`/nota/${id}`)
   }
 
   async searchLeaf(text, filter, page, startDate, endDate) {

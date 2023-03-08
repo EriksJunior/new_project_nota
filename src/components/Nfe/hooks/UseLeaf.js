@@ -20,12 +20,12 @@ export function UseLeaf() {
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
   const produtos = useSelector(state => state.leaf.produto)
+  
+  const { maskCurrency } = Masks()
 
   useEffect(() => {
     findAllTypesPayments()
   }, [])
-
-  const { maskCurrency } = Masks()
 
   const handleChangePedido = (e) => {
     dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: e.target.value }))
@@ -125,8 +125,21 @@ export function UseLeaf() {
     const totalDiscount = formattedDiscount.reduce((oldValue, value) => oldValue + value, 0)
     return totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
+    
+  const sendLeaf = async () => {
+    try {
+      await handleSaveLeaf()
+      await LeafService.sendLeaf(pedido.id)
+      toast("Documento fiscal Emitido! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } catch (error) {
+      console.log(error)
+      toast("Ocorreu um erro ao emitir o documento fiscal! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
 
-
-
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, typesPayment, findAllTypesPayments }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, typesPayment, findAllTypesPayments, sendLeaf }
 }

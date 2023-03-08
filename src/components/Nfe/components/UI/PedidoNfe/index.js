@@ -12,7 +12,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill, BsFillPlusCircleFill } from "react-icons/bs"
 
 export function PedidoNfe() {
-  const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, typesPayment } = useContext(LeafContext)
+  const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, typesPayment, sendLeaf } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const parcelas = useSelector(state => state.leaf.parcela)
 
@@ -183,7 +183,7 @@ export function PedidoNfe() {
         <div className="row mt-5 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <div className="d-flex gap-2">
             <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveLeaf}>Salvar Documento</button>
-            <button type="button" className="btn btn-primary btn-sm">Emitir Documento</button>
+            <button type="button" className="btn btn-primary btn-sm" onClick={sendLeaf}>Emitir Documento</button>
           </div>
         </div>
       </div>
