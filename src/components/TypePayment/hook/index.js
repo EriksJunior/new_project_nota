@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react"
+import { useDispatch } from "react-redux";
+
+import { SAVE_ALL_TYPES_PAYMENTS } from "../../Nfe/store/reducers/LeafReducers";
 import TypePaymentService from "../../../services/TypePaymentService"
-import { INITIAL_STATE_TYPE_PAYMENT } from "../initalStates"
+
 import { toast } from "react-toastify";
+import { INITIAL_STATE_TYPE_PAYMENT } from "../initalStates"
 
 export function UseTypePayment() {
+  const dispatch = useDispatch()
   const [typePayment, setTypePayment] = useState(INITIAL_STATE_TYPE_PAYMENT)
   const [typesPaymentsFromSelectBox, setTypesPaymentsFromSelectBox] = useState([])
   const [openLayouts, setOpenLayouts] = useState(false)
@@ -64,6 +69,7 @@ export function UseTypePayment() {
     try {
       const allTypePayments = await TypePaymentService.findAll()
       setTypesPaymentsFromSelectBox(allTypePayments)
+      dispatch(SAVE_ALL_TYPES_PAYMENTS(allTypePayments))
     } catch (error) {
       toast.error("Ocorreu um erro ao Buscar todas as formas de pagamento", {
         position: toast.POSITION.TOP_RIGHT

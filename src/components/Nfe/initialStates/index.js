@@ -128,7 +128,7 @@ export const INITIAL_STATE_PARCELA_NFE = {
   idNota: "",
   tipo: "entrada",
   idCliente: "",
-  idFormaPagamento: "c33df031-a6a0-4876-81b9-9c3b2f0ea986",
+  idFormaPagamento: "",
   valorTotal: "",
   valorPago: "0",
   valorRestante: "0",

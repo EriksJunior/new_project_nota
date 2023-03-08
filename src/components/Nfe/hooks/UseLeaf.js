@@ -1,11 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
 import LeafService from "../../../services/LeafService";
-import TypePaymentService from "../../../services/TypePaymentService";
 
-import { INITIAL_STATE_TYPE_PAYMENT } from "../../TypePayment/initalStates";
 import { validadeLeaf } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
@@ -14,7 +12,6 @@ export function UseLeaf() {
   const refValorTotalPedido = useRef("")
   const refTotalDescontoPedido = useRef("")
   const [openModal, setOpenModal] = useState("hide")
-  const [typesPayment, setTypesPayments] = useState([INITIAL_STATE_TYPE_PAYMENT])
 
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
@@ -22,18 +19,8 @@ export function UseLeaf() {
   const produtos = useSelector(state => state.leaf.produto)
   
   const { maskCurrency } = Masks()
-
-  useEffect(() => {
-    findAllTypesPayments()
-  }, [])
-
   const handleChangePedido = (e) => {
     dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: e.target.value }))
-  }
-
-  const findAllTypesPayments = async () => {
-    const allTypes = await TypePaymentService.findAll()
-    setTypesPayments(allTypes)
   }
 
   const handleChangeFreightAndOthers = (e) => {
@@ -141,5 +128,5 @@ export function UseLeaf() {
     }
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, typesPayment, findAllTypesPayments, sendLeaf }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, sendLeaf }
 }
