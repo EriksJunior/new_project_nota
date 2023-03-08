@@ -4,7 +4,7 @@ import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
 import LeafService from "../../../services/LeafService";
 
-import { validadeLeaf } from "../validate";
+import { validadeLeaf, validateSendLeaf } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
 
@@ -115,6 +115,13 @@ export function UseLeaf() {
     
   const sendLeaf = async () => {
     try {
+      // const leaf = {
+      //   pedido,
+      //   produtos
+      // }
+
+      // validateSendLeaf(leaf)
+
       await handleSaveLeaf()
       await LeafService.sendLeaf(pedido.id)
       toast("Documento fiscal Emitido! ✅", {
