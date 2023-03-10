@@ -4,7 +4,7 @@ import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
 import LeafService from "../../../services/LeafService";
 
-import { validadeLeaf, validateSendLeaf } from "../validate";
+import { validadeLeaf } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
 
@@ -17,7 +17,7 @@ export function UseLeaf() {
   const pedido = useSelector(state => state.leaf.pedido)
   const cliente = useSelector(state => state.leaf.cliente)
   const produtos = useSelector(state => state.leaf.produto)
-  
+
   const { maskCurrency } = Masks()
   const handleChangePedido = (e) => {
     dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: e.target.value }))
@@ -54,7 +54,7 @@ export function UseLeaf() {
       const totalDesconto = refTotalDescontoPedido.current.value
       const total = refValorTotalPedido.current.value
 
-      const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat({...dataPedido, total: total, desconto: totalDesconto})
+      const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat({ ...dataPedido, total: total, desconto: totalDesconto })
 
       await LeafService.update(formattedMonetaryValuesLeaf)
 
@@ -63,6 +63,17 @@ export function UseLeaf() {
       });
     } catch (error) {
       toast.error(error.message, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
+
+  const findById = async () => {
+    try {
+      const leaf = await LeafService.findLeafById(pedido.id)
+      dispatch(SAVE_LEAF({ ...pedido, response: leaf.response, status: leaf.status }))
+    } catch (error) {
+      toast.warning(error.message, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
@@ -112,18 +123,15 @@ export function UseLeaf() {
     const totalDiscount = formattedDiscount.reduce((oldValue, value) => oldValue + value, 0)
     return totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
-    
+
   const sendLeaf = async () => {
     try {
-      // const leaf = {
-      //   pedido,
-      //   produtos
-      // }
+      if (pedido.response.chave) {
+        return
+      }
 
-      // validateSendLeaf(leaf)
-
-      await handleSaveLeaf()
       await LeafService.sendLeaf(pedido.id)
+
       toast("Documento fiscal Emitido! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -135,5 +143,11 @@ export function UseLeaf() {
     }
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, sendLeaf }
+  const handleSendLeafAndFind = async () => {
+    await handleSaveLeaf()
+    await sendLeaf()
+    await findById()
+  }
+
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind }
 }
