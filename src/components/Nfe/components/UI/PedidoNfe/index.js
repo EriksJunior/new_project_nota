@@ -12,7 +12,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill, BsFillPlusCircleFill } from "react-icons/bs"
 
 export function PedidoNfe() {
-  const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, sendLeaf } = useContext(LeafContext)
+  const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const parcelas = useSelector(state => state.leaf.parcela)
   const tiposDePagementos = useSelector(state => state.leaf.tiposDePagementos)
@@ -182,10 +182,16 @@ export function PedidoNfe() {
           </div>
         </Colapse>
 
-        <div className="row mt-5 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <div className="d-flex gap-2">
-            <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveLeaf}>Salvar Documento</button>
-            <button type="button" className="btn btn-primary btn-sm" onClick={sendLeaf}>Emitir Documento</button>
+        <div className="mt-5">
+          <div className="d-flex flex-wrap justify-content-between">
+            <div className="d-flex gap-2">
+              <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveLeaf}>Salvar Documento</button>
+              <button type="button" className="btn btn-primary btn-sm" onClick={handleSendLeafAndFind}>Emitir Documento</button>
+            </div>
+
+            <div>
+              <button type="button" className="btn btn-primary btn-sm">Ações</button>
+            </div>
           </div>
         </div>
       </div>

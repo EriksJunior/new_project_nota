@@ -16,6 +16,11 @@ export function Header() {
         <div className="card-body">
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
+            <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <label className="form-label">Chave de acesso</label>
+              <input type="text" className="form-control form-control-sm" disabled name="natureza_operacao" defaultValue={pedido.response.chave} />
+            </div>
+
             <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
               <label className="form-label">Modelo</label>
               <select className="form-select form-select-sm" name='modelo' value={pedido.modelo} onChange={handleChangePedido}>
@@ -69,7 +74,7 @@ export function Header() {
 
             <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12" hidden={pedido.finalidade === "1"}>
               <label className="form-label">Chave de referencia</label>
-              <input type="text" className="form-control form-control-sm" placeholder="Informe aqui a chave da nota fiscal que deseja realizar a devolução"/>
+              <input type="text" className="form-control form-control-sm" placeholder="Informe aqui a chave da nota fiscal que deseja realizar a devolução" />
             </div>
           </div>
         </div>
