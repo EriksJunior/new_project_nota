@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_LEAF } from "../store/reducers/LeafReducers";
 
+import { GlobalContext } from "../../../context/Global/global";
 import LeafService from "../../../services/LeafService";
 
 import { validadeLeaf } from "../validate";
@@ -9,6 +10,7 @@ import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
 
 export function UseLeaf() {
+  const { loading, setLoading } = useContext(GlobalContext)
   const refValorTotalPedido = useRef("")
   const refTotalDescontoPedido = useRef("")
   const [openModal, setOpenModal] = useState("hide")
@@ -129,7 +131,7 @@ export function UseLeaf() {
       if (pedido.response.chave) {
         return
       }
-
+      setLoading(true)
       await LeafService.sendLeaf(pedido.id)
 
       toast("Documento fiscal Emitido! ✅", {
@@ -140,6 +142,8 @@ export function UseLeaf() {
       toast("Ocorreu um erro ao emitir o documento fiscal! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -149,5 +153,5 @@ export function UseLeaf() {
     await findById()
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, loading }
 }
