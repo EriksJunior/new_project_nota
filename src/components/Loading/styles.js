@@ -5,10 +5,16 @@ export const Div = styled.div`
   height: 100%;
   position: fixed;
   z-index: 99999;
-  background-color: #3c3c3c59;
+  background-color: #00000063;
   margin: 0px;
   padding: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+export const Spiner = styled.span`
+  width: 100px;
+  height: 100px;
+  color: white;
 `
