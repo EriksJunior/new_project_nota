@@ -28,6 +28,10 @@ export const ContainerGeneral = styled.div`
     display: block;
   }
 
+  html, body{
+    overflow: hidden!important;
+  }
+
 `
 
 export const ContentModalChildren = styled.div`
