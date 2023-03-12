@@ -11865,6 +11865,7 @@ fieldset:disabled .btn {
 html,
 body {
   height: 100%;
+  overflow: auto;
 }
 
 #layoutAuthentication {
