@@ -81,6 +81,11 @@ export function UseLeaf() {
     }
   }
 
+  const searchLeaf = async () => {
+    const leafs = await LeafService.searchLeaf()
+    console.log(leafs)
+  }
+
   const handleSaveLeaf = async () => {
     if (!pedido.id) {
       const id = await saveLeaf({ ...pedido, idCliente: cliente.id })
