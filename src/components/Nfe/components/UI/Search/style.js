@@ -23,11 +23,15 @@ export const InputSearch = styled.input`
   width: 100px;
   height: 25px;
   background-color: transparent;
-  border-bottom: 1px solid white;
   color: white;
-  outline: none;
     &:focus{
-      border: solid 1px red;
+      outline: none;
     }
 
   ` 
+
+export const ContentInputSearch = styled.div`
+  border: none;
+  border-bottom: solid 1px #afb4b6;
+  height: 100%;
+` 
