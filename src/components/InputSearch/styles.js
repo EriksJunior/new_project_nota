@@ -37,6 +37,11 @@ export const ButtonFilter = styled.button`
   color: #a6a3a3;
   border-radius: 5px;
   border: none;
+  display: block;
+  
+  .notActivate {
+    display: none;
+  }
 `
 
 export const DropDownSelect = styled.div`
@@ -73,3 +78,28 @@ export const DropDownSelect = styled.div`
       border-radius: 5px;
   }
 `
+
+export const ContentIcon = styled.span`
+  color: white;
+  position: absolute;
+  right: 0;
+`
+
+export const AnimateDropDown = styled.div`
+  .animateDrop {
+    animation-name: animationDropDown;
+    animation-duration: 0.3s;
+  }
+
+  @keyframes animationDropDown {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+    100% {
+      display: block;
+      opacity: 1;
+    } 
+  }
+`
+
