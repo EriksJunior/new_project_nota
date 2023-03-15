@@ -6,7 +6,7 @@ export function DropdownActions({ remove, index }) {
     <Dropdown>
       <ul>
         <li>Impostos</li>
-        <li>Duplicas produto</li>
+        <li>Duplicar produto</li>
         <li>
           <ContentRemoveIrem htmlFor={`remove-${index}`}>
             Exluir

@@ -1,7 +1,8 @@
 import { useContext } from "react"
 import { LeafContext } from "../../../context"
 
-import { ContentSearch, InputSearch, ContentInputSearch } from "../Search/style"
+import { InputSearch } from "../../../../InputSearch"
+import { ContentSearch } from "../Search/style"
 
 export function SearchTaxDocument({ children }) {
   const { handleNewLeaf } = useContext(LeafContext)
@@ -18,17 +19,7 @@ export function SearchTaxDocument({ children }) {
             <input style={{width: "70px"}}  name="cpfcnpj" type="number" className="form-control form-control-sm" />
             <label style={{color: "white"}}>resultados por página</label>
           </div> */}
-
-          <div className="inputSearch col-sm-2 col-md-2 col-lg-2 col-xl-2">
-            <div className="input-group">
-              <ContentInputSearch>
-                <InputSearch name="text" placeholder="Pesquisar" />
-              </ContentInputSearch>
-              <button className="btn btn-sm" style={{ color: "white" }} id="btnNavbarSearch" type="button" >
-                <i className="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
+          <InputSearch />
         </ContentSearch>
 
         <div>
