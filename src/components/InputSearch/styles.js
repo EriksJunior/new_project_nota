@@ -83,6 +83,19 @@ export const ContentIcon = styled.span`
   color: white;
   position: absolute;
   right: 0;
+  
+  /* .animateIcon {
+  animation: rotateIcon 0.5s forwards;
+
+  @keyframes rotateIcon {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+} */
 `
 
 export const AnimateDropDown = styled.div`

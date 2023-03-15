@@ -11,7 +11,7 @@ export function InputSearch({active = "notActivate", data}) {
         <ButtonFilter placeholder="Filtro" className="isOpen">
           Filtro
           <ContentIcon>
-            <BsArrowDownShort size={25} color={"#a6a3a3"} />
+            <BsArrowDownShort size={25} color={"#a6a3a3"} className="animateIcon"/>
           </ContentIcon>
 
 
