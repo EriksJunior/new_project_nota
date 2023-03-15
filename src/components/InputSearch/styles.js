@@ -46,8 +46,8 @@ export const ButtonFilter = styled.button`
 
 export const DropDownSelect = styled.div`
   width: 150px;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   position: absolute;
   left: 0;
   top: 30px;
@@ -57,9 +57,18 @@ export const DropDownSelect = styled.div`
   max-height: 150px;
   overflow: auto;
   color: black;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 13px;
 
-  span:hover {
+  .items {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .items:hover {
     background-color: #02769c;
     color: white;
     transition: ease-in 0.1s all;
@@ -116,3 +125,9 @@ export const AnimateDropDown = styled.div`
   }
 `
 
+
+export const ContentTileAndIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+` 
