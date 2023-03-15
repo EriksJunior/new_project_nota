@@ -39,7 +39,7 @@ export const ButtonFilter = styled.button`
   border: none;
   display: block;
   
-  .notActivate {
+  .notActive {
     display: none;
   }
 `

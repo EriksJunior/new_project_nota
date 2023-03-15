@@ -1,6 +1,6 @@
 import { ContentInputSearch, Input, BorderInput, BorderButton, ButtonFilter, DropDownSelect, ContentTileAndIcon, ContentIcon, AnimateDropDown } from "./styles"
 import { BsArrowDownShort } from "react-icons/bs"
-export function InputSearch({ active = "", title = "Filtro", data = ["Cliente", "CPF/CNPJ", "NF-e", "NFC-e"] }) {
+export function InputSearch({ active = "notActive", title = "Filtro", data = ["Cliente", "CPF/CNPJ", "NF-e", "NFC-e"] }) {
   return (
     <ContentInputSearch>
       <BorderInput>
