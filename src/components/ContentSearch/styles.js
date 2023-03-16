@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Input = styled.input`
   border: none;
-  width: 200px;
+  width: 100%;
   height: 25px;
   background-color: transparent;
-  color: #b4b2b2;
+  color: white;
     &:focus{
       outline: none;
     }
@@ -14,16 +14,26 @@ export const Input = styled.input`
 
 export const ContentInputSearch = styled.div`
   width: 100%;
+  height: 80px;
   border: none;
   display: flex;
-  align-items: center;
+  align-content: center;
+  border-radius: 5px;
+  background-color: #02769c;
   gap: 15px;
   flex-wrap: wrap;
-  height: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
 
   @media screen and (min-width: 1500px) {
     justify-content: flex-end;
     gap: 30px;
+  }
+
+  @media screen and (max-width: 1131px) {
+    height: auto!important;
+    padding: 30px
   }
 `
 
@@ -31,7 +41,14 @@ export const ContentSearchAndFilter = styled.div`
   display: flex;
   gap: 15px;
 
-  @media screen and (max-width: 798px) {
+
+  @media screen and (max-width: 1086px) {
+    width: 100%;
+  margin-top: 20px;
+
+  }
+
+  @media screen and (max-width: 861px) {
     width: 100%;
   }
 
@@ -46,9 +63,21 @@ export const ContentSearchAndFilter = styled.div`
 `
 
 export const BorderInput = styled.div`
-  border-bottom: solid 1px #6b6b6b9f;
+  position: relative;
+  border: solid 1px white;
+  border-radius: 0.2rem;
 
-  @media screen and (max-width: 798px) {
+  span {
+    position: absolute;
+    color: white;
+    top: -25px;
+  }
+
+  @media screen and (max-width: 1086px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 861px) {
     width: 50%;
   }
 
@@ -59,12 +88,12 @@ export const BorderInput = styled.div`
 
 export const BorderInputDate = styled.div`
   position: relative;
-  border: solid 1px #6b6b6b9f;
+  border: solid 1px white;
   border-radius: 0.2rem;
 
   span {
     position: absolute;
-    color: #b4b2b2;
+    color: white;
     top: -25px;
   }
 `
@@ -73,7 +102,7 @@ export const InputDate = styled.input`
   width: 150px;
   height: 25px;
   background-color: transparent;
-  color: #b4b2b2;
+  color: white;
   border: none;
   border-radius: 0.2rem;
   display: block;
@@ -83,7 +112,11 @@ export const InputDate = styled.input`
     outline: none;
   }
 
-  @media screen and (max-width: 798px) {
+  @media screen and (max-width: 1086px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 861px) {
     width: 100%;
   }
 
@@ -96,7 +129,7 @@ export const ContentDates = styled.div`
    display: flex;
    gap: 15px;
 
-  @media screen and (max-width: 798px) {
+  @media screen and (max-width: 861px) {
     width: 100%;
       
     .endDate {
@@ -104,6 +137,20 @@ export const ContentDates = styled.div`
       margin-top: 20px;
     }
 
+    .startDate {
+      width: 50%;
+      margin-top: 20px;
+    }
+  }
+
+  @media screen and (max-width: 1086px) {
+    width: 100%;
+      
+    .endDate {
+      width: 50%;
+      margin-top: 20px;
+    }
+  
     .startDate {
       width: 50%;
       margin-top: 20px;
@@ -129,9 +176,9 @@ export const ContentDates = styled.div`
   }
 `
 
-export const Search  = styled.span`
+export const Search = styled.span`
   background-color: transparent;
-  border: solid 1px #6b6b6b9f;
+  border: solid 1px white;
   width: 50px;
   height: 25px;
   display: flex;

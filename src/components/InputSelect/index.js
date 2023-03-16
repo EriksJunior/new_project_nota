@@ -24,7 +24,7 @@ export function InputSelect({title = "Filtro", data = ["Cliente", "CPF/CNPJ", "N
         <ContentTileAndIcon>
           {clickedType || title}
           <ContentIcon>
-            <BsArrowDownShort size={25} color={"#a6a3a3"} className="animateIcon" />
+            <BsArrowDownShort size={25} color={"white"} className="animateIcon" />
           </ContentIcon>
         </ContentTileAndIcon>
 

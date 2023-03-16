@@ -9,6 +9,10 @@ export const ButtonFilter = styled.button`
   border: none;
   display: block;
 
+  @media screen and (max-width: 1086px) {
+    width: 100%;
+  }
+
   @media screen and (max-width: 798px) {
     width: 100%;
   }
@@ -60,7 +64,11 @@ export const DropDownSelect = styled.div`
       border-radius: 0.2rem;
   }
 
-  @media screen and (max-width: 798px) {
+  @media screen and (max-width: 1086px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 861px) {
     width: 100%;
   }
 
@@ -99,7 +107,11 @@ export const ContentTileAndIcon = styled.div`
   align-items: center;
   height: 20px;
 
-  @media screen and (max-width: 798px) {
+  @media screen and (max-width: 1086px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 861px) {
     justify-content: center;
     width: 100%;
   }
@@ -112,10 +124,14 @@ export const ContentTileAndIcon = styled.div`
 
 export const BorderButton = styled.div`
   position: relative;
-  border: solid 1px #6b6b6b9f;
+  border: solid 1px white;
   border-radius: 0.2rem;
 
-  @media screen and (max-width: 798px) {
+  @media screen and (max-width: 1086px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 861px) {
     width: 50%;
   }
 

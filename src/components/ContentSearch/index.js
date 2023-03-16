@@ -7,7 +7,8 @@ export function InputSearch() {
     <ContentInputSearch>
       <ContentSearchAndFilter>
         <BorderInput>
-          <Input name="text" placeholder="Pesquisar" />
+          <span>Pesquisar</span>
+          <Input name="text"/>
         </BorderInput>
 
         <InputSelect />
@@ -27,7 +28,7 @@ export function InputSearch() {
       </ContentDates>
 
       <Search>
-        <BsSearch color="#b4b2b2" />
+        <BsSearch color="white" />
       </Search>
     </ContentInputSearch>
   )
