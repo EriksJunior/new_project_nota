@@ -12,7 +12,7 @@ export const ContentSearch = styled.div`
 
 @media screen and (max-width: 575px) {
    .inputSearch {
-    width: 100%;
+      width: 100%;
    }
 }
 `

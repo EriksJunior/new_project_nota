@@ -20,6 +20,11 @@ export const ContentInputSearch = styled.div`
   gap: 15px;
   flex-wrap: wrap;
   height: 100%;
+
+  @media screen and (min-width: 1500px) {
+    justify-content: flex-end;
+    gap: 30px;
+  }
 `
 
 export const ContentSearchAndFilter = styled.div`
@@ -33,6 +38,10 @@ export const ContentSearchAndFilter = styled.div`
   @media screen and (max-width: 492px) {
     width: 100%;
     flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: 1500px) {
+    gap: 30px;
   }
 `
 
@@ -113,6 +122,10 @@ export const ContentDates = styled.div`
       width: 100%;
       margin-top: 20px;
     }
+  }
+
+  @media screen and (min-width: 1500px) {
+    gap: 30px;
   }
 `
 
