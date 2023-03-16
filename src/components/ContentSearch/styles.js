@@ -19,7 +19,7 @@ export const ContentInputSearch = styled.div`
   display: flex;
   align-content: center;
   border-radius: 5px;
-  background-color: #02769c;
+  /* background-color: #02769c; */
   gap: 15px;
   flex-wrap: wrap;
   padding-left: 20px;
