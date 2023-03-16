@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const ButtonFilter = styled.button`
+  position: relative;
   width: 150px;
-  height: 25px;
+  height: 100%;
   background-color: transparent;
-  color: #b4b2b2;
+  color: white;
   border-radius: 0.2rem;
   border: none;
   display: block;
@@ -24,11 +25,9 @@ export const ButtonFilter = styled.button`
 
 export const DropDownSelect = styled.div`
   width: 150px;
-  /* display: flex;
-  flex-direction: column; */
   position: absolute;
   left: 0;
-  top: 30px;
+  top: 40px;
   z-index: 9999;
   background-color: white;
   border-radius: 0.2rem;
@@ -107,6 +106,15 @@ export const ContentTileAndIcon = styled.div`
   align-items: center;
   height: 20px;
 
+  label {
+    position: absolute;
+    color: white;
+    top: -3px;
+    left: 2px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
   @media screen and (max-width: 1086px) {
     width: 100%;
   }
@@ -117,7 +125,7 @@ export const ContentTileAndIcon = styled.div`
   }
 
   @media screen and (max-width: 492px) {
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
   }
 ` 
@@ -125,7 +133,11 @@ export const ContentTileAndIcon = styled.div`
 export const BorderButton = styled.div`
   position: relative;
   border: solid 1px white;
-  border-radius: 0.2rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
 
   @media screen and (max-width: 1086px) {
     width: 50%;

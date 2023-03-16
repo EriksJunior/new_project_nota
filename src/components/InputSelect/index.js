@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react"
 import { BorderButton, ButtonFilter, DropDownSelect, ContentTileAndIcon, ContentIcon, AnimateDropDown } from "./styles"
 import { BsArrowDownShort } from "react-icons/bs"
 
-export function InputSelect({title = "Filtro", data = ["Cliente", "CPF/CNPJ", "NF-e", "NFC-e"] }) {
+export function InputSelect({ title = "Filtro", data = ["Cliente", "CPF/CNPJ", "NF-e", "NFC-e"] }) {
   const [openDropDown, setOpenDropDown] = useState(false)
   const [clickedType, setClickedType] = useState("")
   const isClicked = useRef(null)
@@ -14,7 +14,7 @@ export function InputSelect({title = "Filtro", data = ["Cliente", "CPF/CNPJ", "N
         setOpenDropDown(false)
       }
     }
-    
+
     document.addEventListener('click', handleSideClick);
   }, [isClicked])
 
@@ -22,7 +22,8 @@ export function InputSelect({title = "Filtro", data = ["Cliente", "CPF/CNPJ", "N
     <BorderButton>
       <ButtonFilter placeholder="Filtro" ref={isClicked} className="isOpen" onClick={() => setOpenDropDown(!openDropDown)}>
         <ContentTileAndIcon>
-          {clickedType || title}
+          <label>{title}</label>
+          <span>{clickedType || "Selecione"}</span>
           <ContentIcon>
             <BsArrowDownShort size={25} color={"white"} className="animateIcon" />
           </ContentIcon>

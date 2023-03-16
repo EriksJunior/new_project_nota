@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Input = styled.input`
   border: none;
   width: 100%;
-  height: 25px;
+  height: 20px;
   background-color: transparent;
   color: white;
     &:focus{
@@ -44,8 +44,7 @@ export const ContentSearchAndFilter = styled.div`
 
   @media screen and (max-width: 1086px) {
     width: 100%;
-  margin-top: 20px;
-
+    margin-top: 20px;
   }
 
   @media screen and (max-width: 861px) {
@@ -64,13 +63,21 @@ export const ContentSearchAndFilter = styled.div`
 
 export const BorderInput = styled.div`
   position: relative;
+  display: flex;
+  padding-bottom: 2px;
+  align-items: flex-end;
   border: solid 1px white;
-  border-radius: 0.2rem;
+  border-radius: 5px;
+  height: 35px;
 
-  span {
+  label {
     position: absolute;
     color: white;
-    top: -25px;
+    width: 100%;
+    top: -3px;
+    left: 2px;
+    font-size: 12px;
+    cursor: text;
   }
 
   @media screen and (max-width: 1086px) {
@@ -88,13 +95,21 @@ export const BorderInput = styled.div`
 
 export const BorderInputDate = styled.div`
   position: relative;
+  display: flex;
+  padding-bottom: 2px;
+  align-items: flex-end;
   border: solid 1px white;
-  border-radius: 0.2rem;
+  border-radius: 5px;
+  height: 35px;
 
-  span {
+  label {
     position: absolute;
     color: white;
-    top: -25px;
+    width: 100%;
+    top: -3px;
+    left: 2px;
+    font-size: 12px;
+    cursor: text;
   }
 `
 
@@ -106,10 +121,13 @@ export const InputDate = styled.input`
   border: none;
   border-radius: 0.2rem;
   display: block;
-  padding: 5px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 
   :focus{
     outline: none;
+
   }
 
   @media screen and (max-width: 1086px) {
@@ -179,12 +197,12 @@ export const ContentDates = styled.div`
 export const Search = styled.span`
   background-color: transparent;
   border: solid 1px white;
-  width: 50px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.2rem;
+  border-radius: 50% 50%;
   cursor: pointer;
 
   &:focus {

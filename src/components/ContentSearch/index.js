@@ -7,8 +7,8 @@ export function InputSearch() {
     <ContentInputSearch>
       <ContentSearchAndFilter>
         <BorderInput>
-          <span>Pesquisar</span>
-          <Input name="text"/>
+          <label htmlFor="inputSearch">Pesquisar</label>
+          <Input name="text" id="inputSearch"/>
         </BorderInput>
 
         <InputSelect />
@@ -17,13 +17,13 @@ export function InputSearch() {
 
       <ContentDates>
         <BorderInputDate className="startDate">
-          <span>Data inicio</span>
-          <InputDate type="date" />
+          <label htmlFor="inputStartDate">Data inicio</label>
+          <InputDate type="date" id="inputStartDate"/>
         </BorderInputDate>
 
         <BorderInputDate className="endDate">
-          <span>Data Fim</span>
-          <InputDate type="date" />
+          <label htmlFor="inputEndDate">Data Fim</label>
+          <InputDate type="date" id="inputEndDate"/>
         </BorderInputDate>
       </ContentDates>
 
