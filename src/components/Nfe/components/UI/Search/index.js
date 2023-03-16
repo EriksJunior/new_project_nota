@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { LeafContext } from "../../../context"
 
-import { InputSearch } from "../../../../InputSearch"
+import { InputSearch } from "../../../../ContentSearch"
 import { ContentSearch } from "../Search/style"
 
 export function SearchTaxDocument({ children }) {
