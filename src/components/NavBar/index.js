@@ -46,6 +46,26 @@ export function NavBar({ children }) {
                     Home
                   </ContentNavIcons>
                 </Link>
+                <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsVendas" aria-expanded="false" aria-controls="collapseLayoutsVendas">
+                  <ContentNavIcons style={{ width: "100%", display: 'flex' }}>
+                    <div className="sb-nav-link-icon">
+                      <AiOutlineHome className="icon-nav" size={20} />
+                    </div>
+                    Vendas
+                    <div className="sb-sidenav-collapse-arrow">
+                      <i className="fas fa-angle-down icons-nav-color"></i>
+                    </div>
+                  </ContentNavIcons>
+                </a>
+                <div className="collapse" id="collapseLayoutsVendas" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                  <nav className="sb-sidenav-menu-nested nav">
+                    <Link className="nav-link" to="/product">PDV</Link>
+                    <Link className="nav-link" to="/customer">Vendas/Orçamentos</Link>
+                    <Link className="nav-link" to="/product">Venda MT²</Link>
+                    <Link className="nav-link" to="/product">Ordem de Serviço</Link>
+                  </nav>
+                </div>
+
                 <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                   <ContentNavIcons style={{ width: "100%", display: 'flex' }}>
                     <div className="sb-nav-link-icon">
@@ -63,6 +83,7 @@ export function NavBar({ children }) {
                     <Link className="nav-link" to="/product">Produtos</Link>
                   </nav>
                 </div>
+
                 <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                   <ContentNavIcons>
                     <div className="sb-nav-link-icon">
