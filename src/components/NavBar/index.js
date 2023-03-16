@@ -1,8 +1,10 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
-import { AiOutlineHome } from "react-icons/ai"
-import { ContentNavIcons } from "./styles"
+import { BsHouse, BsCart3, BsPlusCircle, BsBook, BsCashCoin, BsHeadset, BsDoorOpen } from "react-icons/bs"
+import { ContentNavIcons, ContentExitIcon } from "./styles"
 
 export function NavBar({ children }) {
+  const [mouseEventExitIcon, setMouseEventExitIcon] = useState("exitIconLeav")
   return (
     <>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -41,7 +43,7 @@ export function NavBar({ children }) {
                 <Link className="nav-link" to="/">
                   <ContentNavIcons>
                     <div className="sb-nav-link-icon">
-                      <AiOutlineHome className="icon-nav" size={20} />
+                      <BsHouse className="icon-nav" size={20} />
                     </div>
                     Home
                   </ContentNavIcons>
@@ -49,7 +51,7 @@ export function NavBar({ children }) {
                 <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsVendas" aria-expanded="false" aria-controls="collapseLayoutsVendas">
                   <ContentNavIcons style={{ width: "100%", display: 'flex' }}>
                     <div className="sb-nav-link-icon">
-                      <AiOutlineHome className="icon-nav" size={20} />
+                      <BsCart3 className="icon-nav" size={20} />
                     </div>
                     Vendas
                     <div className="sb-sidenav-collapse-arrow">
@@ -59,17 +61,17 @@ export function NavBar({ children }) {
                 </a>
                 <div className="collapse" id="collapseLayoutsVendas" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                   <nav className="sb-sidenav-menu-nested nav">
-                    <Link className="nav-link" to="/product">PDV</Link>
-                    <Link className="nav-link" to="/customer">Vendas/Orçamentos</Link>
-                    <Link className="nav-link" to="/product">Venda MT²</Link>
-                    <Link className="nav-link" to="/product">Ordem de Serviço</Link>
+                    <Link className="nav-link" to="">PDV</Link>
+                    <Link className="nav-link" to="">Vendas/Orçamentos</Link>
+                    <Link className="nav-link" to="">Venda MT²</Link>
+                    <Link className="nav-link" to="">Ordem de Serviço</Link>
                   </nav>
                 </div>
 
                 <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                   <ContentNavIcons style={{ width: "100%", display: 'flex' }}>
                     <div className="sb-nav-link-icon">
-                      <AiOutlineHome className="icon-nav" size={20} />
+                      <BsPlusCircle className="icon-nav" size={20} />
                     </div>
                     Cadastros
                     <div className="sb-sidenav-collapse-arrow">
@@ -84,10 +86,30 @@ export function NavBar({ children }) {
                   </nav>
                 </div>
 
+                <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsFinanceiro" aria-expanded="false" aria-controls="collapseLayoutsFinanceiro">
+                  <ContentNavIcons style={{ width: "100%", display: 'flex' }}>
+                    <div className="sb-nav-link-icon">
+                      <BsCashCoin className="icon-nav" size={20} />
+                    </div>
+                    Finanças
+                    <div className="sb-sidenav-collapse-arrow">
+                      <i className="fas fa-angle-down icons-nav-color"></i>
+                    </div>
+                  </ContentNavIcons>
+                </a>
+                <div className="collapse" id="collapseLayoutsFinanceiro" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                  <nav className="sb-sidenav-menu-nested nav">
+                    <Link className="nav-link" to="">Caixa</Link>
+                    <Link className="nav-link" to="">Contas a receber</Link>
+                    <Link className="nav-link" to="">Contas a pagar</Link>
+                    <Link className="nav-link" to="">Relatórios</Link>
+                  </nav>
+                </div>
+
                 <a className="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                   <ContentNavIcons>
                     <div className="sb-nav-link-icon">
-                      <i className="fas fa-book-open"></i>
+                      <BsBook className="icon-nav" size={20} />
                     </div>
                     Docs Fiscais
                     <div className="sb-sidenav-collapse-arrow">
@@ -108,17 +130,24 @@ export function NavBar({ children }) {
                   <div className="sb-nav-link-icon">
                     <i className="fas fa-chart-area"></i>
                   </div>
-                  Charts
+                  Gráficos
                 </a>
                 <a className="nav-link" href="tables.html">
-                  <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
-                  Tables
+                  <div className="sb-nav-link-icon">
+                    <BsHeadset className="icon-nav" size={20} />
+                  </div>
+                  Fale conosco
                 </a>
               </div>
             </div>
             <div className="sb-sidenav-footer">
-              <div className="small">Logged in as:</div>
-              Start Bootstrap
+              <div className="small">Usuario Logado:</div>
+              <ContentExitIcon>
+                <span>Eriks Junior</span>
+                <span className="sb-nav-link-icon iconCenter" >
+                  <BsDoorOpen className={`icon-nav ${mouseEventExitIcon}`} onMouseEnter={() => setMouseEventExitIcon("exitIcon")} onMouseLeave={() => setMouseEventExitIcon("exitIconLeav")} size={20} />
+                </span>
+              </ContentExitIcon>
             </div>
           </nav>
         </div>
