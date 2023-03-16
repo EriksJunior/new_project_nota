@@ -27,7 +27,7 @@ export function InputSearch() {
       </ContentDates>
 
       <Search>
-        <BsSearch color="white" />
+        <BsSearch color="#b4b2b2" />
       </Search>
     </ContentInputSearch>
   )

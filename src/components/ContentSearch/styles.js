@@ -5,7 +5,7 @@ export const Input = styled.input`
   width: 200px;
   height: 25px;
   background-color: transparent;
-  color: #a6a3a3;
+  color: #b4b2b2;
     &:focus{
       outline: none;
     }
@@ -46,7 +46,7 @@ export const ContentSearchAndFilter = styled.div`
 `
 
 export const BorderInput = styled.div`
-  border-bottom: solid 1px #afb4b6;
+  border-bottom: solid 1px #6b6b6b9f;
 
   @media screen and (max-width: 798px) {
     width: 50%;
@@ -59,12 +59,12 @@ export const BorderInput = styled.div`
 
 export const BorderInputDate = styled.div`
   position: relative;
-  border: solid 1px #afb4b6;
-  border-radius: 5px;
+  border: solid 1px #6b6b6b9f;
+  border-radius: 0.2rem;
 
   span {
     position: absolute;
-    color: #afb4b6;
+    color: #b4b2b2;
     top: -25px;
   }
 `
@@ -73,9 +73,9 @@ export const InputDate = styled.input`
   width: 150px;
   height: 25px;
   background-color: transparent;
-  color: #a6a3a3;
+  color: #b4b2b2;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.2rem;
   display: block;
   padding: 5px;
 
@@ -131,13 +131,13 @@ export const ContentDates = styled.div`
 
 export const Search  = styled.span`
   background-color: transparent;
-  border: solid 1px #afb4b6;
+  border: solid 1px #6b6b6b9f;
   width: 50px;
   height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 0.2rem;
   cursor: pointer;
 
   &:focus {

@@ -4,8 +4,8 @@ export const ButtonFilter = styled.button`
   width: 150px;
   height: 25px;
   background-color: transparent;
-  color: #a6a3a3;
-  border-radius: 5px;
+  color: #b4b2b2;
+  border-radius: 0.2rem;
   border: none;
   display: block;
 
@@ -27,13 +27,12 @@ export const DropDownSelect = styled.div`
   top: 30px;
   z-index: 9999;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 0.2rem;
   max-height: 150px;
   overflow: auto;
   color: black;
   font-family: sans-serif;
-  font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
 
   .items {
     width: 100%;
@@ -54,11 +53,11 @@ export const DropDownSelect = styled.div`
   ::-webkit-scrollbar {
       width: 3px;
       background: #F4F4F4;
-      border-radius: 5px;
+      border-radius: 0.2rem;
   }
   ::-webkit-scrollbar-thumb {
       background: deepskyblue;
-      border-radius: 5px;
+      border-radius: 0.2rem;
   }
 
   @media screen and (max-width: 798px) {
@@ -74,19 +73,6 @@ export const ContentIcon = styled.span`
   color: white;
   position: absolute;
   right: 0;
-  
-  /* .animateIcon {
-  animation: rotateIcon 0.5s forwards;
-
-  @keyframes rotateIcon {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(180deg);
-    }
-  }
-} */
 `
 
 export const AnimateDropDown = styled.div`
@@ -126,8 +112,8 @@ export const ContentTileAndIcon = styled.div`
 
 export const BorderButton = styled.div`
   position: relative;
-  border: solid 1px #afb4b6;
-  border-radius: 5px;
+  border: solid 1px #6b6b6b9f;
+  border-radius: 0.2rem;
 
   @media screen and (max-width: 798px) {
     width: 50%;
