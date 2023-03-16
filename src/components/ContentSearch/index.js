@@ -1,5 +1,6 @@
 import { InputSelect } from "../InputSelect"
-import { ContentInputSearch, Input, BorderInput, BorderInputDate, InputDate, ContentDates, ContentSearchAndFilter } from "./styles"
+import { BsSearch } from "react-icons/bs"
+import { ContentInputSearch, Input, BorderInput, BorderInputDate, InputDate, ContentDates, ContentSearchAndFilter, Search } from "./styles"
 
 export function InputSearch() {
   return (
@@ -25,7 +26,9 @@ export function InputSearch() {
         </BorderInputDate>
       </ContentDates>
 
-
+      <Search>
+        <BsSearch color="white" />
+      </Search>
     </ContentInputSearch>
   )
 }

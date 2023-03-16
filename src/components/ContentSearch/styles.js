@@ -16,6 +16,7 @@ export const ContentInputSearch = styled.div`
   width: 100%;
   border: none;
   display: flex;
+  align-items: center;
   gap: 15px;
   flex-wrap: wrap;
   height: 100%;
@@ -113,6 +114,21 @@ export const ContentDates = styled.div`
       margin-top: 20px;
     }
   }
+`
 
+export const Search  = styled.span`
+  background-color: transparent;
+  border: solid 1px #afb4b6;
+  width: 50px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:focus {
+    background-color: red;
+  }
 `
 
