@@ -5,8 +5,8 @@ import { SaleContext } from "./context"
 import { Header } from "./components/UI/Header"
 import { Nav } from "./components/UI/Nav"
 import { ProductNfe } from "./components/UI/ProductNfe"
-import { CustomertNfe } from "./components/UI/CustomerNfe"
-import { PedidoNfe } from "./components/UI/PedidoNfe"
+import { Customer } from "./components/UI/Customer"
+import { Sale } from "./components/UI/Sale"
 import { TransporteNfe } from "./components/UI/TransporteNfe"
 
 import { ContentNfe } from "./styles"
@@ -28,7 +28,7 @@ export function FormSale() {
       <ContainerNav >
         <Nav>
           <Div hidden={navItems.cliente}>
-            <CustomertNfe />
+            <Customer />
           </Div>
 
           <Div hidden={navItems.produto}>
@@ -36,7 +36,7 @@ export function FormSale() {
           </Div>
 
           <Div hidden={navItems.pedido}>
-            <PedidoNfe />
+            <Sale />
           </Div>
 
           <Div hidden={navItems.transporte}>

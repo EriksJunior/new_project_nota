@@ -11,11 +11,11 @@ import { TextArea, Hr, ContentButtonAddMoreBillsAndSave, ContentBills, ContentAc
 import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill, BsFillPlusCircleFill } from "react-icons/bs"
 
-export function PedidoNfe() {
-  const { handleChangeSale, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveOrUpdateSale, calculateTotalLeafBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal,  } = useContext(SaleContext)
-  const pedido = useSelector(state => state.leaf.pedido)
-  const parcelas = useSelector(state => state.leaf.parcela)
-  const tiposDePagementos = useSelector(state => state.leaf.tiposDePagementos)
+export function Sale() {
+  const { handleChangeSale, handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveOrUpdateSale, calculateTotalLeafBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal,  } = useContext(SaleContext)
+  const pedido = useSelector(state => state.sale.pedido)
+  const parcelas = useSelector(state => state.sale.parcela)
+  const tiposDePagementos = useSelector(state => state.sale.tiposDePagementos)
 
   return (
     <div className="card">
@@ -167,7 +167,7 @@ export function PedidoNfe() {
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <ContentButtonAddMoreBillsAndSave>
               <button type="button" className="btn btn-primary btn-sm" onClick={addBillToList}>Adicionar</button>
-              <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveLeafAndLeafBills}>Salvar</button>
+              <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveSaleAndSaleBills}>Salvar</button>
             </ContentButtonAddMoreBillsAndSave>
           </div>
         </Colapse>

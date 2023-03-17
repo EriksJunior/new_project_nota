@@ -5,7 +5,7 @@ import { AreaTaxDocument } from "./AreaTaxDocument"
 import { CreateTaxDocument } from "./CreateTaxDocument"
 import { AnimateCard } from "../../styles"
 
-export function Sale() {
+export function FormSale() {
   const { openLayouts } = useContext(SaleContext)
 
   return (

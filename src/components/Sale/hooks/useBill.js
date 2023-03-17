@@ -50,7 +50,7 @@ export function UseBill() {
   }
 
 
-  const handleSaveLeafAndLeafBills = async () => {
+  const handleSaveSaleAndSaleBills = async () => {
     if (pedido.id) {
       return await saveLeafBill(pedido.id)
     }
@@ -135,5 +135,5 @@ export function UseBill() {
 
 
 
-  return { handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, removeBillFromList, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
+  return { handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, removeBillFromList, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
 }

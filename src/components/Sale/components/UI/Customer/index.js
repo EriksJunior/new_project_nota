@@ -8,7 +8,7 @@ import { ContentButtonUpdateCustomer } from "./styles"
 
 import { consumidorFinalNfe, constribuinte } from "../../../../../common/nfe"
 
-export function CustomertNfe() {
+export function Customer() {
   const { customersFromSelectBox, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer } = useContext(SaleContext)
   const customer = useSelector(state => state.leaf.cliente)
 
