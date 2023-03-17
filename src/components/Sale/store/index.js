@@ -3,6 +3,6 @@ import SaleReducer from "./reducers/SaleReducers";
 
 export default configureStore({
   reducer: {
-    leaf: SaleReducer,
+    sale: SaleReducer,
   },
 })

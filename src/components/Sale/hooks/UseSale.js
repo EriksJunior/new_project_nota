@@ -1,42 +1,38 @@
 import { useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_LEAF } from "../store/reducers/SaleReducers";
+import { SAVE_SALE } from "../store/reducers/SaleReducers";
 
 import { GlobalContext } from "../../../context/Global/global";
-import LeafService from "../../../services/LeafService";
+import SaleService from "../../../services/SaleService";
 
-import { validadeLeaf } from "../validate";
+import { validadeSale } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
 
 export function UseSale() {
   const { loading, setLoading } = useContext(GlobalContext)
-  const refValorTotalPedido = useRef("")
-  const refTotalDescontoPedido = useRef("")
+  const refTotalSale = useRef("")
+  const refTotaDiscountSale = useRef("")
   const [openModal, setOpenModal] = useState("hide")
 
   const dispatch = useDispatch()
-  const pedido = useSelector(state => state.leaf.pedido)
-  const cliente = useSelector(state => state.leaf.cliente)
-  const produtos = useSelector(state => state.leaf.produto)
+  const pedido = useSelector(state => state.sale.pedido)
+  const cliente = useSelector(state => state.sale.cliente)
+  const produtos = useSelector(state => state.sale.produto)
 
   const { maskCurrency } = Masks()
-  const handleChangePedido = (e) => {
-    dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: e.target.value }))
+  const handleChangeSale = (e) => {
+    dispatch(SAVE_SALE({ ...pedido, [e.target.name]: e.target.value }))
   }
 
-  const handleChangeFreightAndOthers = (e) => {
-    dispatch(SAVE_LEAF({ ...pedido, [e.target.name]: maskCurrency(e.target.value) }))
-  };
-
-  const saveLeaf = async (dataPedido) => {
+  const saveSale = async (dataPedido) => {
     try {
-      validadeLeaf(dataPedido)
+      validadeSale(dataPedido)
 
       const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat(dataPedido)
-
-      const id = await LeafService.save(formattedMonetaryValuesLeaf)
-      dispatch(SAVE_LEAF({ ...dataPedido, id: id }))
+      setLoading(true)
+      const id = await SaleService.save(formattedMonetaryValuesLeaf)
+      dispatch(SAVE_SALE({ ...dataPedido, id: id }))
 
       toast("Documento fiscal salvo! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -48,17 +44,20 @@ export function UseSale() {
         position: toast.POSITION.TOP_RIGHT
       });
     }
+    finally {
+      setLoading(false)
+    }
   }
 
-  const updateLeaf = async (dataPedido) => {
+  const updateSale = async (dataPedido) => {
     try {
-      validadeLeaf(dataPedido)
-      const totalDesconto = refTotalDescontoPedido.current.value
-      const total = refValorTotalPedido.current.value
+      validadeSale(dataPedido)
+      const totalDesconto = refTotaDiscountSale.current.value
+      const total = refTotalSale.current.value
 
       const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat({ ...dataPedido, total: total, desconto: totalDesconto })
-
-      await LeafService.update(formattedMonetaryValuesLeaf)
+      setLoading(true)
+      await SaleService.update(formattedMonetaryValuesLeaf)
 
       return toast("Documento fiscal atualizado! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -68,12 +67,15 @@ export function UseSale() {
         position: toast.POSITION.TOP_RIGHT
       });
     }
+    finally {
+      setLoading(false)
+    }
   }
 
   const findById = async () => {
     try {
-      const leaf = await LeafService.findLeafById(pedido.id)
-      dispatch(SAVE_LEAF({ ...pedido, response: leaf.response, status: leaf.status }))
+      const leaf = await SaleService.findById(pedido.id)
+      dispatch(SAVE_SALE({ ...pedido, response: leaf.response, status: leaf.status }))
     } catch (error) {
       toast.warning(error.message, {
         position: toast.POSITION.TOP_RIGHT
@@ -82,16 +84,16 @@ export function UseSale() {
   }
 
   const searchLeaf = async () => {
-    const leafs = await LeafService.searchLeaf()
+    const leafs = await SaleService.search()
     console.log(leafs)
   }
 
-  const handleSaveLeaf = async () => {
+  const handleSaveOrUpdateSale = async () => {
     if (!pedido.id) {
-      const id = await saveLeaf({ ...pedido, idCliente: cliente.id })
+      const id = await saveSale({ ...pedido, idCliente: cliente.id })
       return id
     } else {
-      await updateLeaf({ ...pedido, idCliente: cliente.id })
+      await updateSale({ ...pedido, idCliente: cliente.id })
     }
   }
 
@@ -104,7 +106,7 @@ export function UseSale() {
     return { ...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias, total: formattedTotal, desconto: formattedDesconto }
   }
 
-  const calculateTotalLeafBasedProducts = () => {
+  const calculateTotalSaleBasedProducts = () => {
     const formattedTotal = produtos.map((prod) => {
       const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
       const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
@@ -120,7 +122,7 @@ export function UseSale() {
     return totalMonetary.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
 
-  const calculateTotalDiscountLeaf = () => {
+  const calculateTotalDiscountSale = () => {
     const formattedDiscount = produtos.map((prod) => {
       const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
 
@@ -131,32 +133,7 @@ export function UseSale() {
     return totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
 
-  const sendLeaf = async () => {
-    try {
-      if (pedido.response.chave) {
-        return
-      }
-      setLoading(true)
-      await LeafService.sendLeaf(pedido.id)
 
-      toast("Documento fiscal Emitido! ✅", {
-        position: toast.POSITION.TOP_RIGHT
-      });
-    } catch (error) {
-      console.log(error)
-      toast("Ocorreu um erro ao emitir o documento fiscal! ✅", {
-        position: toast.POSITION.TOP_RIGHT
-      });
-    } finally {
-      setLoading(false)
-    }
-  }
 
-  const handleSendLeafAndFind = async () => {
-    await handleSaveLeaf()
-    await sendLeaf()
-    await findById()
-  }
-
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, loading }
+  return { handleChangeSale, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal }
 }

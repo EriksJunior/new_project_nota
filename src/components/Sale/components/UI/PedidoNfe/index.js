@@ -12,7 +12,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill, BsFillPlusCircleFill } from "react-icons/bs"
 
 export function PedidoNfe() {
-  const { handleChangePedido, handleChangeFreightAndOthers, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveLeaf, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind } = useContext(SaleContext)
+  const { handleChangeSale, handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveOrUpdateSale, calculateTotalLeafBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal,  } = useContext(SaleContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const parcelas = useSelector(state => state.leaf.parcela)
   const tiposDePagementos = useSelector(state => state.leaf.tiposDePagementos)
@@ -28,7 +28,7 @@ export function PedidoNfe() {
         <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <label className="form-label">Presença</label>
-            <select className="form-select form-select-sm" name="presenca" value={pedido.presenca} onChange={handleChangePedido}>
+            <select className="form-select form-select-sm" name="presenca" value={pedido.presenca} onChange={handleChangeSale}>
               {presenca.map((item) =>
                 <option key={item.value} value={item.value}>{item.tipo}</option>
               )}
@@ -36,28 +36,18 @@ export function PedidoNfe() {
           </div>
 
           <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
-            <label className="form-label">Total frete</label>
-            <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="frete" value={pedido.frete} onChange={handleChangeFreightAndOthers} />
-          </div>
-
-          <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
             <label className="form-label">Total desc</label>
-            <input type="text" disabled placeholder="0,0000" ref={refTotalDescontoPedido} className="form-control form-control-sm" name="desconto" value={calculateTotalDiscountLeaf()} onChange={handleChangePedido} />
-          </div>
-
-          <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
-            <label className="form-label">Outras despesas</label>
-            <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="despesas_acessorias" value={pedido.despesas_acessorias} onChange={handleChangeFreightAndOthers} />
+            <input type="text" disabled placeholder="0,0000" ref={refTotaDiscountSale} className="form-control form-control-sm" name="desconto" value={calculateTotalDiscountSale()} onChange={handleChangeSale} />
           </div>
 
           <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
             <label className="form-label">Total pedido</label>
-            <input type="text" disabled placeholder="0,0000" ref={refValorTotalPedido} className="form-control form-control-sm" value={calculateTotalLeafBasedProducts()} />
+            <input type="text" disabled placeholder="0,0000" ref={refTotalSale} className="form-control form-control-sm" value={calculateTotalLeafBasedProducts()} />
           </div>
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <label className="form-label">Intermediador</label>
-            <select className="form-select form-select-sm" name="id_intermediador" value={pedido.id_intermediador} onChange={handleChangePedido}>
+            <select className="form-select form-select-sm" name="id_intermediador" value={pedido.id_intermediador} onChange={handleChangeSale}>
               <option value={""}>---selecione---</option>
               {intermediador.map((intermed) =>
                 <option key={intermed.value} value={intermed.value}>{intermed.tipo}</option>
@@ -67,22 +57,22 @@ export function PedidoNfe() {
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <label className="form-label">CNPJ do Intermediador</label>
-            <input type="text" disabled={!pedido.id_intermediador} className="form-control form-control-sm" name="cnpj_intermediador" value={pedido.cnpj_intermediador} onChange={handleChangePedido} />
+            <input type="text" disabled={!pedido.id_intermediador} className="form-control form-control-sm" name="cnpj_intermediador" value={pedido.cnpj_intermediador} onChange={handleChangeSale} />
           </div>
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <label className="form-label">Nome do intermediador</label>
-            <input type="text" disabled={!pedido.id_intermediador} className="form-control form-control-sm" name="intermediador" value={pedido.intermediador} onChange={handleChangePedido} />
+            <input type="text" disabled={!pedido.id_intermediador} className="form-control form-control-sm" name="intermediador" value={pedido.intermediador} onChange={handleChangeSale} />
           </div>
 
           <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <label className="form-label">Informações complementares</label>
-            <TextArea type="area" className="form-control form-control-sm" name="informacoes_complementares" value={pedido.informacoes_complementares} onChange={handleChangePedido} />
+            <TextArea type="area" className="form-control form-control-sm" name="informacoes_complementares" value={pedido.informacoes_complementares} onChange={handleChangeSale} />
           </div>
 
           <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <label className="form-label">Informações ao fisco</label>
-            <TextArea type="area" className="form-control form-control-sm" name="informacoes_fisco" value={pedido.informacoes_fisco} onChange={handleChangePedido} />
+            <TextArea type="area" className="form-control form-control-sm" name="informacoes_fisco" value={pedido.informacoes_fisco} onChange={handleChangeSale} />
           </div>
         </div>
 
@@ -92,7 +82,7 @@ export function PedidoNfe() {
           <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
               <label className="form-label">Meio de pagamento</label>
-              <select className="form-select form-select-sm" name="pagamento" value={pedido.pagamento} onChange={handleChangePedido}>
+              <select className="form-select form-select-sm" name="pagamento" value={pedido.pagamento} onChange={handleChangeSale}>
                 {pagamaneto.map((pag) =>
                   <option key={pag.value} value={pag.value}>{pag.tipo}</option>
                 )}
@@ -101,7 +91,7 @@ export function PedidoNfe() {
 
             <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
               <label className="form-label">Forma de pagamento</label>
-              <select className="form-select form-select-sm" name="forma_pagamento" value={pedido.forma_pagamento} onChange={handleChangePedido}>
+              <select className="form-select form-select-sm" name="forma_pagamento" value={pedido.forma_pagamento} onChange={handleChangeSale}>
                 {formaPagamento.map((formaPag) =>
                   <option key={formaPag.value} value={formaPag.value}>{formaPag.tipo}</option>
                 )}
@@ -185,8 +175,8 @@ export function PedidoNfe() {
         <div className="mt-5">
           <div className="d-flex flex-wrap justify-content-between">
             <div className="d-flex gap-2">
-              <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveLeaf}>Salvar Documento</button>
-              <button type="button" className="btn btn-primary btn-sm" onClick={handleSendLeafAndFind}>Emitir Documento</button>
+              <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdateSale}>Salvar</button>
+              <button type="button" className="btn btn-primary btn-sm">Emitir</button>
             </div>
 
             <div>

@@ -11,7 +11,7 @@ export function UseCustomer() {
   const [customersFromSelectBox, setCustomersFromSelectBox] = useState([])
 
   const dispatch = useDispatch()
-  const customer = useSelector(state => state.leaf.cliente)
+  const customer = useSelector(state => state.sale.cliente)
 
   const handleChangeIdCustomer = (e) => {
     if (!e.currentTarget.value) {
