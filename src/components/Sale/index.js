@@ -2,7 +2,6 @@ import { useEffect, useContext } from "react"
 
 import { SaleContext } from "./context"
 
-import { Header } from "./components/UI/Header"
 import { Nav } from "./components/UI/Nav"
 import { ProductNfe } from "./components/UI/ProductNfe"
 import { Customer } from "./components/UI/Customer"
@@ -23,8 +22,6 @@ export function FormSale() {
 
   return (
     <ContentNfe>
-      <Header />
-
       <ContainerNav >
         <Nav>
           <Div hidden={navItems.cliente}>

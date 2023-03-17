@@ -12,7 +12,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill, BsFillPlusCircleFill } from "react-icons/bs"
 
 export function Sale() {
-  const { handleChangeSale, handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveOrUpdateSale, calculateTotalLeafBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal,  } = useContext(SaleContext)
+  const { handleChangeSale, handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal,  } = useContext(SaleContext)
   const pedido = useSelector(state => state.sale.pedido)
   const parcelas = useSelector(state => state.sale.parcela)
   const tiposDePagementos = useSelector(state => state.sale.tiposDePagementos)
@@ -42,7 +42,7 @@ export function Sale() {
 
           <div className="mb-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
             <label className="form-label">Total pedido</label>
-            <input type="text" disabled placeholder="0,0000" ref={refTotalSale} className="form-control form-control-sm" value={calculateTotalLeafBasedProducts()} />
+            <input type="text" disabled placeholder="0,0000" ref={refTotalSale} className="form-control form-control-sm" value={calculateTotalSaleBasedProducts()} />
           </div>
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4">

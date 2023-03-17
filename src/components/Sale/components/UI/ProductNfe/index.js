@@ -12,7 +12,7 @@ import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyConten
 
 export function ProductNfe() {
   const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue } = useContext(SaleContext)
-  const products = useSelector(state => state.leaf.produto)
+  const products = useSelector(state => state.sale.produto)
 
   return (
     <div className="card">

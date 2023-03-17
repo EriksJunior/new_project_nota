@@ -10,7 +10,7 @@ import { consumidorFinalNfe, constribuinte } from "../../../../../common/nfe"
 
 export function Customer() {
   const { customersFromSelectBox, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer } = useContext(SaleContext)
-  const customer = useSelector(state => state.leaf.cliente)
+  const customer = useSelector(state => state.sale.cliente)
 
   return (
     <div className="card">
