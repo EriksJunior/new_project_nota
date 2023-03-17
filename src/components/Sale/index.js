@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react"
 
-import { LeafContext } from "./context"
+import { SaleContext } from "./context"
 
 import { Header } from "./components/UI/Header"
 import { Nav } from "./components/UI/Nav"
@@ -13,8 +13,8 @@ import { ContentNfe } from "./styles"
 import { ContainerNav } from "./components/UI/Nav/styles"
 import { Div, Button } from "../styles"
 
-export function FormLeaf() {
-  const { navItems, switchBetweenComponents, getCustomersFromSelectBox, getProcuctsFromSelectBox } = useContext(LeafContext)
+export function FormSale() {
+  const { navItems, switchBetweenComponents, getCustomersFromSelectBox, getProcuctsFromSelectBox } = useContext(SaleContext)
 
   useEffect(() => {
     getCustomersFromSelectBox()

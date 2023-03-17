@@ -1,13 +1,13 @@
 import { useContext } from "react"
 import { useSelector } from "react-redux"
 
-import { LeafContext } from "../../../context"
+import { SaleContext } from "../../../context"
 
 import { ContentNfeHeader } from "./styles"
 import { modelos, finalidades, operacoes, ambientes } from "../../../../../common/nfe"
 
 export function Header() {
-  const { handleChangePedido } = useContext(LeafContext)
+  const { handleChangePedido } = useContext(SaleContext)
   const pedido = useSelector(state => state.leaf.pedido)
 
   return (

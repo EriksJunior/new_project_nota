@@ -1,7 +1,7 @@
 import { ContentNavItems, NavItems, Div } from "./styles"
 import { ContentNav } from "../../../styles"
 import { useContext } from "react"
-import { LeafContext } from "../../../context"
+import { SaleContext } from "../../../context"
 
 import { IoPersonAdd } from "react-icons/io5"
 import { FaTruckMoving } from "react-icons/fa"
@@ -10,7 +10,7 @@ import { IoIosPaper } from "react-icons/io"
 
 
 export function Nav({ children }) {
-  const { handleRenderNavItem } = useContext(LeafContext)
+  const { handleRenderNavItem } = useContext(SaleContext)
 
   return (
     <Div>

@@ -5,9 +5,9 @@ import { UseCustomer } from "../hooks/UseCustomer";
 import { UseProduct } from "../hooks/UseProduct";
 import { UseBill } from "../hooks/useBill";
 
-const LeafContext = createContext({})
+const SaleContext = createContext({})
 
-function LeafProvider({ children }) {
+function SaleProvider({ children }) {
   const { handleRenderNavItem, navItems, openLayouts, handleNewLeaf, switchBetweenComponents, handleOpenAreaLeaf } = UseGeneral()
   const { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, } = UseLeaf()
   const { getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer } = UseCustomer()
@@ -15,7 +15,7 @@ function LeafProvider({ children }) {
   const { handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill } = UseBill()
 
   return (
-    <LeafContext.Provider value={{
+    <SaleContext.Provider value={{
      /*UseGeneral*/ handleRenderNavItem, navItems, openLayouts, handleNewLeaf, switchBetweenComponents, handleOpenAreaLeaf,
      /*UseLeaf*/ handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind,
      /*UseCustomer*/ getCustomersFromSelectBox, customersFromSelectBox, findCustomerById, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer,
@@ -23,9 +23,9 @@ function LeafProvider({ children }) {
      /*UseBill*/ handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill
     }}>
       {children}
-    </LeafContext.Provider>
+    </SaleContext.Provider>
   )
 }
 
 
-export { LeafProvider, LeafContext }
+export { SaleProvider, SaleContext }

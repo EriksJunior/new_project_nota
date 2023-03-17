@@ -2,7 +2,7 @@ import { useState } from "react";
 import { UseLeaf } from "./UseLeaf";
 
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_BILL } from "../store/reducers/LeafReducers";
+import { SAVE_BILL } from "../store/reducers/SaleReducers";
 
 import { toast } from "react-toastify";
 

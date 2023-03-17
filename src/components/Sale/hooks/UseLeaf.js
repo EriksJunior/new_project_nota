@@ -1,6 +1,6 @@
 import { useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_LEAF } from "../store/reducers/LeafReducers";
+import { SAVE_LEAF } from "../store/reducers/SaleReducers";
 
 import { GlobalContext } from "../../../context/Global/global";
 import LeafService from "../../../services/LeafService";

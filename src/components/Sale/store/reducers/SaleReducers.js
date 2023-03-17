@@ -2,7 +2,7 @@ import { INITIAL_VALUE_PEDIDO, INITIAL_STATE_CLIENTE_NFE, INITIAL_VALUE_PRODUTOS
 import { INITIAL_STATE_TYPE_PAYMENT } from "../../../TypePayment/initalStates";
 import { createSlice } from "@reduxjs/toolkit";
 
-export const LeafReducer = createSlice({
+export const SaleReducer = createSlice({
   name: "nfe",
   initialState: {
     pedido: INITIAL_VALUE_PEDIDO,
@@ -31,6 +31,6 @@ export const LeafReducer = createSlice({
   }
 })
 
-export const { SAVE_CUSTOMER, SAVE_LEAF, SAVE_PRODUCTS, SAVE_BILL, SAVE_ALL_TYPES_PAYMENTS } = LeafReducer.actions
+export const { SAVE_CUSTOMER, SAVE_LEAF, SAVE_PRODUCTS, SAVE_BILL, SAVE_ALL_TYPES_PAYMENTS } = SaleReducer.actions
 
-export default LeafReducer.reducer
+export default SaleReducer.reducer
