@@ -6,7 +6,7 @@ import { ContentDesigner } from "../../../Tab"
 export function CreateTaxDocument() {
   return (
     <ContentTaxDocument className="m-3 animate">
-      <ContentDesigner title={"Realize emissões de documentos fiscais"}>
+      <ContentDesigner title={"Realize suas vendas! :D"}>
         <FormSale />
       </ContentDesigner>
 

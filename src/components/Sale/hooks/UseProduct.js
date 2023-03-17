@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { UseLeaf } from "./UseLeaf"
+import { UseSale } from "./UseSale"
 
 import { useDispatch, useSelector } from "react-redux"
 import { SAVE_PRODUCTS } from "../store/reducers/SaleReducers"
@@ -13,7 +13,7 @@ import { Masks } from "../../../utils/masks/Masks";
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
 
 export function UseProduct() {
-  const { handleSaveLeaf } = UseLeaf()
+  const { handleSaveLeaf } = UseSale()
   const [productsFromSelectBox, setProductsFromSelectBox] = useState([])
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)

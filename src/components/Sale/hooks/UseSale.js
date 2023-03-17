@@ -9,7 +9,7 @@ import { validadeLeaf } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
 
-export function UseLeaf() {
+export function UseSale() {
   const { loading, setLoading } = useContext(GlobalContext)
   const refValorTotalPedido = useRef("")
   const refTotalDescontoPedido = useRef("")
