@@ -100,30 +100,6 @@ export function Sale() {
           </div>
         </Colapse>
 
-        {/* <Colapse title={"Fatura"}>
-          <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-              <label className="form-label"> N° fatura</label>
-              <input type="text" className="form-control form-control-sm" name="cpfCnpj" />
-            </div>
-
-            <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-              <label className="form-label">Valor</label>
-              <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="cpfCnpj" />
-            </div>
-
-            <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-              <label className="form-label">Desconto</label>
-              <input type="text" placeholder="0,0000" className="form-control form-control-sm" name="cpfCnpj" />
-            </div>
-
-            <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-              <label className="form-label">Valor Total</label>
-              <input type="text" placeholder="0,0000" disabled className="form-control form-control-sm" name="cpfCnpj" />
-            </div>
-          </div>
-        </Colapse> */}
-
         <Colapse title={"Parcelas"}>
           {parcelas.map((parcela, index) =>
             <ContentBills className="row col-sm-12 col-md-12 col-lg-12 col-xl-12" key={index}>

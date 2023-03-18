@@ -134,3 +134,11 @@ export const INITIAL_STATE_PARCELA_NFE = {
   valorRestante: "0",
   data: "",
 }
+
+export const INITIAL_STATE_SEARCH_LEAF = {
+  text: "",
+  filter: "",
+  page: "1",
+  startDate: "",
+  endDate: "",
+}

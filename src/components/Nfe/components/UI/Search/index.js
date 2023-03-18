@@ -2,10 +2,11 @@ import { useContext } from "react"
 import { LeafContext } from "../../../context"
 
 import { InputSearch } from "../../../../ContentSearch"
+
 import { ContentSearch } from "../Search/style"
 
 export function SearchTaxDocument({ children }) {
-  const { handleNewLeaf } = useContext(LeafContext)
+  const { handleNewLeaf, searchLeaf } = useContext(LeafContext)
 
   return (
     <div className="card">
@@ -19,7 +20,7 @@ export function SearchTaxDocument({ children }) {
             <input style={{width: "70px"}}  name="cpfcnpj" type="number" className="form-control form-control-sm" />
             <label style={{color: "white"}}>resultados por página</label>
           </div> */}
-          <InputSearch />
+          <InputSearch search={searchLeaf}/>
         </ContentSearch>
 
         <div>
