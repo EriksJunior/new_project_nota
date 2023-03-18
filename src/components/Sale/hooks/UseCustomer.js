@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_CUSTOMER } from "../store/reducers/LeafReducers"
+import { SAVE_CUSTOMER } from "../store/reducers/SaleReducers"
 import { INITIAL_STATE_CLIENTE_NFE } from "../initialStates";
 
 import CustomerService from "../../../services/CustomerService"
@@ -11,7 +11,7 @@ export function UseCustomer() {
   const [customersFromSelectBox, setCustomersFromSelectBox] = useState([])
 
   const dispatch = useDispatch()
-  const customer = useSelector(state => state.leaf.cliente)
+  const customer = useSelector(state => state.sale.cliente)
 
   const handleChangeIdCustomer = (e) => {
     if (!e.currentTarget.value) {

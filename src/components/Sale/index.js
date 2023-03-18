@@ -1,20 +1,19 @@
 import { useEffect, useContext } from "react"
 
-import { LeafContext } from "./context"
+import { SaleContext } from "./context"
 
-import { Header } from "./components/UI/Header"
 import { Nav } from "./components/UI/Nav"
 import { ProductNfe } from "./components/UI/ProductNfe"
-import { CustomertNfe } from "./components/UI/CustomerNfe"
-import { PedidoNfe } from "./components/UI/PedidoNfe"
+import { Customer } from "./components/UI/Customer"
+import { Sale } from "./components/UI/Sale"
 import { TransporteNfe } from "./components/UI/TransporteNfe"
 
 import { ContentNfe } from "./styles"
 import { ContainerNav } from "./components/UI/Nav/styles"
 import { Div, Button } from "../styles"
 
-export function FormLeaf() {
-  const { navItems, switchBetweenComponents, getCustomersFromSelectBox, getProcuctsFromSelectBox } = useContext(LeafContext)
+export function FormSale() {
+  const { navItems, switchBetweenComponents, getCustomersFromSelectBox, getProcuctsFromSelectBox } = useContext(SaleContext)
 
   useEffect(() => {
     getCustomersFromSelectBox()
@@ -23,12 +22,10 @@ export function FormLeaf() {
 
   return (
     <ContentNfe>
-      <Header />
-
       <ContainerNav >
         <Nav>
           <Div hidden={navItems.cliente}>
-            <CustomertNfe />
+            <Customer />
           </Div>
 
           <Div hidden={navItems.produto}>
@@ -36,7 +33,7 @@ export function FormLeaf() {
           </Div>
 
           <Div hidden={navItems.pedido}>
-            <PedidoNfe />
+            <Sale />
           </Div>
 
           <Div hidden={navItems.transporte}>

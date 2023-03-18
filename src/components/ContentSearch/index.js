@@ -1,33 +1,40 @@
+import { useState, useEffect } from "react"
 import { InputSelect } from "../InputSelect"
 import { BsSearch } from "react-icons/bs"
+
+import { INITIAL_STATE_SEARCH_LEAF } from "./initialStates"
 import { ContentInputSearch, Input, BorderInput, BorderInputDate, InputDate, ContentDates, ContentSearchAndFilter, Search } from "./styles"
 
-export function InputSearch() {
+export function InputSearch({ search }) {
+  const [wantedItems, setWantedItems] = useState(INITIAL_STATE_SEARCH_LEAF)
+  const [filter, setFilter] = useState("") 
+
   return (
     <ContentInputSearch>
       <ContentSearchAndFilter>
         <BorderInput>
-          <Input name="text" placeholder="Pesquisar" />
+          <label htmlFor="inputSearch">Pesquisar</label>
+          <Input name="text" id="inputSearch" onChange={({ target }) => setWantedItems({ ...wantedItems, text: target.value })} />
         </BorderInput>
 
-        <InputSelect />
+        <InputSelect getFilter={setFilter}/>
       </ContentSearchAndFilter>
 
 
       <ContentDates>
         <BorderInputDate className="startDate">
-          <span>Data inicio</span>
-          <InputDate type="date" />
+          <label htmlFor="inputStartDate">Data inicio</label>
+          <InputDate type="date" id="inputStartDate" onChange={({ target }) => setWantedItems({ ...wantedItems, startDate: target.value })}/>
         </BorderInputDate>
 
         <BorderInputDate className="endDate">
-          <span>Data Fim</span>
-          <InputDate type="date" />
+          <label htmlFor="inputEndDate">Data Fim</label>
+          <InputDate type="date" id="inputEndDate" onChange={({ target }) => setWantedItems({ ...wantedItems, endDate: target.value })}/>
         </BorderInputDate>
       </ContentDates>
 
       <Search>
-        <BsSearch color="white" />
+        <BsSearch color="white" onClick={() => search(wantedItems.text, filter, 1, wantedItems.startDate, wantedItems.endDate)} />
       </Search>
     </ContentInputSearch>
   )

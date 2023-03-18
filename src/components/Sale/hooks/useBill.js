@@ -1,29 +1,29 @@
 import { useState } from "react";
-import { UseLeaf } from "./UseLeaf";
+import { UseSale } from "./UseSale";
 
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_BILL } from "../store/reducers/LeafReducers";
+import { SAVE_BILL } from "../store/reducers/SaleReducers";
 
 import { toast } from "react-toastify";
 
 import BillService from "../../../services/BillService";
-import { validateLeafBill } from "../validate";
+import { validateBillSale } from "../validate";
 import { INITIAL_STATE_PARCELA_NFE } from "../initialStates";
 
 export function UseBill() {
-  const { handleSaveLeaf } = UseLeaf()
+  const { handleSaveLeaf } = UseSale()
   const [confirmRemoveBill, setConfirmRemoveBill] = useState([false])
 
-  const parcelas = useSelector(state => state.leaf.parcela)
-  const cliente = useSelector(state => state.leaf.cliente)
-  const pedido = useSelector(state => state.leaf.pedido)
+  const parcelas = useSelector(state => state.sale.parcela)
+  const cliente = useSelector(state => state.sale.cliente)
+  const pedido = useSelector(state => state.sale.pedido)
 
   const dispatch = useDispatch()
 
   const saveLeafBill = async (idLeaf) => {
     try {
       const newBills = handleWithBillsBeforeSave(parcelas, idLeaf)
-      
+
       const bills = await Promise.all(newBills.map((bill) => {
         if (bill.id) {
           return bill
@@ -50,7 +50,7 @@ export function UseBill() {
   }
 
 
-  const handleSaveLeafAndLeafBills = async () => {
+  const handleSaveSaleAndSaleBills = async () => {
     if (pedido.id) {
       return await saveLeafBill(pedido.id)
     }
@@ -72,7 +72,7 @@ export function UseBill() {
 
     if (billsFilled.length) {
       const result = billsFilled.map((bill) => {
-        return validateLeafBill(bill)
+        return validateBillSale(bill)
       })
 
       toast.warning(result[0], {
@@ -135,5 +135,5 @@ export function UseBill() {
 
 
 
-  return { handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, removeBillFromList, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
+  return { handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, removeBillFromList, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
 }

@@ -1,23 +1,23 @@
 import { useState } from "react"
-import { UseLeaf } from "./UseLeaf"
+import { UseSale } from "./UseSale"
 
 import { useDispatch, useSelector } from "react-redux"
-import { SAVE_PRODUCTS } from "../store/reducers/LeafReducers"
+import { SAVE_PRODUCTS } from "../store/reducers/SaleReducers"
 
 import { toast } from "react-toastify";
 
 import ProductServices from "../../../services/ProductService"
 import ProductLeafService from "../../../services/ProductLeafService"
-import { validateLeafProduct } from "../validate";
+import { validadeSale } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
 
 export function UseProduct() {
-  const { handleSaveLeaf } = UseLeaf()
+  const { handleSaveLeaf } = UseSale()
   const [productsFromSelectBox, setProductsFromSelectBox] = useState([])
   const dispatch = useDispatch()
-  const pedido = useSelector(state => state.leaf.pedido)
-  const produtos = useSelector(state => state.leaf.produto)
+  const pedido = useSelector(state => state.sale.pedido)
+  const produtos = useSelector(state => state.sale.produto)
   const { maskCurrency } = Masks()
 
   const handleChangeProducts = (e, index) => {
@@ -131,7 +131,7 @@ export function UseProduct() {
     const productsFilled = !product.idProduto || !product.unidade || !product.total || !product.subtotal || !product.quantidade || !product.desconto //refatorar, realizar uma forma dinamica de fazer isso
 
     if (productsFilled) {
-      const result = validateLeafProduct(product)
+      const result = validadeSale(product)
 
       toast.warning(result, {
         position: toast.POSITION.TOP_RIGHT

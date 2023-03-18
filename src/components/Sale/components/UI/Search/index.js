@@ -1,11 +1,11 @@
 import { useContext } from "react"
-import { LeafContext } from "../../../context"
+import { SaleContext } from "../../../context"
 
 import { InputSearch } from "../../../../ContentSearch"
 import { ContentSearch } from "../Search/style"
 
 export function SearchTaxDocument({ children }) {
-  const { handleNewLeaf } = useContext(LeafContext)
+  const { handleNewLeaf } = useContext(SaleContext)
 
   return (
     <div className="card">

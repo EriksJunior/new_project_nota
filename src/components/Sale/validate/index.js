@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-const validadeLeaf = (leaf) => {
+const validadeSale = (leaf) => {
   const schema = z.object({
     natureza_operacao: z.string().min(10, "O campo (Natureza da operação) deve ser preenchido e deve ter mais de 10 caracteres"),
     idCliente: z.string().uuid("Deve ser selecionado um (Cliente) para prosseguir"),
@@ -47,7 +47,7 @@ const validadeLeaf = (leaf) => {
   }
 }
 
-const validateLeafProduct = (leafProducts) => {
+const validateProductSale = (leafProducts) => {
     const schema = z.object({
       idProduto: z.string().uuid("Deve ser selecionado ao menos um (Produto) para prosseguir"),
       quantidade: z.string().min(1, "O campo (Quantidade) deve ser preenchido").optional(),
@@ -62,7 +62,7 @@ const validateLeafProduct = (leafProducts) => {
     }
 }
 
-const validateLeafBill = (leafBill) => {
+const validateBillSale = (leafBill) => {
   const schema = z.object({
     idCliente: z.string().uuid("Deve ser selecionado um (Cliente) para prosseguir"),
     idFormaPagamento: z.string().uuid("O campo (Tipo de pagamento) deve ser preenchido"),
@@ -79,19 +79,4 @@ const validateLeafBill = (leafBill) => {
   }
 }
 
-const validateSendLeaf = (leaf) => {
-  const schema = z.object({
-    idCliente: z.string().uuid("Deve ser selecionado um (Cliente) para prosseguir"),
-    idFormaPagamento: z.string().uuid("O campo (Tipo de pagamento) deve ser preenchido"),
-    data: z.string().min(10, "O campo (Data de vencimento) deve ser preenchido corretamente"),
-    idNota: z.string().uuid("O Documento fiscal deve ser salvo para processeguir"),
-    tipo: z.string().min(1, "O campo (Tipo) deve ser preenchido"),
-    valorTotal: z.string().min(1, "O campo (Valor) deve ser preenchido"),
-  })
-
-  const result = schema.safeParse(leaf)
-  if (!result.success) {
-    return result.error.errors[0].message
-  }
-}
-export { validadeLeaf, validateLeafProduct, validateLeafBill, validateSendLeaf }
+export { validadeSale, validateProductSale, validateBillSale }

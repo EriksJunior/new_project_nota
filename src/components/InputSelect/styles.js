@@ -1,13 +1,18 @@
 import styled from "styled-components";
 
 export const ButtonFilter = styled.button`
+  position: relative;
   width: 150px;
-  height: 25px;
+  height: 100%;
   background-color: transparent;
-  color: #a6a3a3;
-  border-radius: 5px;
+  color: white;
+  border-radius: 0.2rem;
   border: none;
   display: block;
+
+  @media screen and (max-width: 1086px) {
+    width: 100%;
+  }
 
   @media screen and (max-width: 798px) {
     width: 100%;
@@ -20,20 +25,17 @@ export const ButtonFilter = styled.button`
 
 export const DropDownSelect = styled.div`
   width: 150px;
-  /* display: flex;
-  flex-direction: column; */
   position: absolute;
   left: 0;
-  top: 30px;
+  top: 40px;
   z-index: 9999;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 0.2rem;
   max-height: 150px;
   overflow: auto;
   color: black;
   font-family: sans-serif;
-  font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
 
   .items {
     width: 100%;
@@ -54,14 +56,18 @@ export const DropDownSelect = styled.div`
   ::-webkit-scrollbar {
       width: 3px;
       background: #F4F4F4;
-      border-radius: 5px;
+      border-radius: 0.2rem;
   }
   ::-webkit-scrollbar-thumb {
       background: deepskyblue;
-      border-radius: 5px;
+      border-radius: 0.2rem;
   }
 
-  @media screen and (max-width: 798px) {
+  @media screen and (max-width: 1086px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 861px) {
     width: 100%;
   }
 
@@ -74,19 +80,6 @@ export const ContentIcon = styled.span`
   color: white;
   position: absolute;
   right: 0;
-  
-  /* .animateIcon {
-  animation: rotateIcon 0.5s forwards;
-
-  @keyframes rotateIcon {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(180deg);
-    }
-  }
-} */
 `
 
 export const AnimateDropDown = styled.div`
@@ -113,23 +106,44 @@ export const ContentTileAndIcon = styled.div`
   align-items: center;
   height: 20px;
 
-  @media screen and (max-width: 798px) {
+  label {
+    position: absolute;
+    color: white;
+    top: -3px;
+    left: 2px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 1086px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 861px) {
     justify-content: center;
     width: 100%;
   }
 
   @media screen and (max-width: 492px) {
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
   }
 ` 
 
 export const BorderButton = styled.div`
   position: relative;
-  border: solid 1px #afb4b6;
+  border: solid 1px white;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
 
-  @media screen and (max-width: 798px) {
+  @media screen and (max-width: 1086px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 861px) {
     width: 50%;
   }
 

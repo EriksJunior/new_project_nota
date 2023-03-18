@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import LeafReducer from "./reducers/LeafReducers";
+import SaleReducer from "./reducers/SaleReducers";
 
 export default configureStore({
   reducer: {
-    leaf: LeafReducer,
+    sale: SaleReducer,
   },
 })
