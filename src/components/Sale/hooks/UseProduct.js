@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 
 import ProductsOfSaleService from "../../../services/ProductsOfSaleService";
 import ProductServices from "../../../services/ProductService"
-import ProductLeafService from "../../../services/ProductLeafService"
 import { validateProductSale } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
@@ -110,16 +109,16 @@ export function UseProduct() {
     dispatch(SAVE_PRODUCTS([INITIAL_VALUE_PRODUTOS]))
   }
 
-  const removeLeafProducts = async (idLeafProduct) => {
-    await ProductLeafService.remove(idLeafProduct)
+  const removeLeafProducts = async (idProductSale) => {
+    await ProductsOfSaleService.delete(idProductSale)
   }
 
-  const handleRemoveProductInTableAndLeafProducts = async (index, idLeafProduct) => {
+  const handleRemoveProductInTableAndSaleProducts = async (index, idProductSale) => {
     if (!produtos[index].id) {
       return removeProductInTable(index)
     }
 
-    await removeLeafProducts(idLeafProduct)
+    await removeLeafProducts(idProductSale)
     removeProductInTable(index)
   }
 
@@ -144,5 +143,5 @@ export function UseProduct() {
     return false
   }
 
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveSaleAndSaleProducts, calculateTotalValue }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndSaleProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveSaleAndSaleProducts, calculateTotalValue }
 }

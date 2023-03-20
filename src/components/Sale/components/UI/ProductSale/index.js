@@ -11,7 +11,7 @@ import { BsFillGearFill } from "react-icons/bs"
 import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItemsAndSave, Scrollllll } from "./styles"
 
 export function ProductSale() {
-  const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveSaleAndSaleProducts, calculateTotalValue } = useContext(SaleContext)
+  const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndSaleProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveSaleAndSaleProducts, calculateTotalValue } = useContext(SaleContext)
   const products = useSelector(state => state.sale.produto)
 
   return (
@@ -69,7 +69,7 @@ export function ProductSale() {
                           <BsFillGearFill role="button" size={20} color={"#02769c"} />
 
                           <div className="dropdownActions">
-                            <DropdownActions index={index} remove={() => handleRemoveProductInTableAndLeafProducts(index, item.id)} />
+                            <DropdownActions index={index} remove={() => handleRemoveProductInTableAndSaleProducts(index, item.id)} />
                           </div>
                         </span>
                       </div>
