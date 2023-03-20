@@ -24,7 +24,7 @@ export function Table({ children }) {
               <tr key={leaf.id} className="underlineCustomer">
                 <td className="text-center ">{leaf.nomeCliente}</td>
                 <td className="text-center ">{leaf.cpfCnpj}</td>
-                <td className="text-center ">{leaf.data.split("-").reverse().join("/")}</td>
+                <td className="text-center ">{`${leaf.data.split(" ")[0].split("-").reverse().join("/")} ${leaf.data.split(" ")[1]}`}</td>
                 <td className="text-center ">{leaf.response.modelo}</td>
                 <td className="text-center ">{leaf.response.nfe}</td>
                 <td className="text-center ">{leaf.status}</td>
