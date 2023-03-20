@@ -6,7 +6,6 @@ import { GlobalContext } from "../../../context/Global/global";
 import SaleService from "../../../services/SaleService";
 
 import { validadeSale } from "../validate";
-import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
 
 export function UseSale() {
@@ -20,19 +19,18 @@ export function UseSale() {
   const cliente = useSelector(state => state.sale.cliente)
   const produtos = useSelector(state => state.sale.produto)
 
-  const { maskCurrency } = Masks()
   const handleChangeSale = (e) => {
     dispatch(SAVE_SALE({ ...pedido, [e.target.name]: e.target.value }))
   }
 
-  const saveSale = async (dataPedido) => {
+  const saveSale = async (sale) => {
     try {
-      validadeSale(dataPedido)
+      validadeSale(sale)
 
-      const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat(dataPedido)
+      // const formattedSale = convertMonetaryValuesToFloat(sale)
       setLoading(true)
-      const id = await SaleService.save(formattedMonetaryValuesLeaf)
-      dispatch(SAVE_SALE({ ...dataPedido, id: id }))
+      const id = await SaleService.save(sale)
+      dispatch(SAVE_SALE({ ...sale, id: id }))
 
       toast("Documento fiscal salvo! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -49,15 +47,13 @@ export function UseSale() {
     }
   }
 
-  const updateSale = async (dataPedido) => {
+  const updateSale = async (sale) => {
     try {
-      validadeSale(dataPedido)
-      const totalDesconto = refTotaDiscountSale.current.value
-      const total = refTotalSale.current.value
+      validadeSale(sale)
 
-      const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat({ ...dataPedido, total: total, desconto: totalDesconto })
+      // const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat({ ...sale })
       setLoading(true)
-      await SaleService.update(formattedMonetaryValuesLeaf)
+      await SaleService.update(sale)
 
       return toast("Documento fiscal atualizado! ✅", {
         position: toast.POSITION.TOP_RIGHT
@@ -97,14 +93,12 @@ export function UseSale() {
     }
   }
 
-  const convertMonetaryValuesToFloat = (leaf) => {
-    const formattedFrete = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
-    const formattedDespesasAcessorias = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
-    const formattedTotal = leaf.total.replace(".", "").replace(".", "").replace(",", ".")
-    const formattedDesconto = leaf.desconto.replace(".", "").replace(".", "").replace(",", ".")
+  // const convertMonetaryValuesToFloat = (sale) => {
+  //   console.log(sale);
+  //   const formattedTotal = sale.valorTotal.replace(".", "").replace(".", "").replace(",", ".")
 
-    return { ...leaf, frete: formattedFrete, despesas_acessorias: formattedDespesasAcessorias, total: formattedTotal, desconto: formattedDesconto }
-  }
+  //   return { ...sale, valorTotal: formattedTotal }
+  // }
 
   const calculateTotalSaleBasedProducts = () => {
     const formattedTotal = produtos.map((prod) => {

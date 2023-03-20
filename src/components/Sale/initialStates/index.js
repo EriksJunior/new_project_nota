@@ -3,19 +3,13 @@ import { DateTime } from 'luxon'
 export const INITIAL_VALUE_PRODUTOS = {
   id: "",
   idProduto: "",
-  idNota: "",
-  codigo: "",
-  ncm: "6109.10.00",
-  cest: "28.038.00",
+  idVenda: "",
+  idFornecedor: "",
   quantidade: "1",
-  unidade: "",
-  peso: "",
-  origem: "0",
+  valorTotal: "",
+  dadosAdicionais: "",
   desconto: "0,00",
   subtotal: "0,00",
-  total: "",
-  classe_imposto: "",
-  informacoes_adicionais: "",
 }
 
 export const INITIAL_VALUE_PEDIDO = {
@@ -25,8 +19,6 @@ export const INITIAL_VALUE_PEDIDO = {
   dataVenda: DateTime.local().toFormat('yyyy-MM-dd'),
   status: "",
   dadosAdicionais: "",
-  desconto: "0,00",
-  total: "0,00",
 }
 
 export const INITIAL_VALUE_RESPONSE_WEBMANIA = {

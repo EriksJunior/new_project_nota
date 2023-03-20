@@ -56,12 +56,12 @@ export const InputSelect = styled.select`
 
 
 export const TdHeaderName = styled.td`
-  width: 30%;
+  width: 40%;
   border-right: 1px solid #b4b2b2;
 `
 
 export const TdBodyName = styled.td`
-  width: 30%;
+  width: 40%;
   border: solid 1px #02769c;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;

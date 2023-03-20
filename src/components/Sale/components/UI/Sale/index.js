@@ -61,28 +61,6 @@ export function Sale() {
 
         <Hr />
 
-        <Colapse title={"Forma de pagamento"}>
-          <div className="row col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-              <label className="form-label">Meio de pagamento</label>
-              <select className="form-select form-select-sm" name="pagamento" value={pedido.pagamento} onChange={handleChangeSale}>
-                {pagamaneto.map((pag) =>
-                  <option key={pag.value} value={pag.value}>{pag.tipo}</option>
-                )}
-              </select>
-            </div>
-
-            <div className="mb-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-              <label className="form-label">Forma de pagamento</label>
-              <select className="form-select form-select-sm" name="forma_pagamento" value={pedido.forma_pagamento} onChange={handleChangeSale}>
-                {formaPagamento.map((formaPag) =>
-                  <option key={formaPag.value} value={formaPag.value}>{formaPag.tipo}</option>
-                )}
-              </select>
-            </div>
-          </div>
-        </Colapse>
-
         <Colapse title={"Parcelas"}>
           {parcelas.map((parcela, index) =>
             <ContentBills className="row col-sm-12 col-md-12 col-lg-12 col-xl-12" key={index}>
@@ -135,7 +113,6 @@ export function Sale() {
           <div className="d-flex flex-wrap justify-content-between">
             <div className="d-flex gap-2">
               <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveOrUpdateSale}>Salvar</button>
-              <button type="button" className="btn btn-primary btn-sm">Emitir</button>
             </div>
 
             <div>

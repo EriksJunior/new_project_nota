@@ -6,9 +6,10 @@ import { SAVE_PRODUCTS } from "../store/reducers/SaleReducers"
 
 import { toast } from "react-toastify";
 
+import ProductsOfSaleService from "../../../services/ProductsOfSaleService";
 import ProductServices from "../../../services/ProductService"
 import ProductLeafService from "../../../services/ProductLeafService"
-import { validadeSale } from "../validate";
+import { validateProductSale } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
 
@@ -55,7 +56,7 @@ export function UseProduct() {
     dispatch(SAVE_PRODUCTS(
       produtos.map((product, i) => {
         if (i === index) {
-          return { ...product, total: formattedTotal };
+          return { ...product, valorTotal: formattedTotal };
         }
         return product;
       })
@@ -66,18 +67,18 @@ export function UseProduct() {
     dispatch(SAVE_PRODUCTS([...produtos, INITIAL_VALUE_PRODUTOS]))
   }
 
-  const saveLeafProducts = async (idSale) => {
+  const saveProductsSale = async (idSale) => {
     try {
       const products = await Promise.all(produtos.map((product) => {
         if (product.id) {
           return product
         }
 
-        if (handleWithBillsBeforeSave(product)) {
+        if (handleWithProductsBeforeSave({ ...product, idVenda: idSale })) {
           return product
         }
-
-        return ProductServices.save({ ...product, idSale: idSale })
+        
+        return ProductsOfSaleService.save({ ...product, idVenda: idSale })
       }))
 
       dispatch(SAVE_PRODUCTS(products))
@@ -90,12 +91,12 @@ export function UseProduct() {
 
   const handleSaveSaleAndSaleProducts = async () => {
     if (pedido.id) {
-      return await saveLeafProducts(pedido.id)
+      return await saveProductsSale(pedido.id)
     }
 
 
-    const idNota = await handleSaveOrUpdateSale(pedido)
-    if (idNota) await saveLeafProducts(idNota)
+    const idSale = await handleSaveOrUpdateSale(pedido)
+    if (idSale) await saveProductsSale(idSale)
   }
 
   const removeProductInTable = (index) => {
@@ -127,11 +128,11 @@ export function UseProduct() {
     setProductsFromSelectBox(products)
   }
 
-  const handleWithBillsBeforeSave = (product) => {
-    const productsFilled = !product.idProduto || !product.unidade || !product.total || !product.subtotal || !product.quantidade || !product.desconto //refatorar, realizar uma forma dinamica de fazer isso
+  const handleWithProductsBeforeSave = (product) => {
+    const productsFilled = !product.idProduto || !product.valorTotal || !product.subtotal || !product.quantidade || !product.desconto //refatorar, realizar uma forma dinamica de fazer isso
 
     if (productsFilled) {
-      const result = validadeSale(product)
+      const result = validateProductSale(product)
 
       toast.warning(result, {
         position: toast.POSITION.TOP_RIGHT
