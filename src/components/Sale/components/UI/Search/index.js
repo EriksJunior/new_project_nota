@@ -4,14 +4,14 @@ import { SaleContext } from "../../../context"
 import { InputSearch } from "../../../../ContentSearch"
 import { ContentSearch } from "../Search/style"
 
-export function SearchTaxDocument({ children }) {
+export function SearchSale({ children }) {
   const { handleNewLeaf } = useContext(SaleContext)
 
   return (
     <div className="card">
       <div className="card-body">
         <div style={{ height: "50px" }}>
-          <button className="btn btn-primary" onClick={handleNewLeaf}>Novo Documento</button>
+          <button className="btn btn-primary" onClick={handleNewLeaf}>Nova Venda</button>
         </div>
 
         <ContentSearch className="col-sm-12 col-md-12 col-lg-12 col-xl-12">

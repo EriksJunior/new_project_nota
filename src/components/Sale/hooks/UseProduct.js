@@ -13,7 +13,7 @@ import { Masks } from "../../../utils/masks/Masks";
 import { INITIAL_VALUE_PRODUTOS } from "../initialStates"
 
 export function UseProduct() {
-  const { handleSaveLeaf } = UseSale()
+  const { handleSaveOrUpdateSale } = UseSale()
   const [productsFromSelectBox, setProductsFromSelectBox] = useState([])
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.sale.pedido)
@@ -66,7 +66,7 @@ export function UseProduct() {
     dispatch(SAVE_PRODUCTS([...produtos, INITIAL_VALUE_PRODUTOS]))
   }
 
-  const saveLeafProducts = async (idLeaf) => {
+  const saveLeafProducts = async (idSale) => {
     try {
       const products = await Promise.all(produtos.map((product) => {
         if (product.id) {
@@ -77,7 +77,7 @@ export function UseProduct() {
           return product
         }
 
-        return ProductLeafService.save({ ...product, idNota: idLeaf })
+        return ProductServices.save({ ...product, idSale: idSale })
       }))
 
       dispatch(SAVE_PRODUCTS(products))
@@ -88,13 +88,13 @@ export function UseProduct() {
     }
   }
 
-  const handleSaveLeafAndLeafProducts = async () => {
+  const handleSaveSaleAndSaleProducts = async () => {
     if (pedido.id) {
       return await saveLeafProducts(pedido.id)
     }
 
 
-    const idNota = await handleSaveLeaf(pedido)
+    const idNota = await handleSaveOrUpdateSale(pedido)
     if (idNota) await saveLeafProducts(idNota)
   }
 
@@ -143,5 +143,5 @@ export function UseProduct() {
     return false
   }
 
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveSaleAndSaleProducts, calculateTotalValue }
 }

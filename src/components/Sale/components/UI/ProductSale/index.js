@@ -10,8 +10,8 @@ import { BsFillGearFill } from "react-icons/bs"
 
 import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItemsAndSave, Scrollllll } from "./styles"
 
-export function ProductNfe() {
-  const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue } = useContext(SaleContext)
+export function ProductSale() {
+  const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveSaleAndSaleProducts, calculateTotalValue } = useContext(SaleContext)
   const products = useSelector(state => state.sale.produto)
 
   return (
@@ -86,7 +86,7 @@ export function ProductNfe() {
 
             <ContentButtonAddMoreItemsAndSave>
               <button className="btn btn-primary btn-sm" onClick={addProductInTable}>Adicionar Produtos</button>
-              <button className="btn btn-primary btn-sm" hidden={!products[0].idProduto} onClick={handleSaveLeafAndLeafProducts}>Salvar</button>
+              <button className="btn btn-primary btn-sm" hidden={!products[0].idProduto} onClick={handleSaveSaleAndSaleProducts}>Salvar</button>
             </ContentButtonAddMoreItemsAndSave>
           </ContentTable>
         </Scrollllll>

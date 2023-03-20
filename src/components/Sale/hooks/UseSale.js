@@ -114,12 +114,10 @@ export function UseSale() {
 
       return (parseFloat(subtotal) * quantidade) - desconto
     }, 0)
-    const formattedFrete = pedido.frete.replace(".", "").replace(",", ".").replace(",", ".")
 
     const totalValuesProducts = formattedTotal.reduce((oldValue, value) => oldValue + value, 0)
-    const totalMonetary = totalValuesProducts + parseFloat(formattedFrete)
 
-    return totalMonetary.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+    return totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
 
   const calculateTotalDiscountSale = () => {

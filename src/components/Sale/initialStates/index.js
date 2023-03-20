@@ -20,45 +20,13 @@ export const INITIAL_VALUE_PRODUTOS = {
 
 export const INITIAL_VALUE_PEDIDO = {
   id: "",
-  ID: "", // Controle das solicitações de emissão por pedido ou ID de processamento.
-  operacao: "1",
-  natureza_operacao: "Venda de produção do estabelecimento",
-  modelo: "1", //2 para NFC-e
-  ambiente: "2", //2 para Homologação
   idCliente: "",
-  finalidade: "1",
-  url_notificacao: "teste",
-  data_nfe: DateTime.local().toFormat('yyyy-MM-dd'),
-  id_webmania: "",
-  response: {
-    chave: "",
-    danfe: "",
-    danfe_etiqueta: "",
-    danfe_simples: "",
-    log: {},
-    modelo: "",
-    motivo: "",
-    nfe: "",
-    serie: "",
-    status: "",
-    uuid: "",
-    xml: ""
-  },
-  response_cancelamento: "",
-  pagamento: "0",
-  forma_pagamento: "01",
-  presenca: "1",
-  modalidade_frete: "9",
-  frete: "0,00",
+  idFuncionario: "",
+  dataVenda: DateTime.local().toFormat('yyyy-MM-dd'),
+  status: "",
+  dadosAdicionais: "",
   desconto: "0,00",
   total: "0,00",
-  intermediador: "",
-  cnpj_intermediador: "",
-  id_intermediador: "",
-  despesas_acessorias: "0,00",
-  informacoes_fisco: "",
-  informacoes_complementares: "",
-  status: "Não Enviada",
 }
 
 export const INITIAL_VALUE_RESPONSE_WEBMANIA = {

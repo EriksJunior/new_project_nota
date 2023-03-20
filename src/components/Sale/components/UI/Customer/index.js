@@ -7,10 +7,12 @@ import { ContentHeaderTitle } from "../../../styles"
 import { ContentButtonUpdateCustomer } from "./styles"
 
 import { consumidorFinalNfe, constribuinte } from "../../../../../common/nfe"
+import { Masks } from "../../../../../utils/masks/Masks"
 
 export function Customer() {
   const { customersFromSelectBox, handleChangeIdCustomerAndList, handleChangeCustomer, updateCustomer } = useContext(SaleContext)
   const customer = useSelector(state => state.sale.cliente)
+  const {maskCep, maskCpfCnpj} = Masks()
 
   return (
     <div className="card">
@@ -33,7 +35,7 @@ export function Customer() {
 
           <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" hidden={!customer.id}>
             <label className="form-label">CPF/CNPJ</label>
-            <input type="text" className="form-control form-control-sm" name="cpfCnpj" value={customer.cpfCnpj || ""} onChange={handleChangeCustomer} />
+            <input type="text" className="form-control form-control-sm" onKeyUp={maskCpfCnpj} name="cpfCnpj" value={customer.cpfCnpj || ""} onChange={handleChangeCustomer} />
           </div>
 
           <div className="mb-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" hidden={!customer.id}>
@@ -43,7 +45,7 @@ export function Customer() {
 
           <div className="mb-3 col-sm-2 col-md-2 col-lg-2 col-xl-2" hidden={!customer.id}>
             <label className="form-label">CEP</label>
-            <input type="text" className="form-control form-control-sm" name="cep" value={customer.cep || ""} onChange={handleChangeCustomer} />
+            <input type="text" className="form-control form-control-sm" onKeyUp={maskCep} name="cep" value={customer.cep || ""} onChange={handleChangeCustomer} />
           </div>
 
           <div className="mb-3 col-sm-4 col-md-4 col-lg-4 col-xl-4" hidden={!customer.id}>
