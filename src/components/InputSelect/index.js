@@ -37,7 +37,7 @@ export function InputSelect({ title = "Filtro", data = ["Cliente", "CPF/CNPJ", "
               {data.map((item, index) =>
                 <div key={index} style={{ width: "100%" }} className="items" onClick={() => {
                   setClickedType(item)
-                  getFilter(item)
+                  getFilter(state => ({...state, filter: item}))
                 }}>
                   <span>{item}</span>
                 </div>
