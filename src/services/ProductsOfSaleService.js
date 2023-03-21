@@ -1,9 +1,7 @@
 import { api } from "../utils/configs/api";
 class ProductsOfSaleService {
-  async save(productsSale) {
-    const formattedTotal = productsSale.valorTotal.replace(".", "").replace(".", "").replace(",", ".")
-
-    const { data: { id } } = await api.post('/products-of-sale', { ...productsSale, valorTotal: formattedTotal })
+  async save(productsSale, formattedProduct) {
+    const { data: { id } } = await api.post('/products-of-sale', formattedProduct)
     return { ...productsSale, id: id }
   }
 

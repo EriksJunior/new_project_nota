@@ -21,14 +21,9 @@ export function UseProduct() {
   const { maskCurrency } = Masks()
 
   const handleChangeProducts = (e, index) => {
-    const prodAux = productsFromSelectBox.find(prod => prod.id === e.target.value)
-
     dispatch(SAVE_PRODUCTS(
       produtos.map((product, i) => {
         if (i === index) {
-          if (e.target.name === "idProduto") {
-            return { ...product, [e.target.name]: e.target.value, classe_imposto: prodAux.refFiscal };
-          }
           return { ...product, [e.target.name]: e.target.value };
         }
         return product;
@@ -77,7 +72,8 @@ export function UseProduct() {
           return product
         }
         
-        return ProductsOfSaleService.save({ ...product, idVenda: idSale })
+        const formattedProduct = handleValuesBeforeSave(product, idSale)
+        return ProductsOfSaleService.save(product, formattedProduct)
       }))
 
       dispatch(SAVE_PRODUCTS(products))
@@ -86,6 +82,15 @@ export function UseProduct() {
         position: toast.POSITION.TOP_RIGHT
       });
     }
+  }
+
+  const handleValuesBeforeSave = (product, idVenda) => {
+    const newProduct = {...product, idVenda}
+    const formattedTotal = newProduct.valorTotal.replace(".", "").replace(".", "").replace(",", ".")
+    Reflect.deleteProperty(newProduct, 'subtotal')
+
+
+    return {...newProduct, valorTotal: formattedTotal}
   }
 
   const handleSaveSaleAndSaleProducts = async () => {
@@ -128,7 +133,7 @@ export function UseProduct() {
   }
 
   const handleWithProductsBeforeSave = (product) => {
-    const productsFilled = !product.idProduto || !product.valorTotal || !product.subtotal || !product.quantidade || !product.desconto //refatorar, realizar uma forma dinamica de fazer isso
+    const productsFilled = !product.idProduto || !product.valorTotal || !product.quantidade || !product.desconto //refatorar, realizar uma forma dinamica de fazer isso
 
     if (productsFilled) {
       const result = validateProductSale(product)
