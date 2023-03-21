@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+export const InputLabel = styled.label`
+  position: absolute;
+  color: white;
+  transition: all 0.3s;
+  width: 100%;
+  top: -3px;
+  left: 2px;
+  font-size: 12px;
+  cursor: text;
+`
+
 export const Input = styled.input`
   border: none;
   width: 100%;
@@ -8,8 +19,10 @@ export const Input = styled.input`
   color: white;
     &:focus{
       outline: none;
+      + ${InputLabel} {
+        top: -20px;
+      }
     }
-
   `
 
 export const ContentInputSearch = styled.div`
@@ -70,16 +83,6 @@ export const BorderInput = styled.div`
   border-radius: 5px;
   height: 35px;
 
-  label {
-    position: absolute;
-    color: white;
-    width: 100%;
-    top: -3px;
-    left: 2px;
-    font-size: 12px;
-    cursor: text;
-  }
-
   @media screen and (max-width: 1086px) {
     width: 50%;
   }
@@ -125,10 +128,12 @@ export const InputDate = styled.input`
   padding-left: 5px;
   padding-right: 5px;
 
-  :focus{
-    outline: none;
-
-  }
+  &:focus{
+      outline: none;
+      + ${InputLabel} {
+        top: -20px;
+      }
+    }
 
   @media screen and (max-width: 1086px) {
     width: 100%;

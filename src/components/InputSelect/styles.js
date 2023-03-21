@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+export const InputLabel = styled.label`
+  position: absolute;
+  color: white;
+  top: -3px;
+  left: 2px;
+  font-size: 12px;
+  transition: all 0.3s;
+  cursor: pointer;
+  ${({focused}) => focused && `top: -20px`}
+`
+
 export const ButtonFilter = styled.button`
   position: relative;
   width: 150px;
@@ -107,12 +118,7 @@ export const ContentTileAndIcon = styled.div`
   height: 20px;
 
   label {
-    position: absolute;
-    color: white;
-    top: -3px;
-    left: 2px;
-    font-size: 12px;
-    cursor: pointer;
+   
   }
 
   @media screen and (max-width: 1086px) {

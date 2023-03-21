@@ -1,6 +1,6 @@
 
 import { useState, useRef, useEffect } from "react"
-import { BorderButton, ButtonFilter, DropDownSelect, ContentTileAndIcon, ContentIcon, AnimateDropDown } from "./styles"
+import { BorderButton, ButtonFilter, InputLabel, DropDownSelect, ContentTileAndIcon, ContentIcon, AnimateDropDown } from "./styles"
 import { BsArrowDownShort } from "react-icons/bs"
 
 export function InputSelect({ title = "Filtro", data = ["Cliente", "CPF/CNPJ", "NF-e", "NFC-e"], getFilter }) {
@@ -23,7 +23,7 @@ export function InputSelect({ title = "Filtro", data = ["Cliente", "CPF/CNPJ", "
     <BorderButton>
       <ButtonFilter placeholder="Filtro" ref={isClicked} className="isOpen" onClick={() => setOpenDropDown(!openDropDown)}>
         <ContentTileAndIcon>
-          <label>{title}</label>
+          <InputLabel focused={openDropDown}>{title}</InputLabel>
           <span>{clickedType || "Selecione"}</span>
           <ContentIcon>
             <BsArrowDownShort size={25} color={"white"} className="animateIcon" />
@@ -37,7 +37,7 @@ export function InputSelect({ title = "Filtro", data = ["Cliente", "CPF/CNPJ", "
               {data.map((item, index) =>
                 <div key={index} style={{ width: "100%" }} className="items" onClick={() => {
                   setClickedType(item)
-                  getFilter(item)
+                  getFilter(state => ({...state, filter: item}))
                 }}>
                   <span>{item}</span>
                 </div>
