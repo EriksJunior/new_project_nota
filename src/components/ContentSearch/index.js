@@ -7,7 +7,6 @@ import { ContentInputSearch, Input, InputLabel, BorderInput, BorderInputDate, In
 
 export function InputSearch({ search }) {
   const [wantedItems, setWantedItems] = useState(INITIAL_STATE_SEARCH_LEAF)
-  const [filter, setFilter] = useState("") 
 
   return (
     <ContentInputSearch>
@@ -17,7 +16,7 @@ export function InputSearch({ search }) {
           <InputLabel htmlFor="inputSearch">Pesquisar</InputLabel>
         </BorderInput>
 
-        <InputSelect getFilter={setFilter}/>
+        <InputSelect getFilter={setWantedItems}/>
       </ContentSearchAndFilter>
 
 
@@ -34,7 +33,7 @@ export function InputSearch({ search }) {
       </ContentDates>
 
       <Search>
-        <BsSearch color="white" onClick={() => search(wantedItems.text, filter, 1, wantedItems.startDate, wantedItems.endDate)} />
+        <BsSearch color="white" onClick={() => search(wantedItems.text, setWantedItems.filter, 1, wantedItems.startDate, wantedItems.endDate)} />
       </Search>
     </ContentInputSearch>
   )
