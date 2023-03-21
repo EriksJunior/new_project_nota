@@ -20,7 +20,7 @@ class LeafService {
   }
 
   async searchLeaf(text, filter, page, startDate, endDate) {
-    const { data } = await api.get(`/nota/?q=${text}&type=${filter}&page=${page}&startDate=${startDate}&endDate=${endDate}`)
+    const { data: { data } } = await api.get(`/nota/?q=${text}&type=${filter}&page=${page}&startDate=${startDate}&endDate=${endDate}`)
     return data
   }
 

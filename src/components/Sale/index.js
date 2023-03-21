@@ -3,7 +3,7 @@ import { useEffect, useContext } from "react"
 import { SaleContext } from "./context"
 
 import { Nav } from "./components/UI/Nav"
-import { ProductNfe } from "./components/UI/ProductNfe"
+import { ProductSale } from "./components/UI/ProductSale"
 import { Customer } from "./components/UI/Customer"
 import { Sale } from "./components/UI/Sale"
 import { TransporteNfe } from "./components/UI/TransporteNfe"
@@ -29,7 +29,7 @@ export function FormSale() {
           </Div>
 
           <Div hidden={navItems.produto}>
-            <ProductNfe />
+            <ProductSale />
           </Div>
 
           <Div hidden={navItems.pedido}>

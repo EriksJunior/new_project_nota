@@ -8,10 +8,10 @@ import { DropdownActions } from "../DropdownActions"
 import { ContentHeaderTitle } from "../../../styles"
 import { BsFillGearFill } from "react-icons/bs"
 
-import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderUnit, TdBodyUnit, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItemsAndSave, Scrollllll } from "./styles"
+import { ContentTable, InputTable, Table, InputSelect, TableHeader, TrBodyContent, TdHeaderName, TdBodyName, TdHeaderAmmount, TdBodyAmmount, TdHeaderSubtotal, TdBodySubtotal, TdHeaderDiscount, TdBodyDiscount, TdHeaderTotal, TdBodyTotal, TdActions, ContentButtonAddMoreItemsAndSave, Scrollllll } from "./styles"
 
-export function ProductNfe() {
-  const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue } = useContext(SaleContext)
+export function ProductSale() {
+  const { productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndSaleProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveSaleAndSaleProducts, calculateTotalValue } = useContext(SaleContext)
   const products = useSelector(state => state.sale.produto)
 
   return (
@@ -28,7 +28,6 @@ export function ProductNfe() {
               <thead>
                 <TableHeader>
                   <TdHeaderName className="colorTdHeader fistTdItemHeader">Nome</TdHeaderName>
-                  <TdHeaderUnit className="colorTdHeader">Unidade</TdHeaderUnit>
                   <TdHeaderAmmount className="colorTdHeader">Qtd.</TdHeaderAmmount>
                   <TdHeaderSubtotal className="colorTdHeader">Subtotal</TdHeaderSubtotal>
                   <TdHeaderDiscount className="colorTdHeader">Desconto</TdHeaderDiscount>
@@ -48,10 +47,6 @@ export function ProductNfe() {
                       </InputSelect>
                     </TdBodyName>
 
-                    <TdBodyUnit>
-                      <InputTable disabled={item.id} type="text" className="form-control-nfe form-control-sm" placeholder="UN" name='unidade' value={products[index].unidade} onChange={(e) => handleChangeProducts(e, index)} />
-                    </TdBodyUnit>
-
                     <TdBodyAmmount>
                       <InputTable disabled={item.id} type="text" className="form-control-nfe form-control-sm" placeholder="QNT" name='quantidade' value={products[index].quantidade} onChange={(e) => handleChangeProducts(e, index)} onKeyUp={() => calculateTotalValue(index)} />
                     </TdBodyAmmount>
@@ -65,7 +60,7 @@ export function ProductNfe() {
                     </TdBodyDiscount>
 
                     <TdBodyTotal>
-                      <InputTable disabled type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='total' value={products[index].total} onChange={(e) => handleChangeMonetaryValues(e, index)} />
+                      <InputTable disabled type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='valorTotal' value={products[index].valorTotal} onChange={(e) => handleChangeMonetaryValues(e, index)} />
                     </TdBodyTotal>
 
                     <TdActions>
@@ -74,7 +69,7 @@ export function ProductNfe() {
                           <BsFillGearFill role="button" size={20} color={"#02769c"} />
 
                           <div className="dropdownActions">
-                            <DropdownActions index={index} remove={() => handleRemoveProductInTableAndLeafProducts(index, item.id)} />
+                            <DropdownActions index={index} remove={() => handleRemoveProductInTableAndSaleProducts(index, item.id)} />
                           </div>
                         </span>
                       </div>
@@ -86,7 +81,7 @@ export function ProductNfe() {
 
             <ContentButtonAddMoreItemsAndSave>
               <button className="btn btn-primary btn-sm" onClick={addProductInTable}>Adicionar Produtos</button>
-              <button className="btn btn-primary btn-sm" hidden={!products[0].idProduto} onClick={handleSaveLeafAndLeafProducts}>Salvar</button>
+              <button className="btn btn-primary btn-sm" hidden={!products[0].idProduto} onClick={handleSaveSaleAndSaleProducts}>Salvar</button>
             </ContentButtonAddMoreItemsAndSave>
           </ContentTable>
         </Scrollllll>

@@ -1,8 +1,8 @@
 import { useContext } from "react"
 import { SaleContext } from "../context"
 
-import { AreaTaxDocument } from "./AreaTaxDocument"
-import { CreateTaxDocument } from "./CreateTaxDocument"
+import { AreaSale } from "./AreaSale"
+import { CreateSale } from "./CreateSale"
 import { AnimateCard } from "../../styles"
 
 export function FormSale() {
@@ -12,11 +12,11 @@ export function FormSale() {
     <div>
       {openLayouts ?
         <AnimateCard>
-          <CreateTaxDocument />
+          <CreateSale />
         </AnimateCard>
         :
         <AnimateCard>
-          <AreaTaxDocument />
+          <AreaSale />
         </AnimateCard>
       }
     </div>

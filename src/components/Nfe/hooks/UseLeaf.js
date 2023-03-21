@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 export function UseLeaf() {
   const { loading, setLoading } = useContext(GlobalContext)
   const [openModal, setOpenModal] = useState("hide")
-  const [dataSearchLeaf, setDataSearchLeaf] = useState("")
+  const [dataSearchLeaf, setDataSearchLeaf] = useState([])
   const refValorTotalPedido = useRef("")
   const refTotalDescontoPedido = useRef("")
 
@@ -159,5 +159,5 @@ export function UseLeaf() {
     await findById()
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, loading, searchLeaf }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, loading, searchLeaf, dataSearchLeaf }
 }

@@ -1,7 +1,7 @@
 import { api } from "../utils/configs/api";
 class SaleService {
   async save(nota) {
-    const { data: { id } } = await api.post('/nota', nota)
+    const { data: { id } } = await api.post('/sales', nota)
     return id
   }
 
