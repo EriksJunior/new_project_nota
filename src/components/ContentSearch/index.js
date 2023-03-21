@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { InputSelect } from "../InputSelect"
 import { BsSearch } from "react-icons/bs"
 
 import { INITIAL_STATE_SEARCH_LEAF } from "./initialStates"
-import { ContentInputSearch, Input, BorderInput, BorderInputDate, InputDate, ContentDates, ContentSearchAndFilter, Search } from "./styles"
+import { ContentInputSearch, Input, InputLabel, BorderInput, BorderInputDate, InputDate, ContentDates, ContentSearchAndFilter, Search } from "./styles"
 
 export function InputSearch({ search }) {
   const [wantedItems, setWantedItems] = useState(INITIAL_STATE_SEARCH_LEAF)
@@ -13,8 +13,8 @@ export function InputSearch({ search }) {
     <ContentInputSearch>
       <ContentSearchAndFilter>
         <BorderInput>
-          <label htmlFor="inputSearch">Pesquisar</label>
-          <Input name="text" id="inputSearch" onChange={({ target }) => setWantedItems({ ...wantedItems, text: target.value })} />
+          <Input name="text" className="inputTextSearch" id="inputSearch" onChange={({ target }) => setWantedItems({ ...wantedItems, text: target.value })} />
+          <InputLabel htmlFor="inputSearch">Pesquisar</InputLabel>
         </BorderInput>
 
         <InputSelect getFilter={setFilter}/>
@@ -23,13 +23,13 @@ export function InputSearch({ search }) {
 
       <ContentDates>
         <BorderInputDate className="startDate">
-          <label htmlFor="inputStartDate">Data inicio</label>
           <InputDate type="date" id="inputStartDate" onChange={({ target }) => setWantedItems({ ...wantedItems, startDate: target.value })}/>
+          <InputLabel htmlFor="inputStartDate">Data inicio</InputLabel>
         </BorderInputDate>
 
         <BorderInputDate className="endDate">
-          <label htmlFor="inputEndDate">Data Fim</label>
           <InputDate type="date" id="inputEndDate" onChange={({ target }) => setWantedItems({ ...wantedItems, endDate: target.value })}/>
+          <InputLabel htmlFor="inputEndDate">Data Fim</InputLabel>
         </BorderInputDate>
       </ContentDates>
 
