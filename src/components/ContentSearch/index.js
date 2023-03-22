@@ -11,7 +11,7 @@ export function InputSearch({ search }) {
   return (
     <ContentInputSearch>
       <ContentSearchAndFilter>
-        <BorderInput>
+        <BorderInput >
           <Input name="text" className="inputTextSearch" id="inputSearch" onChange={({ target }) => setWantedItems({ ...wantedItems, text: target.value })} />
           <InputLabel htmlFor="inputSearch">Pesquisar</InputLabel>
         </BorderInput>
