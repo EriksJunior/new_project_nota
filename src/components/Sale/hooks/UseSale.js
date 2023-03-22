@@ -13,6 +13,7 @@ export function UseSale() {
   const refTotalSale = useRef("")
   const refTotaDiscountSale = useRef("")
   const [openModal, setOpenModal] = useState("hide")
+  const [dataSearchSale, setDataSearchSale] = useState([])
 
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.sale.pedido)
@@ -79,9 +80,9 @@ export function UseSale() {
     }
   }
 
-  const searchLeaf = async () => {
-    const leafs = await SaleService.search()
-    console.log(leafs)
+  const searchSale = async (text, filter, page, startDate, endDate) => {
+    const sales = await SaleService.search(text, filter, page, startDate, endDate)
+    setDataSearchSale(sales)
   }
 
   const handleSaveOrUpdateSale = async () => {
@@ -127,5 +128,5 @@ export function UseSale() {
 
 
 
-  return { handleChangeSale, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal }
+  return { handleChangeSale, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal, searchSale, dataSearchSale }
 }
