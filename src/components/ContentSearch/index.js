@@ -5,18 +5,19 @@ import { BsSearch } from "react-icons/bs"
 import { INITIAL_STATE_SEARCH_LEAF } from "./initialStates"
 import { ContentInputSearch, Input, InputLabel, BorderInput, BorderInputDate, InputDate, ContentDates, ContentSearchAndFilter, Search } from "./styles"
 
-export function InputSearch({ search }) {
+export function InputSearch({ search, dataFilter = [] }) {
   const [wantedItems, setWantedItems] = useState(INITIAL_STATE_SEARCH_LEAF)
+  const [filter, setFilter] = useState("") 
 
   return (
     <ContentInputSearch>
       <ContentSearchAndFilter>
-        <BorderInput>
+        <BorderInput >
           <Input name="text" className="inputTextSearch" id="inputSearch" onChange={({ target }) => setWantedItems({ ...wantedItems, text: target.value })} />
           <InputLabel htmlFor="inputSearch">Pesquisar</InputLabel>
         </BorderInput>
 
-        <InputSelect getFilter={setWantedItems}/>
+        <InputSelect getFilter={setFilter} data={dataFilter}/>
       </ContentSearchAndFilter>
 
 
@@ -33,7 +34,7 @@ export function InputSearch({ search }) {
       </ContentDates>
 
       <Search>
-        <BsSearch color="white" onClick={() => search(wantedItems.text, setWantedItems.filter, 1, wantedItems.startDate, wantedItems.endDate)} />
+        <BsSearch color="white" onClick={() => search(wantedItems.text, filter, 1, wantedItems.startDate, wantedItems.endDate)} />
       </Search>
     </ContentInputSearch>
   )

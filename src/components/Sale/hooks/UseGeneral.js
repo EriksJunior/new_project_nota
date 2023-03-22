@@ -4,19 +4,19 @@ import { INITIAL_VALUE_NAV_ITEMS } from "../initialStates";
 
 export function UseGeneral() {
   const [navItems, setNavItems] = useState(INITIAL_VALUE_NAV_ITEMS)
-  const [openAreaLeaf, setOpenAreaLeaf] = useState(false)
+  const [openAreaSale, setOpenAreaSale] = useState(false)
   const [openLayouts, setOpenLayouts] = useState(false)
 
   const handleRenderNavItem = (value) => {
     setNavItems({ ...navItems, cliente: true, produto: true, pedido: true, transporte: true, [value]: false })
   }
 
-  const handleNewLeaf = () => {
+  const handleNewSale = () => {
     setOpenLayouts(true)
   }
 
-    const handleOpenAreaLeaf = async () => {
-    setOpenAreaLeaf(true)
+    const handleOpenAreaSale = async () => {
+    setOpenAreaSale(true)
   }
 
   const switchBetweenComponents = () => {
@@ -26,5 +26,5 @@ export function UseGeneral() {
   }
 
 
-  return { handleRenderNavItem, navItems, openLayouts, handleNewLeaf, switchBetweenComponents, handleOpenAreaLeaf }
+  return { handleRenderNavItem, navItems, openLayouts, handleNewSale, switchBetweenComponents, handleOpenAreaSale }
 }

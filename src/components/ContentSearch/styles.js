@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const InputLabel = styled.label`
   position: absolute;
-  color: white;
+  color: #b4b2b2;
   transition: all 0.3s;
   width: 100%;
   top: -3px;
@@ -16,12 +16,14 @@ export const Input = styled.input`
   width: 100%;
   height: 20px;
   background-color: transparent;
-  color: white;
+  color: #b4b2b2;
     &:focus{
       outline: none;
       + ${InputLabel} {
         top: -20px;
-      }
+        color: #86b7fe;
+      };
+      height: 100%;
     }
   `
 
@@ -50,6 +52,35 @@ export const ContentInputSearch = styled.div`
   }
 `
 
+export const BorderInput = styled.div`
+  position: relative;
+  display: flex;
+  padding-bottom: 2px;
+  align-items: flex-end;
+  border: 1px solid #b4b2b2;
+  border-radius: 5px;
+  height: 35px;
+  transition: all 0.3s;
+
+  &:focus-within {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.10rem deepskyblue;
+  }
+
+  @media screen and (max-width: 1086px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 861px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 492px) {
+    width: 100%;
+  }
+`
+
 export const ContentSearchAndFilter = styled.div`
   display: flex;
   gap: 15px;
@@ -74,40 +105,25 @@ export const ContentSearchAndFilter = styled.div`
   }
 `
 
-export const BorderInput = styled.div`
-  position: relative;
-  display: flex;
-  padding-bottom: 2px;
-  align-items: flex-end;
-  border: solid 1px white;
-  border-radius: 5px;
-  height: 35px;
-
-  @media screen and (max-width: 1086px) {
-    width: 50%;
-  }
-
-  @media screen and (max-width: 861px) {
-    width: 50%;
-  }
-
-  @media screen and (max-width: 492px) {
-    width: 100%;
-  }
-`
-
 export const BorderInputDate = styled.div`
   position: relative;
   display: flex;
   padding-bottom: 2px;
   align-items: flex-end;
-  border: solid 1px white;
+  border: solid 1px #b4b2b2;
   border-radius: 5px;
   height: 35px;
+  transition: all 0.3s;
+
+  &:focus-within {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.10rem deepskyblue;
+  }
 
   label {
     position: absolute;
-    color: white;
+    color: #b4b2b2;
     width: 100%;
     top: -3px;
     left: 2px;
@@ -120,19 +136,22 @@ export const InputDate = styled.input`
   width: 150px;
   height: 25px;
   background-color: transparent;
-  color: white;
+  color: #b4b2b2;
   border: none;
   border-radius: 0.2rem;
   display: block;
   padding-top: 5px;
   padding-left: 5px;
   padding-right: 5px;
+  transition: all 0.3s;
 
   &:focus{
       outline: none;
       + ${InputLabel} {
         top: -20px;
-      }
+        color: #86b7fe;
+      };
+      height: 100%;
     }
 
   @media screen and (max-width: 1086px) {

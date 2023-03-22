@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const InputLabel = styled.label`
   position: absolute;
-  color: white;
+  color: #b4b2b2;
   top: -3px;
   left: 2px;
   font-size: 12px;
   transition: all 0.3s;
   cursor: pointer;
-  ${({focused}) => focused && `top: -20px`}
+  ${({focused}) => focused && `top: -20px; color: #86b7fe;`}
 `
 
 export const ButtonFilter = styled.button`
@@ -16,7 +16,7 @@ export const ButtonFilter = styled.button`
   width: 150px;
   height: 100%;
   background-color: transparent;
-  color: white;
+  color: #b4b2b2;
   border-radius: 0.2rem;
   border: none;
   display: block;
@@ -117,10 +117,6 @@ export const ContentTileAndIcon = styled.div`
   align-items: center;
   height: 20px;
 
-  label {
-   
-  }
-
   @media screen and (max-width: 1086px) {
     width: 100%;
   }
@@ -138,12 +134,19 @@ export const ContentTileAndIcon = styled.div`
 
 export const BorderButton = styled.div`
   position: relative;
-  border: solid 1px white;
+  border: solid 1px #b4b2b2;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 35px;
+  transition: all 0.3s;
+
+  &:focus-within {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.10rem deepskyblue;
+  }
 
   @media screen and (max-width: 1086px) {
     width: 50%;

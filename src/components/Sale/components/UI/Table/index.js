@@ -1,8 +1,10 @@
+import { useContext } from "react"
+import { SaleContext } from "../../../context"
 import { ContentTable } from "./style"
 import { AnimateCard } from "../../../../styles"
 
-export function Table({children}) {
-
+export function Table({ children }) {
+  const { dataSearchSale } = useContext(SaleContext)
   return (
     <div>
       <ContentTable className="table-responsive">
@@ -10,24 +12,22 @@ export function Table({children}) {
           <thead>
             <tr>
               <th className="text-center">Cliente</th>
-              <th className="text-center" >Numero NFe</th>
-              <th className="text-center">Data emissão</th>
-              <th className="text-center">Valor total</th>
+              <th className="text-center">Status</th>
+              <th className="text-center">Data</th>
             </tr>
           </thead>
           <tbody>
-            {/* {returnedClient.map((e) =>
-              <tr key={e.id} className="underlineCustomer" onClick={() => handleOpenAreaCustomer(e.id)}>
-                <td className="text-center ">{e.nome}</td>
-                <td className="text-center ">{e.cpfCnpj}</td>
-                <td className="text-center ">{e.telefone}</td>
-                <td className="text-center ">{e.dataNascimento?.split("-").reverse().join("/")}</td>
+            {dataSearchSale.map((e) =>
+              <tr key={e.id} className="underlineCustomer" >
+                <td className="text-center ">{e.nomeCliente}</td>
+                <td className="text-center ">{e.status}</td>
+                <td className="text-center ">{e.data?.split("-").reverse().join("/")}</td>
               </tr>
-            )} */}
+            )}
           </tbody>
         </table>
       </ContentTable>
-      
+
       <AnimateCard>
         {children}
       </AnimateCard>
