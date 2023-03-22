@@ -60,6 +60,7 @@ export const BorderInput = styled.div`
   border: 1px solid #b4b2b2;
   border-radius: 5px;
   height: 35px;
+  transition: all 0.3s;
 
   &:focus-within {
     border-color: #86b7fe;
@@ -112,6 +113,7 @@ export const BorderInputDate = styled.div`
   border: solid 1px #b4b2b2;
   border-radius: 5px;
   height: 35px;
+  transition: all 0.3s;
 
   &:focus-within {
     border-color: #86b7fe;

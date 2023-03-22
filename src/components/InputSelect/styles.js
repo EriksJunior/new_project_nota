@@ -140,6 +140,7 @@ export const BorderButton = styled.div`
   justify-content: center;
   align-items: center;
   height: 35px;
+  transition: all 0.3s;
 
   &:focus-within {
     border-color: #86b7fe;

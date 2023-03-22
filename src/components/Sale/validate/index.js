@@ -18,7 +18,6 @@ const validadeSale = (sale) => {
 }
 
 const validateProductSale = (saleProducts) => {
-  console.log(saleProducts);
     const schema = z.object({
       idVenda: z.string().uuid("Deve ser salvo a venda para prosseguir"),
       idProduto: z.string().uuid("Deve ser selecionado ao menos um (Produto) para prosseguir"),

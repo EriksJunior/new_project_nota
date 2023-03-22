@@ -7,6 +7,12 @@ import { ContentSearch } from "../Search/style"
 
 export function SearchTaxDocument({ children }) {
   const { handleNewLeaf, searchLeaf } = useContext(LeafContext)
+  const typesFilter = [
+    {text: "Cliente", value: "nomeCliente"},
+    {text: "CPF/CNPJ", value: "cpfCnpj"},
+    {text: "NF-e", value :"1"},
+    {text: "NFC-e", value :"2"},
+  ]
 
   return (
     <div className="card">
@@ -20,7 +26,7 @@ export function SearchTaxDocument({ children }) {
             <input style={{width: "70px"}}  name="cpfcnpj" type="number" className="form-control form-control-sm" />
             <label style={{color: "white"}}>resultados por página</label>
           </div> */}
-          <InputSearch search={searchLeaf}/>
+          <InputSearch search={searchLeaf} dataFilter={typesFilter}/>
         </ContentSearch>
 
         <div>
