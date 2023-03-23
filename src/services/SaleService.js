@@ -10,7 +10,7 @@ class SaleService {
   }
 
   async findById(id) {
-    const { data } = await api.get(`/nota/${id}`)
+    const { data } = await api.get(`/sales/${id}`)
     return data
   }
 
@@ -20,7 +20,7 @@ class SaleService {
   }
 
   async delete(dataCancelamento, idNota) {
-    const { data } = await api.put(`/nota/cancel/nota/${idNota}`, dataCancelamento)
+    const { data } = await api.put(`/sales/cancel/nota/${idNota}`, dataCancelamento)
     return data
   }
 }

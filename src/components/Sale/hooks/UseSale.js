@@ -1,6 +1,6 @@
 import { useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_SALE } from "../store/reducers/SaleReducers";
+import { SAVE_PRODUCTS, SAVE_SALE } from "../store/reducers/SaleReducers";
 
 import { GlobalContext } from "../../../context/Global/global";
 import SaleService from "../../../services/SaleService";
@@ -14,6 +14,8 @@ export function UseSale() {
   const refTotaDiscountSale = useRef("")
   const [openModal, setOpenModal] = useState("hide")
   const [dataSearchSale, setDataSearchSale] = useState([])
+  const [openAreaSale, setOpenAreaSale] = useState(false)
+  const [openLayouts, setOpenLayouts] = useState(false)
 
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.sale.pedido)
@@ -69,12 +71,40 @@ export function UseSale() {
     }
   }
 
-  const findById = async () => {
+  // const findById = async (id) => {
+  //   try {
+  //     const sale = await SaleService.findById(id)
+  //     const newSale = { ...sale }
+  //     Reflect.deleteProperty(newSale, 'bills')
+  //     Reflect.deleteProperty(newSale, 'products')
+  //     dispatch(SAVE_SALE(newSale))
+
+  //     const newProducs = sale.products.map((prod) => {
+  //       return {
+  //         ...prod, 
+  //         subtotal: prod.valorTotal / prod.quantidade
+  //       }
+  //     })
+  //     dispatch(SAVE_PRODUCTS(newProducs))
+  //     // dispatch(SAVE_PRODUCTS({ ...sale.products, subtotal: sale.valorTotal / sale.quantidade }))
+  //   } catch (error) {
+  //     toast.warning(error.message, {
+  //       position: toast.POSITION.TOP_RIGHT
+  //     });
+  //   }
+  // }
+
+  const deleteSale = async (id) => {
     try {
-      const leaf = await SaleService.findById(pedido.id)
-      dispatch(SAVE_SALE({ ...pedido, response: leaf.response, status: leaf.status }))
+      await SaleService.delete(id)
+      await searchSale()
+      setOpenAreaSale(false)
+
+      toast("Registro deletado com sucesso! ✅", {
+        position: toast.POSITION.TOP_RIGHT
+      });
     } catch (error) {
-      toast.warning(error.message, {
+      toast.error(error?.response?.data?.erros, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
@@ -103,8 +133,8 @@ export function UseSale() {
 
   const calculateTotalSaleBasedProducts = () => {
     const formattedTotal = produtos.map((prod) => {
-      const subtotal = prod.subtotal.replace(".", "").replace(",", ".").replace(",", ".")
-      const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
+      const subtotal = String(prod.subtotal).replace(".", "").replace(",", ".").replace(",", ".")
+      const desconto = String(prod.desconto).replace(".", "").replace(",", ".").replace(",", ".")
       const quantidade = prod.quantidade
 
       return (parseFloat(subtotal) * quantidade) - desconto
@@ -117,7 +147,7 @@ export function UseSale() {
 
   const calculateTotalDiscountSale = () => {
     const formattedDiscount = produtos.map((prod) => {
-      const desconto = prod.desconto.replace(".", "").replace(",", ".").replace(",", ".")
+      const desconto = String(prod?.desconto).replace(".", "").replace(",", ".").replace(",", ".")
 
       return parseFloat(desconto)
     }, 0)
@@ -126,7 +156,25 @@ export function UseSale() {
     return totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
 
+  const handleEditSale = async () => {
+    setOpenLayouts(true)
+    // await findById(pedido.id)
+  }
 
+  const handleNewSale = () => {
+    setOpenLayouts(true)
+  }
 
-  return { handleChangeSale, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal, searchSale, dataSearchSale }
+  const handleOpenAreaSale = async (id) => {
+    setOpenAreaSale(true)
+    // await findById(id)
+  }
+
+  const switchBetweenComponents = () => {
+    setOpenAreaSale(false)
+    setOpenLayouts(false)
+    // clearAllInputs()
+  }
+
+  return { handleChangeSale, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal, searchSale, dataSearchSale, openLayouts, handleNewSale, switchBetweenComponents, handleOpenAreaSale, openAreaSale, handleEditSale, deleteSale }
 }

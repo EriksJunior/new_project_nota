@@ -4,7 +4,7 @@ import { ContentTable } from "./style"
 import { AnimateCard } from "../../../../styles"
 
 export function Table({ children }) {
-  const { dataSearchSale } = useContext(SaleContext)
+  const { dataSearchSale, handleOpenAreaSale } = useContext(SaleContext)
   return (
     <div>
       <ContentTable className="table-responsive">
@@ -17,11 +17,11 @@ export function Table({ children }) {
             </tr>
           </thead>
           <tbody>
-            {dataSearchSale.map((e) =>
-              <tr key={e.id} className="underlineCustomer" >
-                <td className="text-center ">{e.nomeCliente}</td>
-                <td className="text-center ">{e.status}</td>
-                <td className="text-center ">{e.data?.split("-").reverse().join("/")}</td>
+            {dataSearchSale.map((sale) =>
+              <tr key={sale.id} className="underlineCustomer" onClick={() => handleOpenAreaSale(sale.id)}>
+                <td className="text-center ">{sale.nomeCliente}</td>
+                <td className="text-center ">{sale.status}</td>
+                <td className="text-center ">{sale.data?.split("-").reverse().join("/")}</td>
               </tr>
             )}
           </tbody>
