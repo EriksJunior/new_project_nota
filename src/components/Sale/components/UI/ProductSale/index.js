@@ -52,15 +52,15 @@ export function ProductSale() {
                     </TdBodyAmmount>
 
                     <TdBodySubtotal>
-                      <InputTable disabled={item.id} type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='subtotal' value={products[index].subtotal} onChange={(e) => handleChangeMonetaryValues(e, index)} onKeyUp={() => calculateTotalValue(index)} />
+                      <InputTable disabled={item.id} type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='subtotal' value={products[index].subtotal || "0,00"} onChange={(e) => handleChangeMonetaryValues(e, index)} onKeyUp={() => calculateTotalValue(index)} />
                     </TdBodySubtotal>
 
                     <TdBodyDiscount>
-                      <InputTable disabled={item.id} type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='desconto' value={products[index].desconto} onChange={(e) => handleChangeMonetaryValues(e, index)} />
+                      <InputTable disabled={item.id} type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='desconto' value={products[index].desconto || "0,00"} onChange={(e) => handleChangeMonetaryValues(e, index)} />
                     </TdBodyDiscount>
 
                     <TdBodyTotal>
-                      <InputTable disabled type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='valorTotal' value={products[index].valorTotal} onChange={(e) => handleChangeMonetaryValues(e, index)} />
+                      <InputTable disabled type="text" className="form-control-nfe form-control-sm" placeholder="0,0000" name='valorTotal' value={products[index].valorTotal || "0,00"} onChange={(e) => handleChangeMonetaryValues(e, index)} />
                     </TdBodyTotal>
 
                     <TdActions>
