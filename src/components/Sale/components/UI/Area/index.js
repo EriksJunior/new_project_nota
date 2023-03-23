@@ -5,14 +5,13 @@ import { DetailedDataCard } from "../../../../DetailedDataCard"
 
 import { ContentAreaCustomer, ContentDetailedDataCard } from "./styles"
 
-
 export function SaleArea() {
   const pedido = useSelector(state => state.sale.pedido)
   const cliente = useSelector(state => state.sale.cliente)
-  const { deleteSale, handleEditSale } = useContext(SaleContext)
+  const { deleteSale, handleEditSale, dataSearchSale } = useContext(SaleContext)
 
   // const valorTotal = pedido.products.reduce((oldValue, newValue) => oldValue.valorTotal + newValue.valorTotal)
-  const detailsSale = [`Data: ${pedido.dataVenda?.split("-").reverse().join("/") || ""}`, `Status: ${pedido.status || ""}`, `Dados adicionais: ${pedido.dadosAdicionais || ""}`]
+  const detailsSale = [`Data: ${pedido.data?.split("-").reverse().join("/") || ""}`, `Status: ${pedido.status || ""}`, `Dados adicionais: ${pedido.dadosAdicionais || ""}`]
 
   return (
     <>

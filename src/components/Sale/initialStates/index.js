@@ -16,7 +16,8 @@ export const INITIAL_VALUE_PEDIDO = {
   id: "",
   idCliente: "",
   idFuncionario: "",
-  dataVenda: DateTime.local().toFormat('yyyy-MM-dd'),
+  tipo: "Venda",
+  data: DateTime.local().toFormat('yyyy-MM-dd'),
   status: "",
   dadosAdicionais: "",
 }
