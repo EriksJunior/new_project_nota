@@ -7,8 +7,8 @@ import { ContentAreaCustomer, ContentDetailedDataCard } from "./styles"
 
 export function SaleArea() {
   const pedido = useSelector(state => state.sale.pedido)
-  const cliente = useSelector(state => state.sale.cliente)
   const { deleteSale, handleEditSale, dataSearchSale } = useContext(SaleContext)
+  const customerSelected = dataSearchSale.find(sale => sale.id === pedido.id)
 
   // const valorTotal = pedido.products.reduce((oldValue, newValue) => oldValue.valorTotal + newValue.valorTotal)
   const detailsSale = [`Data: ${pedido.data?.split("-").reverse().join("/") || ""}`, `Status: ${pedido.status || ""}`, `Dados adicionais: ${pedido.dadosAdicionais || ""}`]
@@ -17,7 +17,7 @@ export function SaleArea() {
     <>
         <ContentAreaCustomer >
           <ContentDetailedDataCard>
-            <DetailedDataCard details={detailsSale} titleDetails={cliente.nome} edit={handleEditSale} delet={() => console.log(pedido)} generateSale responsiveCustomer={"respCustomer"} />
+            <DetailedDataCard details={detailsSale} titleDetails={customerSelected?.nomeCliente} edit={handleEditSale} remove={() => console.log(pedido)} generateSale responsiveCustomer={"respCustomer"} />
           </ContentDetailedDataCard>
         </ContentAreaCustomer>
     </>

@@ -6,7 +6,7 @@ class SaleService {
   }
 
   async update(nota) {
-    await api.put(`/nota/${nota.id}`, nota)
+    await api.put(`/sales/${nota.id}`, nota)
   }
 
   async findById(id) {

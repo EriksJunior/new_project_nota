@@ -12,7 +12,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill, BsFillPlusCircleFill } from "react-icons/bs"
 
 export function Sale() {
-  const { handleChangeSale, handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal, } = useContext(SaleContext)
+  const { handleChangeSale, handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotalDiscountSale, openModal, setOpenModal, } = useContext(SaleContext)
   const pedido = useSelector(state => state.sale.pedido)
   const parcelas = useSelector(state => state.sale.parcela)
   const tiposDePagementos = useSelector(state => state.sale.tiposDePagementos)
@@ -39,13 +39,13 @@ export function Sale() {
           </div>
 
           <div className="mb-3 col-sm-4 col-md-3 col-lg-3 col-xl-3">
-            <label className="form-label">Data NF-e</label>
+            <label className="form-label">Data Emissão</label>
             <input type="date" className="form-control form-control-sm" name="dataVenda" value={pedido.dataVenda} onChange={handleChangeSale} />
           </div>
 
           <div className="mb-3 col-sm-4 col-md-6 col-lg-3 col-xl-3">
             <label className="form-label">Total desc</label>
-            <input type="text" disabled placeholder="0,0000" ref={refTotaDiscountSale} className="form-control form-control-sm" name="desconto" value={calculateTotalDiscountSale()} onChange={handleChangeSale} />
+            <input type="text" disabled placeholder="0,0000" ref={refTotalDiscountSale} className="form-control form-control-sm" name="desconto" value={calculateTotalDiscountSale()} onChange={handleChangeSale} />
           </div>
 
           <div className="mb-3 col-sm-4 col-md-6 col-lg-3 col-xl-3">
@@ -55,7 +55,7 @@ export function Sale() {
 
           <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <label className="form-label">Informações complementares</label>
-            <TextArea type="area" className="form-control form-control-sm" name="dadosAdicionais" value={pedido.dadosAdicionais} onChange={handleChangeSale} />
+            <TextArea type="area" className="form-control form-control-sm" name="dadosAdicionais" value={pedido.dadosAdicionais || ""} onChange={handleChangeSale} />
           </div>
         </div>
 

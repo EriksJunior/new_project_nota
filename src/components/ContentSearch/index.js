@@ -33,8 +33,8 @@ export function InputSearch({ search, dataFilter = [] }) {
         </BorderInputDate>
       </ContentDates>
 
-      <Search>
-        <BsSearch color="white" onClick={() => search(wantedItems.text, filter, 1, wantedItems.startDate, wantedItems.endDate)} />
+      <Search onClick={() => search(wantedItems.text, filter, 1, wantedItems.startDate, wantedItems.endDate)}>
+        <BsSearch color="white" />
       </Search>
     </ContentInputSearch>
   )

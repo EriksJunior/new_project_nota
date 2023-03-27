@@ -5,7 +5,7 @@ const validadeSale = (sale) => {
     numero: z.number().optional(),
     idCliente: z.string().uuid("Deve ser selecionado um (Cliente) para prosseguir"),
     dataVenda: z.string().optional(),
-    dadosAdicionais: z.string().optional(),
+    dadosAdicionais: z.string().optional().nullable(),
     status: z.string().optional(),
   })
 
@@ -23,7 +23,7 @@ const validateProductSale = (saleProducts) => {
       idProduto: z.string().uuid("Deve ser selecionado ao menos um (Produto) para prosseguir"),
       quantidade: z.string().min(1, "O campo (Quantidade) deve ser preenchido").optional(),
       valorTotal: z.string().min(1, "O campo (Total) deve ser preenchido").optional(),
-      dadosAdicionais: z.string().optional(),
+      dadosAdicionais: z.string().optional().nullable(),
     })
 
     const result = schema.safeParse(saleProducts)

@@ -1,9 +1,12 @@
 import { useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_PRODUCTS, SAVE_SALE } from "../store/reducers/SaleReducers";
+import {  SAVE_BILL, SAVE_CUSTOMER, SAVE_PRODUCTS, SAVE_SALE } from "../store/reducers/SaleReducers";
+import { UseCustomer } from "./UseCustomer";
 
 import { GlobalContext } from "../../../context/Global/global";
 import SaleService from "../../../services/SaleService";
+
+import { INITIAL_STATE_CLIENTE, INITIAL_VALUE_PRODUTOS, INITIAL_VALUE_PEDIDO, INITIAL_STATE_PARCELA } from "../initialStates"
 
 import { validadeSale } from "../validate";
 import { toast } from "react-toastify";
@@ -11,7 +14,7 @@ import { toast } from "react-toastify";
 export function UseSale() {
   const { loading, setLoading } = useContext(GlobalContext)
   const refTotalSale = useRef("")
-  const refTotaDiscountSale = useRef("")
+  const refTotalDiscountSale = useRef("")
   const [openModal, setOpenModal] = useState("hide")
   const [dataSearchSale, setDataSearchSale] = useState([])
   const [openAreaSale, setOpenAreaSale] = useState(false)
@@ -21,6 +24,8 @@ export function UseSale() {
   const pedido = useSelector(state => state.sale.pedido)
   const cliente = useSelector(state => state.sale.cliente)
   const produtos = useSelector(state => state.sale.produto)
+
+  const { findCustomerById } = UseCustomer()
 
   const handleChangeSale = (e) => {
     dispatch(SAVE_SALE({ ...pedido, [e.target.name]: e.target.value }))
@@ -35,7 +40,7 @@ export function UseSale() {
       const id = await SaleService.save(sale)
       dispatch(SAVE_SALE({ ...sale, id: id }))
 
-      toast("Documento fiscal salvo! ✅", {
+      toast("Pedido salvo! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
 
@@ -53,12 +58,11 @@ export function UseSale() {
   const updateSale = async (sale) => {
     try {
       validadeSale(sale)
-
       // const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat({ ...sale })
       setLoading(true)
       await SaleService.update(sale)
 
-      return toast("Documento fiscal atualizado! ✅", {
+      return toast("Pedido atualizado! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
     } catch (error) {
@@ -71,28 +75,33 @@ export function UseSale() {
     }
   }
 
-  // const findById = async (id) => {
-  //   try {
-  //     const sale = await SaleService.findById(id)
-  //     const newSale = { ...sale }
-  //     Reflect.deleteProperty(newSale, 'bills')
-  //     Reflect.deleteProperty(newSale, 'products')
-  //     dispatch(SAVE_SALE(newSale))
+  const findById = async (id) => {
+    try {
+      const sale = await SaleService.findById(id)
+      const newSale = { ...sale }
+      Reflect.deleteProperty(newSale, 'bills')
+      Reflect.deleteProperty(newSale, 'products')
+      dispatch(SAVE_SALE(newSale))
 
-  //     const newProducs = sale.products.map((prod) => {
-  //       return {
-  //         ...prod, 
-  //         subtotal: prod.valorTotal / prod.quantidade
-  //       }
-  //     })
-  //     dispatch(SAVE_PRODUCTS(newProducs))
-  //     // dispatch(SAVE_PRODUCTS({ ...sale.products, subtotal: sale.valorTotal / sale.quantidade }))
-  //   } catch (error) {
-  //     toast.warning(error.message, {
-  //       position: toast.POSITION.TOP_RIGHT
-  //     });
-  //   }
-  // }
+      const newProducs = sale.products.map((prod) => {
+        const formattedSubtotal = (prod.valorTotal / prod.quantidade).toLocaleString('pt-br', {minimumFractionDigits: 2})
+        const formattedTotal = prod.valorTotal.toLocaleString('pt-br', {minimumFractionDigits: 2})
+
+        return {
+          ...prod,
+          valorTotal: formattedTotal,
+          subtotal: formattedSubtotal
+        }
+      })
+      calculateTotalSaleBasedProducts()
+      
+      dispatch(SAVE_PRODUCTS(newProducs))
+    } catch (error) {
+      toast.warning(error.message, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
 
   const deleteSale = async (id) => {
     try {
@@ -133,15 +142,15 @@ export function UseSale() {
 
   const calculateTotalSaleBasedProducts = () => {
     const formattedTotal = produtos.map((prod) => {
-      const subtotal = String(prod.subtotal).replace(".", "").replace(",", ".").replace(",", ".")
-      const desconto = String(prod.desconto).replace(".", "").replace(",", ".").replace(",", ".")
+      const total = String(prod.valorTotal).replace(".", "").replace(",", ".").replace(",", ".")
+      const subtotal = String(total / prod.quantidade).replace(".", "").replace(",", ".").replace(",", ".")
+      // const desconto = String(prod.desconto).replace(".", "").replace(",", ".").replace(",", ".")
       const quantidade = prod.quantidade
-
-      return (parseFloat(subtotal) * quantidade) - desconto
+      
+      return (parseFloat(subtotal) * quantidade) //- desconto
     }, 0)
-
+    
     const totalValuesProducts = formattedTotal.reduce((oldValue, value) => oldValue + value, 0)
-
     return totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
 
@@ -158,7 +167,7 @@ export function UseSale() {
 
   const handleEditSale = async () => {
     setOpenLayouts(true)
-    // await findById(pedido.id)
+    findCustomerById(pedido.idCliente)
   }
 
   const handleNewSale = () => {
@@ -167,14 +176,21 @@ export function UseSale() {
 
   const handleOpenAreaSale = async (id) => {
     setOpenAreaSale(true)
-    // await findById(id)
+    await findById(id)
   }
 
   const switchBetweenComponents = () => {
     setOpenAreaSale(false)
     setOpenLayouts(false)
-    // clearAllInputs()
+    clearAllInputs()
   }
 
-  return { handleChangeSale, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal, searchSale, dataSearchSale, openLayouts, handleNewSale, switchBetweenComponents, handleOpenAreaSale, openAreaSale, handleEditSale, deleteSale }
+  const clearAllInputs = () => {
+    dispatch(SAVE_SALE(INITIAL_VALUE_PEDIDO))
+    dispatch(SAVE_PRODUCTS([INITIAL_VALUE_PRODUTOS]))
+    dispatch(SAVE_CUSTOMER(INITIAL_STATE_CLIENTE))
+    dispatch(SAVE_BILL([INITIAL_STATE_PARCELA]))
+  }
+
+  return { handleChangeSale, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotalDiscountSale, openModal, setOpenModal, searchSale, dataSearchSale, openLayouts, handleNewSale, switchBetweenComponents, handleOpenAreaSale, openAreaSale, handleEditSale, deleteSale }
 }
