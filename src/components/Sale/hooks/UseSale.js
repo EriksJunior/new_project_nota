@@ -1,9 +1,12 @@
 import { useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_PRODUCTS, SAVE_SALE } from "../store/reducers/SaleReducers";
+import {  SAVE_BILL, SAVE_CUSTOMER, SAVE_PRODUCTS, SAVE_SALE } from "../store/reducers/SaleReducers";
+import { UseCustomer } from "./UseCustomer";
 
 import { GlobalContext } from "../../../context/Global/global";
 import SaleService from "../../../services/SaleService";
+
+import { INITIAL_STATE_CLIENTE, INITIAL_VALUE_PRODUTOS, INITIAL_VALUE_PEDIDO, INITIAL_STATE_PARCELA } from "../initialStates"
 
 import { validadeSale } from "../validate";
 import { toast } from "react-toastify";
@@ -21,6 +24,8 @@ export function UseSale() {
   const pedido = useSelector(state => state.sale.pedido)
   const cliente = useSelector(state => state.sale.cliente)
   const produtos = useSelector(state => state.sale.produto)
+
+  const { findCustomerById } = UseCustomer()
 
   const handleChangeSale = (e) => {
     dispatch(SAVE_SALE({ ...pedido, [e.target.name]: e.target.value }))
@@ -71,28 +76,27 @@ export function UseSale() {
     }
   }
 
-  // const findById = async (id) => {
-  //   try {
-  //     const sale = await SaleService.findById(id)
-  //     const newSale = { ...sale }
-  //     Reflect.deleteProperty(newSale, 'bills')
-  //     Reflect.deleteProperty(newSale, 'products')
-  //     dispatch(SAVE_SALE(newSale))
+  const findById = async (id) => {
+    try {
+      const sale = await SaleService.findById(id)
+      const newSale = { ...sale }
+      Reflect.deleteProperty(newSale, 'bills')
+      Reflect.deleteProperty(newSale, 'products')
+      dispatch(SAVE_SALE(newSale))
 
-  //     const newProducs = sale.products.map((prod) => {
-  //       return {
-  //         ...prod, 
-  //         subtotal: prod.valorTotal / prod.quantidade
-  //       }
-  //     })
-  //     dispatch(SAVE_PRODUCTS(newProducs))
-  //     // dispatch(SAVE_PRODUCTS({ ...sale.products, subtotal: sale.valorTotal / sale.quantidade }))
-  //   } catch (error) {
-  //     toast.warning(error.message, {
-  //       position: toast.POSITION.TOP_RIGHT
-  //     });
-  //   }
-  // }
+      const newProducs = sale.products.map((prod) => {
+        return {
+          ...prod,
+          subtotal: prod.valorTotal / prod.quantidade
+        }
+      })
+      dispatch(SAVE_PRODUCTS(newProducs))
+    } catch (error) {
+      toast.warning(error.message, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
 
   const deleteSale = async (id) => {
     try {
@@ -158,7 +162,7 @@ export function UseSale() {
 
   const handleEditSale = async () => {
     setOpenLayouts(true)
-    // await findById(pedido.id)
+    findCustomerById(pedido.idCliente)
   }
 
   const handleNewSale = () => {
@@ -167,13 +171,20 @@ export function UseSale() {
 
   const handleOpenAreaSale = async (id) => {
     setOpenAreaSale(true)
-    // await findById(id)
+    await findById(id)
   }
 
   const switchBetweenComponents = () => {
     setOpenAreaSale(false)
     setOpenLayouts(false)
-    // clearAllInputs()
+    clearAllInputs()
+  }
+
+  const clearAllInputs = () => {
+    dispatch(SAVE_SALE(INITIAL_VALUE_PEDIDO))
+    dispatch(SAVE_PRODUCTS([INITIAL_VALUE_PRODUTOS]))
+    dispatch(SAVE_CUSTOMER(INITIAL_STATE_CLIENTE))
+    dispatch(SAVE_BILL([INITIAL_STATE_PARCELA]))
   }
 
   return { handleChangeSale, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal, searchSale, dataSearchSale, openLayouts, handleNewSale, switchBetweenComponents, handleOpenAreaSale, openAreaSale, handleEditSale, deleteSale }

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_CUSTOMER } from "../store/reducers/SaleReducers"
-import { INITIAL_STATE_CLIENTE_NFE } from "../initialStates";
+import { INITIAL_STATE_CLIENTE } from "../initialStates";
 
 import CustomerService from "../../../services/CustomerService"
 
@@ -58,7 +58,7 @@ export function UseCustomer() {
 
   const findCustomerById = async (id) => {
     if (!id) {
-      return dispatch(SAVE_CUSTOMER(INITIAL_STATE_CLIENTE_NFE))
+      return dispatch(SAVE_CUSTOMER(INITIAL_STATE_CLIENTE))
     }
 
     const newCustomer = await CustomerService.findById(id)

@@ -55,7 +55,7 @@ export function Sale() {
 
           <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <label className="form-label">Informações complementares</label>
-            <TextArea type="area" className="form-control form-control-sm" name="dadosAdicionais" value={pedido.dadosAdicionais} onChange={handleChangeSale} />
+            <TextArea type="area" className="form-control form-control-sm" name="dadosAdicionais" value={pedido.dadosAdicionais || ""} onChange={handleChangeSale} />
           </div>
         </div>
 

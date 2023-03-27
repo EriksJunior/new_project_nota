@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 import BillService from "../../../services/BillService";
 import { validateBillSale } from "../validate";
-import { INITIAL_STATE_PARCELA_NFE } from "../initialStates";
+import { INITIAL_STATE_PARCELA } from "../initialStates";
 
 export function UseBill() {
   const { handleSaveLeaf } = UseSale()
@@ -84,7 +84,7 @@ export function UseBill() {
   }
 
   const addBillToList = async () => {
-    dispatch(SAVE_BILL([...parcelas, INITIAL_STATE_PARCELA_NFE]))
+    dispatch(SAVE_BILL([...parcelas, INITIAL_STATE_PARCELA]))
     setConfirmRemoveBill([...confirmRemoveBill, false])
   }
 
@@ -130,7 +130,7 @@ export function UseBill() {
       return dispatch(SAVE_BILL(newBills))
     }
 
-    dispatch(SAVE_BILL([INITIAL_STATE_PARCELA_NFE]))
+    dispatch(SAVE_BILL([INITIAL_STATE_PARCELA]))
   }
 
 
