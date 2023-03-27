@@ -35,7 +35,6 @@ export const INITIAL_VALUE_NAV_ITEMS = {
   produto: true,
   cliente: false,
   pedido: true,
-  transporte: true,
 }
 
 export const INITIAL_STATE_CLIENTE = {

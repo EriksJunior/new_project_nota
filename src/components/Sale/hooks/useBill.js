@@ -11,7 +11,7 @@ import { validateBillSale } from "../validate";
 import { INITIAL_STATE_PARCELA } from "../initialStates";
 
 export function UseBill() {
-  const { handleSaveLeaf } = UseSale()
+  const { handleSaveOrUpdateSale } = UseSale()
   const [confirmRemoveBill, setConfirmRemoveBill] = useState([false])
 
   const parcelas = useSelector(state => state.sale.parcela)
@@ -55,7 +55,7 @@ export function UseBill() {
       return await saveLeafBill(pedido.id)
     }
 
-    const idNota = await handleSaveLeaf(pedido)
+    const idNota = await handleSaveOrUpdateSale()
     if (idNota) await saveLeafBill(idNota)
   }
 

@@ -4,7 +4,6 @@ import { useContext } from "react"
 import { SaleContext } from "../../../context"
 
 import { IoPersonAdd } from "react-icons/io5"
-import { FaTruckMoving } from "react-icons/fa"
 import { BsBasket2Fill } from "react-icons/bs"
 import { IoIosPaper } from "react-icons/io"
 
@@ -20,9 +19,6 @@ export function Nav({ children }) {
         </NavItems>
         <NavItems onClick={() => handleRenderNavItem("produto")}>
           <BsBasket2Fill size={25} color={"white"} /><p>Produto</p>
-        </NavItems>
-        <NavItems onClick={() => handleRenderNavItem("transporte")}>
-          <FaTruckMoving size={25} color={"white"} /><p>Transporte</p>
         </NavItems>
         <NavItems onClick={() => handleRenderNavItem("pedido")}>
           <IoIosPaper size={25} color={"white"} /><p>Pedido</p>
