@@ -55,16 +55,16 @@ export function UseBill() {
       return await saveLeafBill(pedido.id)
     }
 
-    const idNota = await handleSaveOrUpdateSale()
-    if (idNota) await saveLeafBill(idNota)
+    const idVenda = await handleSaveOrUpdateSale()
+    if (idVenda) await saveLeafBill(idVenda)
   }
 
-  const handleWithBillsBeforeSave = (bills, idLeaf) => {
+  const handleWithBillsBeforeSave = (bills, idSale) => {
     const newBills = bills.map((bill) => {
       return {
         ...bill,
         idCliente: cliente.id,
-        idNota: idLeaf
+        idVenda: idSale
       }
     })
 
