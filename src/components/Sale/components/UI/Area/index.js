@@ -17,7 +17,7 @@ export function SaleArea() {
     <>
         <ContentAreaCustomer >
           <ContentDetailedDataCard>
-            <DetailedDataCard details={detailsSale} titleDetails={customerSelected?.nomeCliente} edit={handleEditSale} delet={() => console.log(pedido)} generateSale responsiveCustomer={"respCustomer"} />
+            <DetailedDataCard details={detailsSale} titleDetails={customerSelected?.nomeCliente} edit={handleEditSale} remove={() => console.log(pedido)} generateSale responsiveCustomer={"respCustomer"} />
           </ContentDetailedDataCard>
         </ContentAreaCustomer>
     </>

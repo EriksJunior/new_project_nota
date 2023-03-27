@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 export function UseSale() {
   const { loading, setLoading } = useContext(GlobalContext)
   const refTotalSale = useRef("")
-  const refTotaDiscountSale = useRef("")
+  const refTotalDiscountSale = useRef("")
   const [openModal, setOpenModal] = useState("hide")
   const [dataSearchSale, setDataSearchSale] = useState([])
   const [openAreaSale, setOpenAreaSale] = useState(false)
@@ -40,7 +40,7 @@ export function UseSale() {
       const id = await SaleService.save(sale)
       dispatch(SAVE_SALE({ ...sale, id: id }))
 
-      toast("Documento fiscal salvo! ✅", {
+      toast("Pedido salvo! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
 
@@ -58,12 +58,11 @@ export function UseSale() {
   const updateSale = async (sale) => {
     try {
       validadeSale(sale)
-
       // const formattedMonetaryValuesLeaf = convertMonetaryValuesToFloat({ ...sale })
       setLoading(true)
       await SaleService.update(sale)
 
-      return toast("Documento fiscal atualizado! ✅", {
+      return toast("Pedido atualizado! ✅", {
         position: toast.POSITION.TOP_RIGHT
       });
     } catch (error) {
@@ -85,11 +84,17 @@ export function UseSale() {
       dispatch(SAVE_SALE(newSale))
 
       const newProducs = sale.products.map((prod) => {
+        const formattedSubtotal = (prod.valorTotal / prod.quantidade).toLocaleString('pt-br', {minimumFractionDigits: 2})
+        const formattedTotal = prod.valorTotal.toLocaleString('pt-br', {minimumFractionDigits: 2})
+
         return {
           ...prod,
-          subtotal: prod.valorTotal / prod.quantidade
+          valorTotal: formattedTotal,
+          subtotal: formattedSubtotal
         }
       })
+      calculateTotalSaleBasedProducts()
+      
       dispatch(SAVE_PRODUCTS(newProducs))
     } catch (error) {
       toast.warning(error.message, {
@@ -137,15 +142,15 @@ export function UseSale() {
 
   const calculateTotalSaleBasedProducts = () => {
     const formattedTotal = produtos.map((prod) => {
-      const subtotal = String(prod.subtotal).replace(".", "").replace(",", ".").replace(",", ".")
-      const desconto = String(prod.desconto).replace(".", "").replace(",", ".").replace(",", ".")
+      const total = String(prod.valorTotal).replace(".", "").replace(",", ".").replace(",", ".")
+      const subtotal = String(total / prod.quantidade).replace(".", "").replace(",", ".").replace(",", ".")
+      // const desconto = String(prod.desconto).replace(".", "").replace(",", ".").replace(",", ".")
       const quantidade = prod.quantidade
-
-      return (parseFloat(subtotal) * quantidade) - desconto
+      
+      return (parseFloat(subtotal) * quantidade) //- desconto
     }, 0)
-
+    
     const totalValuesProducts = formattedTotal.reduce((oldValue, value) => oldValue + value, 0)
-
     return totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
 
@@ -187,5 +192,5 @@ export function UseSale() {
     dispatch(SAVE_BILL([INITIAL_STATE_PARCELA]))
   }
 
-  return { handleChangeSale, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotaDiscountSale, openModal, setOpenModal, searchSale, dataSearchSale, openLayouts, handleNewSale, switchBetweenComponents, handleOpenAreaSale, openAreaSale, handleEditSale, deleteSale }
+  return { handleChangeSale, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotalDiscountSale, openModal, setOpenModal, searchSale, dataSearchSale, openLayouts, handleNewSale, switchBetweenComponents, handleOpenAreaSale, openAreaSale, handleEditSale, deleteSale }
 }
