@@ -87,10 +87,11 @@ export function UseProduct() {
   const handleValuesBeforeSave = (product, idVenda) => {
     const newProduct = {...product, idVenda}
     const formattedTotal = newProduct.valorTotal.replace(".", "").replace(".", "").replace(",", ".")
+    const formattedDiscount = newProduct.desconto.replace(".", "").replace(".", "").replace(",", ".")
     Reflect.deleteProperty(newProduct, 'subtotal')
 
 
-    return {...newProduct, valorTotal: formattedTotal}
+    return {...newProduct, valorTotal: formattedTotal, desconto: formattedDiscount}
   }
 
   const handleSaveSaleAndSaleProducts = async () => {
