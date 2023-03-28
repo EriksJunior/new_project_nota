@@ -12,7 +12,7 @@ import { ContentHeaderTitle } from "../../../styles"
 import { BsFillTrashFill, BsFillPlusCircleFill } from "react-icons/bs"
 
 export function Sale() {
-  const { handleChangeSale, handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, removeBillFromList, cancelRemoveBill, handleChangeBill, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotalDiscountSale, openModal, setOpenModal, } = useContext(SaleContext)
+  const { handleChangeSale, handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, handleChangeConfirmRemoveBill, handleRemoveBillInTableAndBillSale, cancelRemoveBill, handleChangeBill, handleSaveOrUpdateSale, calculateTotalSaleBasedProducts, calculateTotalDiscountSale, refTotalSale, refTotalDiscountSale, openModal, setOpenModal, } = useContext(SaleContext)
   const pedido = useSelector(state => state.sale.pedido)
   const parcelas = useSelector(state => state.sale.parcela)
   const tiposDePagementos = useSelector(state => state.sale.tiposDePagementos)
@@ -92,7 +92,7 @@ export function Sale() {
               <ContentActionBills >
                 <input type="checkbox" id={`removeBill-${index}`} value={confirmRemoveBill[index]} checked={confirmRemoveBill[index]} hidden onChange={(e) => handleChangeConfirmRemoveBill(e, index)} />
                 {confirmRemoveBill[index] ?
-                  <label className="iconConfirmRemove" htmlFor={`removeBill-${index}`}><BsFillTrashFill role={"button"} color="#c10000" size={18} onMouseLeave={() => cancelRemoveBill(index)} onClick={() => removeBillFromList(index)} /></label>
+                  <label className="iconConfirmRemove" htmlFor={`removeBill-${index}`}><BsFillTrashFill role={"button"} color="#c10000" size={18} onMouseLeave={() => cancelRemoveBill(index)} onClick={() => handleRemoveBillInTableAndBillSale(index, parcela.id)} /></label>
                   :
                   <label className="iconRemove" htmlFor={`removeBill-${index}`}><BsFillTrashFill role={"button"} color="#02769c" size={18} /></label>
                 }

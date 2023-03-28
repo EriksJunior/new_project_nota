@@ -120,7 +120,7 @@ export function UseBill() {
     setConfirmRemoveBill(newConfirmRemoveBill)
   }
 
-  const removeBillFromList = (index) => {
+  const removeBillFromList = async (index) => {
     const newBills = [...parcelas]
 
     if (parcelas.length > 1) {
@@ -133,7 +133,20 @@ export function UseBill() {
     dispatch(SAVE_BILL([INITIAL_STATE_PARCELA]))
   }
 
+  const removeBill = async (id) => {
+    await BillService.delete(id)
+  }
+
+  const handleRemoveBillInTableAndBillSale = async (index, idBillSale) => {
+    if (!parcelas[index].id) {
+      return removeBillFromList(index)
+    }
+
+    await removeBill(idBillSale)
+    removeBillFromList(index)
+  }
 
 
-  return { handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, removeBillFromList, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
+
+  return { handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, handleRemoveBillInTableAndBillSale, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
 }
