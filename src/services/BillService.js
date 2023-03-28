@@ -5,6 +5,10 @@ class BillService {
     const { data: { id } } = await api.post("/bills", bill)
     return { ...bill, id: id }
   }
+
+  async delete(id) {
+    await api.delete(`/bills/${id}`)
+  }
 }
 
 export default new BillService()

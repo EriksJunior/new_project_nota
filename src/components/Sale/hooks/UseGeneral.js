@@ -7,7 +7,7 @@ export function UseGeneral() {
   
 
   const handleRenderNavItem = (value) => {
-    setNavItems({ ...navItems, cliente: true, produto: true, pedido: true, transporte: true, [value]: false })
+    setNavItems({ ...navItems, cliente: true, produto: true, pedido: true, [value]: false })
   }
 
 

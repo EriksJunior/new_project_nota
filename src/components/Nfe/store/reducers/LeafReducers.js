@@ -25,12 +25,12 @@ export const LeafReducer = createSlice({
     SAVE_BILL: (state, action) => {
       state.parcela = action.payload
     },
-    SAVE_ALL_TYPES_PAYMENTS: (state, action) => {
+    SAVE_ALL_TYPES_PAYMENTS_LEAF: (state, action) => {
       state.tiposDePagementos = action.payload
     }
   }
 })
 
-export const { SAVE_CUSTOMER, SAVE_LEAF, SAVE_PRODUCTS, SAVE_BILL, SAVE_ALL_TYPES_PAYMENTS } = LeafReducer.actions
+export const { SAVE_CUSTOMER, SAVE_LEAF, SAVE_PRODUCTS, SAVE_BILL, SAVE_ALL_TYPES_PAYMENTS_LEAF } = LeafReducer.actions
 
 export default LeafReducer.reducer

@@ -11,7 +11,7 @@ import { validateBillSale } from "../validate";
 import { INITIAL_STATE_PARCELA } from "../initialStates";
 
 export function UseBill() {
-  const { handleSaveLeaf } = UseSale()
+  const { handleSaveOrUpdateSale } = UseSale()
   const [confirmRemoveBill, setConfirmRemoveBill] = useState([false])
 
   const parcelas = useSelector(state => state.sale.parcela)
@@ -55,16 +55,16 @@ export function UseBill() {
       return await saveLeafBill(pedido.id)
     }
 
-    const idNota = await handleSaveLeaf(pedido)
-    if (idNota) await saveLeafBill(idNota)
+    const idVenda = await handleSaveOrUpdateSale()
+    if (idVenda) await saveLeafBill(idVenda)
   }
 
-  const handleWithBillsBeforeSave = (bills, idLeaf) => {
+  const handleWithBillsBeforeSave = (bills, idSale) => {
     const newBills = bills.map((bill) => {
       return {
         ...bill,
         idCliente: cliente.id,
-        idNota: idLeaf
+        idVenda: idSale
       }
     })
 
@@ -120,7 +120,7 @@ export function UseBill() {
     setConfirmRemoveBill(newConfirmRemoveBill)
   }
 
-  const removeBillFromList = (index) => {
+  const removeBillFromList = async (index) => {
     const newBills = [...parcelas]
 
     if (parcelas.length > 1) {
@@ -133,7 +133,20 @@ export function UseBill() {
     dispatch(SAVE_BILL([INITIAL_STATE_PARCELA]))
   }
 
+  const removeBill = async (id) => {
+    await BillService.delete(id)
+  }
+
+  const handleRemoveBillInTableAndBillSale = async (index, idBillSale) => {
+    if (!parcelas[index].id) {
+      return removeBillFromList(index)
+    }
+
+    await removeBill(idBillSale)
+    removeBillFromList(index)
+  }
 
 
-  return { handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, removeBillFromList, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
+
+  return { handleSaveSaleAndSaleBills, addBillToList, confirmRemoveBill, handleRemoveBillInTableAndBillSale, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
 }

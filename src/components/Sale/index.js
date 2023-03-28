@@ -6,7 +6,6 @@ import { Nav } from "./components/UI/Nav"
 import { ProductSale } from "./components/UI/ProductSale"
 import { Customer } from "./components/UI/Customer"
 import { Sale } from "./components/UI/Sale"
-import { TransporteNfe } from "./components/UI/TransporteNfe"
 
 import { ContentNfe } from "./styles"
 import { ContainerNav } from "./components/UI/Nav/styles"
@@ -34,10 +33,6 @@ export function FormSale() {
 
           <Div hidden={navItems.pedido}>
             <Sale />
-          </Div>
-
-          <Div hidden={navItems.transporte}>
-            <TransporteNfe />
           </Div>
         </Nav>
       </ContainerNav>

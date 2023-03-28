@@ -24,12 +24,12 @@ export const SaleReducer = createSlice({
     SAVE_BILL: (state, action) => {
       state.parcela = action.payload
     },
-    SAVE_ALL_TYPES_PAYMENTS: (state, action) => {
+    SAVE_ALL_TYPES_PAYMENTS_SALE: (state, action) => {
       state.tiposDePagementos = action.payload
     }
   }
 })
 
-export const { SAVE_CUSTOMER, SAVE_SALE, SAVE_PRODUCTS, SAVE_BILL, SAVE_ALL_TYPES_PAYMENTS } = SaleReducer.actions
+export const { SAVE_CUSTOMER, SAVE_SALE, SAVE_PRODUCTS, SAVE_BILL, SAVE_ALL_TYPES_PAYMENTS_SALE } = SaleReducer.actions
 
 export default SaleReducer.reducer
