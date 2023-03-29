@@ -23,7 +23,7 @@ export function Table() {
                 <td className="text-center type" onClick={() => handleOpenArea(typePayment.id)}>{typePayment.tipo}</td>
                 <td className="text-center trash">
                   <div className="contentTrash">
-                    <input type="checkbox" id={`removeTypePayment-${i}`} value={confirmRemoveTypePayment[i]} hidden onChange={(e) => handleChangeConfirmRemoveTypePayment(e, i)} />
+                    <input type="checkbox" id={`removeTypePayment-${i}`} value={confirmRemoveTypePayment[i]} hidden  onChange={(e) => handleChangeConfirmRemoveTypePayment(e, i)} onMouseLeave={() => cancelRemoveTypePayment(i)}/>
 
                     {confirmRemoveTypePayment[i] ?
                       <label className="iconConfirmRemove" htmlFor={`removeTypePayment-${i}`}><BsFillTrashFill role={"button"} color="#c10000" size={18} onMouseLeave={() => cancelRemoveTypePayment(i)} onClick={() => removeTypePaymentFromList(i)} /></label>

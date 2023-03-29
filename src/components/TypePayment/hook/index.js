@@ -19,6 +19,7 @@ export function UseTypePayment() {
     findAll()
   }, [])
 
+
   const handleChange = (e) => {
     setTypePayment({ ...typePayment, tipo: e.target.value })
   }
@@ -107,7 +108,7 @@ export function UseTypePayment() {
 
   const handleChangeConfirmRemoveTypePayment = (e, index) => {
     const newConfirmRemoveTypePayment = [...confirmRemoveTypePayment]
-    newConfirmRemoveTypePayment[index] = e.target.checked
+    newConfirmRemoveTypePayment[index] = true
 
     setConfirmRemoveTypePayment(newConfirmRemoveTypePayment)
   }
@@ -122,13 +123,11 @@ export function UseTypePayment() {
   const removeConfirmedBillsToList = (index) => {
     const newConfirmRemoveTypePayment = [...confirmRemoveTypePayment]
     newConfirmRemoveTypePayment.splice(index, 1)
-
     setConfirmRemoveTypePayment(newConfirmRemoveTypePayment)
   }
 
   const removeTypePaymentFromList = async (index) => {
     const newTypesPayments = [...typesPaymentsFromSelectBox]
-
     newTypesPayments.splice(index, 1)
 
     deleteTypePayments(index)

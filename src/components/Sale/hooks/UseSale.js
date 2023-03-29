@@ -1,6 +1,6 @@
 import { useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  SAVE_BILL, SAVE_CUSTOMER, SAVE_PRODUCTS, SAVE_SALE } from "../store/reducers/SaleReducers";
+import { SAVE_BILL, SAVE_CUSTOMER, SAVE_PRODUCTS, SAVE_SALE } from "../store/reducers/SaleReducers";
 import { UseCustomer } from "./UseCustomer";
 
 import { GlobalContext } from "../../../context/Global/global";
@@ -84,17 +84,19 @@ export function UseSale() {
       dispatch(SAVE_SALE(newSale))
 
       const newProducs = sale.products.map((prod) => {
-        const formattedSubtotal = (prod.valorTotal / prod.quantidade).toLocaleString('pt-br', {minimumFractionDigits: 2})
-        const formattedTotal = prod.valorTotal.toLocaleString('pt-br', {minimumFractionDigits: 2})
+        const formattedSubtotal = (prod.valorTotal / prod.quantidade).toLocaleString('pt-br', { minimumFractionDigits: 2 })
+        const formattedTotal = prod.valorTotal.toLocaleString('pt-br', { minimumFractionDigits: 2 })
+        const formattedDiscount= prod.desconto.toLocaleString('pt-br', { minimumFractionDigits: 2 })
 
         return {
           ...prod,
           valorTotal: formattedTotal,
-          subtotal: formattedSubtotal
+          subtotal: formattedSubtotal,
+          desconto: formattedDiscount
         }
       })
       calculateTotalSaleBasedProducts()
-      
+
       dispatch(SAVE_PRODUCTS(newProducs))
     } catch (error) {
       toast.warning(error.message, {
@@ -142,25 +144,24 @@ export function UseSale() {
 
   const calculateTotalSaleBasedProducts = () => {
     const formattedTotal = produtos.map((prod) => {
-      const total = String(prod.valorTotal).replace(".", "").replace(",", ".").replace(",", ".")
-      const subtotal = String(total / prod.quantidade).replace(".", "").replace(",", ".").replace(",", ".")
-      // const desconto = String(prod.desconto).replace(".", "").replace(",", ".").replace(",", ".")
+      const total = String(prod.valorTotal).length > 7 ? String(prod.valorTotal).replace(".", "").replace(".", "").replace(".", "").replace(",", ".") : String(prod.valorTotal).replace(",", ".")
+      const subtotal = total / prod.quantidade
+      const desconto = String(prod.desconto).length > 7 ? String(prod.desconto).replace(".", "").replace(".", "").replace(".", "").replace(",", ".") : String(prod.desconto).replace(",", ".")
       const quantidade = prod.quantidade
-      
-      return (parseFloat(subtotal) * quantidade) //- desconto
+
+      return (parseFloat(subtotal) * quantidade) - desconto
     }, 0)
-    
     const totalValuesProducts = formattedTotal.reduce((oldValue, value) => oldValue + value, 0)
     return totalValuesProducts.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
 
   const calculateTotalDiscountSale = () => {
     const formattedDiscount = produtos.map((prod) => {
-      const desconto = String(prod?.desconto).replace(".", "").replace(",", ".").replace(",", ".")
+      const desconto = String(prod.desconto).length > 7 ? String(prod.desconto).replace(".", "").replace(".", "").replace(".", "").replace(",", ".") : String(prod.desconto).replace(",", ".")
 
       return parseFloat(desconto)
     }, 0)
-
+    
     const totalDiscount = formattedDiscount.reduce((oldValue, value) => oldValue + value, 0)
     return totalDiscount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
   }
