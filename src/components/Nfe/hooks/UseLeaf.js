@@ -1,9 +1,11 @@
 import { useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_LEAF } from "../store/reducers/LeafReducers";
+import { SAVE_LEAF, SAVE_CUSTOMER, SAVE_BILL, SAVE_PRODUCTS } from "../store/reducers/LeafReducers";
 
 import { GlobalContext } from "../../../context/Global/global";
+import { UseCustomer } from "./UseCustomer";
 import LeafService from "../../../services/LeafService";
+import { INITIAL_VALUE_PEDIDO, INITIAL_STATE_CLIENTE_NFE, INITIAL_VALUE_PRODUTOS, INITIAL_STATE_PARCELA_NFE } from "../initialStates"
 
 import { validadeLeaf } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
@@ -11,8 +13,14 @@ import { toast } from "react-toastify";
 
 export function UseLeaf() {
   const { loading, setLoading } = useContext(GlobalContext)
+  const {findCustomerById} = UseCustomer()
+
   const [openModal, setOpenModal] = useState("hide")
   const [dataSearchLeaf, setDataSearchLeaf] = useState([])
+  const [openLayouts, setOpenLayouts] = useState(false)
+  const [openAreaLeaf, setOpenAreaLeaf] = useState(false)
+
+
   const refValorTotalPedido = useRef("")
   const refTotalDescontoPedido = useRef("")
 
@@ -71,10 +79,10 @@ export function UseLeaf() {
     }
   }
 
-  const findById = async () => {
+  const findById = async (id) => {
     try {
-      const leaf = await LeafService.findLeafById(pedido.id)
-      dispatch(SAVE_LEAF({ ...pedido, response: leaf.response, status: leaf.status }))
+      const leaf = await LeafService.findLeafById(id)
+      dispatch(SAVE_LEAF(leaf))
     } catch (error) {
       toast.warning(error.message, {
         position: toast.POSITION.TOP_RIGHT
@@ -156,8 +164,35 @@ export function UseLeaf() {
   const handleSendLeafAndFind = async () => {
     await handleSaveLeaf()
     await sendLeaf()
-    await findById()
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, loading, searchLeaf, dataSearchLeaf }
+  
+  const handleEditLeaf = async () => {
+    setOpenLayouts(true)
+    findCustomerById(pedido.idCliente)
+  }
+
+  const handleNewLeaf = () => {
+    setOpenLayouts(true)
+  }
+
+  const handleOpenAreaLeaf = async (id) => {
+    setOpenAreaLeaf(true)
+    await findById(id)
+  }
+
+  const switchBetweenComponents = () => {
+    setOpenAreaLeaf(false)
+    setOpenLayouts(false)
+    clearAllInputs()
+  }
+
+  const clearAllInputs = () => {
+    dispatch(SAVE_LEAF(INITIAL_VALUE_PEDIDO))
+    dispatch(SAVE_PRODUCTS([INITIAL_VALUE_PRODUTOS]))
+    dispatch(SAVE_CUSTOMER(INITIAL_STATE_CLIENTE_NFE))
+    dispatch(SAVE_BILL([INITIAL_STATE_PARCELA_NFE]))
+  }
+
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, handleOpenAreaLeaf, openLayouts, openAreaLeaf }
 }

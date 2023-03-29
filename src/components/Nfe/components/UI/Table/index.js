@@ -4,7 +4,7 @@ import { ContentTable } from "./style"
 import { AnimateCard } from "../../../../styles"
 
 export function Table({ children }) {
-  const { dataSearchLeaf } = useContext(LeafContext)
+  const { dataSearchLeaf, handleOpenAreaLeaf } = useContext(LeafContext)
   return (
     <div>
       <ContentTable className="table-responsive">
@@ -21,7 +21,7 @@ export function Table({ children }) {
           </thead>
           <tbody>
             {dataSearchLeaf.map((leaf) =>
-              <tr key={leaf.id} className="underlineCustomer">
+              <tr key={leaf.id} className="underlineCustomer" onClick={() => handleOpenAreaLeaf(leaf.id)}>
                 <td className="text-center ">{leaf.nomeCliente}</td>
                 <td className="text-center ">{leaf.cpfCnpj}</td>
                 <td className="text-center ">{`${leaf.data.split(" ")[0].split("-").reverse().join("/")} ${leaf.data.split(" ")[1]}`}</td>
