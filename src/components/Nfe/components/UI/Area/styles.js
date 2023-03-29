@@ -119,7 +119,15 @@ export const PData = styled.p`
   `
 
 export const ContentDetailedDataCard = styled.div`
-  width: 40%;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #0d566f;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 12px;
 
   @media (max-width: 926px) {
     width: 100%;
