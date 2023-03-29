@@ -123,8 +123,6 @@ export const ContentDetailedDataCard = styled.div`
   padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background-color: #0d566f;
   margin-top: 20px;
   border-radius: 5px;
   font-size: 12px;

@@ -22,11 +22,15 @@ export function LeafArea() {
     <>
       <ContentAreaCustomer >
         <ContentDetailedDataCard>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", gap: "50px", alignItems: "center", backgroundColor: "#0d566f", height: "60px", padding: "10px", borderRadius: "5px" }}>
             {detailsLeaf.map((item, index) =>
-              <div style={{textAlign: "center"}}>
-                <p style={{fontWeight: "bold"}}>{headerLeaf[index]}</p>
-                <p style={{ color: "white", padding: 0 }}>{item}</p>
+              <div>
+                <div style={{ color: "white", padding: "0px" }}>
+                  {item}
+                </div>
+                <div>
+                  {headerLeaf[index]}
+                </div>
               </div>
             )}
           </div>
