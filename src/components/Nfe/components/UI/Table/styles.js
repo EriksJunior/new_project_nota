@@ -18,6 +18,7 @@ export const ContentHeaderItens = styled.tr`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  text-align: center;
   padding: 10px;
   border-radius: 5px;
   margin-top: 10px;
@@ -26,6 +27,7 @@ export const ContentHeaderItens = styled.tr`
 export const ContentItensCard = styled.tr`
   display: flex;
   align-items: center;
+  text-align: center;
   background-color: #009dd1;
   height: 60px;
   padding: 10px;
@@ -38,20 +40,26 @@ export const LabelDetailsItens = styled.label`
 `
 
 export const ItensHeader = styled.th`
-  width: 15%;
+  width: 16%;
   color: white;
   padding: 0px;
 `
 
 export const Itens = styled.td`
-  width: 15%;
+  width: 16%;
   color: white;
   padding: 0px;
 `
 
 export const ContentActions = styled.td`
   display: flex;
+  justify-content: center;
   gap: 10px;
+  width: 20%;
+
+  @media screen and (max-width: 1160px) {
+    width: auto;
+  }
 `
 
 export const BtnDownloadXml = styled.div`

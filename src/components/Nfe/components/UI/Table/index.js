@@ -12,57 +12,58 @@ export function Table({ children }) {
   return (
     <div>
       <ContentDetailedDataCard>
-        <table>
-          <thead>
-            <ContentHeaderItens>
-              <ItensHeader colSpan={1}>Nome Cliente</ItensHeader>
-              <ItensHeader colSpan={1}>Status</ItensHeader>
-              <ItensHeader colSpan={1}>Modelo</ItensHeader>
-              <ItensHeader colSpan={1}>Nº Doc</ItensHeader>
-              <ItensHeader colSpan={3}>Data</ItensHeader>
-              <ItensHeader ></ItensHeader>
-            </ContentHeaderItens>
-          </thead>
+        {dataSearchLeaf.length &&
+          <table>
+            <thead>
+              <ContentHeaderItens>
+                <ItensHeader colSpan={1}>Nome Cliente</ItensHeader>
+                <ItensHeader colSpan={1}>Status</ItensHeader>
+                <ItensHeader colSpan={1}>Modelo</ItensHeader>
+                <ItensHeader colSpan={1}>Nº Doc</ItensHeader>
+                <ItensHeader colSpan={3}>Data</ItensHeader>
+                <ItensHeader>Ações</ItensHeader>
+              </ContentHeaderItens>
+            </thead>
 
-          <tbody>
-            {dataSearchLeaf.map((item) =>
-              <ContentItensCard key={item.id}>
-                <Itens>
-                  {item.nomeCliente}
-                </Itens>
+            <tbody>
+              {dataSearchLeaf.map((item) =>
+                <ContentItensCard key={item.id}>
+                  <Itens>
+                    {item.nomeCliente}
+                  </Itens>
 
-                <Itens>
-                  {item.status}
-                </Itens>
+                  <Itens>
+                    {item.status}
+                  </Itens>
 
-                <Itens>
-                  {item.modelo === "1" ? "NF-e" : "NFC-e"}
-                </Itens>
+                  <Itens>
+                    {item.modelo === "1" ? "NF-e" : "NFC-e"}
+                  </Itens>
 
-                <Itens>
-                  {item.response.nfe || "-- --"}
-                </Itens>
+                  <Itens>
+                    {item.response.nfe || "-- --"}
+                  </Itens>
 
-                <Itens>
-                  {item.data.split(" ")[0].split("-").reverse().join("/")}
-                </Itens>
+                  <Itens>
+                    {item.data.split(" ")[0].split("-").reverse().join("/")}
+                  </Itens>
 
-                <ContentActions>
-                  <div>
-                    <BtnDownloadXml>Download XML</BtnDownloadXml>
-                  </div>
-                  <div>
-                    <BtnEditLeaf><BsFillPencilFill color="black" /></BtnEditLeaf>
-                  </div>
-                  <div>
-                    <BtnEditLeaf><BsXLg color="black" /></BtnEditLeaf>
-                  </div>
-                </ContentActions>
-              </ContentItensCard>
-            )}
-          </tbody>
-
-        </table>
+                  <ContentActions>
+                    <div>
+                      <BtnDownloadXml>Download XML</BtnDownloadXml>
+                    </div>
+                    <div>
+                      <BtnEditLeaf><BsFillPencilFill color="black" /></BtnEditLeaf>
+                    </div>
+                    <div>
+                      <BtnEditLeaf><BsXLg color="black" /></BtnEditLeaf>
+                    </div>
+                  </ContentActions>
+                </ContentItensCard>
+              )}
+            </tbody>
+          </table>
+        }
 
 
       </ContentDetailedDataCard>
@@ -96,6 +97,6 @@ export function Table({ children }) {
       <AnimateCard>
         {children}
       </AnimateCard>
-    </div>
+    </div >
   )
 }
