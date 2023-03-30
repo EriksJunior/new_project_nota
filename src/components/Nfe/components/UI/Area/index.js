@@ -52,7 +52,6 @@ export function LeafArea() {
               </div>
             </ContentActions>
           </ContentItensCard>
-          {/* <DetailedDataCard details={detailsLeaf} titleDetails={customerSelected?.nomeCliente} edit={handleEditLeaf} remove={() => console.log(pedido)} generateSale responsiveCustomer={"respCustomer"} /> */}
         </ContentDetailedDataCard>
       </ContentAreaCustomer>
     </>

@@ -1,13 +1,72 @@
 import { useContext } from "react"
 import { LeafContext } from "../../../context"
-import { ContentTable } from "./style"
+
+import { BsFillPencilFill, BsXLg } from "react-icons/bs"
+
+import { ContentDetailedDataCard, ContentItensCard, ContentHeaderItens, BtnDownloadXml, BtnEditLeaf, LabelDetailsItens, Itens, ItensHeader, ContentActions } from "./styles"
+// import { ContentTable } from "./style"
 import { AnimateCard } from "../../../../styles"
 
 export function Table({ children }) {
   const { dataSearchLeaf, handleOpenAreaLeaf } = useContext(LeafContext)
   return (
     <div>
-      <ContentTable className="table-responsive">
+      <ContentDetailedDataCard>
+        <table>
+          <thead>
+            <ContentHeaderItens>
+              <ItensHeader colSpan={1}>Nome Cliente</ItensHeader>
+              <ItensHeader colSpan={1}>Status</ItensHeader>
+              <ItensHeader colSpan={1}>Modelo</ItensHeader>
+              <ItensHeader colSpan={1}>Nº Doc</ItensHeader>
+              <ItensHeader colSpan={3}>Data</ItensHeader>
+              <ItensHeader ></ItensHeader>
+            </ContentHeaderItens>
+          </thead>
+
+          <tbody>
+            {dataSearchLeaf.map((item) =>
+              <ContentItensCard key={item.id}>
+                <Itens>
+                  {item.nomeCliente}
+                </Itens>
+
+                <Itens>
+                  {item.status}
+                </Itens>
+
+                <Itens>
+                  {item.modelo === "1" ? "NF-e" : "NFC-e"}
+                </Itens>
+
+                <Itens>
+                  {item.response.nfe || "-- --"}
+                </Itens>
+
+                <Itens>
+                  {item.data.split(" ")[0].split("-").reverse().join("/")}
+                </Itens>
+
+                <ContentActions>
+                  <div>
+                    <BtnDownloadXml>Download XML</BtnDownloadXml>
+                  </div>
+                  <div>
+                    <BtnEditLeaf><BsFillPencilFill color="black" /></BtnEditLeaf>
+                  </div>
+                  <div>
+                    <BtnEditLeaf><BsXLg color="black" /></BtnEditLeaf>
+                  </div>
+                </ContentActions>
+              </ContentItensCard>
+            )}
+          </tbody>
+
+        </table>
+
+
+      </ContentDetailedDataCard>
+      {/* <ContentTable className="table-responsive">
         <table className="table table-dark">
           <thead>
             <tr>
@@ -32,7 +91,7 @@ export function Table({ children }) {
             )}
           </tbody>
         </table>
-      </ContentTable>
+      </ContentTable> */}
 
       <AnimateCard>
         {children}
