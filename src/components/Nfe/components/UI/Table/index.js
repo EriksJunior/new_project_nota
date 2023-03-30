@@ -3,8 +3,7 @@ import { LeafContext } from "../../../context"
 
 import { BsFillPencilFill, BsXLg } from "react-icons/bs"
 
-import { ContentDetailedDataCard, ContentItensCard, ContentHeaderItens, BtnDownloadXml, BtnEditLeaf, LabelDetailsItens, Itens, ItensHeader, ContentActions } from "./styles"
-// import { ContentTable } from "./style"
+import { ContentDetailedDataCard, ContentItensCard, ContentHeaderItens, BtnDownloadXml, BtnEditLeaf, BtnRemoveLeaf, Itens, ItensHeader, ContentActions } from "./styles"
 import { AnimateCard } from "../../../../styles"
 
 export function Table({ children }) {
@@ -16,11 +15,11 @@ export function Table({ children }) {
           <table>
             <thead>
               <ContentHeaderItens>
-                <ItensHeader colSpan={1}>Nome Cliente</ItensHeader>
-                <ItensHeader colSpan={1}>Status</ItensHeader>
-                <ItensHeader colSpan={1}>Modelo</ItensHeader>
-                <ItensHeader colSpan={1}>Nº Doc</ItensHeader>
-                <ItensHeader colSpan={3}>Data</ItensHeader>
+                <ItensHeader>Nome Cliente</ItensHeader>
+                <ItensHeader>Status</ItensHeader>
+                <ItensHeader>Modelo</ItensHeader>
+                <ItensHeader>Nº Doc</ItensHeader>
+                <ItensHeader>Data</ItensHeader>
                 <ItensHeader>Ações</ItensHeader>
               </ContentHeaderItens>
             </thead>
@@ -49,15 +48,9 @@ export function Table({ children }) {
                   </Itens>
 
                   <ContentActions>
-                    <div>
                       <BtnDownloadXml>Download XML</BtnDownloadXml>
-                    </div>
-                    <div>
-                      <BtnEditLeaf><BsFillPencilFill color="black" /></BtnEditLeaf>
-                    </div>
-                    <div>
-                      <BtnEditLeaf><BsXLg color="black" /></BtnEditLeaf>
-                    </div>
+                      <BtnEditLeaf onClick={handleOpenAreaLeaf}><BsFillPencilFill color="black" /></BtnEditLeaf>
+                      <BtnRemoveLeaf><BsXLg color="black" /></BtnRemoveLeaf>
                   </ContentActions>
                 </ContentItensCard>
               )}

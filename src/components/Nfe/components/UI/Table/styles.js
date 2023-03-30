@@ -19,7 +19,6 @@ export const ContentHeaderItens = styled.tr`
   flex-wrap: wrap;
   align-items: center;
   text-align: center;
-  padding: 10px;
   border-radius: 5px;
   margin-top: 10px;
 `
@@ -43,6 +42,7 @@ export const ItensHeader = styled.th`
   width: 16%;
   color: white;
   padding: 0px;
+  font-weight: 600;
 `
 
 export const Itens = styled.td`
@@ -79,6 +79,21 @@ export const BtnDownloadXml = styled.div`
 `
 
 export const BtnEditLeaf = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none!important;
+  text-decoration: none;
+  background-color: white;
+  color: white;
+  border-radius: 50% 50%;
+  width: 35px;
+  height: 35px;
+  box-shadow: 2px 3px 8px 0px #02769c; 
+  cursor: pointer;
+`
+
+export const BtnRemoveLeaf = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
