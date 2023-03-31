@@ -19,7 +19,8 @@ export const Input = styled.input`
   background-color: transparent;
   color: white;
   outline: none;
-  padding: 0;
+  padding-right: 10px;
+  padding-left: 10px;
   ${({ dataIsExist }) => dataIsExist ? `
       outline: none;
       + ${InputLabel} {

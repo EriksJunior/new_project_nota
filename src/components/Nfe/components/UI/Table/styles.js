@@ -42,13 +42,14 @@ export const ItensHeader = styled.th`
   width: 16%;
   color: white;
   padding: 0px;
-  font-weight: 600;
+  font-weight: bold;
 `
 
 export const Itens = styled.td`
   width: 16%;
   color: white;
   padding: 0px;
+  font-weight: 600;
 `
 
 export const ContentActions = styled.td`

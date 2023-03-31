@@ -6,61 +6,61 @@ import { BsFillPencilFill, BsXLg } from "react-icons/bs"
 import { ContentDetailedDataCard, ContentItensCard, ContentHeaderItens, BtnDownloadXml, BtnEditLeaf, BtnRemoveLeaf, Itens, ItensHeader, ContentActions } from "./styles"
 import { AnimateCard } from "../../../../styles"
 
-export function Table({ children }) {
-  const { dataSearchLeaf, handleOpenAreaLeaf } = useContext(LeafContext)
+export function Table() {
+  const { dataSearchLeaf, handleEditLeaf } = useContext(LeafContext)
   return (
     <div>
-      <ContentDetailedDataCard>
-        {dataSearchLeaf.length &&
-          <table>
-            <thead>
-              <ContentHeaderItens>
-                <ItensHeader>Nome Cliente</ItensHeader>
-                <ItensHeader>Status</ItensHeader>
-                <ItensHeader>Modelo</ItensHeader>
-                <ItensHeader>Nº Doc</ItensHeader>
-                <ItensHeader>Data</ItensHeader>
-                <ItensHeader>Ações</ItensHeader>
-              </ContentHeaderItens>
-            </thead>
+      <AnimateCard>
+        <ContentDetailedDataCard>
+          {dataSearchLeaf.length &&
+            <table className="animate">
+              <thead>
+                <ContentHeaderItens>
+                  <ItensHeader>Nome Cliente</ItensHeader>
+                  <ItensHeader>Status</ItensHeader>
+                  <ItensHeader>Modelo</ItensHeader>
+                  <ItensHeader>Nº Doc</ItensHeader>
+                  <ItensHeader>Data</ItensHeader>
+                </ContentHeaderItens>
+              </thead>
 
-            <tbody>
-              {dataSearchLeaf.map((item) =>
-                <ContentItensCard key={item.id}>
-                  <Itens>
-                    {item.nomeCliente}
-                  </Itens>
+              <tbody>
+                {dataSearchLeaf.map((leaf) =>
+                  <ContentItensCard key={leaf.id}>
+                    <Itens>
+                      {leaf.nomeCliente}
+                    </Itens>
 
-                  <Itens>
-                    {item.status}
-                  </Itens>
+                    <Itens>
+                      {leaf.status}
+                    </Itens>
 
-                  <Itens>
-                    {item.modelo === "1" ? "NF-e" : "NFC-e"}
-                  </Itens>
+                    <Itens>
+                      {leaf.modelo === "1" ? "NF-e" : "NFC-e"}
+                    </Itens>
 
-                  <Itens>
-                    {item.response.nfe || "-- --"}
-                  </Itens>
+                    <Itens>
+                      {leaf.response.nfe || "-- --"}
+                    </Itens>
 
-                  <Itens>
-                    {item.data.split(" ")[0].split("-").reverse().join("/")}
-                  </Itens>
+                    <Itens>
+                      {leaf.data.split(" ")[0].split("-").reverse().join("/")}
+                    </Itens>
 
-                  <ContentActions>
+                    <ContentActions>
                       <BtnDownloadXml>Download XML</BtnDownloadXml>
-                      <BtnEditLeaf onClick={handleOpenAreaLeaf}><BsFillPencilFill color="black" /></BtnEditLeaf>
+                      <BtnEditLeaf onClick={() => handleEditLeaf(leaf.id)}><BsFillPencilFill color="black" /></BtnEditLeaf>
                       <BtnRemoveLeaf><BsXLg color="black" /></BtnRemoveLeaf>
-                  </ContentActions>
-                </ContentItensCard>
-              )}
-            </tbody>
-          </table>
-        }
+                    </ContentActions>
+                  </ContentItensCard>
+                )}
+              </tbody>
+            </table>
+          }
 
 
-      </ContentDetailedDataCard>
-      {/* <ContentTable className="table-responsive">
+        </ContentDetailedDataCard>
+        {/* <ContentTable className="table-responsive">
         <table className="table table-dark">
           <thead>
             <tr>
@@ -86,10 +86,7 @@ export function Table({ children }) {
           </tbody>
         </table>
       </ContentTable> */}
-
-      <AnimateCard>
-        {children}
       </AnimateCard>
-    </div >
+    </div>
   )
 }
