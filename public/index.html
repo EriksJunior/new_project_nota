@@ -41,9 +41,7 @@
 
     window.addEventListener('DOMContentLoaded', event => {
       setTimeout(() => {
-        document.body.querySelector('#layoutSidenav_content').addEventListener('click', event => {
-          event.preventDefault();
-
+        document.body.querySelector('#layoutSidenav').addEventListener('click', () => {
           if(document.querySelector('.sb-sidenav-toggled') !== null) {
             document.body.classList.toggle('sb-sidenav-toggled');
           }
