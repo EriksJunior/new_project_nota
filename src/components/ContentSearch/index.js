@@ -12,8 +12,8 @@ export function InputSearch({ search, dataFilter = [] }) {
   return (
     <ContentInputSearch>
       <ContentSearchAndFilter>
-        <BorderInput >
-          <Input name="text" className="inputTextSearch" id="inputSearch" onChange={({ target }) => setWantedItems({ ...wantedItems, text: target.value })} />
+        <BorderInput>
+          <Input name="text" dataIsExist={wantedItems.text} id="inputSearch" onChange={({ target }) => setWantedItems({ ...wantedItems, text: target.value })} />
           <InputLabel htmlFor="inputSearch">Pesquisar</InputLabel>
         </BorderInput>
 

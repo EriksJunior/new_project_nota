@@ -37,6 +37,18 @@
         }
       }, 1000)
     });
+
+
+    window.addEventListener('DOMContentLoaded', event => {
+      setTimeout(() => {
+        document.body.querySelector('#layoutSidenav_content').addEventListener('click', () => {
+          if(document.querySelector('.sb-sidenav-toggled') !== null) {
+            document.body.classList.toggle('sb-sidenav-toggled');
+          }
+        })
+      });
+    }, 1000)
+
   </script>
 </body>
 

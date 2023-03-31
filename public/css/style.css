@@ -11920,7 +11920,7 @@ body {
   transition: opacity 0.3s ease-in-out;
 }
 
-@media (min-width: 992px) {
+@media (max-width: 1px) {
   #layoutSidenav #layoutSidenav_nav {
     transform: translateX(0);
   }

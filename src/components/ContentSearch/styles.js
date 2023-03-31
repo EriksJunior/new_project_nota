@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const InputLabel = styled.label`
   position: absolute;
-  color: #b4b2b2;
+  color: white;
   transition: all 0.3s;
   width: 100%;
   top: -3px;
@@ -14,17 +14,33 @@ export const InputLabel = styled.label`
 export const Input = styled.input`
   border: none;
   width: 100%;
-  height: 20px;
+  height: 100%;
+  padding: 10px;
   background-color: transparent;
-  color: #b4b2b2;
-    &:focus{
+  color: white;
+  outline: none;
+  padding-right: 10px;
+  padding-left: 10px;
+  ${({ dataIsExist }) => dataIsExist ? `
       outline: none;
       + ${InputLabel} {
         top: -20px;
-        color: #86b7fe;
+        color: deepskyblue;
+      };
+      height: 100%;
+  ` :
+    `
+    &:focus{
+      outline: none;
+      + ${InputLabel} {
+        color: deepskyblue;
+        top: -20px;
       };
       height: 100%;
     }
+  `
+  }
+
   `
 
 export const ContentInputSearch = styled.div`
@@ -54,13 +70,13 @@ export const ContentInputSearch = styled.div`
 
 export const BorderInput = styled.div`
   position: relative;
-  display: flex;
-  padding-bottom: 2px;
-  align-items: flex-end;
-  border: 1px solid #b4b2b2;
+  transition: all 0.3s;
+  background-color: #02769c;
+  color: white;
   border-radius: 5px;
   height: 35px;
-  transition: all 0.3s;
+  box-shadow: 1px 2px 8px -3px #02769c; 
+
 
   &:focus-within {
     border-color: #86b7fe;
@@ -110,7 +126,7 @@ export const BorderInputDate = styled.div`
   display: flex;
   padding-bottom: 2px;
   align-items: flex-end;
-  border: solid 1px #b4b2b2;
+  background-color: #02769c;
   border-radius: 5px;
   height: 35px;
   transition: all 0.3s;
@@ -123,7 +139,7 @@ export const BorderInputDate = styled.div`
 
   label {
     position: absolute;
-    color: #b4b2b2;
+    color: white;
     width: 100%;
     top: -3px;
     left: 2px;
@@ -136,7 +152,7 @@ export const InputDate = styled.input`
   width: 150px;
   height: 25px;
   background-color: transparent;
-  color: #b4b2b2;
+  color: white;
   border: none;
   border-radius: 0.2rem;
   display: block;

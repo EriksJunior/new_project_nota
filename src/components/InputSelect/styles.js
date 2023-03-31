@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const InputLabel = styled.label`
   position: absolute;
-  color: #b4b2b2;
+  color: white;
   top: -3px;
   left: 2px;
   font-size: 12px;
@@ -16,7 +16,7 @@ export const ButtonFilter = styled.button`
   width: 150px;
   height: 100%;
   background-color: transparent;
-  color: #b4b2b2;
+  color: white;
   border-radius: 0.2rem;
   border: none;
   display: block;
@@ -134,7 +134,7 @@ export const ContentTileAndIcon = styled.div`
 
 export const BorderButton = styled.div`
   position: relative;
-  border: solid 1px #b4b2b2;
+  background-color: #02769c;
   border-radius: 5px;
   display: flex;
   justify-content: center;

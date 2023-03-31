@@ -11,10 +11,70 @@ export const Card = styled.div`
   }
 `
 
+export const ContentItensCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: center;
+  background-color: #009dd1;
+  height: 60px;
+  padding: 10px;
+  border-radius: 5px;
+`
+
+export const LabelDetailsItens = styled.label`
+  position: absolute;
+  bottom: 40px;
+`
+
+export const Itens = styled.div`
+  width: 120px;
+  color: white;
+  padding: 0px;
+  position: relative;
+` 
+
+export const ContentActions = styled.div`
+  display: flex;
+  gap: 10px;
+`
+
+export const BtnDownloadXml = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none!important;
+  text-decoration: none;
+  background-color: #02769c;
+  color: white;
+  border-radius: 20px;
+  width: 120px;
+  height: 35px;
+  box-shadow: 2px 3px 8px 0px #02769c; 
+  cursor: pointer;
+  font-weight: 600;
+`
+
+export const BtnEditLeaf = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none!important;
+  text-decoration: none;
+  background-color: white;
+  color: white;
+  border-radius: 50% 50%;
+  width: 35px;
+  height: 35px;
+  box-shadow: 2px 3px 8px 0px #02769c; 
+  cursor: pointer;
+`
+
 export const ContentAreaCustomer = styled.div`
   width: 100%; 
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 
   @media (max-width: 925px) {
     flex-direction: column;

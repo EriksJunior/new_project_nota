@@ -82,7 +82,9 @@ export function UseLeaf() {
   const findById = async (id) => {
     try {
       const leaf = await LeafService.findLeafById(id)
+      console.log(leaf)
       dispatch(SAVE_LEAF(leaf))
+      await findCustomerById(leaf.idCliente)
     } catch (error) {
       toast.warning(error.message, {
         position: toast.POSITION.TOP_RIGHT
@@ -121,7 +123,7 @@ export function UseLeaf() {
 
       return (parseFloat(subtotal) * quantidade) - desconto
     }, 0)
-    const formattedFrete = pedido.frete.replace(".", "").replace(",", ".").replace(",", ".")
+    const formattedFrete = String(pedido.frete).replace(".", "").replace(",", ".").replace(",", ".")
 
     const totalValuesProducts = formattedTotal.reduce((oldValue, value) => oldValue + value, 0)
     const totalMonetary = totalValuesProducts + parseFloat(formattedFrete)
@@ -167,19 +169,19 @@ export function UseLeaf() {
   }
 
   
-  const handleEditLeaf = async () => {
+  const handleEditLeaf = async (id) => {
     setOpenLayouts(true)
-    findCustomerById(pedido.idCliente)
+    await findById(id)
   }
 
   const handleNewLeaf = () => {
     setOpenLayouts(true)
   }
 
-  const handleOpenAreaLeaf = async (id) => {
-    setOpenAreaLeaf(true)
-    await findById(id)
-  }
+  // const handleOpenAreaLeaf = async (id) => {
+  //   setOpenAreaLeaf(true)
+  //   await findById(id)
+  // }
 
   const switchBetweenComponents = () => {
     setOpenAreaLeaf(false)
@@ -194,5 +196,5 @@ export function UseLeaf() {
     dispatch(SAVE_BILL([INITIAL_STATE_PARCELA_NFE]))
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, handleOpenAreaLeaf, openLayouts, openAreaLeaf }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf }
 }
