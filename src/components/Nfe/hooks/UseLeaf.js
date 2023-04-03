@@ -2,18 +2,22 @@ import { useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_LEAF, SAVE_CUSTOMER, SAVE_BILL, SAVE_PRODUCTS } from "../store/reducers/LeafReducers";
 
+import { DateTime } from 'luxon'
+
 import { GlobalContext } from "../../../context/Global/global";
 import { UseCustomer } from "./UseCustomer";
+
 import LeafService from "../../../services/LeafService";
 import { INITIAL_VALUE_PEDIDO, INITIAL_STATE_CLIENTE_NFE, INITIAL_VALUE_PRODUTOS, INITIAL_STATE_PARCELA_NFE } from "../initialStates"
 
 import { validadeLeaf } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
+import ProductLeafService from "../../../services/ProductLeafService";
 
 export function UseLeaf() {
   const { loading, setLoading } = useContext(GlobalContext)
-  const {findCustomerById} = UseCustomer()
+  const { findCustomerById } = UseCustomer()
 
   const [openModal, setOpenModal] = useState("hide")
   const [dataSearchLeaf, setDataSearchLeaf] = useState([])
@@ -82,14 +86,91 @@ export function UseLeaf() {
   const findById = async (id) => {
     try {
       const leaf = await LeafService.findLeafById(id)
-      console.log(leaf)
-      dispatch(SAVE_LEAF(leaf))
+      const data = await handleAllDataLeafAfterEdit(leaf)
+
+      dispatch(SAVE_LEAF(data.leaf))
+      dispatch(SAVE_PRODUCTS(data.produtos))
       await findCustomerById(leaf.idCliente)
     } catch (error) {
       toast.warning(error.message, {
         position: toast.POSITION.TOP_RIGHT
       });
     }
+  }
+
+  const handleAllDataLeafAfterEdit = async (leaf) => {
+    const leafFormatted = handleLeafAfterEdit(leaf)
+    const productsFormatted = await handleProductsLeafAfterEdit(leaf.id)
+    // chamar contas handleBillsLeafAfterEdit()
+
+    return { leaf: leafFormatted, produtos: productsFormatted }
+  }
+
+  const handleProductsLeafAfterEdit = async (idLeaf) => {
+    const { noteItem } = await findLeafProductsByIdNota(idLeaf)
+
+    return noteItem.map((prod) => {
+      const formattedDiscountProd = prod.desconto.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+      const formattedSubtotal = prod.subtotal.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+      const formattedTotal = prod.total.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+
+      return {
+        ...prod,
+        desconto: formattedDiscountProd,
+        subtotal: formattedSubtotal,
+        total: formattedTotal
+      }
+    })
+  }
+
+  const handleLeafAfterEdit = (leaf) => {
+    const formattedDate = leaf.data_nfe.split(" ")[0]
+
+    return {
+      id: String(leaf.id),
+      operacao: String(leaf.operacao),
+      natureza_operacao: String(leaf.natureza_operacao),
+      modelo: String(leaf.modelo), //2 para NFC-e
+      ambiente: String(leaf.ambiente), //2 para Homologação
+      idCliente: String(leaf.idCliente),
+      finalidade: String(leaf.finalidade),
+      url_notificacao: String(leaf.url_notificacao),
+      data_nfe: DateTime.fromISO(formattedDate).setLocale('fr').toFormat('yyyy-MM-dd'),
+      id_webmania: String(leaf.id_webmania),
+      response: {
+        chave: String(leaf.response.chave),
+        danfe: String(leaf.response.danfe),
+        danfe_etiqueta: String(leaf.response.danfe_etiqueta),
+        danfe_simples: String(leaf.response.danfe_simples),
+        log: leaf.response.log,
+        modelo: String(leaf.response.modelo),
+        motivo: String(leaf.response.motivo),
+        nfe: String(leaf.response.nfe),
+        serie: String(leaf.response.serie),
+        status: String(leaf.response.status),
+        uuid: String(leaf.response.uuid),
+        xml: String(leaf.response.xml)
+      },
+      response_cancelamento: String(leaf.response_cancelamento),
+      pagamento: String(leaf.pagamento),
+      forma_pagamento: String(leaf.forma_pagamento),
+      presenca: String(leaf.presenca),
+      modalidade_frete: String(leaf.modalidade_frete),
+      frete: maskCurrency(String(leaf.frete)),
+      desconto: String(leaf.desconto),
+      total: String(leaf.total),
+      intermediador: leaf.intermediador || "",
+      cnpj_intermediador: leaf.cnpj_intermediador || "",
+      id_intermediador: leaf.id_intermediador || "",
+      despesas_acessorias: maskCurrency(String(leaf.despesas_acessorias)),
+      informacoes_fisco: leaf.informacoes_fisco || "",
+      informacoes_complementares: leaf.informacoes_complementares || "",
+      status: String(leaf.status),
+    }
+  }
+
+  const handleBillsLeafAfterEdit = async (idLeaf) => {
+   
   }
 
   const searchLeaf = async (text, filter, page, startDate, endDate) => {
@@ -108,7 +189,7 @@ export function UseLeaf() {
 
   const convertMonetaryValuesToFloat = (leaf) => {
     const formattedFrete = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
-    const formattedDespesasAcessorias = leaf.frete.replace(".", "").replace(".", "").replace(",", ".")
+    const formattedDespesasAcessorias = leaf.despesas_acessorias.replace(".", "").replace(".", "").replace(",", ".")
     const formattedTotal = leaf.total.replace(".", "").replace(".", "").replace(",", ".")
     const formattedDesconto = leaf.desconto.replace(".", "").replace(".", "").replace(",", ".")
 
@@ -168,7 +249,7 @@ export function UseLeaf() {
     await sendLeaf()
   }
 
-  
+
   const handleEditLeaf = async (id) => {
     setOpenLayouts(true)
     await findById(id)
@@ -194,6 +275,10 @@ export function UseLeaf() {
     dispatch(SAVE_PRODUCTS([INITIAL_VALUE_PRODUTOS]))
     dispatch(SAVE_CUSTOMER(INITIAL_STATE_CLIENTE_NFE))
     dispatch(SAVE_BILL([INITIAL_STATE_PARCELA_NFE]))
+  }
+
+  const findLeafProductsByIdNota = async (idLeaf) => {
+    return await ProductLeafService.findLeafProductsByIdNota(idLeaf)
   }
 
   return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf }

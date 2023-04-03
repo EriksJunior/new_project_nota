@@ -21,7 +21,7 @@ export function FormCustomer() {
 
         <div className="mb-3 col-sm-6 col-md-6 col-lg-3 col-xl-3">
           <label className="form-label">CPF/CNPJ</label>
-          <input onChange={handleChange} name="cpfcnpj" onKeyUp={maskCpfCnpj} value={client.cpfcnpj || ""} type="text" className="form-control form-control-sm" />
+          <input onChange={handleChange} name="cpfCnpj" onKeyUp={maskCpfCnpj} value={client.cpfCnpj || ""} type="text" className="form-control form-control-sm" />
         </div>
 
         <div className="mb-3 col-sm-6 col-md-6 col-lg-3 col-xl-3">

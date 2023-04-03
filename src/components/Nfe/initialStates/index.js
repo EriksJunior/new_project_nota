@@ -20,7 +20,6 @@ export const INITIAL_VALUE_PRODUTOS = {
 
 export const INITIAL_VALUE_PEDIDO = {
   id: "",
-  ID: "", // Controle das solicitações de emissão por pedido ou ID de processamento.
   operacao: "1",
   natureza_operacao: "Venda de produção do estabelecimento",
   modelo: "1", //2 para NFC-e
