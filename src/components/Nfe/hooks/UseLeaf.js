@@ -1,7 +1,6 @@
 import { useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SAVE_LEAF, SAVE_CUSTOMER, SAVE_BILL, SAVE_PRODUCTS } from "../store/reducers/LeafReducers";
-
 import { DateTime } from 'luxon'
 
 import { GlobalContext } from "../../../context/Global/global";
@@ -14,6 +13,7 @@ import { validadeLeaf } from "../validate";
 import { Masks } from "../../../utils/masks/Masks";
 import { toast } from "react-toastify";
 import ProductLeafService from "../../../services/ProductLeafService";
+import BillService from "../../../services/BillService";
 
 export function UseLeaf() {
   const { loading, setLoading } = useContext(GlobalContext)
@@ -89,7 +89,8 @@ export function UseLeaf() {
       const data = await handleAllDataLeafAfterEdit(leaf)
 
       dispatch(SAVE_LEAF(data.leaf))
-      dispatch(SAVE_PRODUCTS(data.produtos))
+      dispatch(SAVE_PRODUCTS(data.products))
+      dispatch(SAVE_BILL(data.bills))
       await findCustomerById(leaf.idCliente)
     } catch (error) {
       toast.warning(error.message, {
@@ -101,9 +102,11 @@ export function UseLeaf() {
   const handleAllDataLeafAfterEdit = async (leaf) => {
     const leafFormatted = handleLeafAfterEdit(leaf)
     const productsFormatted = await handleProductsLeafAfterEdit(leaf.id)
+    const billsFormatted = await handleBillsLeafAfterEdit(leaf.id)
+
     // chamar contas handleBillsLeafAfterEdit()
 
-    return { leaf: leafFormatted, produtos: productsFormatted }
+    return { leaf: leafFormatted, products: productsFormatted, bills: billsFormatted }
   }
 
   const handleProductsLeafAfterEdit = async (idLeaf) => {
@@ -135,7 +138,7 @@ export function UseLeaf() {
       idCliente: String(leaf.idCliente),
       finalidade: String(leaf.finalidade),
       url_notificacao: String(leaf.url_notificacao),
-      data_nfe: DateTime.fromISO(formattedDate).setLocale('fr').toFormat('yyyy-MM-dd'),
+      data_nfe: DateTime.fromISO(formattedDate).setLocale("fr").toFormat("yyyy-MM-dd"),
       id_webmania: String(leaf.id_webmania),
       response: {
         chave: String(leaf.response.chave),
@@ -170,7 +173,15 @@ export function UseLeaf() {
   }
 
   const handleBillsLeafAfterEdit = async (idLeaf) => {
-   
+    const bills = await BillService.findByIdLeaf(idLeaf)
+
+    return bills.map((bill) => {
+      const formattedDate = bill.data.split(" ")[0]
+      return {
+        ...bill,
+        data: DateTime.fromISO(formattedDate).setLocale("fr").toFormat("yyyy-MM-dd")
+      }
+    })
   }
 
   const searchLeaf = async (text, filter, page, startDate, endDate) => {
