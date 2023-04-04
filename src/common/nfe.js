@@ -1,8 +1,6 @@
 export const modelos = [
   { value: "1", tipo: "NF-e" },
   { value: "2", tipo: "NFC-e" },
-  { value: "3", tipo: "CCe" },
-  { value: "4", tipo: "MDF-e" },
 ]
 
 export const finalidades = [

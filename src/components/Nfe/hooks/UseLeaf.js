@@ -246,8 +246,7 @@ export function UseLeaf() {
         position: toast.POSITION.TOP_RIGHT
       });
     } catch (error) {
-      console.log(error)
-      toast("Ocorreu um erro ao emitir o documento fiscal! ✅", {
+      toast.warning(error.response.data.message || "Ocorreu um erro ao emitir o documento fiscal! ", {
         position: toast.POSITION.TOP_RIGHT
       });
     } finally {
