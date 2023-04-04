@@ -122,6 +122,11 @@ export function UseProduct() {
     removeProductInTable(index)
   }
 
+  const findLeafProductsByIdNota = async (idLeaf) => {
+    const products = await ProductLeafService.findLeafProductsByIdNota(idLeaf)
+    console.log(products)
+  }
+
   const getProcuctsFromSelectBox = async () => {
     const products = await ProductServices.getFromSelectBox()
     setProductsFromSelectBox(products)
@@ -143,5 +148,5 @@ export function UseProduct() {
     return false
   }
 
-  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue }
+  return { getProcuctsFromSelectBox, productsFromSelectBox, addProductInTable, handleRemoveProductInTableAndLeafProducts, handleChangeProducts, handleChangeMonetaryValues, handleSaveLeafAndLeafProducts, calculateTotalValue, findLeafProductsByIdNota }
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UseLeaf } from "./UseLeaf";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,14 @@ export function UseBill() {
   const pedido = useSelector(state => state.leaf.pedido)
 
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    const teste = parcelas.map(() => {
+      return false
+    })
+
+    setConfirmRemoveBill([...confirmRemoveBill, ...teste])
+  }, [parcelas])  // eslint-disable-line react-hooks/exhaustive-deps
 
   const saveLeafBill = async (idLeaf) => {
     try {
@@ -85,6 +93,7 @@ export function UseBill() {
 
   const addBillToList = async () => {
     dispatch(SAVE_BILL([...parcelas, INITIAL_STATE_PARCELA_NFE]))
+
     setConfirmRemoveBill([...confirmRemoveBill, false])
   }
 
@@ -135,5 +144,5 @@ export function UseBill() {
 
 
 
-  return { handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, removeBillFromList, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
+  return { handleSaveLeafAndLeafBills, addBillToList, confirmRemoveBill, setConfirmRemoveBill, removeBillFromList, handleChangeConfirmRemoveBill, cancelRemoveBill, handleChangeBill }
 }
