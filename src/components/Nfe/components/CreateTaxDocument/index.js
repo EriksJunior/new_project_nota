@@ -1,14 +1,15 @@
 import { useContext } from "react"
 import { LeafContext } from "../../context"
-import { ContentTaxDocument, ContentActions } from "./styles"
+import { ContentTaxDocument, ContentActions, ContentActionsItems, ActionsItems, ContentItems, TitleItems } from "./styles"
 import { FormLeaf } from "../.."
 // import { Metrics } from "../../components/UI/Metrics"
 import { ContentDesigner } from "../../../Tab"
-import { Div, Button } from "../../../styles"
+import { BsArrowLeftCircleFill, BsPatchCheckFill, BsGearFill } from "react-icons/bs"
+import { RiSendPlaneFill } from "react-icons/ri"
 
 export function CreateTaxDocument() {
   const { switchBetweenComponents, handleSaveLeaf, handleSendLeafAndFind } = useContext(LeafContext)
-  
+
   return (
     <ContentTaxDocument className="m-3 animate">
       <ContentDesigner title={"Realize emissões de documentos fiscais"}>
@@ -16,12 +17,27 @@ export function CreateTaxDocument() {
       </ContentDesigner>
 
       <ContentActions>
-        <Div style={{ width: "100%", display: "flex", justifyContent: "space-evenly",}}>
-          <Button className="btn btn-primary btn-sm" onClick={handleSaveLeaf}>Salvar Documento</Button>
-          <Button className="btn btn-primary btn-sm" onClick={handleSendLeafAndFind}>Emitir Documento</Button>
-          <Button className="btn btn-primary btn-sm">Ações</Button>
-          <Button className="btn btn-primary btn-sm" onClick={switchBetweenComponents}>Voltar</Button>
-        </Div>
+        <ContentActionsItems>
+          <ActionsItems onClick={handleSaveLeaf}>
+            <TitleItems>Salvar</TitleItems>
+            <ContentItems><BsPatchCheckFill  /></ContentItems>
+          </ActionsItems>
+
+          <ActionsItems onClick={handleSendLeafAndFind}>
+            <TitleItems>Emitir Documento</TitleItems>
+            <ContentItems><RiSendPlaneFill  /></ContentItems>
+          </ActionsItems>
+
+          <ActionsItems>
+            <TitleItems>Ações</TitleItems>
+            <ContentItems><BsGearFill  /></ContentItems>
+          </ActionsItems>
+
+          <ActionsItems onClick={switchBetweenComponents}>
+            <TitleItems>Voltar</TitleItems>
+            <ContentItems><BsArrowLeftCircleFill  /></ContentItems>
+          </ActionsItems>
+        </ContentActionsItems>
       </ContentActions>
     </ContentTaxDocument>
   )

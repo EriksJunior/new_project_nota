@@ -104,8 +104,6 @@ export function UseLeaf() {
     const productsFormatted = await handleProductsLeafAfterEdit(leaf.id)
     const billsFormatted = await handleBillsLeafAfterEdit(leaf.id)
 
-    // chamar contas handleBillsLeafAfterEdit()
-
     return { leaf: leafFormatted, products: productsFormatted, bills: billsFormatted }
   }
 
@@ -239,12 +237,14 @@ export function UseLeaf() {
       if (pedido.response.chave) {
         return
       }
-      setLoading(true)
-      await LeafService.sendLeaf(pedido.id)
 
-      toast("Documento fiscal Emitido! ✅", {
-        position: toast.POSITION.TOP_RIGHT
-      });
+      setLoading(true)
+      const result = await LeafService.sendLeaf(pedido.id)
+      if (result) {
+        toast("Documento fiscal Emitido! ✅", {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      }
     } catch (error) {
       toast.warning(error.response.data.message || "Ocorreu um erro ao emitir o documento fiscal! ", {
         position: toast.POSITION.TOP_RIGHT
