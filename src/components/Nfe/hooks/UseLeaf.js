@@ -20,6 +20,7 @@ export function UseLeaf() {
   const { findCustomerById } = UseCustomer()
 
   const [openModal, setOpenModal] = useState("hide")
+  const [openModalCancelLeaf, setOpenModalCancelLeaf] = useState("hide")
   const [dataSearchLeaf, setDataSearchLeaf] = useState([])
   const [openLayouts, setOpenLayouts] = useState(false)
   const [openAreaLeaf, setOpenAreaLeaf] = useState(false)
@@ -27,6 +28,7 @@ export function UseLeaf() {
 
   const refValorTotalPedido = useRef("")
   const refTotalDescontoPedido = useRef("")
+  const refDescriptionCancelLeaf = useRef("")
 
   const dispatch = useDispatch()
   const pedido = useSelector(state => state.leaf.pedido)
@@ -242,9 +244,9 @@ export function UseLeaf() {
 
       setLoading(true)
       const result = await LeafService.sendLeaf(pedido.id)
-  
+
       if (result) {
-        dispatch(SAVE_LEAF({...pedido, response: result.dataWebMania, status: result.status}))
+        dispatch(SAVE_LEAF({ ...pedido, response: result.dataWebMania, status: result.status }))
         toast("Documento fiscal Emitido! ✅", {
           position: toast.POSITION.TOP_RIGHT
         });
@@ -258,10 +260,23 @@ export function UseLeaf() {
     }
   }
 
-  const cancelLeaf = async (dataCancelLeaf, idLeaf) => {
-    // dataCancelLeaf = {chaveNfe: "6546546546", movito: "porque sim pô, só cancela aê"}
-    console.log('testeeeeee');
-    // await LeafService.cancelLeaf(dataCancelLeaf, idLeaf)
+  const cancelLeaf = async (idLeaf) => {
+    try {
+      const dataCancelLeaf = {
+        chave: pedido.response.chave,
+        motivo: refDescriptionCancelLeaf.current.value
+      }
+
+      const { status } = await LeafService.cancelLeaf(dataCancelLeaf, idLeaf)
+      dispatch(SAVE_LEAF({...pedido, status}))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const enbleModalCancelLeaf = () => {
+    setOpenModalCancelLeaf("show")
+    refDescriptionCancelLeaf.current.value = ""
   }
 
   const handleSendLeafAndFind = async () => {
@@ -301,5 +316,5 @@ export function UseLeaf() {
     return await ProductLeafService.findLeafProductsByIdNota(idLeaf)
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, cancelLeaf, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, openModalCancelLeaf, setOpenModalCancelLeaf, handleSendLeafAndFind, cancelLeaf, enbleModalCancelLeaf, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf, refDescriptionCancelLeaf }
 }

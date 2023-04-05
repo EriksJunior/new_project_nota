@@ -4,6 +4,7 @@ import { LeafContext } from "../../context"
 
 import { FormLeaf } from "../.."
 import { DropdownActions } from "../UI/DropdownActions"
+import { Modal } from "../../../Modal"
 // import { Metrics } from "../../components/UI/Metrics"
 import { ContentDesigner } from "../../../Tab"
 import { BsArrowLeftCircleFill, BsPatchCheckFill, BsGearFill } from "react-icons/bs"
@@ -12,7 +13,7 @@ import { ContentTaxDocument, ContentActions, ContentActionsItems, ActionsItems, 
 
 export function CreateTaxDocument() {
   const [enableActions, setEnableActions] = useState(false)
-  const { switchBetweenComponents, handleSaveLeaf, handleSendLeafAndFind, cancelLeaf } = useContext(LeafContext)
+  const { openModalCancelLeaf, setOpenModalCancelLeaf, switchBetweenComponents, handleSaveLeaf, handleSendLeafAndFind, cancelLeaf, enbleModalCancelLeaf, refDescriptionCancelLeaf } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const isClicked = useRef(null)
 
@@ -54,7 +55,7 @@ export function CreateTaxDocument() {
             <ContentItems><BsGearFill /></ContentItems>
             <InputActions type="checkbox" checked={enableActions} onChange={(event) => setEnableActions(event.target.checked)} />
             <ContentDropdownActions enableDropDown={enableActions}>
-              <DropdownActions dataList={["Inutilizar", " Carta de correção"]} cancel={cancelLeaf}/>
+              <DropdownActions dataList={["Inutilizar", " Carta de correção"]} cancel={enbleModalCancelLeaf} />
             </ContentDropdownActions>
           </ActionsItems>
 
@@ -65,6 +66,22 @@ export function CreateTaxDocument() {
           </ActionsItems>
         </ContentActionsItems>
       </ContentActions>
+
+      <Modal isOpen={openModalCancelLeaf} closeModal={setOpenModalCancelLeaf}>
+        <div style={{ width: "100%", backgroundColor: "black", padding: "15px", marginTop: "50px", borderRadius: "5px", color: "white" }}>
+          <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label className="form-label">Motivo do Cancelamento</label>
+            <input ref={refDescriptionCancelLeaf} type="text" className="form-control form-control-sm" name="desconto" />
+            <p style={{ fontSize: "12px", marginTop: "5px", color: "#11b1e5" }}>O movito do cancelamento deve ter no mínimo 15 caracteres</p>
+          </div>
+
+          <div style={{display: "flex", justifyContent: "flex-end"}}>
+            <ActionsItems onClick={() => cancelLeaf(pedido.id)}>
+              <TitleItems>Confirmar</TitleItems>
+            </ActionsItems>
+          </div>
+        </div>
+      </Modal>
     </ContentTaxDocument>
   )
 }
