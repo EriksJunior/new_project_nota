@@ -259,7 +259,9 @@ export function UseLeaf() {
   }
 
   const cancelLeaf = async (dataCancelLeaf, idLeaf) => {
-    await LeafService.cancelLeaf(dataCancelLeaf, idLeaf)
+    // dataCancelLeaf = {chaveNfe: "6546546546", movito: "porque sim pô, só cancela aê"}
+    console.log('testeeeeee');
+    // await LeafService.cancelLeaf(dataCancelLeaf, idLeaf)
   }
 
   const handleSendLeafAndFind = async () => {
@@ -299,5 +301,5 @@ export function UseLeaf() {
     return await ProductLeafService.findLeafProductsByIdNota(idLeaf)
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, handleSendLeafAndFind, cancelLeaf, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf }
 }

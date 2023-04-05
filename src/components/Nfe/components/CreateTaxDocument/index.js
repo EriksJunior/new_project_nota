@@ -12,7 +12,7 @@ import { ContentTaxDocument, ContentActions, ContentActionsItems, ActionsItems, 
 
 export function CreateTaxDocument() {
   const [enableActions, setEnableActions] = useState(false)
-  const { switchBetweenComponents, handleSaveLeaf, handleSendLeafAndFind } = useContext(LeafContext)
+  const { switchBetweenComponents, handleSaveLeaf, handleSendLeafAndFind, cancelLeaf } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const isClicked = useRef(null)
 
@@ -54,7 +54,7 @@ export function CreateTaxDocument() {
             <ContentItems><BsGearFill /></ContentItems>
             <InputActions type="checkbox" checked={enableActions} onChange={(event) => setEnableActions(event.target.checked)} />
             <ContentDropdownActions enableDropDown={enableActions}>
-              <DropdownActions dataList={["Cancelar", "Inutilizar", " Carta de correção"]}/>
+              <DropdownActions dataList={["Inutilizar", " Carta de correção"]} cancel={cancelLeaf}/>
             </ContentDropdownActions>
           </ActionsItems>
 
