@@ -1,12 +1,18 @@
+
 import { Dropdown, ContentRemoveIrem } from "./styles"
 import { BsCheck2 } from "react-icons/bs"
 
-export function DropdownActions({ remove, index }) {
+export function DropdownActions({ remove, index, dataList = ["Impostos", "Duplicar produto"], newWidth = "170px" }) {
   return (
-    <Dropdown>
+    <Dropdown width={newWidth}>
       <ul>
-        <li>Impostos</li>
-        <li>Duplicar produto</li>
+        {dataList.map((item, indice) =>
+          <div key={indice}>
+            <li>{item}</li>
+          </div>
+        )}
+
+        {remove &&
         <li>
           <ContentRemoveIrem htmlFor={`remove-${index}`}>
             Exluir
@@ -17,6 +23,7 @@ export function DropdownActions({ remove, index }) {
             </div>
           </ContentRemoveIrem>
         </li>
+        }
       </ul>
     </Dropdown>
   )

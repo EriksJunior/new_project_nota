@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Dropdown = styled.div`
   position: absolute;
   z-index: 999;
-  width: 170px;
+  ${({width}) => `width: ${width};`}
   background-color: black;
   color: white;
   font-size: 13px;
