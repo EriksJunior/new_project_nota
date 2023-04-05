@@ -235,12 +235,16 @@ export function UseLeaf() {
   const sendLeaf = async () => {
     try {
       if (pedido.response.chave) {
-        return
+        return toast.warning("Documento fiscal já emitido!", {
+          position: toast.POSITION.TOP_RIGHT
+        });
       }
 
       setLoading(true)
       const result = await LeafService.sendLeaf(pedido.id)
+  
       if (result) {
+        dispatch(SAVE_LEAF({...pedido, response: result.dataWebMania, status: result.status}))
         toast("Documento fiscal Emitido! ✅", {
           position: toast.POSITION.TOP_RIGHT
         });
@@ -252,6 +256,10 @@ export function UseLeaf() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const cancelLeaf = async (dataCancelLeaf, idLeaf) => {
+    await LeafService.cancelLeaf(dataCancelLeaf, idLeaf)
   }
 
   const handleSendLeafAndFind = async () => {
