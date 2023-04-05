@@ -40,7 +40,6 @@ const validadeLeaf = (leaf) => {
 
   const result = schema.safeParse(leaf)
   if (!result.success) {
-    console.log(result.error.errors)
     const messages = result.error.errors[0].message
 
     throw Error(messages)

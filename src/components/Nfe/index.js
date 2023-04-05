@@ -1,4 +1,5 @@
 import { useEffect, useContext } from "react"
+import { useSelector } from "react-redux";
 import { LeafContext } from "./context"
 
 import { Header } from "./components/UI/Header"
@@ -13,8 +14,9 @@ import { ContainerNav } from "./components/UI/Nav/styles"
 import { Div, Button } from "../styles"
 
 export function FormLeaf() {
-  const { navItems, switchBetweenComponents, getCustomersFromSelectBox, getProcuctsFromSelectBox } = useContext(LeafContext)
-
+  const { navItems, getCustomersFromSelectBox, getProcuctsFromSelectBox } = useContext(LeafContext)
+  const pedido = useSelector(state => state.leaf.pedido)
+  // handleSendLeafAndFind
   useEffect(() => {
     getCustomersFromSelectBox()
     getProcuctsFromSelectBox()
@@ -43,10 +45,6 @@ export function FormLeaf() {
           </Div>
         </Nav>
       </ContainerNav>
-
-      <Div style={{ width: "80%", display: "flex", justifyContent: "flex-end", marginTop: "10px" }}>
-        <Button className="btn btn-primary btn-sm" onClick={switchBetweenComponents}>Voltar</Button>
-      </Div>
     </ContentNfe>
   )
 }

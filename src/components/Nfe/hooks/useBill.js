@@ -21,11 +21,11 @@ export function UseBill() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const teste = parcelas.map(() => {
+    const newConfirmRemoveBill = parcelas.map(() => {
       return false
     })
 
-    setConfirmRemoveBill([...confirmRemoveBill, ...teste])
+    setConfirmRemoveBill([...confirmRemoveBill, ...newConfirmRemoveBill])
   }, [parcelas])  // eslint-disable-line react-hooks/exhaustive-deps
 
   const saveLeafBill = async (idLeaf) => {
