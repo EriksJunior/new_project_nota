@@ -49,10 +49,10 @@ export function CreateTaxDocument() {
             </ActionsItems>
           }
 
-          <ActionsItems>
+          <ActionsItems ref={isClicked} >
             <TitleItems>Ações</TitleItems>
             <ContentItems><BsGearFill /></ContentItems>
-            <InputActions type="checkbox" ref={isClicked} checked={enableActions} onChange={(event) => setEnableActions(event.target.checked)} />
+            <InputActions type="checkbox" checked={enableActions} onChange={(event) => setEnableActions(event.target.checked)} />
             <ContentDropdownActions enableDropDown={enableActions}>
               <DropdownActions dataList={["Cancelar", "Inutilizar", " Carta de correção"]}/>
             </ContentDropdownActions>
