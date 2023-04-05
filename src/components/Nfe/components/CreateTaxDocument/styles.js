@@ -41,6 +41,12 @@ export const ActionsItems = styled.div`
   border-radius: 5px;
   box-shadow: 2px 2px 5px 0px #02769c ;
   font-size: 14px;
+  transition: ease-in 0.1s all;
+
+  &:hover{
+     background-color: #009dd1;
+     transition: ease-in 0.1s all;
+  }
 `
 
 export const ContentItems = styled.div`
