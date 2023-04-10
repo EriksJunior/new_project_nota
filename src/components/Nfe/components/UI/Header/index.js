@@ -4,7 +4,7 @@ import { LeafContext } from "../../../context"
 
 import { Modal } from "../../../../Modal"
 
-import { ContentNfeHeader } from "./styles"
+import { ContentNfeHeader, ContentModal } from "./styles"
 import { modelos, finalidades, operacoes, ambientes } from "../../../../../common/nfe"
 
 export function Header() {
@@ -91,13 +91,32 @@ export function Header() {
         </div>
       </div>
       <Modal isOpen={openModalReturnedLeaf} closeModal={setOpenModalReturnedLeaf}>
-        <div style={{ width: "100%", backgroundColor: "black", padding: "15px", marginTop: "50px", borderRadius: "5px", color: "white" }}>
-          <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <label className="form-label">Motivo do Cancelamento</label>
-            <input type="text" className="form-control form-control-sm" name="desconto" />
-            <p style={{ fontSize: "12px", marginTop: "5px", color: "#11b1e5" }}>O movito do cancelamento deve ter no mínimo 15 caracteres</p>
-          </div>
-        </div>
+        <ContentModal>
+          <section>
+            <p>Selecione produtos que serão devolvidos</p>
+            <hr />
+          </section>
+
+          <section>
+            <table>
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Quantidade</th>
+                  <th>Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div></div>
+          </section>
+
+        </ContentModal>
       </Modal>
     </ContentNfeHeader>
   )

@@ -13,4 +13,31 @@ export const ContentNfeHeader = styled.div`
     justify-content: flex-end;
     height: 35px;
   }
+
 `
+
+export const ContentModal = styled.div`
+  width: 100%;
+  background-color: black;
+  padding: 15px;
+  margin-top: 50px;
+  border-radius: 5px;
+  color: white;
+
+  p {
+    color: #b4b2b2
+  }
+
+  th,
+  td {
+    font-weight: 600;
+  }
+  
+  table {
+    width: 100%;
+  }
+
+  section {
+    width: 100%;
+  }
+ `
