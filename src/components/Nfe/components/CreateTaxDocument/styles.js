@@ -28,7 +28,7 @@ export const ContentActionsItems = styled.div`
   align-items: center;
 `
 
-export const ActionsItems = styled.div`
+export const ActionsItems = styled.label`
   display: flex;
   gap: 5px;
   font-weight: 500;
@@ -42,6 +42,7 @@ export const ActionsItems = styled.div`
   box-shadow: 2px 2px 5px 0px #02769c ;
   font-size: 14px;
   transition: ease-in 0.1s all;
+  position: relative;
 
   &:hover{
      background-color: #009dd1;
@@ -49,10 +50,24 @@ export const ActionsItems = styled.div`
   }
 `
 
+export const ContentDropdownActions = styled.div`
+  position: absolute;
+  top: -60px;
+  right: -10px;
+  bottom: 0px;
+  z-index: 999;
+
+  ${({enableDropDown}) => enableDropDown ? `display: block;` : `display: none;`}
+`
+
 export const ContentItems = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center ;
+  align-items: center;
+`
+
+export const InputActions = styled.input`
+  display: none;
 `
 
 export const TitleItems = styled.div`

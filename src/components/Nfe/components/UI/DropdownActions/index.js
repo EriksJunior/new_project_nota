@@ -1,22 +1,36 @@
+
 import { Dropdown, ContentRemoveIrem } from "./styles"
 import { BsCheck2 } from "react-icons/bs"
 
-export function DropdownActions({ remove, index }) {
+export function DropdownActions({ remove, index, cancel, dataList = ["Impostos", "Duplicar produto"], newWidth = "170px" }) {
   return (
-    <Dropdown>
+    <Dropdown width={newWidth}>
       <ul>
-        <li>Impostos</li>
-        <li>Duplicar produto</li>
-        <li>
-          <ContentRemoveIrem htmlFor={`remove-${index}`}>
-            Exluir
-            <input hidden className="remove" type="checkbox" name={`remove-${index}`} id={`remove-${index}`} />
+        {dataList.map((item, indice) =>
+          <div key={indice}>
+            <li>{item}</li>
+          </div>
+        )}
 
-            <div className="checkRemoveIcon" onClick={remove}>
-              <BsCheck2 size={16} color={"#ffffff"} />
-            </div>
-          </ContentRemoveIrem>
-        </li>
+        {remove &&
+          <li>
+            <ContentRemoveIrem htmlFor={`remove-${index}`}>
+              Exluir
+              <input hidden className="remove" type="checkbox" name={`remove-${index}`} id={`remove-${index}`} />
+
+              <div className="checkRemoveIcon" onClick={remove}>
+                <BsCheck2 size={16} color={"#ffffff"} />
+              </div>
+            </ContentRemoveIrem>
+          </li>
+        }
+
+        {cancel &&
+          <li onClick={cancel}>
+            Cancelar
+          </li>
+        }
+
       </ul>
     </Dropdown>
   )
