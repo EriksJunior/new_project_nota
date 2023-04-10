@@ -7,13 +7,13 @@ import { DropdownActions } from "../UI/DropdownActions"
 import { Modal } from "../../../Modal"
 // import { Metrics } from "../../components/UI/Metrics"
 import { ContentDesigner } from "../../../Tab"
-import { BsArrowLeftCircleFill, BsPatchCheckFill, BsGearFill } from "react-icons/bs"
+import { BsArrowLeftCircleFill, BsPatchCheckFill, BsGearFill, BsPlusCircleFill } from "react-icons/bs"
 import { RiSendPlaneFill } from "react-icons/ri"
 import { ContentTaxDocument, ContentActions, ContentActionsItems, ActionsItems, ContentItems, TitleItems, InputActions, ContentDropdownActions } from "./styles"
 
 export function CreateTaxDocument() {
   const [enableActions, setEnableActions] = useState(false)
-  const { openModalCancelLeaf, setOpenModalCancelLeaf, switchBetweenComponents, handleSaveLeaf, handleSendLeafAndFind, cancelLeaf, enbleModalCancelLeaf, refDescriptionCancelLeaf } = useContext(LeafContext)
+  const { openModalCancelLeaf, setOpenModalCancelLeaf, switchBetweenComponents, handleSaveLeaf, handleSendLeafAndFind, cancelLeaf, enbleModalCancelLeaf, refDescriptionCancelLeaf, clearAllInputs } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
   const isClicked = useRef(null)
 
@@ -36,6 +36,11 @@ export function CreateTaxDocument() {
 
       <ContentActions>
         <ContentActionsItems>
+        <ActionsItems onClick={clearAllInputs}>
+            <TitleItems>Novo</TitleItems>
+            <ContentItems><BsPlusCircleFill /></ContentItems>
+          </ActionsItems>
+
           {!pedido.response.chave &&
             <ActionsItems onClick={handleSaveLeaf}>
               <TitleItems>Salvar</TitleItems>
