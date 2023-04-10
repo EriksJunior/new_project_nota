@@ -58,6 +58,7 @@ export const INITIAL_VALUE_PEDIDO = {
   informacoes_fisco: "",
   informacoes_complementares: "",
   status: "Não Enviada",
+  nfe_referenciada: "",
 }
 
 export const INITIAL_VALUE_RESPONSE_WEBMANIA = {

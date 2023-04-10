@@ -36,7 +36,7 @@ export function CreateTaxDocument() {
 
       <ContentActions>
         <ContentActionsItems>
-        <ActionsItems onClick={clearAllInputs}>
+          <ActionsItems onClick={clearAllInputs}>
             <TitleItems>Novo</TitleItems>
             <ContentItems><BsPlusCircleFill /></ContentItems>
           </ActionsItems>
@@ -48,7 +48,9 @@ export function CreateTaxDocument() {
             </ActionsItems>
           }
 
-          {!pedido.response.chave &&
+          {pedido.response.chave || (String(pedido.finalidade) === "4" && String(pedido.operacao) === "0") ?
+            ""
+            :
             <ActionsItems onClick={handleSendLeafAndFind}>
               <TitleItems>Emitir Documento</TitleItems>
               <ContentItems><RiSendPlaneFill /></ContentItems>
@@ -80,7 +82,7 @@ export function CreateTaxDocument() {
             <p style={{ fontSize: "12px", marginTop: "5px", color: "#11b1e5" }}>O movito do cancelamento deve ter no mínimo 15 caracteres</p>
           </div>
 
-          <div style={{display: "flex", justifyContent: "flex-end"}}>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <ActionsItems onClick={() => cancelLeaf(pedido.id)}>
               <TitleItems>Confirmar</TitleItems>
             </ActionsItems>

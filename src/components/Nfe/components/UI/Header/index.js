@@ -2,11 +2,13 @@ import { useContext } from "react"
 import { useSelector } from "react-redux"
 import { LeafContext } from "../../../context"
 
+import { Modal } from "../../../../Modal"
+
 import { ContentNfeHeader } from "./styles"
 import { modelos, finalidades, operacoes, ambientes } from "../../../../../common/nfe"
 
 export function Header() {
-  const { handleChangePedido } = useContext(LeafContext)
+  const { handleChangePedido, enbleModalReturnedLeaf, openModalReturnedLeaf, setOpenModalReturnedLeaf, } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
 
   return (
@@ -71,13 +73,32 @@ export function Header() {
               <input type="text" className="form-control form-control-sm" disabled name="status" value={pedido.status} onChange={handleChangePedido} />
             </div>
 
-            <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12" hidden={pedido.finalidade === "1"}>
+            <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12" hidden={String(pedido.finalidade) === "1"}>
               <label className="form-label">Chave de referencia</label>
-              <input type="text" className="form-control form-control-sm" placeholder="Informe aqui a chave da nota fiscal que deseja realizar a devolução" />
+              <input type="text" className="form-control form-control-sm" maxLength={44} name="nfe_referenciada" value={pedido.nfe_referenciada.replace(/ /g, '') || ""} onChange={handleChangePedido} placeholder="Informe aqui a chave da nota fiscal que deseja realizar a devolução" />
             </div>
+
+            {String(pedido.finalidade) === "4" && String(pedido.operacao) === "0" && pedido.nfe_referenciada.length === 44 ?
+              <div className="btnConfirm">
+                <div>
+                  <button className="btn btn-primary btn-sm" onClick={enbleModalReturnedLeaf}>Confirmar</button>
+                </div>
+              </div>
+              :
+              ""
+            }
           </div>
         </div>
       </div>
+      <Modal isOpen={openModalReturnedLeaf} closeModal={setOpenModalReturnedLeaf}>
+        <div style={{ width: "100%", backgroundColor: "black", padding: "15px", marginTop: "50px", borderRadius: "5px", color: "white" }}>
+          <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label className="form-label">Motivo do Cancelamento</label>
+            <input type="text" className="form-control form-control-sm" name="desconto" />
+            <p style={{ fontSize: "12px", marginTop: "5px", color: "#11b1e5" }}>O movito do cancelamento deve ter no mínimo 15 caracteres</p>
+          </div>
+        </div>
+      </Modal>
     </ContentNfeHeader>
   )
 }

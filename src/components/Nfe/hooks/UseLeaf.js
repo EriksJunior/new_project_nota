@@ -21,6 +21,7 @@ export function UseLeaf() {
 
   const [openModal, setOpenModal] = useState("hide")
   const [openModalCancelLeaf, setOpenModalCancelLeaf] = useState("hide")
+  const [openModalReturnedLeaf, setOpenModalReturnedLeaf] = useState("hide")
   const [dataSearchLeaf, setDataSearchLeaf] = useState([])
   const [openLayouts, setOpenLayouts] = useState(false)
   const [openAreaLeaf, setOpenAreaLeaf] = useState(false)
@@ -268,7 +269,7 @@ export function UseLeaf() {
       }
 
       const { status } = await LeafService.cancelLeaf(dataCancelLeaf, idLeaf)
-      dispatch(SAVE_LEAF({...pedido, status}))
+      dispatch(SAVE_LEAF({ ...pedido, status }))
     } catch (error) {
       console.log(error)
     }
@@ -277,6 +278,10 @@ export function UseLeaf() {
   const enbleModalCancelLeaf = () => {
     setOpenModalCancelLeaf("show")
     refDescriptionCancelLeaf.current.value = ""
+  }
+
+  const enbleModalReturnedLeaf = () => {
+    setOpenModalReturnedLeaf("show")
   }
 
   const handleSendLeafAndFind = async () => {
@@ -316,5 +321,5 @@ export function UseLeaf() {
     return await ProductLeafService.findLeafProductsByIdNota(idLeaf)
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, openModalCancelLeaf, setOpenModalCancelLeaf, handleSendLeafAndFind, cancelLeaf, enbleModalCancelLeaf, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf, refDescriptionCancelLeaf, clearAllInputs }
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, openModalCancelLeaf, setOpenModalCancelLeaf, openModalReturnedLeaf, setOpenModalReturnedLeaf, handleSendLeafAndFind, cancelLeaf, enbleModalCancelLeaf, enbleModalReturnedLeaf, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf, refDescriptionCancelLeaf, clearAllInputs, }
 }
