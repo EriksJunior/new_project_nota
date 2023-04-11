@@ -41,7 +41,9 @@ export function CreateTaxDocument() {
             <ContentItems><BsPlusCircleFill /></ContentItems>
           </ActionsItems>
 
-          {!pedido.response.chave &&
+          {pedido.response.chave || (String(pedido.finalidade) === "4" && String(pedido.operacao) === "0") ?
+            ""
+            :
             <ActionsItems onClick={handleSaveLeaf}>
               <TitleItems>Salvar</TitleItems>
               <ContentItems><BsPatchCheckFill /></ContentItems>

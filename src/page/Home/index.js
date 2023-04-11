@@ -3,7 +3,7 @@ import { NavBar } from "../../components/NavBar"
 export function PageHome() {
   return (
     <>
-        <p>Aqui a é Homeeeeeeeeeeeeee</p>
+        <p>Home</p>
         {/* leo esteve aqui viçosa mg */}
         {/* kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk */}
     </>

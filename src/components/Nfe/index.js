@@ -29,7 +29,7 @@ export function FormLeaf() {
       {String(pedido.finalidade) === "4" && String(pedido.operacao) === "0" ?
         ""
         :
-        <ContainerNav ContainerNav >
+        <ContainerNav>
           <Nav>
             <Div hidden={navItems.cliente}>
               <CustomertNfe />

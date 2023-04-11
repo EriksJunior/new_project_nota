@@ -8,7 +8,7 @@ import { ContentNfeHeader, ContentModal } from "./styles"
 import { modelos, finalidades, operacoes, ambientes } from "../../../../../common/nfe"
 
 export function Header() {
-  const { handleChangePedido, enbleModalReturnedLeaf, openModalReturnedLeaf, setOpenModalReturnedLeaf, } = useContext(LeafContext)
+  const { handleChangePedido, enbleModalReturnedLeaf, openModalReturnedLeaf, setOpenModalReturnedLeaf, formatNfeReferenciada, enableBtnConfirmDevolution } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
 
   return (
@@ -75,17 +75,15 @@ export function Header() {
 
             <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12" hidden={String(pedido.finalidade) === "1"}>
               <label className="form-label">Chave de referencia</label>
-              <input type="text" className="form-control form-control-sm" maxLength={44} name="nfe_referenciada" value={pedido.nfe_referenciada.replace(/ /g, '') || ""} onChange={handleChangePedido} placeholder="Informe aqui a chave da nota fiscal que deseja realizar a devolução" />
+              <input type="text" className="form-control form-control-sm" maxLength={44} name="nfe_referenciada" value={ formatNfeReferenciada(pedido.nfe_referenciada) || ""} onChange={handleChangePedido} placeholder="Informe aqui a chave da nota fiscal que deseja realizar a devolução" />
             </div>
 
-            {String(pedido.finalidade) === "4" && String(pedido.operacao) === "0" && pedido.nfe_referenciada.length === 44 ?
+            {enableBtnConfirmDevolution() &&
               <div className="btnConfirm">
                 <div>
                   <button className="btn btn-primary btn-sm" onClick={enbleModalReturnedLeaf}>Confirmar</button>
                 </div>
               </div>
-              :
-              ""
             }
           </div>
         </div>

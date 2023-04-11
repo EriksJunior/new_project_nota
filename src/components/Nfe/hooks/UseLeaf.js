@@ -321,5 +321,18 @@ export function UseLeaf() {
     return await ProductLeafService.findLeafProductsByIdNota(idLeaf)
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, openModalCancelLeaf, setOpenModalCancelLeaf, openModalReturnedLeaf, setOpenModalReturnedLeaf, handleSendLeafAndFind, cancelLeaf, enbleModalCancelLeaf, enbleModalReturnedLeaf, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf, refDescriptionCancelLeaf, clearAllInputs, }
+  const formatNfeReferenciada = (value) => {
+    if(pedido.nfe_referenciada) return value.replace(/ /g, '')
+    return value
+  }
+
+  const enableBtnConfirmDevolution = () => {
+    if(String(pedido.finalidade) === "4" && String(pedido.operacao) === "0" && pedido.nfe_referenciada && pedido.nfe_referenciada.length === 44) {
+      return true
+    }
+    
+    return false
+  }
+
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, openModalCancelLeaf, setOpenModalCancelLeaf, openModalReturnedLeaf, setOpenModalReturnedLeaf, handleSendLeafAndFind, cancelLeaf, enbleModalCancelLeaf, enbleModalReturnedLeaf, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf, refDescriptionCancelLeaf, clearAllInputs, formatNfeReferenciada, enableBtnConfirmDevolution}
 }
