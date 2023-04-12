@@ -35,6 +35,8 @@ export const ContentModal = styled.div`
   
   table {
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px 8px;
   }
 
   section {

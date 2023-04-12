@@ -25,6 +25,8 @@ export function UseLeaf() {
   const [dataSearchLeaf, setDataSearchLeaf] = useState([])
   const [openLayouts, setOpenLayouts] = useState(false)
   const [openAreaLeaf, setOpenAreaLeaf] = useState(false)
+  const [productsForDevolution, setProductsForDevolution] = useState([])
+  const [selectdProductsFromDevolution, setSelectedProductsFromDevolution] = useState([])
 
 
   const refValorTotalPedido = useRef("")
@@ -280,8 +282,26 @@ export function UseLeaf() {
     refDescriptionCancelLeaf.current.value = ""
   }
 
-  const enbleModalReturnedLeaf = () => {
+  const enbleModalReturnedLeaf = async () => {
+    await findLeafByReferencedKey()
     setOpenModalReturnedLeaf("show")
+  }
+
+  const findLeafByReferencedKey = async () => {
+    const productsLeaf = await LeafService.findByReferencedKey(pedido.nfe_referenciada)
+    setProductsForDevolution(productsLeaf)
+  }
+
+  const handleChangeDataDevolutionLeaf = (e) => {
+    const productSelected = JSON.parse(e.target.value)
+    const isChecked = e.target.checked
+
+    if(isChecked) {
+      setSelectedProductsFromDevolution(state => [...state, productSelected])
+    } else {
+      const filteredProducts = selectdProductsFromDevolution.filter(selectProd => selectProd.id !== productSelected.id)
+      setSelectedProductsFromDevolution(filteredProducts)
+    }
   }
 
   const handleSendLeafAndFind = async () => {
@@ -334,5 +354,5 @@ export function UseLeaf() {
     return false
   }
 
-  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, openModalCancelLeaf, setOpenModalCancelLeaf, openModalReturnedLeaf, setOpenModalReturnedLeaf, handleSendLeafAndFind, cancelLeaf, enbleModalCancelLeaf, enbleModalReturnedLeaf, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf, refDescriptionCancelLeaf, clearAllInputs, formatNfeReferenciada, enableBtnConfirmDevolution}
+  return { handleChangePedido, handleSaveLeaf, handleChangeFreightAndOthers, calculateTotalLeafBasedProducts, calculateTotalDiscountLeaf, refValorTotalPedido, refTotalDescontoPedido, openModal, setOpenModal, openModalCancelLeaf, setOpenModalCancelLeaf, openModalReturnedLeaf, setOpenModalReturnedLeaf, handleSendLeafAndFind, cancelLeaf, enbleModalCancelLeaf, enbleModalReturnedLeaf, loading, searchLeaf, dataSearchLeaf, handleNewLeaf, switchBetweenComponents, handleEditLeaf, openLayouts, openAreaLeaf, refDescriptionCancelLeaf, clearAllInputs, formatNfeReferenciada, enableBtnConfirmDevolution, productsForDevolution, handleChangeDataDevolutionLeaf, selectdProductsFromDevolution}
 }

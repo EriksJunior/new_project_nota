@@ -28,6 +28,11 @@ class LeafService {
     const { data } = await api.put(`/nota/cancel/nota/${idNota}`, dataCancelamento)
     return data
   }
+
+  async findByReferencedKey(nfeReferenciada) {
+    const { data } = await api.get(`/nota/buscar/nota/referenciada/${nfeReferenciada}`)
+    return data
+  }
 }
 
 export default new LeafService()

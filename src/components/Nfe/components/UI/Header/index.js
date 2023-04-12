@@ -8,7 +8,7 @@ import { ContentNfeHeader, ContentModal } from "./styles"
 import { modelos, finalidades, operacoes, ambientes } from "../../../../../common/nfe"
 
 export function Header() {
-  const { handleChangePedido, enbleModalReturnedLeaf, openModalReturnedLeaf, setOpenModalReturnedLeaf, formatNfeReferenciada, enableBtnConfirmDevolution } = useContext(LeafContext)
+  const { handleChangePedido, enbleModalReturnedLeaf, openModalReturnedLeaf, setOpenModalReturnedLeaf, formatNfeReferenciada, enableBtnConfirmDevolution, productsForDevolution, handleChangeDataDevolutionLeaf, selectdProductsFromDevolution } = useContext(LeafContext)
   const pedido = useSelector(state => state.leaf.pedido)
 
   return (
@@ -75,7 +75,7 @@ export function Header() {
 
             <div className="mb-3 col-sm-12 col-md-12 col-lg-12 col-xl-12" hidden={String(pedido.finalidade) === "1"}>
               <label className="form-label">Chave de referencia</label>
-              <input type="text" className="form-control form-control-sm" maxLength={44} name="nfe_referenciada" value={ formatNfeReferenciada(pedido.nfe_referenciada) || ""} onChange={handleChangePedido} placeholder="Informe aqui a chave da nota fiscal que deseja realizar a devolução" />
+              <input type="text" className="form-control form-control-sm" maxLength={44} name="nfe_referenciada" value={formatNfeReferenciada(pedido.nfe_referenciada) || ""} onChange={handleChangePedido} placeholder="Informe aqui a chave da nota fiscal que deseja realizar a devolução" />
             </div>
 
             {enableBtnConfirmDevolution() &&
@@ -100,20 +100,29 @@ export function Header() {
               <thead>
                 <tr>
                   <th>Produto</th>
-                  <th>Quantidade</th>
-                  <th>Valor</th>
+                  <th>Qtd. a devolver</th>
+                  <th style={{ textAlign: "center" }}>Valor</th>
+                  <th style={{ textAlign: "center" }}></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                </tr>
+                {productsForDevolution.map((prod, indice) =>
+                  <tr key={prod.id}>
+                    <td style={{ width: "15%" }}>{prod.nome}</td>
+                    <td style={{ width: "15%" }}>
+                      <input type="number" className="form-control form-control-sm" name="natureza_operacao" defaultValue={prod.quantidade} />
+                    </td>
+                    <td style={{ width: "10%", textAlign: "center" }}>{prod.total - prod.desconto}</td>
+                    <td style={{ width: "10%", textAlign: "center" }}> <input className="form-check-input" type="checkbox" value={JSON.stringify(prod)} onChange={(e) => handleChangeDataDevolutionLeaf(e, indice)} /></td>
+                  </tr>
+                )}
               </tbody>
             </table>
 
-            <div></div>
+            <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "20px" }}>
+              <button className="btn btn-primary btn-sm" onClick={() => console.log(selectdProductsFromDevolution)}>Devolver</button>
+            </div>
           </section>
-
         </ContentModal>
       </Modal>
     </ContentNfeHeader>
