@@ -1,6 +1,6 @@
 ##  📽️ DEMO 📽️ [Visualizar vídeo de demonstração](https://github.dev/EriksJunior/new_project_nota/blob/main/demo/demo.mp4)
 
-## 🚧🚧 Em Desenvolimento 🚧🚧 ##
+**🛑 STOP 🛑** `Aplicação parada ja faz um tempo, não pretendo voltar a mexer e sim talvez começar outro do zero algum dia com meus conhecimentos atuais`
 
 ## Primeiros passos para iniciar a aplicação
 
