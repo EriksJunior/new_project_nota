@@ -10,4 +10,4 @@ Verificar a url do backend dentro da pasta `utils/configs/api.js`
 
 após realizar esses procedimentos executar o comando `npm start` para iniciar a aplicação
 
-## Obs: Backend utilizando foi a parte, e o repositório esta privado
+### Obs: Backend utilizando foi a parte, e o repositório esta privado
