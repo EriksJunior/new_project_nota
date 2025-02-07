@@ -99,7 +99,6 @@ export const P = styled.p`
   text-overflow: ellipsis;
   padding: 0px;
   font-size: 19px;
-    /* letter-spacing: 3px */
 `
 
 

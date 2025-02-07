@@ -7,10 +7,6 @@ export const ContentTable = styled.div`
     font-size: 14px;
   }
 
-  tbody {
-    /* background-color: red; */
-  }
-
   td{
     color: rgb(2, 118, 156)!important;
     cursor: pointer;

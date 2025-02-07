@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const ContentTable = styled.div`
-    /* overflow-x: auto; */
-
   ::-webkit-scrollbar-track {
       background-color: transparent;
   }
@@ -21,7 +19,6 @@ export const Table = styled.table`
     width: 100%;
    @media screen and (max-width: 1191px) {
       min-width: 690px;
-      /* overflow-x: auto; */
     }
 `
 

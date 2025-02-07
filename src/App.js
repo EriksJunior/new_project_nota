@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useContext } from 'react'
 import { GlobalContext } from './context/Global/global'
 

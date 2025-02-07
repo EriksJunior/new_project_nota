@@ -29,7 +29,6 @@ export const ContentColapseIcon = styled.div`
 
 export const ContentChildrenColapse = styled.div`
   padding: 10px;
-  /* margin-top: 7px; */
   border: solid 1px #02769c;
   border-radius: 5px;
 `
