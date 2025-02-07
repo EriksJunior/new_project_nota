@@ -1,5 +1,4 @@
-##  📽️ DEMO 📽️  ##
-📽️ [Visualizar vídeo de demonstração](demo/demo.mp4)
+##  📽️ DEMO 📽️ [Visualizar vídeo de demonstração](https://github.dev/EriksJunior/new_project_nota/blob/main/demo/demo.mp4)
 
 ## 🚧🚧 Em Desenvolimento 🚧🚧 ##
 
